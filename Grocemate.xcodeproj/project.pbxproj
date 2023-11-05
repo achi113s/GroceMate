@@ -13,7 +13,7 @@
 		440ECB832AF812F800E6BD5C /* CreateCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440ECB7C2AF812F800E6BD5C /* CreateCardViewModel.swift */; };
 		440ECB842AF812F800E6BD5C /* CreateCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440ECB7D2AF812F800E6BD5C /* CreateCardView.swift */; };
 		440ECB852AF812F800E6BD5C /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440ECB7E2AF812F800E6BD5C /* Card.swift */; };
-		440ECB862AF812F800E6BD5C /* SwipeableText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440ECB7F2AF812F800E6BD5C /* SwipeableText.swift */; };
+		440ECB862AF812F800E6BD5C /* SwipeableIngredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440ECB7F2AF812F800E6BD5C /* SwipeableIngredient.swift */; };
 		440ECB902AF8130400E6BD5C /* IngredientCardStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440ECB882AF8130400E6BD5C /* IngredientCardStruct.swift */; };
 		440ECB912AF8130400E6BD5C /* CoreDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440ECB8A2AF8130400E6BD5C /* CoreDataController.swift */; };
 		440ECB922AF8130400E6BD5C /* IngredientCard+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440ECB8B2AF8130400E6BD5C /* IngredientCard+CoreDataProperties.swift */; };
@@ -53,7 +53,7 @@
 		440ECB7C2AF812F800E6BD5C /* CreateCardViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateCardViewModel.swift; sourceTree = "<group>"; };
 		440ECB7D2AF812F800E6BD5C /* CreateCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateCardView.swift; sourceTree = "<group>"; };
 		440ECB7E2AF812F800E6BD5C /* Card.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
-		440ECB7F2AF812F800E6BD5C /* SwipeableText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeableText.swift; sourceTree = "<group>"; };
+		440ECB7F2AF812F800E6BD5C /* SwipeableIngredient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeableIngredient.swift; sourceTree = "<group>"; };
 		440ECB882AF8130400E6BD5C /* IngredientCardStruct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IngredientCardStruct.swift; sourceTree = "<group>"; };
 		440ECB8A2AF8130400E6BD5C /* CoreDataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataController.swift; sourceTree = "<group>"; };
 		440ECB8B2AF8130400E6BD5C /* IngredientCard+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "IngredientCard+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -119,7 +119,7 @@
 			children = (
 				440ECB7B2AF812F800E6BD5C /* CreateCard */,
 				440ECB7E2AF812F800E6BD5C /* Card.swift */,
-				440ECB7F2AF812F800E6BD5C /* SwipeableText.swift */,
+				440ECB7F2AF812F800E6BD5C /* SwipeableIngredient.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -357,7 +357,7 @@
 				440ECB912AF8130400E6BD5C /* CoreDataController.swift in Sources */,
 				440ECB812AF812F800E6BD5C /* RubberBanding.swift in Sources */,
 				440ECB852AF812F800E6BD5C /* Card.swift in Sources */,
-				440ECB862AF812F800E6BD5C /* SwipeableText.swift in Sources */,
+				440ECB862AF812F800E6BD5C /* SwipeableIngredient.swift in Sources */,
 				440ECB902AF8130400E6BD5C /* IngredientCardStruct.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

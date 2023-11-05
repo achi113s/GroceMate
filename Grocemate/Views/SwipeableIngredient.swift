@@ -8,7 +8,7 @@
 import CoreHaptics
 import SwiftUI
 
-struct SwipeableText: View {
+struct SwipeableIngredient: View {
 //    @EnvironmentObject var myHapticEngine: MyHapticEngine
     @Environment(\.managedObjectContext) private var moc
     
@@ -52,13 +52,13 @@ struct SwipeableText: View {
         }
     }
     
-    public func textColor(_ color: Color) -> SwipeableText {
+    public func textColor(_ color: Color) -> SwipeableIngredient {
         var view = self
         view.textColor = color
         return view
     }
     
-    public func strikethroughColor(_ color: Color) -> SwipeableText {
+    public func strikethroughColor(_ color: Color) -> SwipeableIngredient {
         var view = self
         view.strikethroughColor = color
         return view
@@ -140,7 +140,7 @@ struct SwipeableText: View {
     }
 }
 
-extension SwipeableText {
+extension SwipeableIngredient {
     /// Toggle completed on the ingredient object.
     func toggleIngredientCompleted() {
         ingredient.complete.toggle()
@@ -153,6 +153,7 @@ extension SwipeableText {
         }
     }
 }
-//#Preview {
-//    SwipeableText(complete: .constant(true), text: "Hello, World!")
-//}
+
+#Preview {
+    SwipeableIngredient(ingredient: .preview())
+}

@@ -28,3 +28,28 @@ public class Ingredient: NSManagedObject, Identifiable {
         setPrimitiveValue("No Name", forKey: "name")
     }
 }
+
+//MARK: - Previews
+extension Ingredient {
+    @discardableResult
+    static func makePreview(count: Int, in context: NSManagedObjectContext) -> [Ingredient] {
+        var ingredients = [Ingredient]()
+        
+        for _ in 0..<count {
+            let ingredient = Ingredient(context: context)
+            ingredient.name = "1 cup (250ml) whole milk"
+            
+            ingredients.append(ingredient)
+        }
+        
+        return ingredients
+    }
+    
+    static func preview(context: NSManagedObjectContext = CoreDataController.shared.viewContext) -> Ingredient {
+        return makePreview(count: 1, in: context)[0]
+    }
+    
+    static func emptyPreview(context: NSManagedObjectContext = CoreDataController.shared.viewContext) -> Ingredient {
+        return Ingredient(context: context)
+    }
+}

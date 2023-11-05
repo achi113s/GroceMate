@@ -42,6 +42,33 @@ extension IngredientCard {
 
 }
 
-extension IngredientCard : Identifiable {
-
+//MARK: - Previews
+extension IngredientCard {
+    @discardableResult
+    static func makePreview(count: Int, in context: NSManagedObjectContext) -> [IngredientCard] {
+        var cards = [IngredientCard]()
+        
+        for _ in 0..<count {
+            let ingredientCard = IngredientCard(context: context)
+            ingredientCard.title = "Green Tea Ice Cream"
+            
+            let ingredient1 = Ingredient(context: context)
+            ingredient1.ingredientCard = ingredientCard
+            ingredient1.name = "1 cup (250ml) whole milk"
+            
+            ingredientCard.ingredients = Set([ingredient1])
+            
+            cards.append(ingredientCard)
+        }
+        
+        return cards
+    }
+    
+    static func preview(context: NSManagedObjectContext = CoreDataController.shared.viewContext) -> IngredientCard {
+        return makePreview(count: 1, in: context)[0]
+    }
+    
+    static func emptyPreview(context: NSManagedObjectContext = CoreDataController.shared.viewContext) -> IngredientCard {
+        return IngredientCard(context: context)
+    }
 }

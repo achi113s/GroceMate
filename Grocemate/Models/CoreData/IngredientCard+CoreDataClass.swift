@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 
-public class IngredientCard: NSManagedObject {
+public class IngredientCard: NSManagedObject, Identifiable {
     @nonobjc public class func fetchRequest() -> NSFetchRequest<IngredientCard> {
         return NSFetchRequest<IngredientCard>(entityName: "IngredientCard")
     }

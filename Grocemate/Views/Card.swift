@@ -5,6 +5,7 @@
 //  Created by Giorgio Latour on 11/2/23.
 //
 
+import CoreData
 import SwiftUI
 
 struct Card: View {
@@ -16,25 +17,12 @@ struct Card: View {
     
     //MARK: - State
     @ObservedObject var ingredientCard: IngredientCard
-    
     @GestureState private var cardLongPressGestureState = CardLongPressGestureState.inactive
     
     //MARK: - Properties
     private let cardPressedScale: CGSize = CGSize(width: 0.97, height: 0.97)
     private let minimumLongPressDuration: CGFloat = 1.0
     private let pressedAnimationDuration: CGFloat = 0.2
-    
-    private var cardLongPressGesture: some Gesture {
-        LongPressGesture(minimumDuration: minimumLongPressDuration)
-            .updating($cardLongPressGestureState, body: { currentState, gestureState, transaction in
-                gestureState = .pressing
-            })
-            .onEnded { finished in
-                hapticEngine.playHaptic(.longPressSuccess)
-                //                viewModel.presentConfirmationDialog = true
-                //                viewModel.selectedIngredientCard = ingredientCard
-            }
-    }
     
     var body: some View {
         VStack(alignment: .leading, spacing: 15) {
@@ -43,16 +31,10 @@ struct Card: View {
             VStack(alignment: .leading, spacing: 10) {
                 ForEach(ingredientCard.ingredientsArr) { ingredient in
                     HStack(alignment: .center) {
-                        //                        Text(ingredient.name)
-                        //                            .font(.system(size: 17, weight: .semibold, design: .rounded))
-                        SwipeableText(ingredient: ingredient)
+                        SwipeableIngredient(ingredient: ingredient)
+//                            .textColor(Color("AccentColor"))
+//                            .strikethroughColor(Color("AccentColor"))
                             .font(.system(size: 17, weight: .semibold, design: .rounded))
-                        //                        SwipeableText(
-                        //                            complete: $ingredientCard.ingredients[ingredientCard.ingredients.firstIndex(of: ingredient)!].complete,
-                        //                            text: ingredient.name)
-                        //                        //                        .textColor(Color("AccentColor"))
-                        //                        //                        .strikethroughColor(Color("AccentColor"))
-                        //                        .font(.system(size: 17, weight: .semibold, design: .rounded))
                     }
                 }
             }
@@ -101,20 +83,20 @@ struct Card: View {
             }
         }
     }
+    
+    private var cardLongPressGesture: some Gesture {
+        LongPressGesture(minimumDuration: minimumLongPressDuration)
+            .updating($cardLongPressGestureState, body: { currentState, gestureState, transaction in
+                gestureState = .pressing
+            })
+            .onEnded { finished in
+                hapticEngine.playHaptic(.longPressSuccess)
+                //                viewModel.presentConfirmationDialog = true
+                //                viewModel.selectedIngredientCard = ingredientCard
+            }
+    }
 }
-//
-////#Preview {
-////    Card(ingredientCard:
-////        IngredientCard(
-////            name: "Green Tea Ice Cream",
-////            ingredients: [
-////                Ingredient("1 cup (250ml) whole milk"),
-////                Ingredient("3/4 cup (150g) sugar"),
-////                Ingredient("pinch of kosher or sea salt"),
-////                Ingredient("2 cups (500ml) heavy cream"),
-////                Ingredient("4 teaspoons matcha (green tea powder)"),
-////                Ingredient("6 large egg yolks")
-////            ]
-////        )
-////    ))
-////}
+
+#Preview {
+    Card(ingredientCard: .preview())
+}

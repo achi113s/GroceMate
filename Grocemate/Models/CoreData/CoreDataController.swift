@@ -7,6 +7,7 @@
 
 import CoreData
 import Foundation
+import SwiftUI
 
 final class CoreDataController {
     
@@ -25,10 +26,7 @@ final class CoreDataController {
     var newContext: NSManagedObjectContext {
         persistentContainer.newBackgroundContext()
     }
-    
-//    /// Use a Published array with our NSManagedObjects so that changes are published.
-//    @Published var savedCards: [IngredientCard] = []
-//    
+      
     private init() {
 //        #if DEBUG
 //        do {
@@ -42,6 +40,12 @@ final class CoreDataController {
         
         /// Set up the model, context, and store all at once with an NSPersistentContainer.
         persistentContainer = NSPersistentContainer(name: "GrocemateDataModel")
+        
+        /// Are we in an Xcode preview?
+        if EnvironmentValues.isPreview {
+            persistentContainer.persistentStoreDescriptions.first?.url = .init(fileURLWithPath: "/dev/null")
+        }
+        
         
         /// Automatically merge any changes saved to the parent store. Useful since we will have multiple viewContexts.
         persistentContainer.viewContext.automaticallyMergesChangesFromParent = true
@@ -99,4 +103,9 @@ final class CoreDataController {
 //    }
 }
 
-
+extension EnvironmentValues {
+    /// Are we in an Xcode preview?
+    static var isPreview: Bool {
+        return ProcessInfo.processInfo.environment["XCODE_RUNNING_FOR_PREVIEWS"] == "1"
+    }
+}
