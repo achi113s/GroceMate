@@ -1,0 +1,706 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		440ECB802AF812F800E6BD5C /* HapticEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440ECB762AF812F800E6BD5C /* HapticEngine.swift */; };
+		440ECB812AF812F800E6BD5C /* RubberBanding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440ECB772AF812F800E6BD5C /* RubberBanding.swift */; };
+		440ECB822AF812F800E6BD5C /* Text-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440ECB792AF812F800E6BD5C /* Text-Extensions.swift */; };
+		440ECB832AF812F800E6BD5C /* CreateCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440ECB7C2AF812F800E6BD5C /* CreateCardViewModel.swift */; };
+		440ECB842AF812F800E6BD5C /* CreateCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440ECB7D2AF812F800E6BD5C /* CreateCardView.swift */; };
+		440ECB852AF812F800E6BD5C /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440ECB7E2AF812F800E6BD5C /* Card.swift */; };
+		440ECB862AF812F800E6BD5C /* SwipeableText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440ECB7F2AF812F800E6BD5C /* SwipeableText.swift */; };
+		440ECB902AF8130400E6BD5C /* IngredientCardStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440ECB882AF8130400E6BD5C /* IngredientCardStruct.swift */; };
+		440ECB912AF8130400E6BD5C /* CoreDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440ECB8A2AF8130400E6BD5C /* CoreDataController.swift */; };
+		440ECB922AF8130400E6BD5C /* IngredientCard+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440ECB8B2AF8130400E6BD5C /* IngredientCard+CoreDataProperties.swift */; };
+		440ECB932AF8130400E6BD5C /* IngredientCard+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440ECB8C2AF8130400E6BD5C /* IngredientCard+CoreDataClass.swift */; };
+		440ECB942AF8130400E6BD5C /* Ingredient+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440ECB8D2AF8130400E6BD5C /* Ingredient+CoreDataClass.swift */; };
+		440ECB9C2AF8134A00E6BD5C /* GrocemateDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 440ECB9A2AF8134A00E6BD5C /* GrocemateDataModel.xcdatamodeld */; };
+		44DDF2FD2AF811CE005D35D8 /* GrocemateApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DDF2FC2AF811CE005D35D8 /* GrocemateApp.swift */; };
+		44DDF2FF2AF811CE005D35D8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DDF2FE2AF811CE005D35D8 /* ContentView.swift */; };
+		44DDF3012AF811D0005D35D8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 44DDF3002AF811D0005D35D8 /* Assets.xcassets */; };
+		44DDF3042AF811D0005D35D8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 44DDF3032AF811D0005D35D8 /* Preview Assets.xcassets */; };
+		44DDF30E2AF811D0005D35D8 /* GrocemateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DDF30D2AF811D0005D35D8 /* GrocemateTests.swift */; };
+		44DDF3182AF811D0005D35D8 /* GrocemateUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DDF3172AF811D0005D35D8 /* GrocemateUITests.swift */; };
+		44DDF31A2AF811D0005D35D8 /* GrocemateUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DDF3192AF811D0005D35D8 /* GrocemateUITestsLaunchTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		44DDF30A2AF811D0005D35D8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 44DDF2F12AF811CE005D35D8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 44DDF2F82AF811CE005D35D8;
+			remoteInfo = Grocemate;
+		};
+		44DDF3142AF811D0005D35D8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 44DDF2F12AF811CE005D35D8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 44DDF2F82AF811CE005D35D8;
+			remoteInfo = Grocemate;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		440ECB762AF812F800E6BD5C /* HapticEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HapticEngine.swift; sourceTree = "<group>"; };
+		440ECB772AF812F800E6BD5C /* RubberBanding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RubberBanding.swift; sourceTree = "<group>"; };
+		440ECB792AF812F800E6BD5C /* Text-Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Text-Extensions.swift"; sourceTree = "<group>"; };
+		440ECB7C2AF812F800E6BD5C /* CreateCardViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateCardViewModel.swift; sourceTree = "<group>"; };
+		440ECB7D2AF812F800E6BD5C /* CreateCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateCardView.swift; sourceTree = "<group>"; };
+		440ECB7E2AF812F800E6BD5C /* Card.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
+		440ECB7F2AF812F800E6BD5C /* SwipeableText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeableText.swift; sourceTree = "<group>"; };
+		440ECB882AF8130400E6BD5C /* IngredientCardStruct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IngredientCardStruct.swift; sourceTree = "<group>"; };
+		440ECB8A2AF8130400E6BD5C /* CoreDataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataController.swift; sourceTree = "<group>"; };
+		440ECB8B2AF8130400E6BD5C /* IngredientCard+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "IngredientCard+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		440ECB8C2AF8130400E6BD5C /* IngredientCard+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "IngredientCard+CoreDataClass.swift"; sourceTree = "<group>"; };
+		440ECB8D2AF8130400E6BD5C /* Ingredient+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Ingredient+CoreDataClass.swift"; sourceTree = "<group>"; };
+		440ECB9B2AF8134A00E6BD5C /* GrocemateDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GrocemateDataModel.xcdatamodel; sourceTree = "<group>"; };
+		44DDF2F92AF811CE005D35D8 /* Grocemate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Grocemate.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		44DDF2FC2AF811CE005D35D8 /* GrocemateApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrocemateApp.swift; sourceTree = "<group>"; };
+		44DDF2FE2AF811CE005D35D8 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		44DDF3002AF811D0005D35D8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		44DDF3032AF811D0005D35D8 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		44DDF3092AF811D0005D35D8 /* GrocemateTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GrocemateTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		44DDF30D2AF811D0005D35D8 /* GrocemateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrocemateTests.swift; sourceTree = "<group>"; };
+		44DDF3132AF811D0005D35D8 /* GrocemateUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GrocemateUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		44DDF3172AF811D0005D35D8 /* GrocemateUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrocemateUITests.swift; sourceTree = "<group>"; };
+		44DDF3192AF811D0005D35D8 /* GrocemateUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrocemateUITestsLaunchTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		44DDF2F62AF811CE005D35D8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		44DDF3062AF811D0005D35D8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		44DDF3102AF811D0005D35D8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		440ECB752AF812F800E6BD5C /* Effects */ = {
+			isa = PBXGroup;
+			children = (
+				440ECB762AF812F800E6BD5C /* HapticEngine.swift */,
+				440ECB772AF812F800E6BD5C /* RubberBanding.swift */,
+			);
+			path = Effects;
+			sourceTree = "<group>";
+		};
+		440ECB782AF812F800E6BD5C /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				440ECB792AF812F800E6BD5C /* Text-Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		440ECB7A2AF812F800E6BD5C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				440ECB7B2AF812F800E6BD5C /* CreateCard */,
+				440ECB7E2AF812F800E6BD5C /* Card.swift */,
+				440ECB7F2AF812F800E6BD5C /* SwipeableText.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		440ECB7B2AF812F800E6BD5C /* CreateCard */ = {
+			isa = PBXGroup;
+			children = (
+				440ECB7C2AF812F800E6BD5C /* CreateCardViewModel.swift */,
+				440ECB7D2AF812F800E6BD5C /* CreateCardView.swift */,
+			);
+			path = CreateCard;
+			sourceTree = "<group>";
+		};
+		440ECB872AF8130400E6BD5C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				440ECB892AF8130400E6BD5C /* CoreData */,
+				440ECB882AF8130400E6BD5C /* IngredientCardStruct.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		440ECB892AF8130400E6BD5C /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				440ECB8A2AF8130400E6BD5C /* CoreDataController.swift */,
+				440ECB8B2AF8130400E6BD5C /* IngredientCard+CoreDataProperties.swift */,
+				440ECB8C2AF8130400E6BD5C /* IngredientCard+CoreDataClass.swift */,
+				440ECB8D2AF8130400E6BD5C /* Ingredient+CoreDataClass.swift */,
+				440ECB9A2AF8134A00E6BD5C /* GrocemateDataModel.xcdatamodeld */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		44DDF2F02AF811CE005D35D8 = {
+			isa = PBXGroup;
+			children = (
+				44DDF2FB2AF811CE005D35D8 /* Grocemate */,
+				44DDF30C2AF811D0005D35D8 /* GrocemateTests */,
+				44DDF3162AF811D0005D35D8 /* GrocemateUITests */,
+				44DDF2FA2AF811CE005D35D8 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		44DDF2FA2AF811CE005D35D8 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				44DDF2F92AF811CE005D35D8 /* Grocemate.app */,
+				44DDF3092AF811D0005D35D8 /* GrocemateTests.xctest */,
+				44DDF3132AF811D0005D35D8 /* GrocemateUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		44DDF2FB2AF811CE005D35D8 /* Grocemate */ = {
+			isa = PBXGroup;
+			children = (
+				44DDF2FC2AF811CE005D35D8 /* GrocemateApp.swift */,
+				44DDF2FE2AF811CE005D35D8 /* ContentView.swift */,
+				440ECB872AF8130400E6BD5C /* Models */,
+				440ECB7A2AF812F800E6BD5C /* Views */,
+				440ECB752AF812F800E6BD5C /* Effects */,
+				440ECB782AF812F800E6BD5C /* Extensions */,
+				44DDF3002AF811D0005D35D8 /* Assets.xcassets */,
+				44DDF3022AF811D0005D35D8 /* Preview Content */,
+			);
+			path = Grocemate;
+			sourceTree = "<group>";
+		};
+		44DDF3022AF811D0005D35D8 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				44DDF3032AF811D0005D35D8 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		44DDF30C2AF811D0005D35D8 /* GrocemateTests */ = {
+			isa = PBXGroup;
+			children = (
+				44DDF30D2AF811D0005D35D8 /* GrocemateTests.swift */,
+			);
+			path = GrocemateTests;
+			sourceTree = "<group>";
+		};
+		44DDF3162AF811D0005D35D8 /* GrocemateUITests */ = {
+			isa = PBXGroup;
+			children = (
+				44DDF3172AF811D0005D35D8 /* GrocemateUITests.swift */,
+				44DDF3192AF811D0005D35D8 /* GrocemateUITestsLaunchTests.swift */,
+			);
+			path = GrocemateUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		44DDF2F82AF811CE005D35D8 /* Grocemate */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 44DDF31D2AF811D0005D35D8 /* Build configuration list for PBXNativeTarget "Grocemate" */;
+			buildPhases = (
+				44DDF2F52AF811CE005D35D8 /* Sources */,
+				44DDF2F62AF811CE005D35D8 /* Frameworks */,
+				44DDF2F72AF811CE005D35D8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Grocemate;
+			productName = Grocemate;
+			productReference = 44DDF2F92AF811CE005D35D8 /* Grocemate.app */;
+			productType = "com.apple.product-type.application";
+		};
+		44DDF3082AF811D0005D35D8 /* GrocemateTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 44DDF3202AF811D0005D35D8 /* Build configuration list for PBXNativeTarget "GrocemateTests" */;
+			buildPhases = (
+				44DDF3052AF811D0005D35D8 /* Sources */,
+				44DDF3062AF811D0005D35D8 /* Frameworks */,
+				44DDF3072AF811D0005D35D8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				44DDF30B2AF811D0005D35D8 /* PBXTargetDependency */,
+			);
+			name = GrocemateTests;
+			productName = GrocemateTests;
+			productReference = 44DDF3092AF811D0005D35D8 /* GrocemateTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		44DDF3122AF811D0005D35D8 /* GrocemateUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 44DDF3232AF811D0005D35D8 /* Build configuration list for PBXNativeTarget "GrocemateUITests" */;
+			buildPhases = (
+				44DDF30F2AF811D0005D35D8 /* Sources */,
+				44DDF3102AF811D0005D35D8 /* Frameworks */,
+				44DDF3112AF811D0005D35D8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				44DDF3152AF811D0005D35D8 /* PBXTargetDependency */,
+			);
+			name = GrocemateUITests;
+			productName = GrocemateUITests;
+			productReference = 44DDF3132AF811D0005D35D8 /* GrocemateUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		44DDF2F12AF811CE005D35D8 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1500;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					44DDF2F82AF811CE005D35D8 = {
+						CreatedOnToolsVersion = 15.0.1;
+					};
+					44DDF3082AF811D0005D35D8 = {
+						CreatedOnToolsVersion = 15.0.1;
+						TestTargetID = 44DDF2F82AF811CE005D35D8;
+					};
+					44DDF3122AF811D0005D35D8 = {
+						CreatedOnToolsVersion = 15.0.1;
+						TestTargetID = 44DDF2F82AF811CE005D35D8;
+					};
+				};
+			};
+			buildConfigurationList = 44DDF2F42AF811CE005D35D8 /* Build configuration list for PBXProject "Grocemate" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 44DDF2F02AF811CE005D35D8;
+			productRefGroup = 44DDF2FA2AF811CE005D35D8 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				44DDF2F82AF811CE005D35D8 /* Grocemate */,
+				44DDF3082AF811D0005D35D8 /* GrocemateTests */,
+				44DDF3122AF811D0005D35D8 /* GrocemateUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		44DDF2F72AF811CE005D35D8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				44DDF3042AF811D0005D35D8 /* Preview Assets.xcassets in Resources */,
+				44DDF3012AF811D0005D35D8 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		44DDF3072AF811D0005D35D8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		44DDF3112AF811D0005D35D8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		44DDF2F52AF811CE005D35D8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				440ECB822AF812F800E6BD5C /* Text-Extensions.swift in Sources */,
+				44DDF2FF2AF811CE005D35D8 /* ContentView.swift in Sources */,
+				440ECB942AF8130400E6BD5C /* Ingredient+CoreDataClass.swift in Sources */,
+				440ECB832AF812F800E6BD5C /* CreateCardViewModel.swift in Sources */,
+				440ECB802AF812F800E6BD5C /* HapticEngine.swift in Sources */,
+				440ECB922AF8130400E6BD5C /* IngredientCard+CoreDataProperties.swift in Sources */,
+				440ECB932AF8130400E6BD5C /* IngredientCard+CoreDataClass.swift in Sources */,
+				44DDF2FD2AF811CE005D35D8 /* GrocemateApp.swift in Sources */,
+				440ECB9C2AF8134A00E6BD5C /* GrocemateDataModel.xcdatamodeld in Sources */,
+				440ECB842AF812F800E6BD5C /* CreateCardView.swift in Sources */,
+				440ECB912AF8130400E6BD5C /* CoreDataController.swift in Sources */,
+				440ECB812AF812F800E6BD5C /* RubberBanding.swift in Sources */,
+				440ECB852AF812F800E6BD5C /* Card.swift in Sources */,
+				440ECB862AF812F800E6BD5C /* SwipeableText.swift in Sources */,
+				440ECB902AF8130400E6BD5C /* IngredientCardStruct.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		44DDF3052AF811D0005D35D8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				44DDF30E2AF811D0005D35D8 /* GrocemateTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		44DDF30F2AF811D0005D35D8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				44DDF31A2AF811D0005D35D8 /* GrocemateUITestsLaunchTests.swift in Sources */,
+				44DDF3182AF811D0005D35D8 /* GrocemateUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		44DDF30B2AF811D0005D35D8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 44DDF2F82AF811CE005D35D8 /* Grocemate */;
+			targetProxy = 44DDF30A2AF811D0005D35D8 /* PBXContainerItemProxy */;
+		};
+		44DDF3152AF811D0005D35D8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 44DDF2F82AF811CE005D35D8 /* Grocemate */;
+			targetProxy = 44DDF3142AF811D0005D35D8 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		44DDF31B2AF811D0005D35D8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		44DDF31C2AF811D0005D35D8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		44DDF31E2AF811D0005D35D8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Grocemate/Preview Content\"";
+				DEVELOPMENT_TEAM = E24P6RF94S;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.giorgio.Grocemate;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		44DDF31F2AF811D0005D35D8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Grocemate/Preview Content\"";
+				DEVELOPMENT_TEAM = E24P6RF94S;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.giorgio.Grocemate;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		44DDF3212AF811D0005D35D8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = E24P6RF94S;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.giorgio.GrocemateTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Grocemate.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Grocemate";
+			};
+			name = Debug;
+		};
+		44DDF3222AF811D0005D35D8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = E24P6RF94S;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.giorgio.GrocemateTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Grocemate.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Grocemate";
+			};
+			name = Release;
+		};
+		44DDF3242AF811D0005D35D8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = E24P6RF94S;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.giorgio.GrocemateUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Grocemate;
+			};
+			name = Debug;
+		};
+		44DDF3252AF811D0005D35D8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = E24P6RF94S;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.giorgio.GrocemateUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Grocemate;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		44DDF2F42AF811CE005D35D8 /* Build configuration list for PBXProject "Grocemate" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				44DDF31B2AF811D0005D35D8 /* Debug */,
+				44DDF31C2AF811D0005D35D8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		44DDF31D2AF811D0005D35D8 /* Build configuration list for PBXNativeTarget "Grocemate" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				44DDF31E2AF811D0005D35D8 /* Debug */,
+				44DDF31F2AF811D0005D35D8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		44DDF3202AF811D0005D35D8 /* Build configuration list for PBXNativeTarget "GrocemateTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				44DDF3212AF811D0005D35D8 /* Debug */,
+				44DDF3222AF811D0005D35D8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		44DDF3232AF811D0005D35D8 /* Build configuration list for PBXNativeTarget "GrocemateUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				44DDF3242AF811D0005D35D8 /* Debug */,
+				44DDF3252AF811D0005D35D8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		440ECB9A2AF8134A00E6BD5C /* GrocemateDataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				440ECB9B2AF8134A00E6BD5C /* GrocemateDataModel.xcdatamodel */,
+			);
+			currentVersion = 440ECB9B2AF8134A00E6BD5C /* GrocemateDataModel.xcdatamodel */;
+			path = GrocemateDataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 44DDF2F12AF811CE005D35D8 /* Project object */;
+}
