@@ -10,10 +10,12 @@ import SwiftUI
 
 struct SwipeableText: View {
 //    @EnvironmentObject var myHapticEngine: MyHapticEngine
+    @Environment(\.managedObjectContext) private var moc
     
     //MARK: - State
     /// Should the text be strikethrough already?
-    @Binding private var isMarkedComplete: Bool
+//    @Binding private var isMarkedComplete: Bool
+    @ObservedObject private var ingredient: Ingredient
     
     /// Use this to animated the strikethrough as you pull the text.
     @State private var progress: CGFloat = 0.0
@@ -24,14 +26,20 @@ struct SwipeableText: View {
     private var textColor: Color = .black
     private var strikethroughColor: Color = .black
     
-    init(complete isMarkedComplete: Binding<Bool>, text: String) {
-        self._isMarkedComplete = isMarkedComplete
-        self.text = text
+//    init(complete isMarkedComplete: Binding<Bool>, text: String, ingredient: ObservedObject<Ingredient>) {
+//        self._isMarkedComplete = isMarkedComplete
+//        self.text = text
+//        self._ingredient = ingredient
+//    }
+    
+    init(ingredient: Ingredient) {
+        self.ingredient = ingredient
+        self.text = ingredient.name
     }
     
     var body: some View {
         VStack(alignment: .leading) {
-            Text(text)
+            Text(ingredient.name)
                 .animatedStrikethroughWithProgress(
                     progress,
                     textColor: textColor,
@@ -75,7 +83,11 @@ struct SwipeableText: View {
                 self.offset.width = min(rubberBanded, dragLimit)
                 
                 
-                if !self.isMarkedComplete {
+//                if !self.isMarkedComplete {
+//                    self.progress = self.offset.width / dragLimit
+//                }
+                
+                if !self.ingredient.complete {
                     self.progress = self.offset.width / dragLimit
                 }
             }
@@ -84,9 +96,16 @@ struct SwipeableText: View {
                 // set strikethrough accoordingly.
                 if self.offset.width > 50 {
                     withAnimation(.easeInOut) {
-                        isMarkedComplete.toggle()
+//                        isMarkedComplete.toggle()
+                        toggleIngredientCompleted()
                         
-                        if self.isMarkedComplete {
+//                        if self.isMarkedComplete {
+//                            self.progress = 1.0
+//                        } else {
+//                            self.progress = 0.0
+//                        }
+                        
+                        if self.ingredient.complete {
                             self.progress = 1.0
                         } else {
                             self.progress = 0.0
@@ -100,7 +119,12 @@ struct SwipeableText: View {
                      is not completed, set strikethrough progress
                      back to zero.
                      */
-                    if !isMarkedComplete {
+//                    if !isMarkedComplete {
+//                        withAnimation(.easeInOut) {
+//                            self.progress = 0.0
+//                        }
+//                    }
+                    if !self.ingredient.complete {
                         withAnimation(.easeInOut) {
                             self.progress = 0.0
                         }
@@ -116,6 +140,19 @@ struct SwipeableText: View {
     }
 }
 
-#Preview {
-    SwipeableText(complete: .constant(true), text: "Hello, World!")
+extension SwipeableText {
+    /// Toggle completed on the ingredient object.
+    func toggleIngredientCompleted() {
+        ingredient.complete.toggle()
+        do {
+            if moc.hasChanges {
+                try moc.save()
+            }
+        } catch {
+            print(error)
+        }
+    }
 }
+//#Preview {
+//    SwipeableText(complete: .constant(true), text: "Hello, World!")
+//}

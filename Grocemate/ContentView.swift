@@ -27,7 +27,7 @@ struct ContentView: View {
     @State private var showCreateCardView: Bool = false
     
     var body: some View {
-        VStack {
+        ZStack {
             Button {
                 showCreateCardView = true
             } label: {
@@ -41,6 +41,26 @@ struct ContentView: View {
                 }
             }
             .tint(.white)
+            
+            ScrollView(.vertical) {
+                VStack {
+                    if ingredientCards.isEmpty {
+                        Text("Tap the camera icon to get started!")
+                            .font(.system(size: 30, weight: .semibold, design: .rounded))
+//                                .foregroundColor(Color("AccentColor"))
+                            .frame(width: 300) // Make the scroll view full-width
+                            .frame(minHeight: 600) // Set the content’s min height to the parent.
+                    } else {
+                        LazyVStack(alignment: .center) {
+                            ForEach(ingredientCards) { ingredientCard in
+                                Card(ingredientCard: ingredientCard)
+                            }
+                        }
+                        .padding(.top, 20)
+                        .padding(.horizontal, 20)
+                    }
+                }
+            }
         }
         .sheet(isPresented: $showCreateCardView, content: {
             CreateCardView(vm: .init(coreDataController: .shared))

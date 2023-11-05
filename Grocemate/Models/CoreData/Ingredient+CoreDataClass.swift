@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 
 
-public class Ingredient: NSManagedObject {
+public class Ingredient: NSManagedObject, Identifiable {
     @nonobjc public class func fetchRequest() -> NSFetchRequest<Ingredient> {
         return NSFetchRequest<Ingredient>(entityName: "Ingredient")
     }
