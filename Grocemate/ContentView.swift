@@ -32,17 +32,10 @@ struct ContentView: View {
             ScrollView(.vertical) {
                 VStack {
                     if ingredientCards.isEmpty {
-                        Text("Tap the camera icon to get started!")
-                            .font(.system(size: 30, weight: .semibold, design: .rounded))
-                            .frame(width: 300)
-                            .frame(minHeight: 600)
+                        nullIngredientCardsView
                     } else {
-                        LazyVStack(alignment: .center) {
-                            ForEach(ingredientCards) { ingredientCard in
-                                Card(ingredientCard: ingredientCard)
-                            }
-                        }
-                        .padding(.top, 20)
+                        ingredientCardsView
+                        .padding(.top, 30)
                         .padding(.horizontal, 20)
                     }
                 }
@@ -67,10 +60,26 @@ struct ContentView: View {
         }
     }
     
+    private var nullIngredientCardsView: some View {
+        Text("Tap the camera icon to get started!")
+            .font(.system(size: 30, weight: .semibold, design: .rounded))
+            .frame(width: 300)
+            .frame(minHeight: 600)
+    }
+    
+    private var ingredientCardsView: some View {
+        LazyVStack(alignment: .center) {
+            ForEach(ingredientCards) { ingredientCard in
+                Card(ingredientCard: ingredientCard)
+                    .padding(.bottom, 15)
+            }
+        }
+    }
+    
     private var mainViewToolbar: some ToolbarContent {
         Group {
             ToolbarItem(placement: .navigationBarLeading) {
-                Text("RecipeVision")
+                Text("Grocemate")
                     .multilineTextAlignment(.center)
                     .font(.system(size: 32, weight: .semibold, design: .rounded))
                 //                            .foregroundColor(Color("AccentColor"))
@@ -116,6 +125,30 @@ struct ContentView: View {
     }
 }
 
-#Preview {
-    ContentView()
+#Preview("Main View with Data") {
+    let preview = CoreDataController.shared
+    
+    let viewToPreview = {
+        ContentView()
+            .environment(\.managedObjectContext, preview.viewContext)
+            .onAppear {
+                IngredientCard.makePreview(count: 4, in: preview.viewContext)
+            }
+    }()
+    
+    return viewToPreview
+}
+
+#Preview("Empty Main View") {
+    let preview = CoreDataController.shared
+    
+    let viewToPreview = {
+        ContentView()
+            .environment(\.managedObjectContext, preview.viewContext)
+            .onAppear {
+                IngredientCard.makePreview(count: 0, in: preview.viewContext)
+            }
+    }()
+    
+    return viewToPreview
 }

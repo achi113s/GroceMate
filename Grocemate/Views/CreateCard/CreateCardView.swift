@@ -16,94 +16,118 @@ struct CreateCardView: View {
     
     var body: some View {
         NavigationStack {
-            ZStack(alignment: .top) {
+            VStack(spacing: 0) {
+                ingredientCardTitle
                 List {
-                    Section {
-                        TextField("Recipe Title", text: $vm.tempCard.title)
-                            .disabled(vm.editMode == .inactive)
-                            .font(.system(.title3))
-                            .fontDesign(.rounded)
-                            .fontWeight(.semibold)
-                            .padding()
-                    }
-                    
-                    //                    Section {
-                    //                        ForEach($vm.tempCard.ingredients, id: \.hashValue) { $ingredient in
-                    //                            TextField("Ingredient", text: $ingredient, axis: .vertical)
-                    //                                .disabled(vm.editMode == .inactive)
-                    //                                .fontDesign(.rounded)
-                    //                                .fontWeight(.semibold)
-                    //                        }
-                    ////                        .onDelete(perform: onDelete)
-                    //                    }
-                }
-                .toolbar {
-                    ToolbarItem(placement: .topBarLeading) {
-                        EditButton()
-                            .fontDesign(.rounded)
-                            .fontWeight(.semibold)
-                    }
-                    
-                    ToolbarItem(placement: .topBarTrailing) {
-                        Button {
-                            do {
-                                try vm.save()
-                            } catch {
-                                print("error")
-                            }
-                            
-                            dismiss()
-                        } label: {
-                            Text("Save")
+                    Section(header: Text("Ingredients")) {
+                        //                        Text("Test")
+                        //                            .fontDesign(.rounded)
+                        //                            .fontWeight(.semibold)
+                        //                        Text("Test")
+                        //                            .fontDesign(.rounded)
+                        //                            .fontWeight(.semibold)
+                        //                        Text("Test")
+                        //                            .fontDesign(.rounded)
+                        //                            .fontWeight(.semibold)
+                        //                        Text("Test")
+                        //                            .fontDesign(.rounded)
+                        //                            .fontWeight(.semibold)
+                        
+                        ForEach($vm.tempIngredients) { $ingredient in
+                            TextField("Ingredient", text: $ingredient.name, axis: .vertical)
+                                .disabled(vm.editMode == .inactive)
                                 .fontDesign(.rounded)
                                 .fontWeight(.semibold)
                         }
+                        //                        .onDelete(perform: onDelete)
                     }
                 }
+                .toolbar {
+                    toolbarView
+                }
                 .environment(\.editMode, $vm.editMode)
-                .scrollContentBackground(.hidden)
+//                .scrollContentBackground(.hidden)
                 //                .toolbarBackground(Color("ToolbarBackground"), for: .automatic)
+                addButton
             }
+            
         }
     }
-    
-    //    init(ingredientCard: IngredientCard) {
-    //        let ingredientsList = ingredientCard.ingredientsArray.compactMap({ ingredient in
-    //            return ingredient.ingredient
-    //        })
-    //
-    //        self._ingredients = State(initialValue: ingredientsList)
-    //        self._title = State(initialValue: ingredientCard.title ?? "")
-    //
-    //        self.editMode = .active
-    //    }
-    //
-    //    init(decodedIngredients: DecodedIngredients?) {
-    //        self._ingredients = State(initialValue: decodedIngredients?.ingredients ?? [])
-    //        self._title = State(initialValue: "New Ingredients")
-    //
-    //        self.editMode = .active
-    //    }
     
     init(vm: CreateCardViewModel) {
         self.vm = vm
     }
+    
+    //MARK: - Subviews
+    private var addButton: some View {
+        Button {
+            withAnimation {
+                vm.addIngredient()
+            }
+        } label: {
+            ZStack {
+                RoundedRectangle(cornerRadius: 15)
+                    .foregroundStyle(.blue)
+                    .frame(height: 50)
+                Image(systemName: "plus")
+                    .fontWeight(.bold)
+                    .fontDesign(.rounded)
+            }
+        }
+        .tint(.white)
+    }
+    
+    private var ingredientCardTitle: some View {
+        ZStack {
+            RoundedRectangle(cornerRadius: 15)
+                .fill(.blue.opacity(0.1))
+                .frame(height: 60)
+            
+            TextField("Recipe Title", text: $vm.tempCard.title)
+                .disabled(vm.editMode == .inactive)
+                .font(.system(.title3))
+                .fontDesign(.rounded)
+                .fontWeight(.semibold)
+                .padding()
+        }
+    }
+    
+    private var toolbarView: some ToolbarContent {
+        Group {
+            ToolbarItem(placement: .topBarLeading) {
+                EditButton()
+                    .fontDesign(.rounded)
+                    .fontWeight(.semibold)
+            }
+            
+            ToolbarItem(placement: .topBarTrailing) {
+                Button {
+                    do {
+                        try vm.save()
+                    } catch {
+                        print("error")
+                    }
+                    
+                    dismiss()
+                } label: {
+                    Text("Save")
+                        .fontDesign(.rounded)
+                        .fontWeight(.semibold)
+                }
+            }
+        }
+    }
 }
 
-//#Preview {
-//    EditIngredientCardView(ingredientCard: IngredientCard(name: "Green Tea Ice Cream",
-//                                                      ingredients: [
-//                                                        Ingredient("1 cup (250ml) whole milk"),
-//                                                        Ingredient("3/4 cup (150g) sugar"),
-//                                                        Ingredient("pinch of kosher or sea salt"),
-//                                                        Ingredient("2 cups (500ml) heavy cream"),
-//                                                        Ingredient("4 teaspoons matche (green tea powder)"),
-//                                                        Ingredient("6 large egg yolks"),
-//                                                      ]))
-//}
-//
 #Preview {
-    CreateCardView(vm: .init(coreDataController: .shared))
+    let preview = CoreDataController.shared
+    
+    let viewToPreview = {
+        CreateCardView(vm: .init(coreDataController: .shared))
+            .environment(\.managedObjectContext, preview.viewContext)
+    }()
+    
+    return viewToPreview
 }
 
 //    NewIngredientsView(ingredients: [

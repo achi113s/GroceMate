@@ -20,6 +20,7 @@
 		440ECB932AF8130400E6BD5C /* IngredientCard+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440ECB8C2AF8130400E6BD5C /* IngredientCard+CoreDataClass.swift */; };
 		440ECB942AF8130400E6BD5C /* Ingredient+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440ECB8D2AF8130400E6BD5C /* Ingredient+CoreDataClass.swift */; };
 		440ECB9C2AF8134A00E6BD5C /* GrocemateDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 440ECB9A2AF8134A00E6BD5C /* GrocemateDataModel.xcdatamodeld */; };
+		445DCC452AFC579700CA97DE /* Ingredient+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445DCC442AFC579700CA97DE /* Ingredient+CoreDataProperties.swift */; };
 		44DDF2FD2AF811CE005D35D8 /* GrocemateApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DDF2FC2AF811CE005D35D8 /* GrocemateApp.swift */; };
 		44DDF2FF2AF811CE005D35D8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DDF2FE2AF811CE005D35D8 /* ContentView.swift */; };
 		44DDF3012AF811D0005D35D8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 44DDF3002AF811D0005D35D8 /* Assets.xcassets */; };
@@ -60,6 +61,7 @@
 		440ECB8C2AF8130400E6BD5C /* IngredientCard+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "IngredientCard+CoreDataClass.swift"; sourceTree = "<group>"; };
 		440ECB8D2AF8130400E6BD5C /* Ingredient+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Ingredient+CoreDataClass.swift"; sourceTree = "<group>"; };
 		440ECB9B2AF8134A00E6BD5C /* GrocemateDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GrocemateDataModel.xcdatamodel; sourceTree = "<group>"; };
+		445DCC442AFC579700CA97DE /* Ingredient+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ingredient+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		44DDF2F92AF811CE005D35D8 /* Grocemate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Grocemate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		44DDF2FC2AF811CE005D35D8 /* GrocemateApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrocemateApp.swift; sourceTree = "<group>"; };
 		44DDF2FE2AF811CE005D35D8 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -146,9 +148,10 @@
 			isa = PBXGroup;
 			children = (
 				440ECB8A2AF8130400E6BD5C /* CoreDataController.swift */,
-				440ECB8B2AF8130400E6BD5C /* IngredientCard+CoreDataProperties.swift */,
 				440ECB8C2AF8130400E6BD5C /* IngredientCard+CoreDataClass.swift */,
+				440ECB8B2AF8130400E6BD5C /* IngredientCard+CoreDataProperties.swift */,
 				440ECB8D2AF8130400E6BD5C /* Ingredient+CoreDataClass.swift */,
+				445DCC442AFC579700CA97DE /* Ingredient+CoreDataProperties.swift */,
 				440ECB9A2AF8134A00E6BD5C /* GrocemateDataModel.xcdatamodeld */,
 			);
 			path = CoreData;
@@ -346,6 +349,7 @@
 			files = (
 				440ECB822AF812F800E6BD5C /* Text-Extensions.swift in Sources */,
 				44DDF2FF2AF811CE005D35D8 /* ContentView.swift in Sources */,
+				445DCC452AFC579700CA97DE /* Ingredient+CoreDataProperties.swift in Sources */,
 				440ECB942AF8130400E6BD5C /* Ingredient+CoreDataClass.swift in Sources */,
 				440ECB832AF812F800E6BD5C /* CreateCardViewModel.swift in Sources */,
 				440ECB802AF812F800E6BD5C /* HapticEngine.swift in Sources */,

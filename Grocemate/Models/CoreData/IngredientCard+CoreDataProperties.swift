@@ -56,7 +56,27 @@ extension IngredientCard {
             ingredient1.ingredientCard = ingredientCard
             ingredient1.name = "1 cup (250ml) whole milk"
             
-            ingredientCard.ingredients = Set([ingredient1])
+            let ingredient2 = Ingredient(context: context)
+            ingredient2.ingredientCard = ingredientCard
+            ingredient2.name = "3/4 cup (150g) sugar"
+            
+            let ingredient3 = Ingredient(context: context)
+            ingredient3.ingredientCard = ingredientCard
+            ingredient3.name = "pinch of kosher or sea salt"
+            
+            let ingredient4 = Ingredient(context: context)
+            ingredient4.ingredientCard = ingredientCard
+            ingredient4.name = "2 cups (500ml) heavy cream"
+            
+            let ingredient5 = Ingredient(context: context)
+            ingredient5.ingredientCard = ingredientCard
+            ingredient5.name = "4 teaspoons matcha (green tea powder)"
+        
+            let ingredient6 = Ingredient(context: context)
+            ingredient6.ingredientCard = ingredientCard
+            ingredient6.name = "6 large egg yolks"
+            
+            ingredientCard.ingredients = Set([ingredient1, ingredient2, ingredient3, ingredient4, ingredient5, ingredient6])
             
             cards.append(ingredientCard)
         }
