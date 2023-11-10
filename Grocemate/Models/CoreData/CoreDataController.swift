@@ -28,24 +28,13 @@ final class CoreDataController {
     }
       
     private init() {
-//        #if DEBUG
-//        do {
-//            // Use the container to initialize the development schema.
-//            try persistentContainer.initializeCloudKitSchema(options: [])
-//        } catch {
-//            // Handle any errors.
-//            print("An error occurred initializing the development schema: \(error.localizedDescription)")
-//        }
-//        #endif
-        
         /// Set up the model, context, and store all at once with an NSPersistentContainer.
         persistentContainer = NSPersistentContainer(name: "GrocemateDataModel")
         
-        /// Are we in an Xcode preview?
+        /// Are we in an Xcode preview? If yes, make the persistent container in memory.
         if EnvironmentValues.isPreview {
             persistentContainer.persistentStoreDescriptions.first?.url = .init(fileURLWithPath: "/dev/null")
         }
-        
         
         /// Automatically merge any changes saved to the parent store. Useful since we will have multiple viewContexts.
         persistentContainer.viewContext.automaticallyMergesChangesFromParent = true
@@ -61,46 +50,6 @@ final class CoreDataController {
             }
         }
     }
-    
-//    func fetchIngredientCards() {
-//        let request = NSFetchRequest<IngredientCard>(entityName: "IngredientCard")
-//        
-//        do {
-//            savedCards = try persistentContainer.viewContext.fetch(request)
-//        } catch {
-//            print("Error fetching: \(error)")
-//        }
-//    }
-    
-//    func addCard(title: String = "No Title", ingredients: [String] = [String]()) {
-//        let newCard = IngredientCard(context: persistentContainer.viewContext)
-//        newCard.title = title
-//        newCard.id = UUID()
-//        newCard.timestamp = Date.now
-//        
-//        let ingredientsArr = ingredients.map { ingredient in
-//            let newIngredient = Ingredient(context: persistentContainer.viewContext)
-//            newIngredient.complete = false
-//            newIngredient.id = UUID()
-//            newIngredient.ingredient = ingredient
-//            newIngredient.ingredientCard = newCard
-//            
-//            return newIngredient
-//        }
-//
-//        newCard.ingredients = NSSet(array: ingredientsArr)
-//        
-//        saveData()
-//    }
-//    
-//    func saveData() {
-//        do {
-//            try persistentContainer.viewContext.save()
-//            fetchIngredientCards()
-//        } catch {
-//            print("Error saving view context: \(error)")
-//        }
-//    }
 }
 
 extension EnvironmentValues {

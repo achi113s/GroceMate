@@ -20,27 +20,7 @@ struct CreateCardView: View {
                 ingredientCardTitle
                     .padding(20)
                 List {
-                    Section(header: Text("Ingredients")) {
-                        ForEach($vm.tempIngredients) { $ingredient in
-                            TextField("Ingredient", text: $ingredient.name, axis: .vertical)
-                                .disabled(vm.editMode == .inactive)
-                                .fontDesign(.rounded)
-                                .fontWeight(.semibold)
-                        }
-                        .onDelete(perform: vm.deleteIngredient)
-                        .listRowBackground(Color.gray.opacity(0.1))
-                    }
-                    
-                    Section {
-                        EmptyView()
-                    } footer: {
-                        HStack(alignment: .center) {
-                            Spacer()
-                            addButton
-                            Spacer()
-                        }
-                    }
-                    
+                    ingredientList
                 }
                 .toolbar {
                     toolbarView
@@ -84,11 +64,37 @@ struct CreateCardView: View {
             ZStack(alignment: Alignment(horizontal: .trailing, vertical: .center)) {
                 TextField("Recipe Title", text: $vm.tempCard.title)
                     .disabled(vm.editMode == .inactive)
+                    /// This adds the x to clear text field when editing.
                     .onAppear { UITextField.appearance().clearButtonMode = .whileEditing }
                     .font(.system(.title3))
                     .fontDesign(.rounded)
                     .fontWeight(.semibold)
                     .padding()
+            }
+        }
+    }
+    
+    private var ingredientList: some View {
+        Group {
+            Section(header: Text("Ingredients")) {
+                ForEach($vm.tempIngredients) { $ingredient in
+                    TextField("Ingredient", text: $ingredient.name, axis: .vertical)
+                        .disabled(vm.editMode == .inactive)
+                        .fontDesign(.rounded)
+                        .fontWeight(.semibold)
+                }
+                .onDelete(perform: vm.deleteIngredient)
+                .listRowBackground(Color.gray.opacity(0.1))
+            }
+            
+            Section {
+                EmptyView()
+            } footer: {
+                HStack(alignment: .center) {
+                    Spacer()
+                    addButton
+                    Spacer()
+                }
             }
         }
     }
@@ -131,17 +137,3 @@ struct CreateCardView: View {
     
     return viewToPreview
 }
-
-//    NewIngredientsView(ingredients: [
-//        "½ cup heavy cream",
-//        "10 ounces fresh unsalted fatback or lean salt pork, cut into small dice",
-//        "About 1 quart water",
-//        "1 cup diced carrot (⅛- to ¼-inch dice)",
-//        "⅔ cup diced celery (same dimensions)",
-//        "½ cup diced onion (same dimensions)",
-//        "1¼ pounds beef skirt steak or boneless chuck blade roast, coarsely ground",
-//        "½ cup dry Italian white wine, preferably Trebbiano or Albana",
-//        "2 tablespoons double or triple-concentrated imported Italian tomato paste, diluted in 10 tablespoons Poultry/ Meat Stock (page 66) or Quick Stock (page 68)",
-//        "1 cup whole milk",
-//        "Salt and freshly ground black pepper to taste"
-//    ])

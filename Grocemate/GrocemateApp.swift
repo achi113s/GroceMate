@@ -16,6 +16,7 @@ struct GrocemateApp: App {
             ContentView()
                 .environmentObject(hapticEngine)
                 .environment(\.managedObjectContext, CoreDataController.shared.viewContext)
+                .preferredColorScheme(.light)
         }
     }
 }

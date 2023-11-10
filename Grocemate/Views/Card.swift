@@ -26,19 +26,8 @@ struct Card: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 15) {
-            Text(ingredientCard.title)
-                .font(.system(size: 24, weight: .semibold, design: .rounded))
-            VStack(alignment: .leading, spacing: 10) {
-                ForEach(ingredientCard.ingredientsArr) { ingredient in
-                    HStack(alignment: .center) {
-                        SwipeableIngredient(ingredient: ingredient)
-//                            .textColor(Color("AccentColor"))
-//                            .strikethroughColor(Color("AccentColor"))
-                            .font(.system(size: 17, weight: .semibold, design: .rounded))
-                    }
-                }
-            }
-            .frame(maxWidth: .infinity, alignment: .leading)
+            cardTitleView
+            ingredientsView
         }
         .padding(.vertical, 15)
         .padding(.horizontal, 30)
@@ -52,12 +41,40 @@ struct Card: View {
                 .frame(maxWidth: .infinity)
         }
         .gesture(cardLongPressGesture)
-        .scaleEffect(self.cardLongPressGestureState.isLongPressing ? cardPressedScale : CGSize(width: 1.0, height: 1.0), anchor: .center)
-        .animation(.interpolatingSpring(stiffness: 300, damping: 10), value: self.cardLongPressGestureState.isLongPressing)
+        .scaleEffect(
+            self.cardLongPressGestureState.isLongPressing ? cardPressedScale : CGSize(width: 1.0, height: 1.0),
+            anchor: .center
+        )
+        .animation(
+            .interpolatingSpring(stiffness: 300, damping: 10),
+            value: self.cardLongPressGestureState.isLongPressing
+        )
     }
     
     init(ingredientCard: IngredientCard) {
         self._ingredientCard = ObservedObject(initialValue: ingredientCard)
+    }
+    
+    //MARK: - Subviews
+    private var cardTitleView: some View {
+        Text(ingredientCard.title)
+            .font(.system(size: 24))
+            .fontWeight(.semibold)
+            .fontDesign(.rounded)
+    }
+    
+    private var ingredientsView: some View {
+        VStack(alignment: .leading, spacing: 10) {
+            ForEach(ingredientCard.ingredientsArr) { ingredient in
+                HStack(alignment: .center) {
+                    SwipeableIngredient(ingredient: ingredient)
+//                            .textColor(Color("AccentColor"))
+//                            .strikethroughColor(Color("AccentColor"))
+                        .font(.system(size: 17, weight: .semibold, design: .rounded))
+                }
+            }
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
     }
     
     private enum CardLongPressGestureState {

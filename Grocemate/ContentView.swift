@@ -27,12 +27,13 @@ struct ContentView: View {
         })
     }
     
+    //MARK: - Subviews
     private var mainView: some View {
         ZStack {
             ScrollView(.vertical) {
                 VStack {
                     if ingredientCards.isEmpty {
-                        nullIngredientCardsView
+                        emptyIngredientCardsView
                     } else {
                         ingredientCardsView
                         .padding(.top, 30)
@@ -43,24 +44,26 @@ struct ContentView: View {
             .refreshable {
                 print("refresh")
             }
-            
-            Button {
-                showCreateCardView = true
-            } label: {
-                ZStack {
-                    RoundedRectangle(cornerRadius: 15)
-                        .foregroundStyle(.blue)
-                        .frame(width: 120, height: 50)
-                    Text("Grocemate")
-                        .fontWeight(.bold)
-                        .fontDesign(.rounded)
-                }
-            }
-            .tint(.white)
         }
     }
     
-    private var nullIngredientCardsView: some View {
+    private var showCreateCardViewButton: some View {
+        Button {
+            showCreateCardView = true
+        } label: {
+            ZStack {
+                RoundedRectangle(cornerRadius: 15)
+                    .foregroundStyle(.blue)
+                    .frame(width: 120, height: 50)
+                Text("Grocemate")
+                    .fontWeight(.bold)
+                    .fontDesign(.rounded)
+            }
+        }
+        .tint(.white)
+    }
+    
+    private var emptyIngredientCardsView: some View {
         Text("Tap the camera icon to get started!")
             .font(.system(size: 30, weight: .semibold, design: .rounded))
             .frame(width: 300)
@@ -104,11 +107,20 @@ struct ContentView: View {
                             Image(systemName: "photo.stack")
                         }
                     }
+                    
+                    Button {
+                        showCreateCardView = true
+                    } label: {
+                        HStack {
+                            Text("Manually Add Card")
+                            Image(systemName: "character.cursor.ibeam")
+                        }
+                    }
                 } label: {
-                    Image(systemName: "camera.on.rectangle")
+                    Image(systemName: "plus")
                         .font(.system(size: 16, weight: .semibold))
                     //                                .foregroundColor(Color("AccentColor"))
-                        .accessibilityLabel("Get an picture of ingredients")
+                        .accessibilityLabel("Add a new card.")
                 }
             }
             

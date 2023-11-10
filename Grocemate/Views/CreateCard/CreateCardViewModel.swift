@@ -10,13 +10,17 @@ import Foundation
 import SwiftUI
 
 final class CreateCardViewModel: ObservableObject {
-    /// Create a Published temporary instance of an ingredient card
-    /// to use in our view.
-    @Published var tempCard: IngredientCard
-    @Published var tempIngredients: [Ingredient]
+    //MARK: - Properties
     @Published var editMode: EditMode = .active
     
-    /// Use a new context as a temporary editing board outside
+    /// Create a Published temporary instance of an ingredient card
+    /// to use in our view. Also use a Published array of Ingredient
+    /// instances and then we will add them to the temporary
+    /// IngredientCard before saving.
+    @Published var tempCard: IngredientCard
+    @Published var tempIngredients: [Ingredient]
+        
+    /// We use a new context as a temporary editing board outside
     /// the main view context.
     private let context: NSManagedObjectContext
     
@@ -32,6 +36,8 @@ final class CreateCardViewModel: ObservableObject {
         tempIngredients.append(Ingredient(context: self.context))
     }
     
+    /// Using a separate array of Ingredients allows us to circumvent problems with NSSet
+    /// in the CoreDataClass for Ingredient.
     public func addIngredientsToCard() {
         tempCard.addToIngredients(NSSet(array: tempIngredients))
     }
