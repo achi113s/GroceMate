@@ -31,6 +31,6 @@ public class IngredientCard: NSManagedObject, Identifiable {
         
         setPrimitiveValue(UUID(), forKey: "id")
         setPrimitiveValue(Date.now, forKey: "timestamp")
-        setPrimitiveValue("No Title", forKey: "title")
+        setPrimitiveValue("Card Title", forKey: "title")
     }
 }

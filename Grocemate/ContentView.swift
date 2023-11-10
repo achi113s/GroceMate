@@ -132,7 +132,7 @@ struct ContentView: View {
         ContentView()
             .environment(\.managedObjectContext, preview.viewContext)
             .onAppear {
-                IngredientCard.makePreview(count: 4, in: preview.viewContext)
+                IngredientCard.makePreview(count: 2, in: preview.viewContext)
             }
     }()
     

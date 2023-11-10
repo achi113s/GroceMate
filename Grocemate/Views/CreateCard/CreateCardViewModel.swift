@@ -24,12 +24,24 @@ final class CreateCardViewModel: ObservableObject {
         self.context = coreDataController.newContext
         self.tempCard = IngredientCard(context: self.context)
         self.tempIngredients = [
-            Ingredient.preview()
+            Ingredient.preview(context: self.context)
         ]
     }
     
     public func addIngredient() {
         tempIngredients.append(Ingredient(context: self.context))
+    }
+    
+    public func addIngredientsToCard() {
+        tempCard.addToIngredients(NSSet(array: tempIngredients))
+    }
+    
+    public func clearCardTitle() {
+        tempCard.title = ""
+    }
+    
+    public func deleteIngredient(_ indexSet: IndexSet) {
+        tempIngredients.remove(atOffsets: indexSet)
     }
     
     public func save() throws {

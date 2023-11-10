@@ -33,7 +33,7 @@ extension Ingredient {
         
         for _ in 0..<count {
             let ingredient = Ingredient(context: context)
-            ingredient.name = "1 cup (250ml) whole milk"
+            ingredient.name = "e.g. 1 cup (250ml) whole milk"
             
             ingredients.append(ingredient)
         }

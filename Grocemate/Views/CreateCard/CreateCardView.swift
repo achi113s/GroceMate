@@ -18,37 +18,36 @@ struct CreateCardView: View {
         NavigationStack {
             VStack(spacing: 0) {
                 ingredientCardTitle
+                    .padding(20)
                 List {
                     Section(header: Text("Ingredients")) {
-                        //                        Text("Test")
-                        //                            .fontDesign(.rounded)
-                        //                            .fontWeight(.semibold)
-                        //                        Text("Test")
-                        //                            .fontDesign(.rounded)
-                        //                            .fontWeight(.semibold)
-                        //                        Text("Test")
-                        //                            .fontDesign(.rounded)
-                        //                            .fontWeight(.semibold)
-                        //                        Text("Test")
-                        //                            .fontDesign(.rounded)
-                        //                            .fontWeight(.semibold)
-                        
                         ForEach($vm.tempIngredients) { $ingredient in
                             TextField("Ingredient", text: $ingredient.name, axis: .vertical)
                                 .disabled(vm.editMode == .inactive)
                                 .fontDesign(.rounded)
                                 .fontWeight(.semibold)
                         }
-                        //                        .onDelete(perform: onDelete)
+                        .onDelete(perform: vm.deleteIngredient)
+                        .listRowBackground(Color.gray.opacity(0.1))
                     }
+                    
+                    Section {
+                        EmptyView()
+                    } footer: {
+                        HStack(alignment: .center) {
+                            Spacer()
+                            addButton
+                            Spacer()
+                        }
+                    }
+                    
                 }
                 .toolbar {
                     toolbarView
                 }
                 .environment(\.editMode, $vm.editMode)
-//                .scrollContentBackground(.hidden)
+                .scrollContentBackground(.hidden)
                 //                .toolbarBackground(Color("ToolbarBackground"), for: .automatic)
-                addButton
             }
             
         }
@@ -65,14 +64,14 @@ struct CreateCardView: View {
                 vm.addIngredient()
             }
         } label: {
-            ZStack {
-                RoundedRectangle(cornerRadius: 15)
-                    .foregroundStyle(.blue)
-                    .frame(height: 50)
-                Image(systemName: "plus")
-                    .fontWeight(.bold)
-                    .fontDesign(.rounded)
-            }
+            Text("Add Ingredient")
+                .fontWeight(.bold)
+                .fontDesign(.rounded)
+                .padding()
+                .background {
+                    RoundedRectangle(cornerRadius: 15)
+                        .foregroundStyle(.blue)
+                }
         }
         .tint(.white)
     }
@@ -82,13 +81,15 @@ struct CreateCardView: View {
             RoundedRectangle(cornerRadius: 15)
                 .fill(.blue.opacity(0.1))
                 .frame(height: 60)
-            
-            TextField("Recipe Title", text: $vm.tempCard.title)
-                .disabled(vm.editMode == .inactive)
-                .font(.system(.title3))
-                .fontDesign(.rounded)
-                .fontWeight(.semibold)
-                .padding()
+            ZStack(alignment: Alignment(horizontal: .trailing, vertical: .center)) {
+                TextField("Recipe Title", text: $vm.tempCard.title)
+                    .disabled(vm.editMode == .inactive)
+                    .onAppear { UITextField.appearance().clearButtonMode = .whileEditing }
+                    .font(.system(.title3))
+                    .fontDesign(.rounded)
+                    .fontWeight(.semibold)
+                    .padding()
+            }
         }
     }
     
@@ -103,6 +104,7 @@ struct CreateCardView: View {
             ToolbarItem(placement: .topBarTrailing) {
                 Button {
                     do {
+                        vm.addIngredientsToCard()
                         try vm.save()
                     } catch {
                         print("error")

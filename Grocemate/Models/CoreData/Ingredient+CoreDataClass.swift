@@ -24,6 +24,6 @@ public class Ingredient: NSManagedObject, Identifiable {
         
         setPrimitiveValue(false, forKey: "complete")
         setPrimitiveValue(UUID(), forKey: "id")
-        setPrimitiveValue("No Name", forKey: "name")
+        setPrimitiveValue("Ingredient Name", forKey: "name")
     }
 }
