@@ -39,7 +39,7 @@ struct SwipeableIngredient: View {
                 )
                 .offset(offset)
                 .gesture(
-                    swipeToCompleteGesture
+                    swipeToStrikethroughGesture
                 )
         }
     }
@@ -57,7 +57,7 @@ struct SwipeableIngredient: View {
         return view
     }
     
-    private var swipeToCompleteGesture: some Gesture {
+    private var swipeToStrikethroughGesture: some Gesture {
         DragGesture()
             .onChanged { dragValue in
                 /// Only allow dragging from right to left.

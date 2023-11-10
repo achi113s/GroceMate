@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// Rubber banding formula from iOS 6.
 struct RubberBanding {
     static func rubberBanding(
         offset: CGFloat,
