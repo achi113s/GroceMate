@@ -14,7 +14,7 @@ public class IngredientCard: NSManagedObject, Identifiable {
         return NSFetchRequest<IngredientCard>(entityName: "IngredientCard")
     }
 
-    @NSManaged public var id: UUID
+    @NSManaged public var id: UUID?
     @NSManaged public var timestamp: Date
     @NSManaged public var title: String
     @NSManaged public var ingredients: Set<Ingredient>
