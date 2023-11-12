@@ -16,7 +16,7 @@ struct SwipeableIngredient: View {
     @ObservedObject private var ingredient: Ingredient
     
     /// Use this to animate the strikethrough as you pull the text.
-    @State private var progress: CGFloat = 0.0
+    @State private var progress: CGFloat
     @State private var offset: CGSize = .zero
     
     //MARK: - Properties
@@ -27,6 +27,13 @@ struct SwipeableIngredient: View {
     init(ingredient: Ingredient) {
         self.ingredient = ingredient
         self.text = ingredient.name
+        
+        if ingredient.complete {
+            self.progress = 1.0
+            print("set \(self.ingredient.name) to full progress")
+        } else {
+            self.progress = 0.0
+        }
     }
     
     var body: some View {
