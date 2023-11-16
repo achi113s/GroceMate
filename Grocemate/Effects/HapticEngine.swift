@@ -17,10 +17,10 @@ public enum HapticType {
 /// haptic engine for the whole app.
 class HapticEngine: ObservableObject {
     //MARK: - State
-    @Published var hapticEngine: CHHapticEngine? = nil
+    @Published var hapticEngine: CHHapticEngine?
     
     /// Keep track of when the system stops our haptic engine.
-    private var hapticEngineWasStopped: Bool = false
+    private var hapticEngineWasStopped: Bool
     
     //MARK: - Properties
     init(hapticEngine: CHHapticEngine? = nil, hapticEngineWasStopped: Bool = false) {
@@ -65,8 +65,8 @@ class HapticEngine: ObservableObject {
             
             /// This allows us to know if the haptic engine was
             /// stopped by the system.
-            hapticEngine?.stoppedHandler = { _ in
-                self.hapticEngineWasStopped = true
+            hapticEngine?.stoppedHandler = { [weak self] _ in
+                self?.hapticEngineWasStopped = true
             }
             
             try hapticEngine?.start()
