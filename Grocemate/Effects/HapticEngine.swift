@@ -9,7 +9,7 @@ import CoreHaptics
 import SwiftUI
 
 public enum HapticType {
-    case simpleSuccess
+    case swipeSuccess
     case longPressSuccess
 }
 
@@ -28,7 +28,7 @@ class HapticEngine: ObservableObject {
         self.hapticEngineWasStopped = hapticEngineWasStopped
     }
     
-    lazy var simpleSuccessHaptic: [CHHapticEvent] = {
+    lazy var swipeSuccessHaptic: [CHHapticEvent] = {
         var events = [CHHapticEvent]()
         
         let intensity = CHHapticEventParameter(parameterID: .hapticIntensity, value: 1)
@@ -42,12 +42,15 @@ class HapticEngine: ObservableObject {
     lazy var longPressSuccessHaptic: [CHHapticEvent] = {
         var events = [CHHapticEvent]()
         
-        for i in stride(from: 0, to: 0.2, by: 0.1) {
-            let intensity = CHHapticEventParameter(parameterID: .hapticIntensity, value: 1)
-            let sharpness = CHHapticEventParameter(parameterID: .hapticSharpness, value: 0.5)
-            let event = CHHapticEvent(eventType: .hapticTransient, parameters: [intensity, sharpness], relativeTime: i)
-            events.append(event)
-        }
+        var intensity = CHHapticEventParameter(parameterID: .hapticIntensity, value: 1)
+        var sharpness = CHHapticEventParameter(parameterID: .hapticSharpness, value: 1)
+        let event1 = CHHapticEvent(eventType: .hapticTransient, parameters: [intensity, sharpness], relativeTime: 0.0)
+        events.append(event1)
+        
+        intensity = CHHapticEventParameter(parameterID: .hapticIntensity, value: 2)
+        sharpness = CHHapticEventParameter(parameterID: .hapticSharpness, value: 5)
+        let event2 = CHHapticEvent(eventType: .hapticTransient, parameters: [intensity, sharpness], relativeTime: 0.1)
+        events.append(event2)
         
         return events
     }()
@@ -97,8 +100,8 @@ class HapticEngine: ObservableObject {
             var events: [CHHapticEvent] = []
             
             switch hapticType {
-            case .simpleSuccess:
-                events = simpleSuccessHaptic
+            case .swipeSuccess:
+                events = swipeSuccessHaptic
             case .longPressSuccess:
                 events = longPressSuccessHaptic
             }
@@ -106,7 +109,6 @@ class HapticEngine: ObservableObject {
             let pattern = try CHHapticPattern(events: events, parameters: [])
             let player = try hapticEngine?.makePlayer(with: pattern)
             try player?.start(atTime: 0)
-            print("played")
         } catch {
             print("Failed to play pattern: \(error.localizedDescription)")
         }

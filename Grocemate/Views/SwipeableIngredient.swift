@@ -30,7 +30,6 @@ struct SwipeableIngredient: View {
         
         if ingredient.complete {
             self.progress = 1.0
-            print("set \(self.ingredient.name) to full progress")
         } else {
             self.progress = 0.0
         }
@@ -98,7 +97,7 @@ struct SwipeableIngredient: View {
                             self.progress = 0.0
                         }
                         
-                        hapticEngine.playHaptic(.simpleSuccess)
+                        hapticEngine.playHaptic(.swipeSuccess)
                     }
                 } else {
                     /// If the full drag wasn't completed and the item
