@@ -27,7 +27,6 @@ struct CreateCardView: View {
                 }
                 .environment(\.editMode, $vm.editMode)
                 .scrollContentBackground(.hidden)
-                //                .toolbarBackground(Color("ToolbarBackground"), for: .automatic)
             }
             
         }
@@ -59,7 +58,7 @@ struct CreateCardView: View {
     private var ingredientCardTitle: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 15)
-                .fill(.blue.opacity(0.1))
+                .fill(vm.titleError ? .red.opacity(0.2) : .blue.opacity(0.1))
                 .frame(height: 60)
             ZStack(alignment: Alignment(horizontal: .trailing, vertical: .center)) {
                 TextField("Recipe Title", text: $vm.tempCard.title)
@@ -84,7 +83,7 @@ struct CreateCardView: View {
                         .fontWeight(.semibold)
                 }
                 .onDelete(perform: vm.deleteIngredient)
-                .listRowBackground(Color.gray.opacity(0.1))
+                .listRowBackground(vm.ingredientsError ? Color.red.opacity(0.2) : .gray.opacity(0.1))
             }
             
             Section {
@@ -116,7 +115,7 @@ struct CreateCardView: View {
                         print("error")
                     }
                     
-                    dismiss()
+//                    dismiss()
                 } label: {
                     Text("Save")
                         .fontDesign(.rounded)

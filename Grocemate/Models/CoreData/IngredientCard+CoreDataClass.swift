@@ -33,4 +33,8 @@ public class IngredientCard: NSManagedObject, Identifiable {
         setPrimitiveValue(Date.now, forKey: "timestamp")
         setPrimitiveValue("Card Title", forKey: "title")
     }
+    
+    public func fetchFromCloudKit() async {
+        
+    }
 }

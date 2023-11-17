@@ -12,6 +12,8 @@ import SwiftUI
 final class CreateCardViewModel: ObservableObject {
     //MARK: - Properties
     @Published var editMode: EditMode = .active
+    @Published var titleError: Bool = false
+    @Published var ingredientsError: Bool = false
     
     /// Create a Published temporary instance of an ingredient card
     /// to use in our view. Also use a Published array of Ingredient
@@ -51,6 +53,35 @@ final class CreateCardViewModel: ObservableObject {
     }
     
     public func save() throws {
+        guard self.tempCard.title.trimmingCharacters(in: .whitespacesAndNewlines) != "" else {
+            withAnimation(.easeInOut(duration: 0.5)) {
+                titleError = true
+            }
+            
+            withAnimation(.easeInOut(duration: 0.5).delay(0.5)) {
+                titleError = false
+            }
+            
+            return
+        }
+        
+        guard self.tempIngredients.isEmpty else {
+            withAnimation(.easeInOut(duration: 0.5)) {
+                self.ingredientsError = true
+                print("asdf")
+//                self.tempIngredients.append(Ingredient.preview(context: self.context))
+            }
+            
+            withAnimation(.easeInOut(duration: 0.5).delay(0.5)) {
+                ingredientsError = false
+                print("asdff")
+            }
+            
+            return
+        }
+    }
+    
+    public func saveToCoreData() throws {
         guard self.context.hasChanges else { return }
         
         try self.context.save()

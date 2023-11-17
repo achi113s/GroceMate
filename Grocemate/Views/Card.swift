@@ -36,7 +36,7 @@ struct Card: View {
         }
         .background {
             RoundedRectangle(cornerRadius: 25)
-                .fill(Color.white)
+                .fill(.white)
                 .shadow(radius: 4)
                 .frame(maxWidth: .infinity)
         }

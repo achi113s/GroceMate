@@ -13,7 +13,7 @@ struct GrocemateApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            HomeView()
                 .environmentObject(hapticEngine)
                 .environment(\.managedObjectContext, CoreDataController.shared.viewContext)
                 .preferredColorScheme(.light)

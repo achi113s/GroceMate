@@ -7,9 +7,9 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct HomeView: View {
     //MARK: - State
-    @State private var showCreateCardView: Bool = false
+    @StateObject var vm = HomeViewModel()
     
     //MARK: - Properties
     @FetchRequest(fetchRequest: IngredientCard.all()) private var ingredientCards
@@ -22,7 +22,7 @@ struct ContentView: View {
                 mainViewToolbar
             }
         }
-        .sheet(isPresented: $showCreateCardView, content: {
+        .sheet(isPresented: $vm.showCreateCardView, content: {
             CreateCardView(vm: .init(coreDataController: .shared))
         })
     }
@@ -41,31 +41,30 @@ struct ContentView: View {
                     }
                 }
             }
-            .refreshable {
-                print("refresh")
-            }
         }
     }
     
-    private var showCreateCardViewButton: some View {
-        Button {
-            showCreateCardView = true
-        } label: {
-            ZStack {
-                RoundedRectangle(cornerRadius: 15)
-                    .foregroundStyle(.blue)
-                    .frame(width: 120, height: 50)
-                Text("Grocemate")
-                    .fontWeight(.bold)
-                    .fontDesign(.rounded)
-            }
-        }
-        .tint(.white)
-    }
+//    private var showCreateCardViewButton: some View {
+//        Button {
+//            showCreateCardView = true
+//        } label: {
+//            ZStack {
+//                RoundedRectangle(cornerRadius: 15)
+//                    .foregroundStyle(.blue)
+//                    .frame(width: 120, height: 50)
+//                Text("Grocemate")
+//                    .fontWeight(.bold)
+//                    .fontDesign(.rounded)
+//            }
+//        }
+//        .tint(.white)
+//    }
     
     private var emptyIngredientCardsView: some View {
-        Text("Tap the camera icon to get started!")
-            .font(.system(size: 30, weight: .semibold, design: .rounded))
+        Text("Tap the plus to get started!")
+            .font(.system(size: 30))
+            .fontWeight(.semibold)
+            .fontDesign(.rounded)
             .frame(width: 300)
             .frame(minHeight: 600)
     }
@@ -85,7 +84,7 @@ struct ContentView: View {
                 Text("Grocemate")
                     .multilineTextAlignment(.center)
                     .font(.system(size: 32, weight: .semibold, design: .rounded))
-                //                            .foregroundColor(Color("AccentColor"))
+                    .foregroundStyle(.blue)
             }
             
             ToolbarItem(placement: .navigationBarTrailing) {
@@ -109,7 +108,7 @@ struct ContentView: View {
                     }
                     
                     Button {
-                        showCreateCardView = true
+                        vm.showCreateCardView = true
                     } label: {
                         HStack {
                             Text("Manually Add Card")
@@ -119,7 +118,6 @@ struct ContentView: View {
                 } label: {
                     Image(systemName: "plus")
                         .font(.system(size: 16, weight: .semibold))
-                    //                                .foregroundColor(Color("AccentColor"))
                         .accessibilityLabel("Add a new card.")
                 }
             }
@@ -130,7 +128,6 @@ struct ContentView: View {
                 } label: {
                     Image(systemName: "gear")
                         .font(.system(size: 16, weight: .semibold))
-                    //                                .foregroundColor(Color("AccentColor"))
                 }
             }
         }
@@ -141,7 +138,7 @@ struct ContentView: View {
     let preview = CoreDataController.shared
     
     let viewToPreview = {
-        ContentView()
+        HomeView()
             .environment(\.managedObjectContext, preview.viewContext)
             .onAppear {
                 IngredientCard.makePreview(count: 2, in: preview.viewContext)
@@ -155,7 +152,7 @@ struct ContentView: View {
     let preview = CoreDataController.shared
     
     let viewToPreview = {
-        ContentView()
+        HomeView()
             .environment(\.managedObjectContext, preview.viewContext)
             .onAppear {
                 IngredientCard.makePreview(count: 0, in: preview.viewContext)
