@@ -9,7 +9,7 @@ import CoreData
 import Foundation
 import SwiftUI
 
-final class CreateCardViewModel: ObservableObject {
+final class CreateCardViewModel: ObservableObject, CardDetailViewModel {
     //MARK: - Properties
     @Published var editMode: EditMode = .active
     @Published var titleError: Bool = false
@@ -19,8 +19,8 @@ final class CreateCardViewModel: ObservableObject {
     /// to use in our view. Also use a Published array of Ingredient
     /// instances and then we will add them to the temporary
     /// IngredientCard before saving.
-    @Published var tempCard: IngredientCard
-    @Published var tempIngredients: [Ingredient]
+    @Published var card: IngredientCard
+    @Published var ingredients: [Ingredient]
         
     /// We use a new context as a temporary editing board outside
     /// the main view context.
@@ -28,32 +28,32 @@ final class CreateCardViewModel: ObservableObject {
     
     init(coreDataController: CoreDataController) {
         self.context = coreDataController.newContext
-        self.tempCard = IngredientCard(context: self.context)
-        self.tempIngredients = [
+        self.card = IngredientCard(context: self.context)
+        self.ingredients = [
             Ingredient.preview(context: self.context)
         ]
     }
     
     public func addIngredient() {
-        tempIngredients.append(Ingredient(context: self.context))
+        self.ingredients.append(Ingredient(context: self.context))
     }
     
     /// Using a separate array of Ingredients allows us to circumvent problems with NSSet
     /// in the CoreDataClass for Ingredient.
     public func addIngredientsToCard() {
-        tempCard.addToIngredients(NSSet(array: tempIngredients))
+        card.addToIngredients(NSSet(array: ingredients))
     }
     
     public func clearCardTitle() {
-        tempCard.title = ""
+        card.title = ""
     }
     
     public func deleteIngredient(_ indexSet: IndexSet) {
-        tempIngredients.remove(atOffsets: indexSet)
+        ingredients.remove(atOffsets: indexSet)
     }
     
     public func save() throws {
-        guard self.tempCard.title.trimmingCharacters(in: .whitespacesAndNewlines) != "" else {
+        guard self.card.title.trimmingCharacters(in: .whitespacesAndNewlines) != "" else {
             withAnimation(.easeInOut(duration: 0.5)) {
                 titleError = true
             }
@@ -65,16 +65,14 @@ final class CreateCardViewModel: ObservableObject {
             return
         }
         
-        guard self.tempIngredients.isEmpty else {
+        guard self.ingredients.isEmpty else {
             withAnimation(.easeInOut(duration: 0.5)) {
                 self.ingredientsError = true
-                print("asdf")
-//                self.tempIngredients.append(Ingredient.preview(context: self.context))
+                self.ingredients.append(Ingredient.preview(context: self.context))
             }
             
-            withAnimation(.easeInOut(duration: 0.5).delay(0.5)) {
-                ingredientsError = false
-                print("asdff")
+            withAnimation(.easeIn(duration: 2.0).delay(2.0)) {
+                self.ingredientsError = false
             }
             
             return

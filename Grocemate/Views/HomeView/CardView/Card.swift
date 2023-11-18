@@ -107,6 +107,10 @@ struct Card: View {
             })
             .onEnded { finished in
                 hapticEngine.playHaptic(.longPressSuccess)
+                /// This is the only reason we need the main view model in the environment.
+                /// Maybe there is a better way to show a confirmation dialog and
+                /// keep track of the selected ingredient card? This method
+                /// introduces a bit of coupling between Card and HomeView.
                 vm.presentConfirmationDialog = true
                 vm.selectedIngredientCard = ingredientCard
             }

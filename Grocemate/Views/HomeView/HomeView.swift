@@ -30,7 +30,7 @@ struct HomeView: View {
                 }
         }
         .sheet(isPresented: $vm.presentCreateCardView, content: {
-            CreateCardView(vm: .init(coreDataController: .shared))
+            CreateCardView<CreateCardViewModel>(vm: CreateCardViewModel(coreDataController: .shared))
         })
         .environmentObject(vm)
     }

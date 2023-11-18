@@ -7,12 +7,12 @@
 
 import SwiftUI
 
-struct CreateCardView: View {
+struct CreateCardView<ViewModel>: View where ViewModel: CardDetailViewModel {
     //MARK: - Environment
     @Environment(\.dismiss) var dismiss
     
     //MARK: - State
-    @ObservedObject var vm: CreateCardViewModel
+    @ObservedObject var vm: ViewModel
     
     var body: some View {
         NavigationStack {
@@ -32,7 +32,7 @@ struct CreateCardView: View {
         }
     }
     
-    init(vm: CreateCardViewModel) {
+    init(vm: ViewModel) {
         self.vm = vm
     }
     
@@ -61,7 +61,7 @@ struct CreateCardView: View {
                 .fill(vm.titleError ? .red.opacity(0.2) : .blue.opacity(0.1))
                 .frame(height: 60)
             ZStack(alignment: Alignment(horizontal: .trailing, vertical: .center)) {
-                TextField("Recipe Title", text: $vm.tempCard.title)
+                TextField("Recipe Title", text: $vm.card.title)
                     .disabled(vm.editMode == .inactive)
                     /// This adds the x to clear text field when editing.
                     .onAppear { UITextField.appearance().clearButtonMode = .whileEditing }
@@ -76,7 +76,7 @@ struct CreateCardView: View {
     private var ingredientList: some View {
         Group {
             Section(header: Text("Ingredients")) {
-                ForEach($vm.tempIngredients) { $ingredient in
+                ForEach($vm.ingredients) { $ingredient in
                     TextField("Ingredient", text: $ingredient.name, axis: .vertical)
                         .disabled(vm.editMode == .inactive)
                         .fontDesign(.rounded)
@@ -130,7 +130,7 @@ struct CreateCardView: View {
     let preview = CoreDataController.shared
     
     let viewToPreview = {
-        CreateCardView(vm: .init(coreDataController: .shared))
+        CreateCardView<CreateCardViewModel>(vm: CreateCardViewModel(coreDataController: .shared))
             .environment(\.managedObjectContext, preview.viewContext)
     }()
     
