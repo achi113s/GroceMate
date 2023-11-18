@@ -21,17 +21,19 @@ struct HomeView: View {
                 .toolbar {
                     mainViewToolbar
                 }
-                .confirmationDialog("Add Options", isPresented: $vm.presentConfirmationDialog) {
-                    Button  {
-                        vm.sheet = .ingredients
-                    } label: {
-                        Text("Edit Ingredients Card")
-                    }
-                }
+                
         }
         .sheet(isPresented: $vm.presentCreateCardView, content: {
-            CreateCardView<CreateCardViewModel>(vm: CreateCardViewModel(coreDataController: .shared))
+            CardDetailView<CreateCardViewModel>(vm: CreateCardViewModel(coreDataController: .shared))
         })
+        .sheet(item: $vm.sheet, content: makeSheet)
+        .confirmationDialog("Add Options", isPresented: $vm.presentConfirmationDialog) {
+            Button  {
+                vm.sheet = .editCard
+            } label: {
+                Text("Edit Ingredients Card")
+            }
+        }
         .environmentObject(vm)
     }
     
@@ -135,6 +137,23 @@ struct HomeView: View {
                     Image(systemName: "gear")
                         .font(.system(size: 16, weight: .semibold))
                 }
+            }
+        }
+    }
+    
+    @ViewBuilder private func makeSheet(_ sheet: Sheets) -> some View {
+        switch sheet {
+        case .cameraView:
+            EmptyView()
+//            CameraView()
+        case .imageROI:
+            EmptyView()
+//            if let image = selectedImage {
+//                ImageWithROI(image: image)
+//            }
+        case .editCard:
+            if let selectedCard = vm.selectedCard {
+                CardDetailView<EditCardViewModel>(vm: EditCardViewModel(coreDataController: .shared, ingredientCard: selectedCard))
             }
         }
     }

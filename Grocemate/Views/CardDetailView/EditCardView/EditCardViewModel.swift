@@ -1,15 +1,15 @@
 //
-//  CreateCardViewModel.swift
-//  GroceMate
+//  EditCardViewModel.swift
+//  Grocemate
 //
-//  Created by Giorgio Latour on 11/5/23.
+//  Created by Giorgio Latour on 11/18/23.
 //
 
 import CoreData
 import Foundation
 import SwiftUI
 
-final class CreateCardViewModel: ObservableObject, CardDetailViewModel {
+final class EditCardViewModel: ObservableObject, CardDetailViewModel {
     //MARK: - Properties
     @Published var editMode: EditMode = .active
     @Published var titleError: Bool = false
@@ -26,12 +26,10 @@ final class CreateCardViewModel: ObservableObject, CardDetailViewModel {
     /// the main view context.
     private let context: NSManagedObjectContext
     
-    init(coreDataController: CoreDataController) {
-        self.context = coreDataController.newContext
-        self.card = IngredientCard(context: self.context)
-        self.ingredients = [
-            Ingredient.preview(context: self.context)
-        ]
+    init(coreDataController: CoreDataController, ingredientCard: IngredientCard) {
+        self.context = coreDataController.viewContext
+        self.card = ingredientCard
+        self.ingredients = ingredientCard.ingredientsArr
     }
     
     public func addIngredient() {
@@ -48,6 +46,7 @@ final class CreateCardViewModel: ObservableObject, CardDetailViewModel {
         card.title = ""
     }
     
+    // This doesn't work.
     public func deleteIngredient(_ indexSet: IndexSet) {
         ingredients.remove(atOffsets: indexSet)
     }

@@ -11,7 +11,7 @@
 		440ECB812AF812F800E6BD5C /* RubberBanding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440ECB772AF812F800E6BD5C /* RubberBanding.swift */; };
 		440ECB822AF812F800E6BD5C /* Text-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440ECB792AF812F800E6BD5C /* Text-Extensions.swift */; };
 		440ECB832AF812F800E6BD5C /* CreateCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440ECB7C2AF812F800E6BD5C /* CreateCardViewModel.swift */; };
-		440ECB842AF812F800E6BD5C /* CreateCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440ECB7D2AF812F800E6BD5C /* CreateCardView.swift */; };
+		440ECB842AF812F800E6BD5C /* CardDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440ECB7D2AF812F800E6BD5C /* CardDetailView.swift */; };
 		440ECB852AF812F800E6BD5C /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440ECB7E2AF812F800E6BD5C /* Card.swift */; };
 		440ECB862AF812F800E6BD5C /* SwipeableIngredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440ECB7F2AF812F800E6BD5C /* SwipeableIngredient.swift */; };
 		440ECB902AF8130400E6BD5C /* IngredientCardStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440ECB882AF8130400E6BD5C /* IngredientCardStruct.swift */; };
@@ -20,6 +20,7 @@
 		440ECB932AF8130400E6BD5C /* IngredientCard+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440ECB8C2AF8130400E6BD5C /* IngredientCard+CoreDataClass.swift */; };
 		440ECB942AF8130400E6BD5C /* Ingredient+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440ECB8D2AF8130400E6BD5C /* Ingredient+CoreDataClass.swift */; };
 		440ECB9C2AF8134A00E6BD5C /* GrocemateDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 440ECB9A2AF8134A00E6BD5C /* GrocemateDataModel.xcdatamodeld */; };
+		4453D8A82B0931AB001B1C36 /* EditCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4453D8A72B0931AB001B1C36 /* EditCardViewModel.swift */; };
 		445DCC452AFC579700CA97DE /* Ingredient+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445DCC442AFC579700CA97DE /* Ingredient+CoreDataProperties.swift */; };
 		44BF980C2B088AFA00E24047 /* Sheets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44BF980B2B088AFA00E24047 /* Sheets.swift */; };
 		44BF98102B088B5A00E24047 /* Image-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44BF980F2B088B5A00E24047 /* Image-Extensions.swift */; };
@@ -56,7 +57,7 @@
 		440ECB772AF812F800E6BD5C /* RubberBanding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RubberBanding.swift; sourceTree = "<group>"; };
 		440ECB792AF812F800E6BD5C /* Text-Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Text-Extensions.swift"; sourceTree = "<group>"; };
 		440ECB7C2AF812F800E6BD5C /* CreateCardViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateCardViewModel.swift; sourceTree = "<group>"; };
-		440ECB7D2AF812F800E6BD5C /* CreateCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateCardView.swift; sourceTree = "<group>"; };
+		440ECB7D2AF812F800E6BD5C /* CardDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardDetailView.swift; sourceTree = "<group>"; };
 		440ECB7E2AF812F800E6BD5C /* Card.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		440ECB7F2AF812F800E6BD5C /* SwipeableIngredient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeableIngredient.swift; sourceTree = "<group>"; };
 		440ECB882AF8130400E6BD5C /* IngredientCardStruct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IngredientCardStruct.swift; sourceTree = "<group>"; };
@@ -67,6 +68,7 @@
 		440ECB9B2AF8134A00E6BD5C /* GrocemateDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GrocemateDataModel.xcdatamodel; sourceTree = "<group>"; };
 		4420964C2AFDF2F700E586BB /* Grocemate.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Grocemate.entitlements; sourceTree = "<group>"; };
 		4420964D2AFDF4A100E586BB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		4453D8A72B0931AB001B1C36 /* EditCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCardViewModel.swift; sourceTree = "<group>"; };
 		445DCC442AFC579700CA97DE /* Ingredient+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ingredient+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		44BF980B2B088AFA00E24047 /* Sheets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sheets.swift; sourceTree = "<group>"; };
 		44BF980F2B088B5A00E24047 /* Image-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image-Extensions.swift"; sourceTree = "<group>"; };
@@ -140,7 +142,6 @@
 			isa = PBXGroup;
 			children = (
 				440ECB7C2AF812F800E6BD5C /* CreateCardViewModel.swift */,
-				440ECB7D2AF812F800E6BD5C /* CreateCardView.swift */,
 			);
 			path = CreateCardView;
 			sourceTree = "<group>";
@@ -167,6 +168,14 @@
 			path = CoreData;
 			sourceTree = "<group>";
 		};
+		4453D8A62B09319E001B1C36 /* EditCardView */ = {
+			isa = PBXGroup;
+			children = (
+				4453D8A72B0931AB001B1C36 /* EditCardViewModel.swift */,
+			);
+			path = EditCardView;
+			sourceTree = "<group>";
+		};
 		44BF98092B088ABD00E24047 /* CardView */ = {
 			isa = PBXGroup;
 			children = (
@@ -188,6 +197,8 @@
 			isa = PBXGroup;
 			children = (
 				44BF98122B0927EF00E24047 /* CardDetailViewModelProtocol.swift */,
+				440ECB7D2AF812F800E6BD5C /* CardDetailView.swift */,
+				4453D8A62B09319E001B1C36 /* EditCardView */,
 				440ECB7B2AF812F800E6BD5C /* CreateCardView */,
 			);
 			path = CardDetailView;
@@ -408,7 +419,8 @@
 				440ECB932AF8130400E6BD5C /* IngredientCard+CoreDataClass.swift in Sources */,
 				44DDF2FD2AF811CE005D35D8 /* GrocemateApp.swift in Sources */,
 				440ECB9C2AF8134A00E6BD5C /* GrocemateDataModel.xcdatamodeld in Sources */,
-				440ECB842AF812F800E6BD5C /* CreateCardView.swift in Sources */,
+				440ECB842AF812F800E6BD5C /* CardDetailView.swift in Sources */,
+				4453D8A82B0931AB001B1C36 /* EditCardViewModel.swift in Sources */,
 				440ECB912AF8130400E6BD5C /* CoreDataController.swift in Sources */,
 				440ECB812AF812F800E6BD5C /* RubberBanding.swift in Sources */,
 				440ECB852AF812F800E6BD5C /* Card.swift in Sources */,

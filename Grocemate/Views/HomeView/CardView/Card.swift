@@ -112,7 +112,7 @@ struct Card: View {
                 /// keep track of the selected ingredient card? This method
                 /// introduces a bit of coupling between Card and HomeView.
                 vm.presentConfirmationDialog = true
-                vm.selectedIngredientCard = ingredientCard
+                vm.selectedCard = ingredientCard
             }
     }
 }

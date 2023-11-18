@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CreateCardView<ViewModel>: View where ViewModel: CardDetailViewModel {
+struct CardDetailView<ViewModel>: View where ViewModel: CardDetailViewModel {
     //MARK: - Environment
     @Environment(\.dismiss) var dismiss
     
@@ -115,7 +115,7 @@ struct CreateCardView<ViewModel>: View where ViewModel: CardDetailViewModel {
                         print("error")
                     }
                     
-//                    dismiss()
+                    dismiss()
                 } label: {
                     Text("Save")
                         .fontDesign(.rounded)
@@ -130,7 +130,7 @@ struct CreateCardView<ViewModel>: View where ViewModel: CardDetailViewModel {
     let preview = CoreDataController.shared
     
     let viewToPreview = {
-        CreateCardView<CreateCardViewModel>(vm: CreateCardViewModel(coreDataController: .shared))
+        CardDetailView<CreateCardViewModel>(vm: CreateCardViewModel(coreDataController: .shared))
             .environment(\.managedObjectContext, preview.viewContext)
     }()
     

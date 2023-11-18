@@ -17,5 +17,5 @@ final class HomeViewModel: ObservableObject {
     @Published var presentPhotosPicker: Bool = false
     @Published var presentRecognitionInProgress: Bool = false
     
-    @Published var selectedIngredientCard: IngredientCard?
+    @Published var selectedCard: IngredientCard?
 }
