@@ -16,49 +16,55 @@ struct HomeView: View {
     var coreDataController = CoreDataController.shared
     
     var body: some View {
-        NavigationStack {
+        NavigationStack(path: $vm.path) {
             mainView
-            .toolbar {
-                mainViewToolbar
-            }
+                .toolbar {
+                    mainViewToolbar
+                }
+                .confirmationDialog("Add Options", isPresented: $vm.presentConfirmationDialog) {
+                    Button  {
+                        vm.sheet = .ingredients
+                    } label: {
+                        Text("Edit Ingredients Card")
+                    }
+                }
         }
-        .sheet(isPresented: $vm.showCreateCardView, content: {
+        .sheet(isPresented: $vm.presentCreateCardView, content: {
             CreateCardView(vm: .init(coreDataController: .shared))
         })
+        .environmentObject(vm)
     }
     
     //MARK: - Subviews
     private var mainView: some View {
-        ZStack {
-            ScrollView(.vertical) {
-                VStack {
-                    if ingredientCards.isEmpty {
-                        emptyIngredientCardsView
-                    } else {
-                        ingredientCardsView
+        ScrollView(.vertical) {
+            VStack {
+                if ingredientCards.isEmpty {
+                    emptyIngredientCardsView
+                } else {
+                    ingredientCardsView
                         .padding(.top, 30)
                         .padding(.horizontal, 20)
-                    }
                 }
             }
         }
     }
     
-//    private var showCreateCardViewButton: some View {
-//        Button {
-//            showCreateCardView = true
-//        } label: {
-//            ZStack {
-//                RoundedRectangle(cornerRadius: 15)
-//                    .foregroundStyle(.blue)
-//                    .frame(width: 120, height: 50)
-//                Text("Grocemate")
-//                    .fontWeight(.bold)
-//                    .fontDesign(.rounded)
-//            }
-//        }
-//        .tint(.white)
-//    }
+    //    private var showCreateCardViewButton: some View {
+    //        Button {
+    //            showCreateCardView = true
+    //        } label: {
+    //            ZStack {
+    //                RoundedRectangle(cornerRadius: 15)
+    //                    .foregroundStyle(.blue)
+    //                    .frame(width: 120, height: 50)
+    //                Text("Grocemate")
+    //                    .fontWeight(.bold)
+    //                    .fontDesign(.rounded)
+    //            }
+    //        }
+    //        .tint(.white)
+    //    }
     
     private var emptyIngredientCardsView: some View {
         Text("Tap the plus to get started!")
@@ -90,7 +96,7 @@ struct HomeView: View {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Menu {
                     Button {
-                        //                            mainViewModel.sheet = .cameraView
+                        vm.sheet = .cameraView
                     } label: {
                         HStack {
                             Text("Take a Picture")
@@ -99,7 +105,7 @@ struct HomeView: View {
                     }
                     
                     Button {
-                        //                            mainViewModel.presentPhotosPicker = true
+                        vm.presentPhotosPicker = true
                     } label: {
                         HStack {
                             Text("Select from Photos")
@@ -108,7 +114,7 @@ struct HomeView: View {
                     }
                     
                     Button {
-                        vm.showCreateCardView = true
+                        vm.presentCreateCardView = true
                     } label: {
                         HStack {
                             Text("Manually Add Card")
@@ -124,7 +130,7 @@ struct HomeView: View {
             
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button {
-                    //                        mainViewModel.path.append("Settings")
+                    vm.path.append("Settings")
                 } label: {
                     Image(systemName: "gear")
                         .font(.system(size: 16, weight: .semibold))

@@ -8,5 +8,14 @@
 import SwiftUI
 
 final class HomeViewModel: ObservableObject {
-    @Published var showCreateCardView: Bool = false
+    @Published var path = NavigationPath()
+    
+    @Published var sheet: Sheets?
+    
+    @Published var presentCreateCardView: Bool = false
+    @Published var presentConfirmationDialog: Bool = false
+    @Published var presentPhotosPicker: Bool = false
+    @Published var presentRecognitionInProgress: Bool = false
+    
+    @Published var selectedIngredientCard: IngredientCard?
 }

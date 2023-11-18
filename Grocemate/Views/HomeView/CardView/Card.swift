@@ -12,8 +12,7 @@ struct Card: View {
     //MARK: - Environment
     @EnvironmentObject var hapticEngine: HapticEngine
     @Environment(\.managedObjectContext) private var moc
-    
-    //    @EnvironmentObject var viewModel: MainViewModel
+    @EnvironmentObject var vm: HomeViewModel
     
     //MARK: - State
     @ObservedObject var ingredientCard: IngredientCard
@@ -108,8 +107,8 @@ struct Card: View {
             })
             .onEnded { finished in
                 hapticEngine.playHaptic(.longPressSuccess)
-                //                viewModel.presentConfirmationDialog = true
-                //                viewModel.selectedIngredientCard = ingredientCard
+                vm.presentConfirmationDialog = true
+                vm.selectedIngredientCard = ingredientCard
             }
     }
 }
