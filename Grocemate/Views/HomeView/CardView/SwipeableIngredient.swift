@@ -11,31 +11,30 @@ import SwiftUI
 struct SwipeableIngredient: View {
     @EnvironmentObject var hapticEngine: HapticEngine
     @Environment(\.managedObjectContext) private var moc
-    
-    //MARK: - State
+
+    // MARK: - State
     @ObservedObject private var ingredient: Ingredient
-    
+
     /// Use this to animate the strikethrough as you pull the text.
     @State private var progress: CGFloat
     @State private var offset: CGSize = .zero
-    
-    //MARK: - Properties
+
+    // MARK: - Properties
     private var text: String
     private var textColor: Color = .black
     private var strikethroughColor: Color = .black
-    
+
     init(ingredient: Ingredient) {
         self.ingredient = ingredient
         self.text = ingredient.name
-        
+
         if ingredient.complete {
             self.progress = 1.0
-            print("set \(self.ingredient.name) to full progress")
         } else {
             self.progress = 0.0
         }
     }
-    
+
     var body: some View {
         VStack(alignment: .leading) {
             Text(ingredient.name)
@@ -50,26 +49,26 @@ struct SwipeableIngredient: View {
                 )
         }
     }
-    
-    //MARK: - Public View Modifiers
+
+    // MARK: - Public View Modifiers
     public func textColor(_ color: Color) -> SwipeableIngredient {
         var view = self
         view.textColor = color
         return view
     }
-    
+
     public func strikethroughColor(_ color: Color) -> SwipeableIngredient {
         var view = self
         view.strikethroughColor = color
         return view
     }
-    
+
     private var swipeToStrikethroughGesture: some Gesture {
         DragGesture()
             .onChanged { dragValue in
                 /// Only allow dragging from right to left.
                 guard dragValue.translation.width > 0 else { return }
-                
+
                 /// Rubber banding effect for the drag.
                 let dragLimit: CGFloat = 100
                 let rubberBanded: CGFloat = RubberBanding.rubberBanding(
@@ -77,28 +76,28 @@ struct SwipeableIngredient: View {
                     distance: dragValue.translation.width,
                     coefficient: 0.4
                 )
-                
+
                 self.offset.width = min(rubberBanded, dragLimit)
-                
+
                 if !self.ingredient.complete {
                     self.progress = self.offset.width / dragLimit
                 }
             }
-            .onEnded { dragValue in
+            .onEnded { _ in
                 /// If full drag was completed, toggle complete and
                 /// set strikethrough accoordingly.
                 if self.offset.width > 50 {
                     withAnimation(.easeInOut) {
-                        
+
                         toggleIngredientCompleted()
-                        
+
                         if self.ingredient.complete {
                             self.progress = 1.0
                         } else {
                             self.progress = 0.0
                         }
-                        
-                        hapticEngine.playHaptic(.simpleSuccess)
+
+                        hapticEngine.playHaptic(.swipeSuccess)
                     }
                 } else {
                     /// If the full drag wasn't completed and the item
@@ -110,7 +109,7 @@ struct SwipeableIngredient: View {
                         }
                     }
                 }
-                
+
                 /// Always return the text back to its original location.
                 withAnimation(.easeInOut(duration: 0.5)) {
                     self.offset.width = .zero

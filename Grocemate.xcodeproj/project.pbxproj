@@ -11,7 +11,7 @@
 		440ECB812AF812F800E6BD5C /* RubberBanding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440ECB772AF812F800E6BD5C /* RubberBanding.swift */; };
 		440ECB822AF812F800E6BD5C /* Text-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440ECB792AF812F800E6BD5C /* Text-Extensions.swift */; };
 		440ECB832AF812F800E6BD5C /* CreateCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440ECB7C2AF812F800E6BD5C /* CreateCardViewModel.swift */; };
-		440ECB842AF812F800E6BD5C /* CreateCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440ECB7D2AF812F800E6BD5C /* CreateCardView.swift */; };
+		440ECB842AF812F800E6BD5C /* CardDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440ECB7D2AF812F800E6BD5C /* CardDetailView.swift */; };
 		440ECB852AF812F800E6BD5C /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440ECB7E2AF812F800E6BD5C /* Card.swift */; };
 		440ECB862AF812F800E6BD5C /* SwipeableIngredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440ECB7F2AF812F800E6BD5C /* SwipeableIngredient.swift */; };
 		440ECB902AF8130400E6BD5C /* IngredientCardStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440ECB882AF8130400E6BD5C /* IngredientCardStruct.swift */; };
@@ -20,9 +20,14 @@
 		440ECB932AF8130400E6BD5C /* IngredientCard+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440ECB8C2AF8130400E6BD5C /* IngredientCard+CoreDataClass.swift */; };
 		440ECB942AF8130400E6BD5C /* Ingredient+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440ECB8D2AF8130400E6BD5C /* Ingredient+CoreDataClass.swift */; };
 		440ECB9C2AF8134A00E6BD5C /* GrocemateDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 440ECB9A2AF8134A00E6BD5C /* GrocemateDataModel.xcdatamodeld */; };
+		4453D8A82B0931AB001B1C36 /* EditCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4453D8A72B0931AB001B1C36 /* EditCardViewModel.swift */; };
 		445DCC452AFC579700CA97DE /* Ingredient+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445DCC442AFC579700CA97DE /* Ingredient+CoreDataProperties.swift */; };
+		44BF980C2B088AFA00E24047 /* Sheets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44BF980B2B088AFA00E24047 /* Sheets.swift */; };
+		44BF98102B088B5A00E24047 /* Image-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44BF980F2B088B5A00E24047 /* Image-Extensions.swift */; };
+		44BF98132B0927EF00E24047 /* CardDetailViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44BF98122B0927EF00E24047 /* CardDetailViewModelProtocol.swift */; };
+		44C7F9AF2B07395100AFE8DD /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C7F9AE2B07395100AFE8DD /* HomeViewModel.swift */; };
 		44DDF2FD2AF811CE005D35D8 /* GrocemateApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DDF2FC2AF811CE005D35D8 /* GrocemateApp.swift */; };
-		44DDF2FF2AF811CE005D35D8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DDF2FE2AF811CE005D35D8 /* ContentView.swift */; };
+		44DDF2FF2AF811CE005D35D8 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DDF2FE2AF811CE005D35D8 /* HomeView.swift */; };
 		44DDF3012AF811D0005D35D8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 44DDF3002AF811D0005D35D8 /* Assets.xcassets */; };
 		44DDF3042AF811D0005D35D8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 44DDF3032AF811D0005D35D8 /* Preview Assets.xcassets */; };
 		44DDF30E2AF811D0005D35D8 /* GrocemateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DDF30D2AF811D0005D35D8 /* GrocemateTests.swift */; };
@@ -52,7 +57,7 @@
 		440ECB772AF812F800E6BD5C /* RubberBanding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RubberBanding.swift; sourceTree = "<group>"; };
 		440ECB792AF812F800E6BD5C /* Text-Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Text-Extensions.swift"; sourceTree = "<group>"; };
 		440ECB7C2AF812F800E6BD5C /* CreateCardViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateCardViewModel.swift; sourceTree = "<group>"; };
-		440ECB7D2AF812F800E6BD5C /* CreateCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateCardView.swift; sourceTree = "<group>"; };
+		440ECB7D2AF812F800E6BD5C /* CardDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardDetailView.swift; sourceTree = "<group>"; };
 		440ECB7E2AF812F800E6BD5C /* Card.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		440ECB7F2AF812F800E6BD5C /* SwipeableIngredient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeableIngredient.swift; sourceTree = "<group>"; };
 		440ECB882AF8130400E6BD5C /* IngredientCardStruct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IngredientCardStruct.swift; sourceTree = "<group>"; };
@@ -63,10 +68,15 @@
 		440ECB9B2AF8134A00E6BD5C /* GrocemateDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GrocemateDataModel.xcdatamodel; sourceTree = "<group>"; };
 		4420964C2AFDF2F700E586BB /* Grocemate.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Grocemate.entitlements; sourceTree = "<group>"; };
 		4420964D2AFDF4A100E586BB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		4453D8A72B0931AB001B1C36 /* EditCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCardViewModel.swift; sourceTree = "<group>"; };
 		445DCC442AFC579700CA97DE /* Ingredient+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ingredient+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		44BF980B2B088AFA00E24047 /* Sheets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sheets.swift; sourceTree = "<group>"; };
+		44BF980F2B088B5A00E24047 /* Image-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image-Extensions.swift"; sourceTree = "<group>"; };
+		44BF98122B0927EF00E24047 /* CardDetailViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailViewModelProtocol.swift; sourceTree = "<group>"; };
+		44C7F9AE2B07395100AFE8DD /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		44DDF2F92AF811CE005D35D8 /* Grocemate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Grocemate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		44DDF2FC2AF811CE005D35D8 /* GrocemateApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrocemateApp.swift; sourceTree = "<group>"; };
-		44DDF2FE2AF811CE005D35D8 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		44DDF2FE2AF811CE005D35D8 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		44DDF3002AF811D0005D35D8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		44DDF3032AF811D0005D35D8 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		44DDF3092AF811D0005D35D8 /* GrocemateTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GrocemateTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -114,6 +124,7 @@
 			isa = PBXGroup;
 			children = (
 				440ECB792AF812F800E6BD5C /* Text-Extensions.swift */,
+				44BF980F2B088B5A00E24047 /* Image-Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -121,20 +132,18 @@
 		440ECB7A2AF812F800E6BD5C /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				440ECB7B2AF812F800E6BD5C /* CreateCard */,
-				440ECB7E2AF812F800E6BD5C /* Card.swift */,
-				440ECB7F2AF812F800E6BD5C /* SwipeableIngredient.swift */,
+				44BF98112B0927D700E24047 /* CardDetailView */,
+				44C7F9AD2B07394300AFE8DD /* HomeView */,
 			);
 			path = Views;
 			sourceTree = "<group>";
 		};
-		440ECB7B2AF812F800E6BD5C /* CreateCard */ = {
+		440ECB7B2AF812F800E6BD5C /* CreateCardView */ = {
 			isa = PBXGroup;
 			children = (
 				440ECB7C2AF812F800E6BD5C /* CreateCardViewModel.swift */,
-				440ECB7D2AF812F800E6BD5C /* CreateCardView.swift */,
 			);
-			path = CreateCard;
+			path = CreateCardView;
 			sourceTree = "<group>";
 		};
 		440ECB872AF8130400E6BD5C /* Models */ = {
@@ -157,6 +166,52 @@
 				440ECB9A2AF8134A00E6BD5C /* GrocemateDataModel.xcdatamodeld */,
 			);
 			path = CoreData;
+			sourceTree = "<group>";
+		};
+		4453D8A62B09319E001B1C36 /* EditCardView */ = {
+			isa = PBXGroup;
+			children = (
+				4453D8A72B0931AB001B1C36 /* EditCardViewModel.swift */,
+			);
+			path = EditCardView;
+			sourceTree = "<group>";
+		};
+		44BF98092B088ABD00E24047 /* CardView */ = {
+			isa = PBXGroup;
+			children = (
+				440ECB7E2AF812F800E6BD5C /* Card.swift */,
+				440ECB7F2AF812F800E6BD5C /* SwipeableIngredient.swift */,
+			);
+			path = CardView;
+			sourceTree = "<group>";
+		};
+		44BF980A2B088AEA00E24047 /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				44BF980B2B088AFA00E24047 /* Sheets.swift */,
+			);
+			path = Enums;
+			sourceTree = "<group>";
+		};
+		44BF98112B0927D700E24047 /* CardDetailView */ = {
+			isa = PBXGroup;
+			children = (
+				44BF98122B0927EF00E24047 /* CardDetailViewModelProtocol.swift */,
+				440ECB7D2AF812F800E6BD5C /* CardDetailView.swift */,
+				4453D8A62B09319E001B1C36 /* EditCardView */,
+				440ECB7B2AF812F800E6BD5C /* CreateCardView */,
+			);
+			path = CardDetailView;
+			sourceTree = "<group>";
+		};
+		44C7F9AD2B07394300AFE8DD /* HomeView */ = {
+			isa = PBXGroup;
+			children = (
+				44DDF2FE2AF811CE005D35D8 /* HomeView.swift */,
+				44C7F9AE2B07395100AFE8DD /* HomeViewModel.swift */,
+				44BF98092B088ABD00E24047 /* CardView */,
+			);
+			path = HomeView;
 			sourceTree = "<group>";
 		};
 		44DDF2F02AF811CE005D35D8 = {
@@ -185,10 +240,10 @@
 				4420964D2AFDF4A100E586BB /* Info.plist */,
 				4420964C2AFDF2F700E586BB /* Grocemate.entitlements */,
 				44DDF2FC2AF811CE005D35D8 /* GrocemateApp.swift */,
-				44DDF2FE2AF811CE005D35D8 /* ContentView.swift */,
 				440ECB872AF8130400E6BD5C /* Models */,
 				440ECB7A2AF812F800E6BD5C /* Views */,
 				440ECB752AF812F800E6BD5C /* Effects */,
+				44BF980A2B088AEA00E24047 /* Enums */,
 				440ECB782AF812F800E6BD5C /* Extensions */,
 				44DDF3002AF811D0005D35D8 /* Assets.xcassets */,
 				44DDF3022AF811D0005D35D8 /* Preview Content */,
@@ -231,6 +286,7 @@
 				44DDF2F52AF811CE005D35D8 /* Sources */,
 				44DDF2F62AF811CE005D35D8 /* Frameworks */,
 				44DDF2F72AF811CE005D35D8 /* Resources */,
+				44DDEAF32B0E79F7002AB0CE /* SwiftLint Script */,
 			);
 			buildRules = (
 			);
@@ -346,25 +402,53 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		44DDEAF32B0E79F7002AB0CE /* SwiftLint Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/newInputFile",
+			);
+			name = "SwiftLint Script";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif [[ \"$(uname -m)\" == arm64 ]]; then\n    export PATH=\"/opt/homebrew/bin:$PATH\"\nfi\n\nif which swiftlint > /dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		44DDF2F52AF811CE005D35D8 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				44C7F9AF2B07395100AFE8DD /* HomeViewModel.swift in Sources */,
 				440ECB822AF812F800E6BD5C /* Text-Extensions.swift in Sources */,
-				44DDF2FF2AF811CE005D35D8 /* ContentView.swift in Sources */,
+				44DDF2FF2AF811CE005D35D8 /* HomeView.swift in Sources */,
 				445DCC452AFC579700CA97DE /* Ingredient+CoreDataProperties.swift in Sources */,
 				440ECB942AF8130400E6BD5C /* Ingredient+CoreDataClass.swift in Sources */,
 				440ECB832AF812F800E6BD5C /* CreateCardViewModel.swift in Sources */,
+				44BF98102B088B5A00E24047 /* Image-Extensions.swift in Sources */,
 				440ECB802AF812F800E6BD5C /* HapticEngine.swift in Sources */,
+				44BF980C2B088AFA00E24047 /* Sheets.swift in Sources */,
 				440ECB922AF8130400E6BD5C /* IngredientCard+CoreDataProperties.swift in Sources */,
 				440ECB932AF8130400E6BD5C /* IngredientCard+CoreDataClass.swift in Sources */,
 				44DDF2FD2AF811CE005D35D8 /* GrocemateApp.swift in Sources */,
 				440ECB9C2AF8134A00E6BD5C /* GrocemateDataModel.xcdatamodeld in Sources */,
-				440ECB842AF812F800E6BD5C /* CreateCardView.swift in Sources */,
+				440ECB842AF812F800E6BD5C /* CardDetailView.swift in Sources */,
+				4453D8A82B0931AB001B1C36 /* EditCardViewModel.swift in Sources */,
 				440ECB912AF8130400E6BD5C /* CoreDataController.swift in Sources */,
 				440ECB812AF812F800E6BD5C /* RubberBanding.swift in Sources */,
 				440ECB852AF812F800E6BD5C /* Card.swift in Sources */,
+				44BF98132B0927EF00E24047 /* CardDetailViewModelProtocol.swift in Sources */,
 				440ECB862AF812F800E6BD5C /* SwipeableIngredient.swift in Sources */,
 				440ECB902AF8130400E6BD5C /* IngredientCardStruct.swift in Sources */,
 			);
@@ -440,7 +524,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -455,7 +539,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -503,7 +587,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -512,7 +596,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -540,6 +624,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -571,6 +656,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

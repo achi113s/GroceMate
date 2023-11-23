@@ -7,13 +7,13 @@
 
 import SwiftUI
 
-struct CreateCardView: View {
-    //MARK: - Environment
+struct CardDetailView<ViewModel>: View where ViewModel: CardDetailViewModel {
+    // MARK: - Environment
     @Environment(\.dismiss) var dismiss
-    
-    //MARK: - State
-    @ObservedObject var vm: CreateCardViewModel
-    
+
+    // MARK: - State
+    @ObservedObject var viewModel: ViewModel
+
     var body: some View {
         NavigationStack {
             VStack(spacing: 0) {
@@ -25,23 +25,21 @@ struct CreateCardView: View {
                 .toolbar {
                     toolbarView
                 }
-                .environment(\.editMode, $vm.editMode)
+                .environment(\.editMode, $viewModel.editMode)
                 .scrollContentBackground(.hidden)
-                //                .toolbarBackground(Color("ToolbarBackground"), for: .automatic)
             }
-            
         }
     }
-    
-    init(vm: CreateCardViewModel) {
-        self.vm = vm
+
+    init(viewModel: ViewModel) {
+        self.viewModel = viewModel
     }
-    
-    //MARK: - Subviews
+
+    // MARK: - Subviews
     private var addButton: some View {
         Button {
             withAnimation {
-                vm.addIngredient()
+                viewModel.addIngredient()
             }
         } label: {
             Text("Add Ingredient")
@@ -55,15 +53,15 @@ struct CreateCardView: View {
         }
         .tint(.white)
     }
-    
+
     private var ingredientCardTitle: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 15)
-                .fill(.blue.opacity(0.1))
+                .fill(viewModel.titleError ? .red.opacity(0.2) : .blue.opacity(0.1))
                 .frame(height: 60)
             ZStack(alignment: Alignment(horizontal: .trailing, vertical: .center)) {
-                TextField("Recipe Title", text: $vm.tempCard.title)
-                    .disabled(vm.editMode == .inactive)
+                TextField("Recipe Title", text: $viewModel.card.title)
+                    .disabled(viewModel.editMode == .inactive)
                     /// This adds the x to clear text field when editing.
                     .onAppear { UITextField.appearance().clearButtonMode = .whileEditing }
                     .font(.system(.title3))
@@ -73,20 +71,20 @@ struct CreateCardView: View {
             }
         }
     }
-    
+
     private var ingredientList: some View {
         Group {
             Section(header: Text("Ingredients")) {
-                ForEach($vm.tempIngredients) { $ingredient in
+                ForEach($viewModel.ingredients) { $ingredient in
                     TextField("Ingredient", text: $ingredient.name, axis: .vertical)
-                        .disabled(vm.editMode == .inactive)
+                        .disabled(viewModel.editMode == .inactive)
                         .fontDesign(.rounded)
                         .fontWeight(.semibold)
                 }
-                .onDelete(perform: vm.deleteIngredient)
-                .listRowBackground(Color.gray.opacity(0.1))
+                .onDelete(perform: viewModel.deleteIngredient)
+                .listRowBackground(viewModel.ingredientsError ? Color.red.opacity(0.2) : .gray.opacity(0.1))
             }
-            
+
             Section {
                 EmptyView()
             } footer: {
@@ -98,7 +96,7 @@ struct CreateCardView: View {
             }
         }
     }
-    
+
     private var toolbarView: some ToolbarContent {
         Group {
             ToolbarItem(placement: .topBarLeading) {
@@ -106,16 +104,16 @@ struct CreateCardView: View {
                     .fontDesign(.rounded)
                     .fontWeight(.semibold)
             }
-            
+
             ToolbarItem(placement: .topBarTrailing) {
                 Button {
                     do {
-                        vm.addIngredientsToCard()
-                        try vm.save()
+                        viewModel.addIngredientsToCard()
+                        try viewModel.save()
                     } catch {
                         print("error")
                     }
-                    
+
                     dismiss()
                 } label: {
                     Text("Save")
@@ -129,11 +127,11 @@ struct CreateCardView: View {
 
 #Preview {
     let preview = CoreDataController.shared
-    
+
     let viewToPreview = {
-        CreateCardView(vm: .init(coreDataController: .shared))
+        CardDetailView<CreateCardViewModel>(viewModel: CreateCardViewModel(coreDataController: .shared))
             .environment(\.managedObjectContext, preview.viewContext)
     }()
-    
+
     return viewToPreview
 }

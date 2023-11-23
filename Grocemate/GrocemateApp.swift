@@ -10,10 +10,10 @@ import SwiftUI
 @main
 struct GrocemateApp: App {
     @StateObject private var hapticEngine: HapticEngine = HapticEngine()
-    
+
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            HomeView()
                 .environmentObject(hapticEngine)
                 .environment(\.managedObjectContext, CoreDataController.shared.viewContext)
                 .preferredColorScheme(.light)

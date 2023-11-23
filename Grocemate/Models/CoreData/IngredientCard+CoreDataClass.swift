@@ -18,19 +18,23 @@ public class IngredientCard: NSManagedObject, Identifiable {
     @NSManaged public var timestamp: Date
     @NSManaged public var title: String
     @NSManaged public var ingredients: Set<Ingredient>
-    
+
     public var ingredientsArr: [Ingredient] {
         let arr = Array(ingredients)
         return arr.sorted { lhs, rhs in
             lhs.name < rhs.name
         }
     }
-    
+
     public override func awakeFromInsert() {
         super.awakeFromInsert()
-        
+
         setPrimitiveValue(UUID(), forKey: "id")
         setPrimitiveValue(Date.now, forKey: "timestamp")
         setPrimitiveValue("Card Title", forKey: "title")
+    }
+
+    public func fetchFromCloudKit() async {
+
     }
 }
