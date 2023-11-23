@@ -18,10 +18,10 @@ public class Ingredient: NSManagedObject, Identifiable {
     @NSManaged public var id: UUID?
     @NSManaged public var name: String
     @NSManaged public var ingredientCard: IngredientCard?
-    
+
     public override func awakeFromInsert() {
         super.awakeFromInsert()
-        
+
         setPrimitiveValue(false, forKey: "complete")
         setPrimitiveValue(UUID(), forKey: "id")
         setPrimitiveValue("Ingredient Name", forKey: "name")

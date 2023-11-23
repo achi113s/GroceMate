@@ -9,20 +9,20 @@ import CoreData
 import SwiftUI
 
 struct Card: View {
-    //MARK: - Environment
+    // MARK: - Environment
     @EnvironmentObject var hapticEngine: HapticEngine
     @Environment(\.managedObjectContext) private var moc
-    @EnvironmentObject var vm: HomeViewModel
-    
-    //MARK: - State
+    @EnvironmentObject var homeViewModel: HomeViewModel
+
+    // MARK: - State
     @ObservedObject var ingredientCard: IngredientCard
     @GestureState private var cardLongPressGestureState = CardLongPressGestureState.inactive
-    
-    //MARK: - Properties
+
+    // MARK: - Properties
     private let cardPressedScale: CGSize = CGSize(width: 0.97, height: 0.97)
     private let minimumLongPressDuration: CGFloat = 1.0
     private let pressedAnimationDuration: CGFloat = 0.2
-    
+
     var body: some View {
         VStack(alignment: .leading, spacing: 15) {
             cardTitleView
@@ -49,19 +49,19 @@ struct Card: View {
             value: self.cardLongPressGestureState.isLongPressing
         )
     }
-    
+
     init(ingredientCard: IngredientCard) {
         self._ingredientCard = ObservedObject(initialValue: ingredientCard)
     }
-    
-    //MARK: - Subviews
+
+    // MARK: - Subviews
     private var cardTitleView: some View {
         Text(ingredientCard.title)
             .font(.system(size: 24))
             .fontWeight(.semibold)
             .fontDesign(.rounded)
     }
-    
+
     private var ingredientsView: some View {
         VStack(alignment: .leading, spacing: 10) {
             ForEach(ingredientCard.ingredientsArr) { ingredient in
@@ -75,12 +75,12 @@ struct Card: View {
         }
         .frame(maxWidth: .infinity, alignment: .leading)
     }
-    
+
     private enum CardLongPressGestureState {
         case inactive
         case pressing
         case finishedLongPress
-        
+
         var isActive: Bool {
             switch self {
             case .inactive:
@@ -89,7 +89,7 @@ struct Card: View {
                 return true
             }
         }
-        
+
         var isLongPressing: Bool {
             switch self {
             case .inactive, .finishedLongPress:
@@ -99,20 +99,20 @@ struct Card: View {
             }
         }
     }
-    
+
     private var cardLongPressGesture: some Gesture {
         LongPressGesture(minimumDuration: minimumLongPressDuration)
-            .updating($cardLongPressGestureState, body: { currentState, gestureState, transaction in
+            .updating($cardLongPressGestureState, body: { _, gestureState, _ in
                 gestureState = .pressing
             })
-            .onEnded { finished in
+            .onEnded { _ in
                 hapticEngine.playHaptic(.longPressSuccess)
                 /// This is the only reason we need the main view model in the environment.
                 /// Maybe there is a better way to show a confirmation dialog and
                 /// keep track of the selected ingredient card? This method
                 /// introduces a bit of coupling between Card and HomeView.
-                vm.presentConfirmationDialog = true
-                vm.selectedCard = ingredientCard
+                homeViewModel.presentConfirmationDialog = true
+                homeViewModel.selectedCard = ingredientCard
             }
     }
 }

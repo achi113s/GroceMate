@@ -9,13 +9,20 @@ import SwiftUI
 
 final class HomeViewModel: ObservableObject {
     @Published var path = NavigationPath()
-    
+
     @Published var sheet: Sheets?
-    
-    @Published var presentCreateCardView: Bool = false
+
     @Published var presentConfirmationDialog: Bool = false
     @Published var presentPhotosPicker: Bool = false
     @Published var presentRecognitionInProgress: Bool = false
-    
+
+    @Published var deleteAlert = false
+
     @Published var selectedCard: IngredientCard?
+
+    public func deleteSelectedCard() {
+        guard let card = selectedCard else { return }
+
+        print("delete \(card.title)")
+    }
 }

@@ -8,6 +8,6 @@
 import Foundation
 
 enum Sheets: String, Identifiable {
-    case cameraView, imageROI, editCard
+    case cameraView, imageROI, editCard, createCard
     var id: String { rawValue }
 }

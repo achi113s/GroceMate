@@ -8,36 +8,53 @@
 import SwiftUI
 
 struct HomeView: View {
-    //MARK: - State
-    @StateObject var vm = HomeViewModel()
-    
-    //MARK: - Properties
+    // MARK: - State
+    @StateObject var homeViewModel = HomeViewModel()
+
+    // MARK: - Properties
     @FetchRequest(fetchRequest: IngredientCard.all()) private var ingredientCards
     var coreDataController = CoreDataController.shared
-    
+
     var body: some View {
-        NavigationStack(path: $vm.path) {
+        NavigationStack(path: $homeViewModel.path) {
             mainView
                 .toolbar {
                     mainViewToolbar
                 }
-                
         }
-        .sheet(isPresented: $vm.presentCreateCardView, content: {
-            CardDetailView<CreateCardViewModel>(vm: CreateCardViewModel(coreDataController: .shared))
-        })
-        .sheet(item: $vm.sheet, content: makeSheet)
-        .confirmationDialog("Add Options", isPresented: $vm.presentConfirmationDialog) {
-            Button  {
-                vm.sheet = .editCard
+        .sheet(item: $homeViewModel.sheet, content: makeSheet)
+        .confirmationDialog("Card Options", isPresented: $homeViewModel.presentConfirmationDialog) {
+            Button {
+                homeViewModel.sheet = .editCard
             } label: {
-                Text("Edit Ingredients Card")
+                Text("Edit Card")
+            }
+
+            Button(role: .destructive) {
+                homeViewModel.deleteAlert = true
+            } label: {
+                Text("Delete")
             }
         }
-        .environmentObject(vm)
+        .alert("Delete Card", isPresented: $homeViewModel.deleteAlert) {
+            Button(role: .cancel) {
+
+            } label: {
+                Text("Cancel")
+            }
+
+            Button {
+                homeViewModel.deleteSelectedCard()
+            } label: {
+                Text("Delete")
+            }
+        } message: {
+            Text("Are you sure you want to delete this card?")
+        }
+        .environmentObject(homeViewModel)
     }
-    
-    //MARK: - Subviews
+
+    // MARK: - Subviews
     private var mainView: some View {
         ScrollView(.vertical) {
             VStack {
@@ -51,7 +68,7 @@ struct HomeView: View {
             }
         }
     }
-    
+
     //    private var showCreateCardViewButton: some View {
     //        Button {
     //            showCreateCardView = true
@@ -67,7 +84,7 @@ struct HomeView: View {
     //        }
     //        .tint(.white)
     //    }
-    
+
     private var emptyIngredientCardsView: some View {
         Text("Tap the plus to get started!")
             .font(.system(size: 30))
@@ -76,7 +93,7 @@ struct HomeView: View {
             .frame(width: 300)
             .frame(minHeight: 600)
     }
-    
+
     private var ingredientCardsView: some View {
         LazyVStack(alignment: .center) {
             ForEach(ingredientCards) { ingredientCard in
@@ -85,7 +102,7 @@ struct HomeView: View {
             }
         }
     }
-    
+
     private var mainViewToolbar: some ToolbarContent {
         Group {
             ToolbarItem(placement: .navigationBarLeading) {
@@ -94,29 +111,29 @@ struct HomeView: View {
                     .font(.system(size: 32, weight: .semibold, design: .rounded))
                     .foregroundStyle(.blue)
             }
-            
+
             ToolbarItem(placement: .navigationBarTrailing) {
                 Menu {
                     Button {
-                        vm.sheet = .cameraView
+                        homeViewModel.sheet = .cameraView
                     } label: {
                         HStack {
                             Text("Take a Picture")
                             Image(systemName: "camera")
                         }
                     }
-                    
+
                     Button {
-                        vm.presentPhotosPicker = true
+                        homeViewModel.presentPhotosPicker = true
                     } label: {
                         HStack {
                             Text("Select from Photos")
                             Image(systemName: "photo.stack")
                         }
                     }
-                    
+
                     Button {
-                        vm.presentCreateCardView = true
+                        homeViewModel.sheet = .createCard
                     } label: {
                         HStack {
                             Text("Manually Add Card")
@@ -129,10 +146,10 @@ struct HomeView: View {
                         .accessibilityLabel("Add a new card.")
                 }
             }
-            
+
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button {
-                    vm.path.append("Settings")
+                    homeViewModel.path.append("Settings")
                 } label: {
                     Image(systemName: "gear")
                         .font(.system(size: 16, weight: .semibold))
@@ -140,7 +157,7 @@ struct HomeView: View {
             }
         }
     }
-    
+
     @ViewBuilder private func makeSheet(_ sheet: Sheets) -> some View {
         switch sheet {
         case .cameraView:
@@ -152,16 +169,23 @@ struct HomeView: View {
 //                ImageWithROI(image: image)
 //            }
         case .editCard:
-            if let selectedCard = vm.selectedCard {
-                CardDetailView<EditCardViewModel>(vm: EditCardViewModel(coreDataController: .shared, ingredientCard: selectedCard))
+            if let selectedCard = homeViewModel.selectedCard {
+                CardDetailView<EditCardViewModel>(viewModel:
+                                                    EditCardViewModel(
+                                                        coreDataController: .shared,
+                                                        ingredientCard: selectedCard
+                                                    )
+                )
             }
+        case .createCard:
+            CardDetailView<CreateCardViewModel>(viewModel: CreateCardViewModel(coreDataController: .shared))
         }
     }
 }
 
 #Preview("Main View with Data") {
     let preview = CoreDataController.shared
-    
+
     let viewToPreview = {
         HomeView()
             .environment(\.managedObjectContext, preview.viewContext)
@@ -169,13 +193,13 @@ struct HomeView: View {
                 IngredientCard.makePreview(count: 2, in: preview.viewContext)
             }
     }()
-    
+
     return viewToPreview
 }
 
 #Preview("Empty Main View") {
     let preview = CoreDataController.shared
-    
+
     let viewToPreview = {
         HomeView()
             .environment(\.managedObjectContext, preview.viewContext)
@@ -183,6 +207,6 @@ struct HomeView: View {
                 IngredientCard.makePreview(count: 0, in: preview.viewContext)
             }
     }()
-    
+
     return viewToPreview
 }
