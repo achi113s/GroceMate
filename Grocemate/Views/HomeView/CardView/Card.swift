@@ -108,7 +108,7 @@ struct Card: View {
             .onEnded { _ in
 //                hapticEngine.playHaptic(.longPressSuccess)
                 hapticEngine.asyncPlayHaptic(.longPressSuccess)
-                
+
                 /// This is the only reason we need the main view model in the environment.
                 /// Maybe there is a better way to show a confirmation dialog and
                 /// keep track of the selected ingredient card? This method

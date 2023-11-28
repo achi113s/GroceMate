@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum Sheets: String, Identifiable {
+public enum Sheets: String, Identifiable {
     case cameraView, imageROI, editCard, createCard
-    var id: String { rawValue }
+    public var id: String { rawValue }
 }

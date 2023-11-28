@@ -8,11 +8,6 @@
 import CoreHaptics
 import SwiftUI
 
-public enum HapticType {
-    case swipeSuccess
-    case longPressSuccess
-}
-
 /// A class for playing haptics. Using a class allows to create only one
 /// haptic engine for the whole app.
 final class HapticEngine: ObservableObject {
@@ -26,33 +21,6 @@ final class HapticEngine: ObservableObject {
         self.hapticEngine = nil
         self.hapticEngineWasStopped = false
     }
-
-    lazy var swipeSuccessHaptic: [CHHapticEvent] = {
-        var events = [CHHapticEvent]()
-
-        let intensity = CHHapticEventParameter(parameterID: .hapticIntensity, value: 1)
-        let sharpness = CHHapticEventParameter(parameterID: .hapticSharpness, value: 1)
-        let event = CHHapticEvent(eventType: .hapticTransient, parameters: [intensity, sharpness], relativeTime: 0)
-        events.append(event)
-
-        return events
-    }()
-
-    lazy var longPressSuccessHaptic: [CHHapticEvent] = {
-        var events = [CHHapticEvent]()
-
-        var intensity = CHHapticEventParameter(parameterID: .hapticIntensity, value: 1)
-        var sharpness = CHHapticEventParameter(parameterID: .hapticSharpness, value: 1)
-        let event1 = CHHapticEvent(eventType: .hapticTransient, parameters: [intensity, sharpness], relativeTime: 0.0)
-        events.append(event1)
-
-        intensity = CHHapticEventParameter(parameterID: .hapticIntensity, value: 2)
-        sharpness = CHHapticEventParameter(parameterID: .hapticSharpness, value: 5)
-        let event2 = CHHapticEvent(eventType: .hapticTransient, parameters: [intensity, sharpness], relativeTime: 0.1)
-        events.append(event2)
-
-        return events
-    }()
 
     // MARK: - Private Methods
     /// A synchronous function to start the haptic engine.
@@ -162,9 +130,9 @@ final class HapticEngine: ObservableObject {
 
                 switch hapticType {
                 case .swipeSuccess:
-                    events = self.swipeSuccessHaptic
+                    events = swipeSuccessHaptic
                 case .longPressSuccess:
-                    events = self.longPressSuccessHaptic
+                    events = longPressSuccessHaptic
                 }
 
                 let pattern = try CHHapticPattern(events: events, parameters: [])
