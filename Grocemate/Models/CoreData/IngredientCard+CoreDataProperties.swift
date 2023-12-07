@@ -19,9 +19,17 @@ extension IngredientCard {
     static func all() -> NSFetchRequest<IngredientCard> {
         let request: NSFetchRequest<IngredientCard> = ingredientCardsFetchRequest
         request.sortDescriptors = [
-            NSSortDescriptor(key: "timestamp", ascending: false)
+            NSSortDescriptor(key: "title", ascending: false)
         ]
         return request
+    }
+
+    static func filter(_ query: String) -> NSPredicate {
+        query.isEmpty ? NSPredicate(value: true) : NSPredicate(format: "title CONTAINS[cd] %@", query)
+    }
+
+    static func sortBy(_ key: SortIngredientCards) -> NSSortDescriptor {
+        NSSortDescriptor(key: key.rawValue, ascending: key.ascending)
     }
 }
 

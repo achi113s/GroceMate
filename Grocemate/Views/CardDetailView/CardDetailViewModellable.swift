@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-protocol CardDetailViewModel: ObservableObject {
+protocol CardDetailViewModellable: ObservableObject {
     var editMode: EditMode { get set }
     var titleError: Bool { get set }
     var ingredientsError: Bool { get set }

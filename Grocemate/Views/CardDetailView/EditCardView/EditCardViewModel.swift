@@ -9,7 +9,7 @@ import CoreData
 import Foundation
 import SwiftUI
 
-final class EditCardViewModel: ObservableObject, CardDetailViewModel {
+final class EditCardViewModel: ObservableObject, CardDetailViewModellable {
     // MARK: - Properties
     @Published var editMode: EditMode = .active
     @Published var titleError: Bool = false
@@ -79,16 +79,9 @@ final class EditCardViewModel: ObservableObject, CardDetailViewModel {
         }
 
         do {
-            try saveToCoreData()
+            try CoreDataController.shared.persist(in: context)
         } catch {
             print("An error occurred saving the card: \(error.localizedDescription)")
         }
-    }
-
-    public func saveToCoreData() throws {
-        guard self.context.hasChanges else { return }
-
-        try self.context.save()
-        print("Saved")
     }
 }

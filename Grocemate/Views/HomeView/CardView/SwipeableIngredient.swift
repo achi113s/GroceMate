@@ -97,7 +97,8 @@ struct SwipeableIngredient: View {
                             self.progress = 0.0
                         }
 
-                        hapticEngine.playHaptic(.swipeSuccess)
+//                        hapticEngine.playHaptic(.swipeSuccess)
+                        hapticEngine.asyncPlayHaptic(.swipeSuccess)
                     }
                 } else {
                     /// If the full drag wasn't completed and the item

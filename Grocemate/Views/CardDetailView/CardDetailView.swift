@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CardDetailView<ViewModel>: View where ViewModel: CardDetailViewModel {
+struct CardDetailView<ViewModel: CardDetailViewModellable>: View {
     // MARK: - Environment
     @Environment(\.dismiss) var dismiss
 

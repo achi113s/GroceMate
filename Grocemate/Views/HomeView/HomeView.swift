@@ -9,7 +9,7 @@ import SwiftUI
 
 struct HomeView: View {
     // MARK: - State
-    @StateObject var homeViewModel = HomeViewModel()
+    @StateObject var homeViewModel = HomeViewModel(coreDataController: CoreDataController.shared)
 
     // MARK: - Properties
     @FetchRequest(fetchRequest: IngredientCard.all()) private var ingredientCards
@@ -44,7 +44,13 @@ struct HomeView: View {
             }
 
             Button {
-                homeViewModel.deleteSelectedCard()
+                guard let selectedCard = homeViewModel.selectedCard else { return }
+
+                do {
+                    try coreDataController.delete(selectedCard, in: coreDataController.viewContext)
+                } catch {
+                    print("Error deleting card: \(error.localizedDescription)")
+                }
             } label: {
                 Text("Delete")
             }
@@ -67,6 +73,10 @@ struct HomeView: View {
                 }
             }
         }
+//        .searchable(text: $homeViewModel.query, placement: .toolbar)
+//        .onChange(of: homeViewModel.query) { _ in
+//            ingredientCards.nsPredicate = IngredientCard.filter(homeViewModel.query)
+//        }
     }
 
     //    private var showCreateCardViewButton: some View {
@@ -86,7 +96,7 @@ struct HomeView: View {
     //    }
 
     private var emptyIngredientCardsView: some View {
-        Text("Tap the plus to get started!")
+        Text("Tap the plus to get started! ☝️")
             .font(.system(size: 30))
             .fontWeight(.semibold)
             .fontDesign(.rounded)
@@ -148,6 +158,27 @@ struct HomeView: View {
             }
 
             ToolbarItem(placement: .navigationBarTrailing) {
+                Menu {
+                    Section("Sort By") {
+                        Button {
+                            withAnimation {
+                                ingredientCards.nsSortDescriptors = [IngredientCard.sortBy(.timestampAsc)]
+                            }
+                        } label: {
+                            HStack {
+                                Text("Date, Ascending")
+                                Image(systemName: "character.cursor.ibeam")
+                            }
+                        }
+                    }
+                } label: {
+                    Image(systemName: "arrow.up.and.down.text.horizontal")
+                        .font(.system(size: 16, weight: .semibold))
+                }
+
+            }
+
+            ToolbarItem(placement: .navigationBarTrailing) {
                 Button {
                     homeViewModel.path.append("Settings")
                 } label: {
@@ -162,12 +193,12 @@ struct HomeView: View {
         switch sheet {
         case .cameraView:
             EmptyView()
-//            CameraView()
+            //            CameraView()
         case .imageROI:
             EmptyView()
-//            if let image = selectedImage {
-//                ImageWithROI(image: image)
-//            }
+            //            if let image = selectedImage {
+            //                ImageWithROI(image: image)
+            //            }
         case .editCard:
             if let selectedCard = homeViewModel.selectedCard {
                 CardDetailView<EditCardViewModel>(viewModel:

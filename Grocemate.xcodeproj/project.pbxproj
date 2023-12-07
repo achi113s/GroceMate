@@ -14,18 +14,20 @@
 		440ECB842AF812F800E6BD5C /* CardDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440ECB7D2AF812F800E6BD5C /* CardDetailView.swift */; };
 		440ECB852AF812F800E6BD5C /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440ECB7E2AF812F800E6BD5C /* Card.swift */; };
 		440ECB862AF812F800E6BD5C /* SwipeableIngredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440ECB7F2AF812F800E6BD5C /* SwipeableIngredient.swift */; };
-		440ECB902AF8130400E6BD5C /* IngredientCardStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440ECB882AF8130400E6BD5C /* IngredientCardStruct.swift */; };
 		440ECB912AF8130400E6BD5C /* CoreDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440ECB8A2AF8130400E6BD5C /* CoreDataController.swift */; };
 		440ECB922AF8130400E6BD5C /* IngredientCard+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440ECB8B2AF8130400E6BD5C /* IngredientCard+CoreDataProperties.swift */; };
 		440ECB932AF8130400E6BD5C /* IngredientCard+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440ECB8C2AF8130400E6BD5C /* IngredientCard+CoreDataClass.swift */; };
 		440ECB942AF8130400E6BD5C /* Ingredient+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440ECB8D2AF8130400E6BD5C /* Ingredient+CoreDataClass.swift */; };
 		440ECB9C2AF8134A00E6BD5C /* GrocemateDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 440ECB9A2AF8134A00E6BD5C /* GrocemateDataModel.xcdatamodeld */; };
+		4441677A2B20364C005AF6BC /* EditCardViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444167792B20364C005AF6BC /* EditCardViewModelTests.swift */; };
 		4453D8A82B0931AB001B1C36 /* EditCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4453D8A72B0931AB001B1C36 /* EditCardViewModel.swift */; };
 		445DCC452AFC579700CA97DE /* Ingredient+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445DCC442AFC579700CA97DE /* Ingredient+CoreDataProperties.swift */; };
 		44BF980C2B088AFA00E24047 /* Sheets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44BF980B2B088AFA00E24047 /* Sheets.swift */; };
 		44BF98102B088B5A00E24047 /* Image-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44BF980F2B088B5A00E24047 /* Image-Extensions.swift */; };
-		44BF98132B0927EF00E24047 /* CardDetailViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44BF98122B0927EF00E24047 /* CardDetailViewModelProtocol.swift */; };
+		44BF98132B0927EF00E24047 /* CardDetailViewModellable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44BF98122B0927EF00E24047 /* CardDetailViewModellable.swift */; };
 		44C7F9AF2B07395100AFE8DD /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C7F9AE2B07395100AFE8DD /* HomeViewModel.swift */; };
+		44DDEAF72B0F2290002AB0CE /* HapticType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DDEAF62B0F2290002AB0CE /* HapticType.swift */; };
+		44DDEAF92B0F22D9002AB0CE /* HapticDefinitions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DDEAF82B0F22D9002AB0CE /* HapticDefinitions.swift */; };
 		44DDF2FD2AF811CE005D35D8 /* GrocemateApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DDF2FC2AF811CE005D35D8 /* GrocemateApp.swift */; };
 		44DDF2FF2AF811CE005D35D8 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DDF2FE2AF811CE005D35D8 /* HomeView.swift */; };
 		44DDF3012AF811D0005D35D8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 44DDF3002AF811D0005D35D8 /* Assets.xcassets */; };
@@ -60,7 +62,6 @@
 		440ECB7D2AF812F800E6BD5C /* CardDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardDetailView.swift; sourceTree = "<group>"; };
 		440ECB7E2AF812F800E6BD5C /* Card.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		440ECB7F2AF812F800E6BD5C /* SwipeableIngredient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeableIngredient.swift; sourceTree = "<group>"; };
-		440ECB882AF8130400E6BD5C /* IngredientCardStruct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IngredientCardStruct.swift; sourceTree = "<group>"; };
 		440ECB8A2AF8130400E6BD5C /* CoreDataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataController.swift; sourceTree = "<group>"; };
 		440ECB8B2AF8130400E6BD5C /* IngredientCard+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "IngredientCard+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		440ECB8C2AF8130400E6BD5C /* IngredientCard+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "IngredientCard+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -68,12 +69,15 @@
 		440ECB9B2AF8134A00E6BD5C /* GrocemateDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GrocemateDataModel.xcdatamodel; sourceTree = "<group>"; };
 		4420964C2AFDF2F700E586BB /* Grocemate.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Grocemate.entitlements; sourceTree = "<group>"; };
 		4420964D2AFDF4A100E586BB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		444167792B20364C005AF6BC /* EditCardViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCardViewModelTests.swift; sourceTree = "<group>"; };
 		4453D8A72B0931AB001B1C36 /* EditCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCardViewModel.swift; sourceTree = "<group>"; };
 		445DCC442AFC579700CA97DE /* Ingredient+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ingredient+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		44BF980B2B088AFA00E24047 /* Sheets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sheets.swift; sourceTree = "<group>"; };
 		44BF980F2B088B5A00E24047 /* Image-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image-Extensions.swift"; sourceTree = "<group>"; };
-		44BF98122B0927EF00E24047 /* CardDetailViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailViewModelProtocol.swift; sourceTree = "<group>"; };
+		44BF98122B0927EF00E24047 /* CardDetailViewModellable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailViewModellable.swift; sourceTree = "<group>"; };
 		44C7F9AE2B07395100AFE8DD /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		44DDEAF62B0F2290002AB0CE /* HapticType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticType.swift; sourceTree = "<group>"; };
+		44DDEAF82B0F22D9002AB0CE /* HapticDefinitions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticDefinitions.swift; sourceTree = "<group>"; };
 		44DDF2F92AF811CE005D35D8 /* Grocemate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Grocemate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		44DDF2FC2AF811CE005D35D8 /* GrocemateApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrocemateApp.swift; sourceTree = "<group>"; };
 		44DDF2FE2AF811CE005D35D8 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -116,6 +120,7 @@
 			children = (
 				440ECB762AF812F800E6BD5C /* HapticEngine.swift */,
 				440ECB772AF812F800E6BD5C /* RubberBanding.swift */,
+				44DDEAF82B0F22D9002AB0CE /* HapticDefinitions.swift */,
 			);
 			path = Effects;
 			sourceTree = "<group>";
@@ -150,7 +155,6 @@
 			isa = PBXGroup;
 			children = (
 				440ECB892AF8130400E6BD5C /* CoreData */,
-				440ECB882AF8130400E6BD5C /* IngredientCardStruct.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -189,6 +193,7 @@
 			isa = PBXGroup;
 			children = (
 				44BF980B2B088AFA00E24047 /* Sheets.swift */,
+				44DDEAF62B0F2290002AB0CE /* HapticType.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -196,7 +201,7 @@
 		44BF98112B0927D700E24047 /* CardDetailView */ = {
 			isa = PBXGroup;
 			children = (
-				44BF98122B0927EF00E24047 /* CardDetailViewModelProtocol.swift */,
+				44BF98122B0927EF00E24047 /* CardDetailViewModellable.swift */,
 				440ECB7D2AF812F800E6BD5C /* CardDetailView.swift */,
 				4453D8A62B09319E001B1C36 /* EditCardView */,
 				440ECB7B2AF812F800E6BD5C /* CreateCardView */,
@@ -263,6 +268,7 @@
 			isa = PBXGroup;
 			children = (
 				44DDF30D2AF811D0005D35D8 /* GrocemateTests.swift */,
+				444167792B20364C005AF6BC /* EditCardViewModelTests.swift */,
 			);
 			path = GrocemateTests;
 			sourceTree = "<group>";
@@ -432,6 +438,7 @@
 			files = (
 				44C7F9AF2B07395100AFE8DD /* HomeViewModel.swift in Sources */,
 				440ECB822AF812F800E6BD5C /* Text-Extensions.swift in Sources */,
+				44DDEAF72B0F2290002AB0CE /* HapticType.swift in Sources */,
 				44DDF2FF2AF811CE005D35D8 /* HomeView.swift in Sources */,
 				445DCC452AFC579700CA97DE /* Ingredient+CoreDataProperties.swift in Sources */,
 				440ECB942AF8130400E6BD5C /* Ingredient+CoreDataClass.swift in Sources */,
@@ -439,6 +446,7 @@
 				44BF98102B088B5A00E24047 /* Image-Extensions.swift in Sources */,
 				440ECB802AF812F800E6BD5C /* HapticEngine.swift in Sources */,
 				44BF980C2B088AFA00E24047 /* Sheets.swift in Sources */,
+				44DDEAF92B0F22D9002AB0CE /* HapticDefinitions.swift in Sources */,
 				440ECB922AF8130400E6BD5C /* IngredientCard+CoreDataProperties.swift in Sources */,
 				440ECB932AF8130400E6BD5C /* IngredientCard+CoreDataClass.swift in Sources */,
 				44DDF2FD2AF811CE005D35D8 /* GrocemateApp.swift in Sources */,
@@ -448,9 +456,8 @@
 				440ECB912AF8130400E6BD5C /* CoreDataController.swift in Sources */,
 				440ECB812AF812F800E6BD5C /* RubberBanding.swift in Sources */,
 				440ECB852AF812F800E6BD5C /* Card.swift in Sources */,
-				44BF98132B0927EF00E24047 /* CardDetailViewModelProtocol.swift in Sources */,
+				44BF98132B0927EF00E24047 /* CardDetailViewModellable.swift in Sources */,
 				440ECB862AF812F800E6BD5C /* SwipeableIngredient.swift in Sources */,
-				440ECB902AF8130400E6BD5C /* IngredientCardStruct.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -458,6 +465,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4441677A2B20364C005AF6BC /* EditCardViewModelTests.swift in Sources */,
 				44DDF30E2AF811D0005D35D8 /* GrocemateTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

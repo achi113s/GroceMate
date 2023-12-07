@@ -5,7 +5,30 @@
 //  Created by Giorgio Latour on 11/17/23.
 //
 
+import CoreData
 import SwiftUI
+
+enum SortIngredientCards {
+    case timestampAsc, timestampDesc, titleAsc, titleDesc
+
+    var rawValue: String {
+        switch self {
+        case .timestampAsc, .timestampDesc:
+            return "timestamp"
+        case .titleAsc, .titleDesc:
+            return "title"
+        }
+    }
+
+    var ascending: Bool {
+        switch self {
+        case .timestampAsc, .titleAsc:
+            return true
+        case .timestampDesc, .titleDesc:
+            return false
+        }
+    }
+}
 
 final class HomeViewModel: ObservableObject {
     @Published var path = NavigationPath()
@@ -20,9 +43,12 @@ final class HomeViewModel: ObservableObject {
 
     @Published var selectedCard: IngredientCard?
 
-    public func deleteSelectedCard() {
-        guard let card = selectedCard else { return }
+    @Published var query: String = ""
+    @Published var sortBy: SortIngredientCards = .timestampAsc
 
-        print("delete \(card.title)")
+    private let context: NSManagedObjectContext
+
+    init(coreDataController: CoreDataController) {
+        self.context = coreDataController.viewContext
     }
 }
