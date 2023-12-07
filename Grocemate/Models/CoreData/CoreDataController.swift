@@ -64,6 +64,34 @@ final class CoreDataController {
 //        }
 //        #endif
     }
+
+    func exists(
+        _ card: IngredientCard,
+        in context: NSManagedObjectContext
+    ) -> IngredientCard? {
+        try? context.existingObject(with: card.objectID) as? IngredientCard
+    }
+
+    func delete(_ card: IngredientCard,
+                in context: NSManagedObjectContext) throws {
+        if let existingCard = exists(card, in: context) {
+            /// Bug: Does not delete with an animation.
+            context.delete(existingCard)
+
+            /// Task to delete from context on background thread.
+            Task(priority: .background) {
+                try await context.perform {
+                    try context.save()
+                }
+            }
+        }
+    }
+
+    func persist(in context: NSManagedObjectContext) throws {
+        if context.hasChanges {
+            try context.save()
+        }
+    }
 }
 
 extension EnvironmentValues {

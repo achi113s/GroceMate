@@ -13,7 +13,7 @@ struct HomeView: View {
 
     // MARK: - Properties
     @FetchRequest(fetchRequest: IngredientCard.all()) private var ingredientCards
-    //    var coreDataController = CoreDataController.shared
+    var coreDataController = CoreDataController.shared
 
     var body: some View {
         NavigationStack(path: $homeViewModel.path) {
@@ -44,8 +44,10 @@ struct HomeView: View {
             }
 
             Button {
+                guard let selectedCard = homeViewModel.selectedCard else { return }
+
                 do {
-                    try homeViewModel.deleteSelectedCard()
+                    try coreDataController.delete(selectedCard, in: coreDataController.viewContext)
                 } catch {
                     print("Error deleting card: \(error.localizedDescription)")
                 }
@@ -71,6 +73,10 @@ struct HomeView: View {
                 }
             }
         }
+//        .searchable(text: $homeViewModel.query, placement: .toolbar)
+//        .onChange(of: homeViewModel.query) { _ in
+//            ingredientCards.nsPredicate = IngredientCard.filter(homeViewModel.query)
+//        }
     }
 
     //    private var showCreateCardViewButton: some View {
@@ -149,6 +155,27 @@ struct HomeView: View {
                         .font(.system(size: 16, weight: .semibold))
                         .accessibilityLabel("Add a new card.")
                 }
+            }
+
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Menu {
+                    Section("Sort By") {
+                        Button {
+                            withAnimation {
+                                ingredientCards.nsSortDescriptors = [IngredientCard.sortBy(.timestampAsc)]
+                            }
+                        } label: {
+                            HStack {
+                                Text("Date, Ascending")
+                                Image(systemName: "character.cursor.ibeam")
+                            }
+                        }
+                    }
+                } label: {
+                    Image(systemName: "arrow.up.and.down.text.horizontal")
+                        .font(.system(size: 16, weight: .semibold))
+                }
+
             }
 
             ToolbarItem(placement: .navigationBarTrailing) {

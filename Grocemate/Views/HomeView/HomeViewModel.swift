@@ -8,6 +8,28 @@
 import CoreData
 import SwiftUI
 
+enum SortIngredientCards {
+    case timestampAsc, timestampDesc, titleAsc, titleDesc
+
+    var rawValue: String {
+        switch self {
+        case .timestampAsc, .timestampDesc:
+            return "timestamp"
+        case .titleAsc, .titleDesc:
+            return "title"
+        }
+    }
+
+    var ascending: Bool {
+        switch self {
+        case .timestampAsc, .titleAsc:
+            return true
+        case .timestampDesc, .titleDesc:
+            return false
+        }
+    }
+}
+
 final class HomeViewModel: ObservableObject {
     @Published var path = NavigationPath()
 
@@ -21,24 +43,12 @@ final class HomeViewModel: ObservableObject {
 
     @Published var selectedCard: IngredientCard?
 
+    @Published var query: String = ""
+    @Published var sortBy: SortIngredientCards = .timestampAsc
+
     private let context: NSManagedObjectContext
 
     init(coreDataController: CoreDataController) {
         self.context = coreDataController.viewContext
-    }
-
-    public func deleteSelectedCard() throws {
-        guard let card = selectedCard else { return }
-
-        /// Bug: Does not delete with an animation.
-        let existingIngredientCard = try context.existingObject(with: card.objectID)
-        context.delete(existingIngredientCard)
-
-        /// Task to delete from context on background thread.
-        Task(priority: .background) {
-            try await context.perform {
-                try self.context.save()
-            }
-        }
     }
 }

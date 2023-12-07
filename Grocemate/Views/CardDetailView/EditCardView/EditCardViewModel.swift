@@ -79,16 +79,9 @@ final class EditCardViewModel: ObservableObject, CardDetailViewModellable {
         }
 
         do {
-            try saveToCoreData()
+            try CoreDataController.shared.persist(in: context)
         } catch {
             print("An error occurred saving the card: \(error.localizedDescription)")
         }
-    }
-
-    public func saveToCoreData() throws {
-        guard self.context.hasChanges else { return }
-
-        try self.context.save()
-        print("Saved")
     }
 }
