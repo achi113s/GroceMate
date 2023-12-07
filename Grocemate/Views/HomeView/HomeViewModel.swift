@@ -5,6 +5,7 @@
 //  Created by Giorgio Latour on 11/17/23.
 //
 
+import CoreData
 import SwiftUI
 
 final class HomeViewModel: ObservableObject {
@@ -20,9 +21,24 @@ final class HomeViewModel: ObservableObject {
 
     @Published var selectedCard: IngredientCard?
 
-    public func deleteSelectedCard() {
+    private let context: NSManagedObjectContext
+
+    init(coreDataController: CoreDataController) {
+        self.context = coreDataController.viewContext
+    }
+
+    public func deleteSelectedCard() throws {
         guard let card = selectedCard else { return }
 
-        print("delete \(card.title)")
+        /// Bug: Does not delete with an animation.
+        let existingIngredientCard = try context.existingObject(with: card.objectID)
+        context.delete(existingIngredientCard)
+
+        /// Task to delete from context on background thread.
+        Task(priority: .background) {
+            try await context.perform {
+                try self.context.save()
+            }
+        }
     }
 }

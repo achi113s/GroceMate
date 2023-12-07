@@ -9,11 +9,11 @@ import SwiftUI
 
 struct HomeView: View {
     // MARK: - State
-    @StateObject var homeViewModel = HomeViewModel()
+    @StateObject var homeViewModel = HomeViewModel(coreDataController: CoreDataController.shared)
 
     // MARK: - Properties
     @FetchRequest(fetchRequest: IngredientCard.all()) private var ingredientCards
-    var coreDataController = CoreDataController.shared
+    //    var coreDataController = CoreDataController.shared
 
     var body: some View {
         NavigationStack(path: $homeViewModel.path) {
@@ -44,7 +44,11 @@ struct HomeView: View {
             }
 
             Button {
-                homeViewModel.deleteSelectedCard()
+                do {
+                    try homeViewModel.deleteSelectedCard()
+                } catch {
+                    print("Error deleting card: \(error.localizedDescription)")
+                }
             } label: {
                 Text("Delete")
             }
@@ -86,7 +90,7 @@ struct HomeView: View {
     //    }
 
     private var emptyIngredientCardsView: some View {
-        Text("Tap the plus to get started!")
+        Text("Tap the plus to get started! ☝️")
             .font(.system(size: 30))
             .fontWeight(.semibold)
             .fontDesign(.rounded)
@@ -162,12 +166,12 @@ struct HomeView: View {
         switch sheet {
         case .cameraView:
             EmptyView()
-//            CameraView()
+            //            CameraView()
         case .imageROI:
             EmptyView()
-//            if let image = selectedImage {
-//                ImageWithROI(image: image)
-//            }
+            //            if let image = selectedImage {
+            //                ImageWithROI(image: image)
+            //            }
         case .editCard:
             if let selectedCard = homeViewModel.selectedCard {
                 CardDetailView<EditCardViewModel>(viewModel:

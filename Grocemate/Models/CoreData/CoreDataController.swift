@@ -14,7 +14,8 @@ final class CoreDataController {
     /// Create a singleton instance of this class.
     static let shared = CoreDataController()
 
-    private let persistentContainer: NSPersistentCloudKitContainer
+//    private let persistentContainer: NSPersistentCloudKitContainer
+    private let persistentContainer: NSPersistentContainer
 
     /// The main view context.
     var viewContext: NSManagedObjectContext {
@@ -29,7 +30,7 @@ final class CoreDataController {
 
     private init() {
         /// Set up the model, context, and store all at once with an NSPersistentContainer.
-        persistentContainer = NSPersistentCloudKitContainer(name: "GrocemateDataModel")
+        persistentContainer = NSPersistentContainer(name: "GrocemateDataModel")
 
         /// Are we in an Xcode preview? If yes, make the persistent container in memory.
         if EnvironmentValues.isPreview {
@@ -50,18 +51,18 @@ final class CoreDataController {
             }
         }
 
-        // Only initialize the schema when building the app with the
-        // Debug build configuration.
-        #if DEBUG
-        do {
-            // Use the container to initialize the development schema.
-            print("Initializing CloudKit schema.")
-            try persistentContainer.initializeCloudKitSchema(options: [])
-        } catch {
-            // Handle any errors.
-            print("An error occurred when initializing the CloudKit schema: \(error)")
-        }
-        #endif
+//        // Only initialize the schema when building the app with the
+//        // Debug build configuration.
+//        #if DEBUG
+//        do {
+//            // Use the container to initialize the development schema.
+//            print("Initializing CloudKit schema.")
+//            try persistentContainer.initializeCloudKitSchema(options: [])
+//        } catch {
+//            // Handle any errors.
+//            print("An error occurred when initializing the CloudKit schema: \(error)")
+//        }
+//        #endif
     }
 }
 

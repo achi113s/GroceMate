@@ -9,7 +9,7 @@ import CoreData
 import Foundation
 import SwiftUI
 
-final class CreateCardViewModel: ObservableObject, CardDetailViewModel {
+final class CreateCardViewModel: ObservableObject, CardDetailViewModellable {
     // MARK: - Properties
     @Published var editMode: EditMode = .active
     @Published var titleError: Bool = false
