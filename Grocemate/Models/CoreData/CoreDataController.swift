@@ -32,8 +32,8 @@ final class CoreDataController {
         /// Set up the model, context, and store all at once with an NSPersistentContainer.
         persistentContainer = NSPersistentContainer(name: "GrocemateDataModel")
 
-        /// Are we in an Xcode preview? If yes, make the persistent container in memory.
-        if EnvironmentValues.isPreview {
+        /// Are we in an Xcode preview or XCTest? If yes, make the persistent container in memory.
+        if EnvironmentValues.isPreview || Thread.current.isRunningXCTest {
             persistentContainer.persistentStoreDescriptions.first?.url = .init(fileURLWithPath: "/dev/null")
         }
 
@@ -98,5 +98,22 @@ extension EnvironmentValues {
     /// Are we in an Xcode preview?
     static var isPreview: Bool {
         return ProcessInfo.processInfo.environment["XCODE_RUNNING_FOR_PREVIEWS"] == "1"
+    }
+}
+
+extension Thread {
+    /// Are we in testing mode?
+    var isRunningXCTest: Bool {
+        for key in self.threadDictionary.allKeys {
+            guard let keyAsString = key as? String else {
+                continue
+            }
+
+            if keyAsString.split(separator: ".").contains("xctest") {
+                return true
+            }
+        }
+
+        return false
     }
 }

@@ -162,7 +162,7 @@ struct HomeView: View {
                     Section("Sort By") {
                         Button {
                             withAnimation {
-                                ingredientCards.nsSortDescriptors = [IngredientCard.sortBy(.timestampAsc)]
+                                ingredientCards.nsSortDescriptors = IngredientCard.sortBy(.timestampAsc)
                             }
                         } label: {
                             HStack {

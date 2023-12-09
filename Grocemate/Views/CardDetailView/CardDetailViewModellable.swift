@@ -13,10 +13,15 @@ protocol CardDetailViewModellable: ObservableObject {
     var ingredientsError: Bool { get set }
 
     var card: IngredientCard { get set }
+    var title: String { get set }
     var ingredients: [Ingredient] { get set }
 
-    func addIngredient()
-    func addIngredientsToCard()
+    func clearTitle()
+    func addDummyIngredient()
+    func setCardTitle()
+    func setIngredientsToCard()
     func deleteIngredient(_ indexSet: IndexSet)
     func save() throws
+    func titleErrorAnimation()
+    func ingredientsErrorAnimation()
 }

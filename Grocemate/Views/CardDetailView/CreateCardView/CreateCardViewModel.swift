@@ -20,6 +20,7 @@ final class CreateCardViewModel: ObservableObject, CardDetailViewModellable {
     /// instances and then we will add them to the temporary
     /// IngredientCard before saving.
     @Published var card: IngredientCard
+    @Published var title: String
     @Published var ingredients: [Ingredient]
 
     /// We use a new context as a temporary editing board outside
@@ -29,22 +30,27 @@ final class CreateCardViewModel: ObservableObject, CardDetailViewModellable {
     init(coreDataController: CoreDataController) {
         self.context = coreDataController.newContext
         self.card = IngredientCard(context: self.context)
+        self.title = "New Card"
         self.ingredients = [
             Ingredient.preview(context: self.context)
         ]
     }
 
-    public func addIngredient() {
+    public func addDummyIngredient() {
         self.ingredients.append(Ingredient(context: self.context))
     }
 
     /// Using a separate array of Ingredients allows us to circumvent problems with NSSet
     /// in the CoreDataClass for Ingredient.
-    public func addIngredientsToCard() {
+    public func setIngredientsToCard() {
         card.addToIngredients(NSSet(array: ingredients))
     }
 
-    public func clearCardTitle() {
+    public func setCardTitle() {
+        card.title = self.title
+    }
+
+    public func clearTitle() {
         card.title = ""
     }
 
@@ -93,5 +99,13 @@ final class CreateCardViewModel: ObservableObject, CardDetailViewModellable {
 
         try self.context.save()
         print("Saved")
+    }
+
+    public func titleErrorAnimation() {
+        print("sdfs")
+    }
+
+    public func ingredientsErrorAnimation() {
+        print("sdfs")
     }
 }

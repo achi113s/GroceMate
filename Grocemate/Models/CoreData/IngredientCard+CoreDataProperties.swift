@@ -28,8 +28,8 @@ extension IngredientCard {
         query.isEmpty ? NSPredicate(value: true) : NSPredicate(format: "title CONTAINS[cd] %@", query)
     }
 
-    static func sortBy(_ key: SortIngredientCards) -> NSSortDescriptor {
-        NSSortDescriptor(key: key.rawValue, ascending: key.ascending)
+    static func sortBy(_ key: SortIngredientCards) -> [NSSortDescriptor] {
+        [NSSortDescriptor(key: key.rawValue, ascending: key.ascending)]
     }
 }
 
