@@ -74,6 +74,18 @@ final class EditCardViewModelTests: XCTestCase {
         )
     }
 
+    func testSetCardTitle() {
+        editCardViewModel.title = "Test title"
+
+        editCardViewModel.setCardTitle()
+
+        XCTAssertEqual(
+            editCardViewModel.title,
+            editCardViewModel.card.title,
+            "The card's title does not equal the viewModel title property after setting it to the card."
+        )
+    }
+
     func testClearTitleClearsTitle() {
         editCardViewModel.title = "Test title"
 
@@ -120,6 +132,24 @@ final class EditCardViewModelTests: XCTestCase {
             [Ingredient](),
             editCardViewModel.ingredients,
             "Deleting all ingredient elements produced inconsistent results."
+        )
+    }
+
+    func testDeleteNoIngredientFromModelArray() {
+        var newIngredients = [
+            Ingredient(context: coreDataController.viewContext),
+            Ingredient(context: coreDataController.viewContext),
+            Ingredient(context: coreDataController.viewContext)
+        ]
+
+        editCardViewModel.ingredients = newIngredients
+
+        editCardViewModel.deleteIngredient(IndexSet([]))
+
+        XCTAssertEqual(
+            [Ingredient](),
+            editCardViewModel.ingredients,
+            "Deleting no ingredient elements produced inconsistent results."
         )
     }
 
