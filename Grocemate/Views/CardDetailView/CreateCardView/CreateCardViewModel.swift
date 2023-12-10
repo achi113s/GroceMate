@@ -48,7 +48,7 @@ final class CreateCardViewModel: ObservableObject, CardDetailViewModellable {
         self.card = IngredientCard(context: coreDataController.newContext)
         self.title = tempCard.title
         self.ingredients = tempCard.ingredients.map({ ingredientName in
-            var newIngredient = Ingredient(context: coreDataController.newContext)
+            let newIngredient = Ingredient(context: coreDataController.newContext)
             newIngredient.name = ingredientName
             return newIngredient
         })
