@@ -209,7 +209,9 @@ struct HomeView: View {
                 )
             }
         case .createCard:
-            CardDetailView<CreateCardViewModel>(viewModel: CreateCardViewModel(coreDataController: .shared))
+            CardDetailView<CreateCardViewModel>(
+                viewModel: CreateCardViewModel(coreDataController: .shared)
+            )
         }
     }
 }

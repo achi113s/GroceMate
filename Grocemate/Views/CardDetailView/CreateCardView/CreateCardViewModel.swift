@@ -15,25 +15,43 @@ final class CreateCardViewModel: ObservableObject, CardDetailViewModellable {
     @Published var titleError: Bool = false
     @Published var ingredientsError: Bool = false
 
-    /// Create a Published temporary instance of an ingredient card
-    /// to use in our view. Also use a Published array of Ingredient
-    /// instances and then we will add them to the temporary
-    /// IngredientCard before saving.
-    @Published var card: IngredientCard
+    /// Use the ingredient card in our view.
+    /// Also use a Published reference of the ingredients associated
+    /// with the card. This allows us to use and modify these rather than
+    /// mess with the NSManagedObject. On save, we replace the ingredients
+    /// Set and title with what we have in the Published properties.
+    var card: IngredientCard
     @Published var title: String
     @Published var ingredients: [Ingredient]
 
-    /// We use a new context as a temporary editing board outside
-    /// the main view context.
     private let context: NSManagedObjectContext
 
+    /// Initialize from "Manually Add Card"
     init(coreDataController: CoreDataController) {
+        /// We will use a new context as a temporary editing board outside
+        /// the main view context.
         self.context = coreDataController.newContext
-        self.card = IngredientCard(context: self.context)
+        self.card = IngredientCard(context: coreDataController.newContext)
         self.title = "New Card"
         self.ingredients = [
-            Ingredient.preview(context: self.context)
+            Ingredient.preview(context: coreDataController.newContext)
         ]
+    }
+
+    /// Initialize from Vision/ChatGPT parse.
+    init(coreDataController: CoreDataController,
+         tempCard: TempIngredientCard
+    ) {
+        /// We will use a new context as a temporary editing board outside
+        /// the main view context.
+        self.context = coreDataController.newContext
+        self.card = IngredientCard(context: coreDataController.newContext)
+        self.title = tempCard.title
+        self.ingredients = tempCard.ingredients.map({ ingredientName in
+            let newIngredient = Ingredient(context: coreDataController.newContext)
+            newIngredient.name = ingredientName
+            return newIngredient
+        })
     }
 
     public func addDummyIngredient() {
@@ -41,9 +59,10 @@ final class CreateCardViewModel: ObservableObject, CardDetailViewModellable {
     }
 
     /// Using a separate array of Ingredients allows us to circumvent problems with NSSet
-    /// in the CoreDataClass for Ingredient.
+    /// in the CoreDataClass for Ingredient. This method replaces the NSManagedObject's
+    /// ingredients Set with what we have in this view model.
     public func setIngredientsToCard() {
-        card.addToIngredients(NSSet(array: ingredients))
+        self.card.ingredients = Set(self.ingredients)
     }
 
     public func setCardTitle() {
@@ -51,7 +70,7 @@ final class CreateCardViewModel: ObservableObject, CardDetailViewModellable {
     }
 
     public func clearTitle() {
-        card.title = ""
+        self.title = ""
     }
 
     public func deleteIngredient(_ indexSet: IndexSet) {
@@ -59,53 +78,49 @@ final class CreateCardViewModel: ObservableObject, CardDetailViewModellable {
     }
 
     public func save() throws {
-        /// Make sure title isn't blank.
-        guard self.card.title.trimmingCharacters(in: .whitespacesAndNewlines) != "" else {
-            withAnimation(.easeInOut(duration: 0.5)) {
-                titleError = true
-            }
-
-            withAnimation(.easeInOut(duration: 0.5).delay(0.5)) {
-                titleError = false
-            }
-
-            return
+        /// Make sure title field isn't blank.
+        if self.title.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+            throw CardDetailSaveError.titleError
         }
 
-        /// Check is ingredients is not empty.
-        guard !self.ingredients.isEmpty else {
-            withAnimation(.easeInOut(duration: 0.5)) {
-                self.ingredientsError = true
-                self.ingredients.append(Ingredient.preview(context: self.context))
-            }
-
-            /// Doesn't work right.
-            withAnimation(.easeIn(duration: 2.0).delay(2.0)) {
-                self.ingredientsError = false
-            }
-
-            return
+        /// Make sure ingredients list isn't empty and that the ingredients don't have empty names.
+        if self.ingredients.isEmpty || self.ingredients.map({ $0.name }).areThereEmptyStrings() {
+            throw CardDetailSaveError.ingredientsError
         }
+
+        setCardTitle()
+        setIngredientsToCard()
 
         do {
-            try saveToCoreData()
+            try CoreDataController.shared.persist(in: context)
         } catch {
             print("An error occurred saving the card: \(error.localizedDescription)")
         }
     }
 
-    public func saveToCoreData() throws {
-        guard self.context.hasChanges else { return }
-
-        try self.context.save()
-        print("Saved")
-    }
-
     public func titleErrorAnimation() {
-        print("sdfs")
+        withAnimation(.easeInOut(duration: 0.5)) {
+            self.titleError = true
+        }
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            withAnimation(.easeInOut(duration: 0.5)) {
+                self.titleError = false
+            }
+        }
     }
 
     public func ingredientsErrorAnimation() {
-        print("sdfs")
+        withAnimation(.easeInOut(duration: 0.5)) {
+            self.ingredientsError = true
+            self.ingredients.append(Ingredient.preview(context: self.context))
+        }
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            withAnimation(.easeInOut(duration: 0.5)) {
+                self.ingredientsError = false
+                print("false")
+            }
+        }
     }
 }

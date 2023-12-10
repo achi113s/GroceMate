@@ -59,10 +59,10 @@ struct CardDetailView<ViewModel: CardDetailViewModellable>: View {
             ZStack(alignment: Alignment(horizontal: .trailing, vertical: .center)) {
                 TextField("Recipe Title", text: $viewModel.title)
                     .disabled(viewModel.editMode == .inactive)
-//                    .onAppear { UITextField.appearance().clearButtonMode = .whileEditing }
-                    /// Causes Error: this application, or a library it uses, has passed an invalid 
-                    /// numeric value (NaN, or not-a-number)
-                    /// to CoreGraphics API and this value is being ignored. Please fix this problem.
+                //                    .onAppear { UITextField.appearance().clearButtonMode = .whileEditing }
+                /// Causes Error: this application, or a library it uses, has passed an invalid
+                /// numeric value (NaN, or not-a-number)
+                /// to CoreGraphics API and this value is being ignored. Please fix this problem.
                     .font(.system(.title3))
                     .fontDesign(.rounded)
                     .fontWeight(.semibold)
@@ -143,12 +143,16 @@ struct CardDetailView<ViewModel: CardDetailViewModellable>: View {
     }
 }
 
-#Preview {
+#Preview("CardDetailView_ManualAdd") {
     let preview = CoreDataController.shared
 
     let viewToPreview = {
-        CardDetailView<CreateCardViewModel>(viewModel: CreateCardViewModel(coreDataController: .shared))
-            .environment(\.managedObjectContext, preview.viewContext)
+        CardDetailView<CreateCardViewModel>(
+            viewModel: CreateCardViewModel(
+                coreDataController: preview
+            )
+        )
+        .environment(\.managedObjectContext, preview.newContext)
     }()
 
     return viewToPreview

@@ -118,7 +118,7 @@ final class EditCardViewModelTests: XCTestCase {
     }
 
     func testDeleteAllIngredientFromModelArray() {
-        var newIngredients = [
+        let newIngredients = [
             Ingredient(context: coreDataController.viewContext),
             Ingredient(context: coreDataController.viewContext),
             Ingredient(context: coreDataController.viewContext)
@@ -136,7 +136,7 @@ final class EditCardViewModelTests: XCTestCase {
     }
 
     func testDeleteNoIngredientFromModelArray() {
-        var newIngredients = [
+        let newIngredients = [
             Ingredient(context: coreDataController.viewContext),
             Ingredient(context: coreDataController.viewContext),
             Ingredient(context: coreDataController.viewContext)
@@ -147,7 +147,7 @@ final class EditCardViewModelTests: XCTestCase {
         editCardViewModel.deleteIngredient(IndexSet([]))
 
         XCTAssertEqual(
-            [Ingredient](),
+            newIngredients,
             editCardViewModel.ingredients,
             "Deleting no ingredient elements produced inconsistent results."
         )
@@ -172,7 +172,7 @@ final class EditCardViewModelTests: XCTestCase {
     }
 
     func testSaveWithNoIngredientsProducesError() throws {
-        var newIngredients = [Ingredient]()
+        let newIngredients = [Ingredient]()
 
         editCardViewModel.ingredients = newIngredients
 
@@ -183,10 +183,10 @@ final class EditCardViewModelTests: XCTestCase {
     }
 
     func testSaveWithABlankIngredientsProducesError() throws {
-        var testIngredient1 = Ingredient(context: coreDataController.viewContext)
+        let testIngredient1 = Ingredient(context: coreDataController.viewContext)
         testIngredient1.name = ""
 
-        var testIngredient2 = Ingredient(context: coreDataController.viewContext)
+        let testIngredient2 = Ingredient(context: coreDataController.viewContext)
         testIngredient2.name = "chicken"
 
         editCardViewModel.ingredients = [testIngredient1, testIngredient2]
