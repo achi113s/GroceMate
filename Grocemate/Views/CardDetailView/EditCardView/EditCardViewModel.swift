@@ -15,18 +15,23 @@ final class EditCardViewModel: ObservableObject, CardDetailViewModellable {
     @Published var titleError: Bool = false
     @Published var ingredientsError: Bool = false
 
-    /// Use a Published reference of the ingredient card in our view.
+    /// Use the ingredient card in our view.
     /// Also use a Published reference of the ingredients associated
-    /// with the card. This allows us to use an array rather than an
-    /// NSSet. On save, we replace the ingredients Set with what we
-    /// have in the Published reference.
+    /// with the card. This allows us to use and modify these rather than
+    /// mess with the NSManagedObject. On save, we replace the ingredients
+    /// Set and title with what we have in the Published properties.
     var card: IngredientCard
     @Published var title: String
     @Published var ingredients: [Ingredient]
 
     private let context: NSManagedObjectContext
 
-    init(coreDataController: CoreDataController, ingredientCard: IngredientCard = IngredientCard.emptyPreview()) {
+    init(coreDataController: CoreDataController,
+         ingredientCard: IngredientCard
+    ) {
+        /// When editing an ingredient card, that card will exist in the main view content,
+        /// not the newContext we defined in CoreDataController. Hence, we have to use
+        /// viewContext.
         self.context = coreDataController.viewContext
         self.card = ingredientCard
         self.title = ingredientCard.title
@@ -39,7 +44,8 @@ final class EditCardViewModel: ObservableObject, CardDetailViewModellable {
     }
 
     /// Using a separate array of Ingredients allows us to circumvent problems with NSSet
-    /// in the CoreDataClass for Ingredient.
+    /// in the CoreDataClass for Ingredient. This method replaces the NSManagedObject's
+    /// ingredients Set with what we have in this view model.
     public func setIngredientsToCard() {
         self.card.ingredients = Set(self.ingredients)
     }

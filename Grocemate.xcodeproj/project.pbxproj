@@ -19,6 +19,8 @@
 		440ECB932AF8130400E6BD5C /* IngredientCard+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440ECB8C2AF8130400E6BD5C /* IngredientCard+CoreDataClass.swift */; };
 		440ECB942AF8130400E6BD5C /* Ingredient+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440ECB8D2AF8130400E6BD5C /* Ingredient+CoreDataClass.swift */; };
 		440ECB9C2AF8134A00E6BD5C /* GrocemateDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 440ECB9A2AF8134A00E6BD5C /* GrocemateDataModel.xcdatamodeld */; };
+		442957102B257416000D74CA /* CreateCardViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4429570F2B257416000D74CA /* CreateCardViewModelTests.swift */; };
+		442957122B258FC1000D74CA /* TempIngredientCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442957112B258FC1000D74CA /* TempIngredientCard.swift */; };
 		4441677A2B20364C005AF6BC /* EditCardViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444167792B20364C005AF6BC /* EditCardViewModelTests.swift */; };
 		4453D8A82B0931AB001B1C36 /* EditCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4453D8A72B0931AB001B1C36 /* EditCardViewModel.swift */; };
 		445DCC452AFC579700CA97DE /* Ingredient+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445DCC442AFC579700CA97DE /* Ingredient+CoreDataProperties.swift */; };
@@ -71,6 +73,8 @@
 		440ECB9B2AF8134A00E6BD5C /* GrocemateDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GrocemateDataModel.xcdatamodel; sourceTree = "<group>"; };
 		4420964C2AFDF2F700E586BB /* Grocemate.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Grocemate.entitlements; sourceTree = "<group>"; };
 		4420964D2AFDF4A100E586BB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		4429570F2B257416000D74CA /* CreateCardViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCardViewModelTests.swift; sourceTree = "<group>"; };
+		442957112B258FC1000D74CA /* TempIngredientCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempIngredientCard.swift; sourceTree = "<group>"; };
 		444167792B20364C005AF6BC /* EditCardViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCardViewModelTests.swift; sourceTree = "<group>"; };
 		4453D8A72B0931AB001B1C36 /* EditCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCardViewModel.swift; sourceTree = "<group>"; };
 		445DCC442AFC579700CA97DE /* Ingredient+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ingredient+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -161,6 +165,7 @@
 			isa = PBXGroup;
 			children = (
 				440ECB892AF8130400E6BD5C /* CoreData */,
+				442957112B258FC1000D74CA /* TempIngredientCard.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -277,6 +282,7 @@
 			children = (
 				44DDF30D2AF811D0005D35D8 /* GrocemateTests.swift */,
 				444167792B20364C005AF6BC /* EditCardViewModelTests.swift */,
+				4429570F2B257416000D74CA /* CreateCardViewModelTests.swift */,
 			);
 			path = GrocemateTests;
 			sourceTree = "<group>";
@@ -459,6 +465,7 @@
 				440ECB932AF8130400E6BD5C /* IngredientCard+CoreDataClass.swift in Sources */,
 				44DDF2FD2AF811CE005D35D8 /* GrocemateApp.swift in Sources */,
 				440ECB9C2AF8134A00E6BD5C /* GrocemateDataModel.xcdatamodeld in Sources */,
+				442957122B258FC1000D74CA /* TempIngredientCard.swift in Sources */,
 				440ECB842AF812F800E6BD5C /* CardDetailView.swift in Sources */,
 				4453D8A82B0931AB001B1C36 /* EditCardViewModel.swift in Sources */,
 				440ECB912AF8130400E6BD5C /* CoreDataController.swift in Sources */,
@@ -476,6 +483,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4441677A2B20364C005AF6BC /* EditCardViewModelTests.swift in Sources */,
+				442957102B257416000D74CA /* CreateCardViewModelTests.swift in Sources */,
 				44DDF30E2AF811D0005D35D8 /* GrocemateTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
