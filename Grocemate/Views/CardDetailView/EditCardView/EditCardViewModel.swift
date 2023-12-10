@@ -20,29 +20,36 @@ final class EditCardViewModel: ObservableObject, CardDetailViewModellable {
     /// with the card. This allows us to use an array rather than an
     /// NSSet. On save, we replace the ingredients Set with what we
     /// have in the Published reference.
-    @Published var card: IngredientCard
+    var card: IngredientCard
+    @Published var title: String
     @Published var ingredients: [Ingredient]
 
     private let context: NSManagedObjectContext
 
-    init(coreDataController: CoreDataController, ingredientCard: IngredientCard) {
+    init(coreDataController: CoreDataController, ingredientCard: IngredientCard = IngredientCard.emptyPreview()) {
         self.context = coreDataController.viewContext
         self.card = ingredientCard
+        self.title = ingredientCard.title
         self.ingredients = ingredientCard.ingredientsArr
+        print("init editcardviewmodel")
     }
 
-    public func addIngredient() {
+    public func addDummyIngredient() {
         self.ingredients.append(Ingredient(context: self.context))
     }
 
     /// Using a separate array of Ingredients allows us to circumvent problems with NSSet
     /// in the CoreDataClass for Ingredient.
-    public func addIngredientsToCard() {
-        card.ingredients = Set(ingredients)
+    public func setIngredientsToCard() {
+        self.card.ingredients = Set(self.ingredients)
     }
 
-    public func clearCardTitle() {
-        card.title = ""
+    public func setCardTitle() {
+        self.card.title = self.title
+    }
+
+    public func clearTitle() {
+        self.title = ""
     }
 
     public func deleteIngredient(_ indexSet: IndexSet) {
@@ -51,37 +58,48 @@ final class EditCardViewModel: ObservableObject, CardDetailViewModellable {
 
     public func save() throws {
         /// Make sure title field isn't blank.
-        guard self.card.title.trimmingCharacters(in: .whitespacesAndNewlines) != "" else {
-            withAnimation(.easeInOut(duration: 0.5)) {
-                titleError = true
-            }
-
-            withAnimation(.easeInOut(duration: 0.5).delay(0.5)) {
-                titleError = false
-            }
-
-            return
+        if self.title.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+            throw CardDetailSaveError.titleError
         }
 
-        /// Make sure ingredients list isn't empty.
-        guard !self.ingredients.isEmpty else {
-            withAnimation(.easeInOut(duration: 0.5)) {
-                self.ingredientsError = true
-                self.ingredients.append(Ingredient.preview(context: self.context))
-            }
-
-            /// This one doesn't work as expected?
-            withAnimation(.easeIn(duration: 2.0).delay(2.0)) {
-                self.ingredientsError = false
-            }
-
-            return
+        /// Make sure ingredients list isn't empty and that the ingredients don't have empty names.
+        if self.ingredients.isEmpty || self.ingredients.map({ $0.name }).areThereEmptyStrings() {
+            throw CardDetailSaveError.ingredientsError
         }
+
+        setCardTitle()
+        setIngredientsToCard()
 
         do {
             try CoreDataController.shared.persist(in: context)
         } catch {
             print("An error occurred saving the card: \(error.localizedDescription)")
+        }
+    }
+
+    public func titleErrorAnimation() {
+        withAnimation(.easeInOut(duration: 0.5)) {
+            self.titleError = true
+        }
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            withAnimation(.easeInOut(duration: 0.5)) {
+                self.titleError = false
+            }
+        }
+    }
+
+    public func ingredientsErrorAnimation() {
+        withAnimation(.easeInOut(duration: 0.5)) {
+            self.ingredientsError = true
+            self.ingredients.append(Ingredient.preview(context: self.context))
+        }
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            withAnimation(.easeInOut(duration: 0.5)) {
+                self.ingredientsError = false
+                print("false")
+            }
         }
     }
 }

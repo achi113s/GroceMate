@@ -1,0 +1,35 @@
+{
+  "configurations" : [
+    {
+      "id" : "C1198348-AF88-4265-A22F-113429B64A97",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:Grocemate.xcodeproj",
+      "identifier" : "44DDF2F82AF811CE005D35D8",
+      "name" : "Grocemate"
+    }
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:Grocemate.xcodeproj",
+        "identifier" : "44DDF3082AF811D0005D35D8",
+        "name" : "GrocemateTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Grocemate.xcodeproj",
+        "identifier" : "44DDF3122AF811D0005D35D8",
+        "name" : "GrocemateUITests"
+      }
+    }
+  ],
+  "version" : 1
+}

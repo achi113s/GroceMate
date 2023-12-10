@@ -12,7 +12,8 @@ struct CardDetailView<ViewModel: CardDetailViewModellable>: View {
     @Environment(\.dismiss) var dismiss
 
     // MARK: - State
-    @ObservedObject var viewModel: ViewModel
+    @StateObject var viewModel: ViewModel
+    @FocusState var titleFocused: Bool
 
     var body: some View {
         NavigationStack {
@@ -31,15 +32,11 @@ struct CardDetailView<ViewModel: CardDetailViewModellable>: View {
         }
     }
 
-    init(viewModel: ViewModel) {
-        self.viewModel = viewModel
-    }
-
     // MARK: - Subviews
     private var addButton: some View {
         Button {
             withAnimation {
-                viewModel.addIngredient()
+                viewModel.addDummyIngredient()
             }
         } label: {
             Text("Add Ingredient")
@@ -60,14 +57,33 @@ struct CardDetailView<ViewModel: CardDetailViewModellable>: View {
                 .fill(viewModel.titleError ? .red.opacity(0.2) : .blue.opacity(0.1))
                 .frame(height: 60)
             ZStack(alignment: Alignment(horizontal: .trailing, vertical: .center)) {
-                TextField("Recipe Title", text: $viewModel.card.title)
+                TextField("Recipe Title", text: $viewModel.title)
                     .disabled(viewModel.editMode == .inactive)
-                    /// This adds the x to clear text field when editing.
-                    .onAppear { UITextField.appearance().clearButtonMode = .whileEditing }
+//                    .onAppear { UITextField.appearance().clearButtonMode = .whileEditing }
+                    /// Causes Error: this application, or a library it uses, has passed an invalid 
+                    /// numeric value (NaN, or not-a-number)
+                    /// to CoreGraphics API and this value is being ignored. Please fix this problem.
                     .font(.system(.title3))
                     .fontDesign(.rounded)
                     .fontWeight(.semibold)
                     .padding()
+                    .focused($titleFocused)
+                    .overlay {
+                        if titleFocused {
+                            HStack {
+                                Spacer()
+
+                                Button {
+                                    viewModel.clearTitle()
+                                } label: {
+                                    Image(systemName: "xmark.circle.fill")
+                                        .font(.title2)
+                                        .tint(.gray.opacity(0.5))
+                                }
+                                .padding(.trailing, 20)
+                            }
+                        }
+                    }
             }
         }
     }
@@ -108,13 +124,15 @@ struct CardDetailView<ViewModel: CardDetailViewModellable>: View {
             ToolbarItem(placement: .topBarTrailing) {
                 Button {
                     do {
-                        viewModel.addIngredientsToCard()
                         try viewModel.save()
+                        dismiss()
+                    } catch CardDetailSaveError.titleError {
+                        viewModel.titleErrorAnimation()
+                    } catch CardDetailSaveError.ingredientsError {
+                        viewModel.ingredientsErrorAnimation()
                     } catch {
-                        print("error")
+                        print(error.localizedDescription)
                     }
-
-                    dismiss()
                 } label: {
                     Text("Save")
                         .fontDesign(.rounded)
