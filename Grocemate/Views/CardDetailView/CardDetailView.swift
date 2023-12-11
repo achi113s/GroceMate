@@ -180,7 +180,7 @@ struct CardDetailView<ViewModel: CardDetailViewModellable>: View {
                 coreDataController: preview
             )
         )
-        .environment(\.managedObjectContext, preview.newContext)
+        .environment(\.managedObjectContext, preview.viewContext)
     }()
 
     return viewToPreview

@@ -30,11 +30,12 @@ final class CreateCardViewModel: ObservableObject, CardDetailViewModellable {
     init(coreDataController: CoreDataController) {
         /// We will use a new context as a temporary editing board outside
         /// the main view context.
-        self.context = coreDataController.newContext
-        self.card = IngredientCard(context: coreDataController.newContext)
+        let newContext = coreDataController.newContext
+        self.context = newContext
+        self.card = IngredientCard(context: newContext)
         self.title = "New Card"
         self.ingredients = [
-            Ingredient(context: self.context)
+            Ingredient(context: newContext)
         ]
     }
 
@@ -44,11 +45,12 @@ final class CreateCardViewModel: ObservableObject, CardDetailViewModellable {
     ) {
         /// We will use a new context as a temporary editing board outside
         /// the main view context.
-        self.context = coreDataController.newContext
-        self.card = IngredientCard(context: coreDataController.newContext)
+        let newContext = coreDataController.newContext
+        self.context = newContext
+        self.card = IngredientCard(context: newContext)
         self.title = tempCard.title
         self.ingredients = tempCard.ingredients.map({ ingredientName in
-            let newIngredient = Ingredient(context: coreDataController.newContext)
+            let newIngredient = Ingredient(context: newContext)
             newIngredient.name = ingredientName
             return newIngredient
         })
@@ -92,7 +94,7 @@ final class CreateCardViewModel: ObservableObject, CardDetailViewModellable {
         setIngredientsToCard()
 
         do {
-            try CoreDataController.shared.persist(in: context)
+            try CoreDataController.shared.persist(in: self.context)
         } catch {
             print("An error occurred saving the card: \(error.localizedDescription)")
         }
