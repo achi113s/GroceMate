@@ -22,6 +22,4 @@ protocol CardDetailViewModellable: ObservableObject {
     func setIngredientsToCard()
     func deleteIngredient(_ indexSet: IndexSet)
     func save() throws
-    func titleErrorAnimation()
-    func ingredientsErrorAnimation()
 }

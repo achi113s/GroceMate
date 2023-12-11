@@ -29,6 +29,7 @@ final class EditCardViewModelTests: XCTestCase {
     override func tearDownWithError() throws {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         try coreDataController.delete(testIngredientCard, in: coreDataController.viewContext)
+        // Delete rule should make sure any associated Ingredients are deleted too.
         coreDataController = nil
         editCardViewModel = nil
     }

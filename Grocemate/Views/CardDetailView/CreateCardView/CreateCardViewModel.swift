@@ -34,7 +34,7 @@ final class CreateCardViewModel: ObservableObject, CardDetailViewModellable {
         self.card = IngredientCard(context: coreDataController.newContext)
         self.title = "New Card"
         self.ingredients = [
-            Ingredient.preview(context: coreDataController.newContext)
+            Ingredient(context: self.context)
         ]
     }
 
@@ -95,32 +95,6 @@ final class CreateCardViewModel: ObservableObject, CardDetailViewModellable {
             try CoreDataController.shared.persist(in: context)
         } catch {
             print("An error occurred saving the card: \(error.localizedDescription)")
-        }
-    }
-
-    public func titleErrorAnimation() {
-        withAnimation(.easeInOut(duration: 0.5)) {
-            self.titleError = true
-        }
-
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            withAnimation(.easeInOut(duration: 0.5)) {
-                self.titleError = false
-            }
-        }
-    }
-
-    public func ingredientsErrorAnimation() {
-        withAnimation(.easeInOut(duration: 0.5)) {
-            self.ingredientsError = true
-            self.ingredients.append(Ingredient.preview(context: self.context))
-        }
-
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            withAnimation(.easeInOut(duration: 0.5)) {
-                self.ingredientsError = false
-                print("false")
-            }
         }
     }
 }

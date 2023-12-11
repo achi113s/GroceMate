@@ -59,15 +59,18 @@ struct CardDetailView<ViewModel: CardDetailViewModellable>: View {
             ZStack(alignment: Alignment(horizontal: .trailing, vertical: .center)) {
                 TextField("Recipe Title", text: $viewModel.title)
                     .disabled(viewModel.editMode == .inactive)
-                //                    .onAppear { UITextField.appearance().clearButtonMode = .whileEditing }
-                /// Causes Error: this application, or a library it uses, has passed an invalid
-                /// numeric value (NaN, or not-a-number)
-                /// to CoreGraphics API and this value is being ignored. Please fix this problem.
                     .font(.system(.title3))
                     .fontDesign(.rounded)
                     .fontWeight(.semibold)
                     .padding()
                     .focused($titleFocused)
+                    /// .onAppear { UITextField.appearance().clearButtonMode = .whileEditing }
+                    /// Causes:
+                    /// "Error: this application, or a library it uses, has passed an invalid
+                    /// numeric value (NaN, or not-a-number) to CoreGraphics API and this
+                    /// value is being ignored. Please fix this problem."
+                    /// A clear text field button is not available without reaching into UITextField.
+                    /// Add a custom button.
                     .overlay {
                         if titleFocused {
                             HStack {
@@ -127,9 +130,9 @@ struct CardDetailView<ViewModel: CardDetailViewModellable>: View {
                         try viewModel.save()
                         dismiss()
                     } catch CardDetailSaveError.titleError {
-                        viewModel.titleErrorAnimation()
+                        titleErrorAnimation()
                     } catch CardDetailSaveError.ingredientsError {
-                        viewModel.ingredientsErrorAnimation()
+                        ingredientsErrorAnimation()
                     } catch {
                         print(error.localizedDescription)
                     }
@@ -138,6 +141,31 @@ struct CardDetailView<ViewModel: CardDetailViewModellable>: View {
                         .fontDesign(.rounded)
                         .fontWeight(.semibold)
                 }
+            }
+        }
+    }
+
+    private func titleErrorAnimation() {
+        withAnimation(.easeInOut(duration: 0.5)) {
+            viewModel.titleError = true
+        }
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            withAnimation(.easeInOut(duration: 0.5)) {
+                viewModel.titleError = false
+            }
+        }
+    }
+
+    private func ingredientsErrorAnimation() {
+        withAnimation(.easeInOut(duration: 0.5)) {
+            viewModel.ingredientsError = true
+            viewModel.addDummyIngredient()
+        }
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            withAnimation(.easeInOut(duration: 0.5)) {
+                viewModel.ingredientsError = false
             }
         }
     }

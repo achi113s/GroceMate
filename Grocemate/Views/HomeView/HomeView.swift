@@ -143,7 +143,7 @@ struct HomeView: View {
                     }
 
                     Button {
-                        homeViewModel.sheet = .createCard
+                        homeViewModel.sheet = .manuallyCreateCard
                     } label: {
                         HStack {
                             Text("Manually Add Card")
@@ -208,7 +208,7 @@ struct HomeView: View {
                                                     )
                 )
             }
-        case .createCard:
+        case .manuallyCreateCard:
             CardDetailView<CreateCardViewModel>(
                 viewModel: CreateCardViewModel(coreDataController: .shared)
             )
