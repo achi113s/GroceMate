@@ -30,6 +30,8 @@
 		44BF98102B088B5A00E24047 /* Image-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44BF980F2B088B5A00E24047 /* Image-Extensions.swift */; };
 		44BF98132B0927EF00E24047 /* CardDetailViewModellable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44BF98122B0927EF00E24047 /* CardDetailViewModellable.swift */; };
 		44C7F9AF2B07395100AFE8DD /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C7F9AE2B07395100AFE8DD /* HomeViewModel.swift */; };
+		44CE197E2B27C463002D6E33 /* CreateCardViewModelInitializerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44CE197D2B27C463002D6E33 /* CreateCardViewModelInitializerTests.swift */; };
+		44CE19802B27CB66002D6E33 /* HomeViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44CE197F2B27CB66002D6E33 /* HomeViewModelTests.swift */; };
 		44DDEAF72B0F2290002AB0CE /* HapticType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DDEAF62B0F2290002AB0CE /* HapticType.swift */; };
 		44DDEAF92B0F22D9002AB0CE /* HapticDefinitions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DDEAF82B0F22D9002AB0CE /* HapticDefinitions.swift */; };
 		44DDF2FD2AF811CE005D35D8 /* GrocemateApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DDF2FC2AF811CE005D35D8 /* GrocemateApp.swift */; };
@@ -85,6 +87,8 @@
 		44BF980F2B088B5A00E24047 /* Image-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image-Extensions.swift"; sourceTree = "<group>"; };
 		44BF98122B0927EF00E24047 /* CardDetailViewModellable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailViewModellable.swift; sourceTree = "<group>"; };
 		44C7F9AE2B07395100AFE8DD /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		44CE197D2B27C463002D6E33 /* CreateCardViewModelInitializerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCardViewModelInitializerTests.swift; sourceTree = "<group>"; };
+		44CE197F2B27CB66002D6E33 /* HomeViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModelTests.swift; sourceTree = "<group>"; };
 		44DDEAF62B0F2290002AB0CE /* HapticType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticType.swift; sourceTree = "<group>"; };
 		44DDEAF82B0F22D9002AB0CE /* HapticDefinitions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticDefinitions.swift; sourceTree = "<group>"; };
 		44DDF2F92AF811CE005D35D8 /* Grocemate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Grocemate.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -283,6 +287,8 @@
 				44DDF30D2AF811D0005D35D8 /* GrocemateTests.swift */,
 				444167792B20364C005AF6BC /* EditCardViewModelTests.swift */,
 				4429570F2B257416000D74CA /* CreateCardViewModelTests.swift */,
+				44CE197D2B27C463002D6E33 /* CreateCardViewModelInitializerTests.swift */,
+				44CE197F2B27CB66002D6E33 /* HomeViewModelTests.swift */,
 			);
 			path = GrocemateTests;
 			sourceTree = "<group>";
@@ -482,7 +488,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				44CE19802B27CB66002D6E33 /* HomeViewModelTests.swift in Sources */,
 				4441677A2B20364C005AF6BC /* EditCardViewModelTests.swift in Sources */,
+				44CE197E2B27C463002D6E33 /* CreateCardViewModelInitializerTests.swift in Sources */,
 				442957102B257416000D74CA /* CreateCardViewModelTests.swift in Sources */,
 				44DDF30E2AF811D0005D35D8 /* GrocemateTests.swift in Sources */,
 			);

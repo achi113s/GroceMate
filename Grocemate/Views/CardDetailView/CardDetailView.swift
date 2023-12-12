@@ -177,7 +177,8 @@ struct CardDetailView<ViewModel: CardDetailViewModellable>: View {
     let viewToPreview = {
         CardDetailView<CreateCardViewModel>(
             viewModel: CreateCardViewModel(
-                coreDataController: preview
+                coreDataController: preview,
+                context: preview.newContext
             )
         )
         .environment(\.managedObjectContext, preview.viewContext)

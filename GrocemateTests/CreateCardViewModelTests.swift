@@ -13,19 +13,23 @@ import XCTest
 final class CreateCardViewModelTests: XCTestCase {
 
     private var coreDataController: CoreDataController!
+    private var newContext: NSManagedObjectContext!
     private var createCardViewModel: CreateCardViewModel!
     private var testIngredientCard: IngredientCard!
 
     override func setUpWithError() throws {
         coreDataController = .shared
-        testIngredientCard = IngredientCard.emptyPreview(context: coreDataController.newContext)
+        newContext = coreDataController.newContext
+        testIngredientCard = IngredientCard.emptyPreview(context: newContext)
         createCardViewModel = CreateCardViewModel(
-            coreDataController: coreDataController
+            coreDataController: coreDataController,
+            context: newContext
         )
     }
 
     override func tearDownWithError() throws {
-        try coreDataController.delete(testIngredientCard, in: coreDataController.newContext)
+        try coreDataController.delete(testIngredientCard, in: newContext)
+        newContext = nil
         coreDataController = nil
         createCardViewModel = nil
     }
@@ -45,9 +49,9 @@ final class CreateCardViewModelTests: XCTestCase {
 
     func testSetIngredientsToCard() {
         let newIngredients = [
-            Ingredient(context: coreDataController.newContext),
-            Ingredient(context: coreDataController.newContext),
-            Ingredient(context: coreDataController.newContext)
+            Ingredient(context: newContext),
+            Ingredient(context: newContext),
+            Ingredient(context: newContext)
         ]
 
         createCardViewModel.ingredients = newIngredients
@@ -89,9 +93,9 @@ final class CreateCardViewModelTests: XCTestCase {
 
     func testDeleteSingleIngredientFromModelArray() {
         var newIngredients = [
-            Ingredient(context: coreDataController.newContext),
-            Ingredient(context: coreDataController.newContext),
-            Ingredient(context: coreDataController.newContext)
+            Ingredient(context: newContext),
+            Ingredient(context: newContext),
+            Ingredient(context: newContext)
         ]
 
         createCardViewModel.ingredients = newIngredients
@@ -108,9 +112,9 @@ final class CreateCardViewModelTests: XCTestCase {
 
     func testDeleteAllIngredientFromModelArray() {
         let newIngredients = [
-            Ingredient(context: coreDataController.newContext),
-            Ingredient(context: coreDataController.newContext),
-            Ingredient(context: coreDataController.newContext)
+            Ingredient(context: newContext),
+            Ingredient(context: newContext),
+            Ingredient(context: newContext)
         ]
 
         createCardViewModel.ingredients = newIngredients
@@ -126,9 +130,9 @@ final class CreateCardViewModelTests: XCTestCase {
 
     func testDeleteNoIngredientFromModelArray() {
         let newIngredients = [
-            Ingredient(context: coreDataController.newContext),
-            Ingredient(context: coreDataController.newContext),
-            Ingredient(context: coreDataController.newContext)
+            Ingredient(context: newContext),
+            Ingredient(context: newContext),
+            Ingredient(context: newContext)
         ]
 
         createCardViewModel.ingredients = newIngredients
@@ -172,10 +176,10 @@ final class CreateCardViewModelTests: XCTestCase {
     }
 
     func testSaveWithABlankIngredientsProducesError() throws {
-        let testIngredient1 = Ingredient(context: coreDataController.newContext)
+        let testIngredient1 = Ingredient(context: newContext)
         testIngredient1.name = ""
 
-        let testIngredient2 = Ingredient(context: coreDataController.newContext)
+        let testIngredient2 = Ingredient(context: newContext)
         testIngredient2.name = "chicken"
 
         createCardViewModel.ingredients = [testIngredient1, testIngredient2]
