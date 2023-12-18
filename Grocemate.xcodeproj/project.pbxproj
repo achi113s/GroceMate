@@ -27,6 +27,9 @@
 		4465BDAE2B23936800DB97B1 /* StringArray-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4465BDAD2B23936800DB97B1 /* StringArray-Extensions.swift */; };
 		4465BDB02B23CCC500DB97B1 /* CardDetailSaveError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4465BDAF2B23CCC500DB97B1 /* CardDetailSaveError.swift */; };
 		4480E1272B29454F0042DB44 /* UtilityFunctionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4480E1262B29454F0042DB44 /* UtilityFunctionTests.swift */; };
+		4489336C2B2FED9A00121DCE /* ImageSizePreferenceKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4489336B2B2FED9A00121DCE /* ImageSizePreferenceKey.swift */; };
+		4489336E2B2FF28F00121DCE /* ImageWithROI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4489336D2B2FF28F00121DCE /* ImageWithROI.swift */; };
+		448933702B2FF5C600121DCE /* OpenAIResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4489336F2B2FF5C600121DCE /* OpenAIResponseModel.swift */; };
 		44BF980C2B088AFA00E24047 /* Sheets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44BF980B2B088AFA00E24047 /* Sheets.swift */; };
 		44BF98102B088B5A00E24047 /* Image-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44BF980F2B088B5A00E24047 /* Image-Extensions.swift */; };
 		44BF98132B0927EF00E24047 /* CardDetailViewModellable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44BF98122B0927EF00E24047 /* CardDetailViewModellable.swift */; };
@@ -85,6 +88,9 @@
 		4465BDAD2B23936800DB97B1 /* StringArray-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StringArray-Extensions.swift"; sourceTree = "<group>"; };
 		4465BDAF2B23CCC500DB97B1 /* CardDetailSaveError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailSaveError.swift; sourceTree = "<group>"; };
 		4480E1262B29454F0042DB44 /* UtilityFunctionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilityFunctionTests.swift; sourceTree = "<group>"; };
+		4489336B2B2FED9A00121DCE /* ImageSizePreferenceKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSizePreferenceKey.swift; sourceTree = "<group>"; };
+		4489336D2B2FF28F00121DCE /* ImageWithROI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageWithROI.swift; sourceTree = "<group>"; };
+		4489336F2B2FF5C600121DCE /* OpenAIResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIResponseModel.swift; sourceTree = "<group>"; };
 		44BF980B2B088AFA00E24047 /* Sheets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sheets.swift; sourceTree = "<group>"; };
 		44BF980F2B088B5A00E24047 /* Image-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image-Extensions.swift"; sourceTree = "<group>"; };
 		44BF98122B0927EF00E24047 /* CardDetailViewModellable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailViewModellable.swift; sourceTree = "<group>"; };
@@ -153,6 +159,7 @@
 		440ECB7A2AF812F800E6BD5C /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				4489336A2B2FED7900121DCE /* RegionOfInterestPhotoPreview */,
 				44BF98112B0927D700E24047 /* CardDetailView */,
 				44C7F9AD2B07394300AFE8DD /* HomeView */,
 			);
@@ -172,6 +179,7 @@
 			children = (
 				440ECB892AF8130400E6BD5C /* CoreData */,
 				442957112B258FC1000D74CA /* TempIngredientCard.swift */,
+				4489336F2B2FF5C600121DCE /* OpenAIResponseModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -195,6 +203,15 @@
 				4453D8A72B0931AB001B1C36 /* EditCardViewModel.swift */,
 			);
 			path = EditCardView;
+			sourceTree = "<group>";
+		};
+		4489336A2B2FED7900121DCE /* RegionOfInterestPhotoPreview */ = {
+			isa = PBXGroup;
+			children = (
+				4489336B2B2FED9A00121DCE /* ImageSizePreferenceKey.swift */,
+				4489336D2B2FF28F00121DCE /* ImageWithROI.swift */,
+			);
+			path = RegionOfInterestPhotoPreview;
 			sourceTree = "<group>";
 		};
 		44BF98092B088ABD00E24047 /* CardView */ = {
@@ -474,10 +491,13 @@
 				440ECB932AF8130400E6BD5C /* IngredientCard+CoreDataClass.swift in Sources */,
 				44DDF2FD2AF811CE005D35D8 /* GrocemateApp.swift in Sources */,
 				440ECB9C2AF8134A00E6BD5C /* GrocemateDataModel.xcdatamodeld in Sources */,
+				4489336E2B2FF28F00121DCE /* ImageWithROI.swift in Sources */,
+				448933702B2FF5C600121DCE /* OpenAIResponseModel.swift in Sources */,
 				442957122B258FC1000D74CA /* TempIngredientCard.swift in Sources */,
 				440ECB842AF812F800E6BD5C /* CardDetailView.swift in Sources */,
 				4453D8A82B0931AB001B1C36 /* EditCardViewModel.swift in Sources */,
 				440ECB912AF8130400E6BD5C /* CoreDataController.swift in Sources */,
+				4489336C2B2FED9A00121DCE /* ImageSizePreferenceKey.swift in Sources */,
 				4465BDB02B23CCC500DB97B1 /* CardDetailSaveError.swift in Sources */,
 				440ECB812AF812F800E6BD5C /* RubberBanding.swift in Sources */,
 				440ECB852AF812F800E6BD5C /* Card.swift in Sources */,
