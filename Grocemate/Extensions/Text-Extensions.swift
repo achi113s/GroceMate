@@ -24,7 +24,7 @@ extension Text {
             }
     }
 
-    /// This strikethrough animation allows you bind to an external progress
+    /// This version allows you bind to an external progress
     /// indicator, so you can do things like animate the strikethrough as the user
     /// completes a gesture.
     func animatedStrikethroughWithProgress(_ progress: CGFloat = 0,

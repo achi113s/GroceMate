@@ -27,30 +27,27 @@ final class CreateCardViewModel: ObservableObject, CardDetailViewModellable {
     private let context: NSManagedObjectContext
 
     /// Initialize from "Manually Add Card"
-    init(coreDataController: CoreDataController) {
+    init(coreDataController: CoreDataController, context: NSManagedObjectContext) {
         /// We will use a new context as a temporary editing board outside
         /// the main view context.
-        let newContext = coreDataController.newContext
-        self.context = newContext
-        self.card = IngredientCard(context: newContext)
+        self.context = context
+        self.card = IngredientCard(context: context)
         self.title = "New Card"
         self.ingredients = [
-            Ingredient(context: newContext)
+            Ingredient(context: context)
         ]
     }
 
     /// Initialize from Vision/ChatGPT parse.
     init(coreDataController: CoreDataController,
-         tempCard: TempIngredientCard
+         tempCard: TempIngredientCard,
+         context: NSManagedObjectContext
     ) {
-        /// We will use a new context as a temporary editing board outside
-        /// the main view context.
-        let newContext = coreDataController.newContext
-        self.context = newContext
-        self.card = IngredientCard(context: newContext)
+        self.context = context
+        self.card = IngredientCard(context: context)
         self.title = tempCard.title
         self.ingredients = tempCard.ingredients.map({ ingredientName in
-            let newIngredient = Ingredient(context: newContext)
+            let newIngredient = Ingredient(context: context)
             newIngredient.name = ingredientName
             return newIngredient
         })
