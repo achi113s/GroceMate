@@ -5,6 +5,7 @@
 //  Created by Giorgio Latour on 11/2/23.
 //
 
+import PhotosUI
 import SwiftUI
 
 struct HomeView: View {
@@ -21,6 +22,8 @@ struct HomeView: View {
                 .toolbar {
                     mainViewToolbar
                 }
+                .photosPicker(isPresented: $homeViewModel.presentPhotosPicker,
+                              selection: $homeViewModel.selectedPhotosPickerItem, photoLibrary: .shared())
         }
         .sheet(item: $homeViewModel.sheet, content: makeSheet)
         .confirmationDialog("Card Options", isPresented: $homeViewModel.presentConfirmationDialog) {
@@ -57,6 +60,16 @@ struct HomeView: View {
         } message: {
             Text("Are you sure you want to delete this card?")
         }
+        .onChange(of: homeViewModel.selectedPhotosPickerItem) { newPhoto in
+            Task {
+                if let data = try? await newPhoto?.loadTransferable(type: Data.self) {
+                    if let uiImage = UIImage(data: data) {
+                        homeViewModel.selectedImage = uiImage
+                        homeViewModel.sheet = .imageROI
+                    }
+                }
+            }
+        }
         .environmentObject(homeViewModel)
     }
 
@@ -73,27 +86,11 @@ struct HomeView: View {
                 }
             }
         }
-//        .searchable(text: $homeViewModel.query, placement: .toolbar)
-//        .onChange(of: homeViewModel.query) { _ in
-//            ingredientCards.nsPredicate = IngredientCard.filter(homeViewModel.query)
-//        }
+        //        .searchable(text: $homeViewModel.query, placement: .toolbar)
+        //        .onChange(of: homeViewModel.query) { _ in
+        //            ingredientCards.nsPredicate = IngredientCard.filter(homeViewModel.query)
+        //        }
     }
-
-    //    private var showCreateCardViewButton: some View {
-    //        Button {
-    //            showCreateCardView = true
-    //        } label: {
-    //            ZStack {
-    //                RoundedRectangle(cornerRadius: 15)
-    //                    .foregroundStyle(.blue)
-    //                    .frame(width: 120, height: 50)
-    //                Text("Grocemate")
-    //                    .fontWeight(.bold)
-    //                    .fontDesign(.rounded)
-    //            }
-    //        }
-    //        .tint(.white)
-    //    }
 
     private var emptyIngredientCardsView: some View {
         Text("Tap the plus to get started! ☝️")
@@ -189,16 +186,31 @@ struct HomeView: View {
         }
     }
 
+    //    private var showCreateCardViewButton: some View {
+    //        Button {
+    //            showCreateCardView = true
+    //        } label: {
+    //            ZStack {
+    //                RoundedRectangle(cornerRadius: 15)
+    //                    .foregroundStyle(.blue)
+    //                    .frame(width: 120, height: 50)
+    //                Text("Grocemate")
+    //                    .fontWeight(.bold)
+    //                    .fontDesign(.rounded)
+    //            }
+    //        }
+    //        .tint(.white)
+    //    }
+
     @ViewBuilder private func makeSheet(_ sheet: Sheets) -> some View {
         switch sheet {
         case .cameraView:
             EmptyView()
             //            CameraView()
         case .imageROI:
-            EmptyView()
-            //            if let image = selectedImage {
-            //                ImageWithROI(image: image)
-            //            }
+            if let image = homeViewModel.selectedImage {
+                ImageWithROI(image: image)
+            }
         case .editCard:
             if let selectedCard = homeViewModel.selectedCard {
                 CardDetailView<EditCardViewModel>(viewModel:

@@ -6,6 +6,7 @@
 //
 
 import CoreData
+import PhotosUI
 import SwiftUI
 
 enum SortIngredientCards {
@@ -42,6 +43,8 @@ final class HomeViewModel: ObservableObject {
     @Published var deleteAlert = false
 
     @Published var selectedCard: IngredientCard?
+    @Published var selectedPhotosPickerItem: PhotosPickerItem?
+    @Published var selectedImage: UIImage?
 
     @Published var query: String = ""
     @Published var sortBy: SortIngredientCards = .timestampAsc

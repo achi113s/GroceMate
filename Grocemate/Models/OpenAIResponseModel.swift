@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct OpenAIResponse: Decodable {
+struct OpenAIResponse: Codable {
     let id: String
     let object: String
     let created: Int
@@ -16,7 +16,7 @@ struct OpenAIResponse: Decodable {
     let choices: [Choice]
 }
 
-struct Usage: Decodable {
+struct Usage: Codable {
     let promptTokens: Int
     let completionTokens: Int
     let totalTokens: Int
@@ -28,7 +28,7 @@ struct Usage: Decodable {
     }
 }
 
-struct Choice: Decodable {
+struct Choice: Codable {
     let message: Message
     let finishReason: String
 
@@ -38,12 +38,12 @@ struct Choice: Decodable {
     }
 }
 
-struct Message: Decodable {
+struct Message: Codable {
     let role: String
     let content: String
 }
 
-struct CompletionRequest: Decodable {
+struct CompletionRequest: Codable {
     let model: String
     let maxTokens: Int
     let messages: [Message]
@@ -59,6 +59,6 @@ struct CompletionRequest: Decodable {
     }
 }
 
-struct DecodedIngredients: Decodable {
+struct DecodedIngredients: Codable {
     let ingredients: [String]
 }
