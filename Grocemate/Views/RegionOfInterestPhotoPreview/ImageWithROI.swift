@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct ImageWithROI: View {
-//    @EnvironmentObject var mainViewModel: MainViewModel
-//    @EnvironmentObject var textRecognitionModel: IngredientRecognitionHandler
+    @EnvironmentObject var homeViewModel: HomeViewModel
+    @EnvironmentObject var ingredientRecognitionHandler: IngredientRecognitionHandler
 
     @Environment(\.dismiss) var dismiss
 
@@ -121,15 +121,15 @@ struct ImageWithROI: View {
                 )
             )
 
-//                let roi = textRecognitionModel.convertBoundingBoxToNormalizedBoxForVisionROI(
-//                    boxLocation: location, boxSize: CGSize(width: boundingBoxWidth, height: boundingBoxHeight),
-//                    imageSize: imageSize)
-//
-//                print(roi)
-//
-//                textRecognitionModel.recognizeIngredientsInImage(image: image, region: roi)
-//
-//                mainViewModel.sheet = nil
+            let roi = ingredientRecognitionHandler.convertBoundingBoxToNormalizedBoxForVisionROI(
+                boxLocation: location, boxSize: CGSize(width: boundingBoxWidth, height: boundingBoxHeight),
+                imageSize: imageSize)
+
+            print(roi)
+
+            ingredientRecognitionHandler.recognizeIngredientsInImage(image: image, region: roi)
+
+            homeViewModel.sheet = nil
 
             dismiss()
         } label: {
