@@ -13,5 +13,8 @@ enum IngredientRecognitionStage: String {
     case parsingIngredients = "Formatting ingredient text..."
     case doneParsingIngredients = "Done formatting ingredient text!"
     case done = "Done!"
-    case error = "An error occurred."
+}
+
+enum IngredientRecognitionError: Error {
+    case undefinedImage, unknownError
 }

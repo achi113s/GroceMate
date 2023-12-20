@@ -39,6 +39,7 @@
 		44BF980C2B088AFA00E24047 /* Sheets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44BF980B2B088AFA00E24047 /* Sheets.swift */; };
 		44BF98102B088B5A00E24047 /* Image-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44BF980F2B088B5A00E24047 /* Image-Extensions.swift */; };
 		44BF98132B0927EF00E24047 /* CardDetailViewModellable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44BF98122B0927EF00E24047 /* CardDetailViewModellable.swift */; };
+		44C2C0A82B3283C9008B3F9A /* Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 44C2C0A72B3283C9008B3F9A /* Config.xcconfig */; };
 		44C7F9AF2B07395100AFE8DD /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C7F9AE2B07395100AFE8DD /* HomeViewModel.swift */; };
 		44CE197E2B27C463002D6E33 /* CreateCardViewModelInitializerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44CE197D2B27C463002D6E33 /* CreateCardViewModelInitializerTests.swift */; };
 		44CE19802B27CB66002D6E33 /* HomeViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44CE197F2B27CB66002D6E33 /* HomeViewModelTests.swift */; };
@@ -106,6 +107,7 @@
 		44BF980B2B088AFA00E24047 /* Sheets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sheets.swift; sourceTree = "<group>"; };
 		44BF980F2B088B5A00E24047 /* Image-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image-Extensions.swift"; sourceTree = "<group>"; };
 		44BF98122B0927EF00E24047 /* CardDetailViewModellable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailViewModellable.swift; sourceTree = "<group>"; };
+		44C2C0A72B3283C9008B3F9A /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		44C7F9AE2B07395100AFE8DD /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		44CE197D2B27C463002D6E33 /* CreateCardViewModelInitializerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCardViewModelInitializerTests.swift; sourceTree = "<group>"; };
 		44CE197F2B27CB66002D6E33 /* HomeViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModelTests.swift; sourceTree = "<group>"; };
@@ -290,6 +292,7 @@
 		44DDF2F02AF811CE005D35D8 = {
 			isa = PBXGroup;
 			children = (
+				44C2C0A72B3283C9008B3F9A /* Config.xcconfig */,
 				4465BDAB2B2278DD00DB97B1 /* Grocemate.xctestplan */,
 				44DDF2FB2AF811CE005D35D8 /* Grocemate */,
 				44DDF30C2AF811D0005D35D8 /* GrocemateTests */,
@@ -462,6 +465,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				44DDF3042AF811D0005D35D8 /* Preview Assets.xcassets in Resources */,
+				44C2C0A82B3283C9008B3F9A /* Config.xcconfig in Resources */,
 				44DDF3012AF811D0005D35D8 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

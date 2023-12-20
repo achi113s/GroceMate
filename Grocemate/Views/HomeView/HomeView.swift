@@ -11,6 +11,7 @@ import SwiftUI
 struct HomeView: View {
     // MARK: - State
     @StateObject var homeViewModel = HomeViewModel(coreDataController: CoreDataController.shared)
+    @StateObject var ingredientRecognitionHandler: IngredientRecognitionHandler = IngredientRecognitionHandler(openAIManager: OpenAIManager())
 
     // MARK: - Properties
     @FetchRequest(fetchRequest: IngredientCard.all()) private var ingredientCards
@@ -71,6 +72,7 @@ struct HomeView: View {
             }
         }
         .environmentObject(homeViewModel)
+        .environmentObject(ingredientRecognitionHandler)
     }
 
     // MARK: - Subviews
