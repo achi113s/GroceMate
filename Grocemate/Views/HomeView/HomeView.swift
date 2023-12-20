@@ -11,7 +11,9 @@ import SwiftUI
 struct HomeView: View {
     // MARK: - State
     @StateObject var homeViewModel = HomeViewModel(coreDataController: CoreDataController.shared)
-    @StateObject var ingredientRecognitionHandler: IngredientRecognitionHandler = IngredientRecognitionHandler(openAIManager: OpenAIManager())
+    @StateObject var ingredientRecognitionHandler: IngredientRecognitionHandler = IngredientRecognitionHandler(
+        openAIManager: OpenAIManager()
+    )
 
     // MARK: - Properties
     @FetchRequest(fetchRequest: IngredientCard.all()) private var ingredientCards
@@ -85,6 +87,11 @@ struct HomeView: View {
                     ingredientCardsView
                         .padding(.top, 30)
                         .padding(.horizontal, 20)
+                }
+            }
+            .overlay {
+                if ingredientRecognitionHandler.recognitionInProgress {
+                    RecognitionInProgressToast()
                 }
             }
         }

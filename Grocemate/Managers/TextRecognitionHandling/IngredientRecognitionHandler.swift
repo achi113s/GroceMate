@@ -51,7 +51,9 @@ class IngredientRecognitionHandler: ObservableObject {
             do {
                 try self?.performImageToTextRecognition(on: image, in: region)
             } catch {
-                print(error)
+                DispatchQueue.main.async { [weak self] in
+                    self?.progressStage = error.localizedDescription
+                }
                 return
             }
         }
@@ -104,9 +106,6 @@ extension IngredientRecognitionHandler {
             try myImageTextRequest.perform([request])
         } catch {
             print("Something went wrong: \(error.localizedDescription)")
-//            DispatchQueue.main.async { [weak self] in
-//                self?.progressStage = .error
-//            }
             throw error
         }
 
