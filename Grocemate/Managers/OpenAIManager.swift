@@ -27,58 +27,52 @@ class OpenAIManager: NSObject, ObservableObject {
         Bundle.main.infoDictionary?["OPENAI_ORGANIZATION"] as? String ?? ""
     }
 
-//    public func postMessageToCompletionsEndpoint(
-//        requestObject: CompletionRequest
-//    ) async throws -> OpenAIResponse {
-//        guard let url = URL(string: completionsEndpoint) else { throw URLError(.badURL) }
-//
-//        var request = URLRequest(url: url)
-//        request.httpMethod = "POST"
-//        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-//        request.addValue("Bearer \(apiKey)", forHTTPHeaderField: "Authorization")
+    public func postMessageToCompletionsEndpoint(
+        requestObject: CompletionRequest,
+        completion: @escaping (OpenAIResponse?, Error?) -> Void
+    ) {
+        guard let url = URL(string: completionsEndpoint) else {
+            completion(nil, URLError(.badURL))
+            return
+        }
 
-//        let message = Message(role: role, content: content)
-//        let requestObject = CompletionRequest(model: model, maxTokens: 1000, messages: [message], temperature: temperature, stream: false)
-//        let requestData = try JSONEncoder().encode(requestObject)
-//        request.httpBody = requestData
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue("Bearer \(apiKey)", forHTTPHeaderField: "Authorization")
 
-        //        let task = session.dataTask(with: request) { [weak self] (data, response, error) in
-        //            if let error = error {
-        //                print("There was an error: \(error.localizedDescription)")
-        //                return
-        //            }
-        //
-        //            if let data = data {
-        //                do {
-        //                    let responseObject = try JSONDecoder().decode(OpenAIResponse.self, from: data)
-        //
-        //                    self?.lastResponseFromChatGPT = responseObject
-        //                    print("set lastResponseFromChatGPT")
-        //                } catch {
-        //                    print("There was an error decoding the JSON object: \(error.localizedDescription)")
-        //                }
-        //            }
-        //
-        //            do {
-        //                try self?.convertOpenAIResponseToIngredients()
-        //            } catch {
-        //                print("\(error.localizedDescription)")
-        //            }
-        //        }
-        //
-        //        task.resume()
-        //        print("Exiting postMessageToCompletionsEndpoint")
-//    }
+        guard let requestData = try? JSONEncoder().encode(requestObject) else {
+            completion(nil, ChatGPTCompletionsError.requestObjectEncodingError)
+            return
+        }
 
-    public func convertOpenAIResponseToIngredients(_ response: OpenAIResponse) throws -> DecodedIngredients {
-        let ingredientJSONString = response.choices[0].message.content
+        request.httpBody = requestData
 
-        /// Try to convert the JSON string from ChatGPT into a JSON Data object.
-        guard let ingredientJSON = ingredientJSONString.data(using: .utf8) else { throw OpenAIError.badJSONString }
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            if let error = error {
+                print("There was an error: \(error.localizedDescription).")
+                completion(nil, error)
+            } else if (response as? HTTPURLResponse)?.statusCode != 200 {
+                completion(nil, ChatGPTCompletionsError.unknownError)
+            } else {
+                guard let data = data else {
+                    completion(nil, ChatGPTCompletionsError.unknownError)
+                    return
+                }
 
-        /// Try to decode the JSON object into a DecodedIngredients object.
-        let ingredientsObj = try JSONDecoder().decode(DecodedIngredients.self, from: ingredientJSON)
+                do {
+                    let responseObject = try JSONDecoder().decode(OpenAIResponse.self, from: data)
 
-        return ingredientsObj
+                    completion(responseObject, nil)
+                    return
+                } catch {
+                    print("There was an error decoding the JSON object: \(error.localizedDescription)")
+                    completion(nil, error)
+                }
+            }
+        }
+
+        task.resume()
+        print("Exiting postMessageToCompletionsEndpoint")
     }
 }

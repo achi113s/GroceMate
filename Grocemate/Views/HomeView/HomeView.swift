@@ -29,6 +29,18 @@ struct HomeView: View {
                               selection: $homeViewModel.selectedPhotosPickerItem, photoLibrary: .shared())
         }
         .sheet(item: $homeViewModel.sheet, content: makeSheet)
+        .sheet(isPresented: $ingredientRecognitionHandler.presentNewIngredients) {
+            CardDetailView<CreateCardViewModel>(
+                viewModel: CreateCardViewModel(
+                    coreDataController: .shared,
+                    tempCard: TempIngredientCard(
+                        title: "New Card",
+                        ingredients: ingredientRecognitionHandler.lastIngredientGroupFromChatGPT!.ingredients
+                    ),
+                    context: coreDataController.newContext
+                )
+            )
+        }
         .confirmationDialog("Card Options", isPresented: $homeViewModel.presentConfirmationDialog) {
             Button {
                 homeViewModel.sheet = .editCard
@@ -89,10 +101,10 @@ struct HomeView: View {
                         .padding(.horizontal, 20)
                 }
             }
-            .overlay {
-                if ingredientRecognitionHandler.recognitionInProgress {
-                    RecognitionInProgressToast()
-                }
+        }
+        .overlay {
+            if ingredientRecognitionHandler.recognitionInProgress {
+                RecognitionInProgressToast()
             }
         }
         //        .searchable(text: $homeViewModel.query, placement: .toolbar)

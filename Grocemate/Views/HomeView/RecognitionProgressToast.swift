@@ -13,30 +13,35 @@ struct RecognitionInProgressToast: View {
     @State private var animate: Bool = false
 
     var body: some View {
-        VStack {
+        HStack(spacing: 15) {
+            Image(systemName: "sparkle.magnifyingglass")
+                .font(.system(size: 24, weight: .semibold))
+
             Text("\(ingredientRecognitionHandler.progressStage)")
-//            Text("Recognition in Progress")
-                .opacity(animate ? 1.0 : 0.2)
+                .font(.system(size: 17, weight: .semibold, design: .rounded))
 
             Button {
                 ingredientRecognitionHandler.recognitionInProgress.toggle()
             } label: {
                 Text("Dismiss")
+                    .font(.system(size: 17, weight: .semibold, design: .rounded))
             }
         }
+        .opacity(animate ? 1.0 : 0.2)
         .padding(.vertical, 15)
-        .padding(.horizontal, 30)
+        .padding(.horizontal, 15)
         .background {
             RoundedRectangle(cornerRadius: 20)
                 .fill(.white)
                 .shadow(radius: 4)
-                .frame(maxWidth: .infinity)
+                .frame(maxWidth: .greatestFiniteMagnitude)
         }
         .onAppear {
             withAnimation(.easeInOut(duration: 1).repeatForever()) {
                 animate.toggle()
             }
         }
+        .transition(.asymmetric(insertion: .push(from: .bottom), removal: .push(from: .top)))
     }
 }
 

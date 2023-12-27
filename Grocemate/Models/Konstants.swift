@@ -7,6 +7,6 @@
 
 import Foundation
 
-class K {
+class Konstants {
     static let textRecognitionSessionQueueName: String = "com.grocemate.recognitionQueue"
 }
