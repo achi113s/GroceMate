@@ -130,6 +130,8 @@ struct ImageWithROI: View {
             ingredientRecognitionHandler.recognizeIngredientsInImage(image: image, region: roi)
 
             homeViewModel.sheet = nil
+            homeViewModel.selectedImage = nil
+            homeViewModel.selectedPhotosPickerItem = nil
 
             dismiss()
         } label: {

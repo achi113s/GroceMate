@@ -11,7 +11,9 @@ import SwiftUI
 struct HomeView: View {
     // MARK: - State
     @StateObject var homeViewModel = HomeViewModel(coreDataController: CoreDataController.shared)
-    @StateObject var ingredientRecognitionHandler: IngredientRecognitionHandler = IngredientRecognitionHandler(openAIManager: OpenAIManager())
+    @StateObject var ingredientRecognitionHandler: IngredientRecognitionHandler = IngredientRecognitionHandler(
+        openAIManager: OpenAIManager()
+    )
 
     // MARK: - Properties
     @FetchRequest(fetchRequest: IngredientCard.all()) private var ingredientCards
@@ -27,6 +29,18 @@ struct HomeView: View {
                               selection: $homeViewModel.selectedPhotosPickerItem, photoLibrary: .shared())
         }
         .sheet(item: $homeViewModel.sheet, content: makeSheet)
+        .sheet(isPresented: $ingredientRecognitionHandler.presentNewIngredients) {
+            CardDetailView<CreateCardViewModel>(
+                viewModel: CreateCardViewModel(
+                    coreDataController: .shared,
+                    tempCard: TempIngredientCard(
+                        title: "New Card",
+                        ingredients: ingredientRecognitionHandler.lastIngredientGroupFromChatGPT!.ingredients
+                    ),
+                    context: coreDataController.newContext
+                )
+            )
+        }
         .confirmationDialog("Card Options", isPresented: $homeViewModel.presentConfirmationDialog) {
             Button {
                 homeViewModel.sheet = .editCard
@@ -86,6 +100,11 @@ struct HomeView: View {
                         .padding(.top, 30)
                         .padding(.horizontal, 20)
                 }
+            }
+        }
+        .overlay {
+            if ingredientRecognitionHandler.recognitionInProgress {
+                RecognitionInProgressToast()
             }
         }
         //        .searchable(text: $homeViewModel.query, placement: .toolbar)
