@@ -38,12 +38,14 @@ class IngredientRecognitionHandler: ObservableObject {
     /// The public function for performing ingredients in an image.
     public func recognizeIngredientsInImage(image: UIImage, region: CGRect) {
         /// First set these two progress variables on main thread.
-        DispatchQueue.main.async { [weak self] in
-            print("Setting recognitionInProgress to true and setting progressMessage")
-            print("Current Thread: \(Thread.current)")
-            withAnimation {
-                self?.recognitionInProgress = true
-                self?.progressStage = IngredientRecognitionStage.startingVision.rawValue
+        textRecognitionSessionQueue.async { [weak self] in
+            DispatchQueue.main.async { [weak self] in
+                print("Setting recognitionInProgress to true and setting progressMessage")
+                print("Current Thread: \(Thread.current)\n")
+                withAnimation {
+                    self?.recognitionInProgress = true
+                    self?.progressStage = IngredientRecognitionStage.startingVision.rawValue
+                }
             }
         }
 
@@ -68,8 +70,8 @@ class IngredientRecognitionHandler: ObservableObject {
         /// A second async block for the ChatGPT API call.
         textRecognitionSessionQueue.async { [weak self] in
             DispatchQueue.main.async {
-                print("Setting progressMessage to parsing ingredients")
-                print("Current Thread: \(Thread.current)")
+                print("Setting progressMessage to parsing ingredients.")
+                print("Current Thread: \(Thread.current)\n")
                 withAnimation {
                     self?.progressStage = IngredientRecognitionStage.formattingIngredients.rawValue
                 }
@@ -91,7 +93,7 @@ extension IngredientRecognitionHandler {
         }
 
         print("Starting performImagetoTextRecognition.")
-        print("Current Thread: \(Thread.current)")
+        print("Current Thread: \(Thread.current)\n")
 
         let myImageTextRequest = VNImageRequestHandler(cgImage: cgImage, orientation: .right)
 
@@ -118,7 +120,7 @@ extension IngredientRecognitionHandler {
             throw error
         }
 
-        print("Exiting performImagetoTextRecognition")
+        print("Exiting performImagetoTextRecognition.\n")
     }
 
     /// Completion handler for the image text recognition request.
@@ -128,7 +130,7 @@ extension IngredientRecognitionHandler {
         guard let observations = request.results as? [VNRecognizedTextObservation] else { return }
 
         print("Starting formatObservations.")
-        print("Current Thread: \(Thread.current). Should not be main.")
+        print("Current Thread: \(Thread.current). Should not be main.\n")
 
         let results = observations.compactMap { observation in
             // topCandidates returns an array of the top n candidates as VNRecognizedText objects.
@@ -139,60 +141,58 @@ extension IngredientRecognitionHandler {
             return observation.topCandidates(1)[0].string
         }
 
-        print("Setting lastResultsFromVision.")
+        print("Setting lastResultsFromVision.\n")
         lastResultsFromVision = results
 
-        print("Exiting formatObservations.")
+        print("Exiting formatObservations.\n")
     }
 
-    public func convertBoundingBoxToNormalizedBoxForVisionROI(boxLocation: CGPoint, boxSize: CGSize, imageSize: CGSize) -> CGRect {
-        /// Calculates the size of the region of interest normalized to the size of the input image.
-        let normalizedWidth = boxSize.width / imageSize.width
-        let normalizedHeight = boxSize.height / imageSize.height
-        print("normalizedWidth: \(normalizedWidth), normalizedHeight: \(normalizedHeight)")
+    public func convertBoundingBoxToNormalizedBoxForVisionROI(
+        boxLocation: CGPoint, boxSize: CGSize, imageSize: CGSize) -> CGRect {
+            /// Calculates the size of the region of interest normalized to the size of the input image.
+            let normalizedWidth = boxSize.width / imageSize.width
+            let normalizedHeight = boxSize.height / imageSize.height
+            //        print("normal izedWidth: \(normalizedWidth), normalizedHeight: \(normalizedHeight)")
 
+            /// Now calculate the x and y coordinate of the region of interest assuming the lower
+            /// left corner is the origin rather than the top left corner of the image.
+            /// The origin of the bounding box is in its top leading corner. So the x
+            /// is the same for the unnormalized and normalized regions.
+            /// For y, we need to calculate the
+            /// normalized coordinate of the lower left corner.
+            let newOriginX = max(boxLocation.x, 0)
+            let newOriginY = max(imageSize.height - (boxLocation.y + boxSize.height), 0)
+            //        print("newOriginX: \(newOriginX), newOriginY: \(newOriginY)")
 
-        /// Now calculate the x and y coordinate of the region of interest assuming the lower
-        /// left corner is the origin rather than the top left corner of the image.
-        /// The origin of the bounding box is in its top leading corner. So the x
-        /// is the same for the unnormalized and normalized regions.
-        /// For y, we need to calculate the
-        /// normalized coordinate of the lower left corner.
-        let newOriginX = max(boxLocation.x, 0)
-        let newOriginY = max(imageSize.height - (boxLocation.y + boxSize.height), 0)
-        print("newOriginX: \(newOriginX), newOriginY: \(newOriginY)")
+            /// Normalize the new origin to the size of the input image.
+            let normalizedOriginX = newOriginX / imageSize.width
+            let normalizedOriginY = newOriginY / imageSize.height
+            //        print("normalizedOriginX: \(normalizedOriginX), normalizedOriginY: \(normalizedOriginY)")
 
-        /// Normalize the new origin to the size of the input image.
-        let normalizedOriginX = newOriginX / imageSize.width
-        let normalizedOriginY = newOriginY / imageSize.height
-        print("normalizedOriginX: \(normalizedOriginX), normalizedOriginY: \(normalizedOriginY)")
-
-        let finalROICGRect = CGRect(
-            x: normalizedOriginX, y: normalizedOriginY,
-            width: normalizedWidth, height: normalizedHeight
-        )
-        print("final CGRect: \(finalROICGRect)")
-        return finalROICGRect
-    }
+            let finalROICGRect = CGRect(
+                x: normalizedOriginX, y: normalizedOriginY,
+                width: normalizedWidth, height: normalizedHeight
+            )
+            //        print("final CGRect: \(finalROICGRect)")
+            return finalROICGRect
+        }
 }
 
 // MARK: - ChatGPT Ingredient Parsing and Formatting
 extension IngredientRecognitionHandler {
     /// Processes text that was output from Vision.
     public func processVisionText() {
-        print("Starting processVisionText")
+        print("Starting processVisionText\n")
 
         guard let ingredients = lastResultsFromVision?.joined(separator: " ") else {
             print("lastResultsFromVision was empty. Exiting processVisionText")
 
             DispatchQueue.main.async { [weak self] in
-                print("Setting progressMessage to parsing ingredients")
                 print("Current Thread: \(Thread.current)")
                 withAnimation {
                     self?.progressStage = "lastResultsFromVision was empty."
                 }
             }
-
             return
         }
 
@@ -205,48 +205,58 @@ extension IngredientRecognitionHandler {
             messages: [message], temperature: 0.7, stream: false
         )
 
-        openAIManager.postMessageToCompletionsEndpoint(requestObject: requestObject) { [weak self] openAIResponse, error in
-            // do stuff
-            guard let openAIResponse = openAIResponse else {
+        openAIManager.postMessageToCompletionsEndpoint(
+            requestObject: requestObject) { [weak self] openAIResponse, error in
+
+                guard error == nil else {
+                    print("An Error occurred: \(error!)")
+                    return
+                }
+
+                guard let openAIResponse = openAIResponse else {
+                    print("OpenAIResponse was nil.\n")
+                    DispatchQueue.main.async {
+                        self?.progressStage = IngredientRecognitionStage.formattingError.rawValue
+                    }
+                    return
+                }
+
+                let ingredientJSONString = openAIResponse.choices[0].message.content
+
+                /// Try to convert the JSON string from ChatGPT into a JSON Data object.
+                guard let ingredientJSON = ingredientJSONString.data(using: .utf8) else {
+                    print("Could not cast ingredientJSONString as JSON Object.\n")
+                    DispatchQueue.main.async {
+                        self?.progressStage = IngredientRecognitionStage.formattingError.rawValue
+                    }
+                    return
+                }
+
+                /// Try to decode the JSON object into a DecodedIngredients object.
+                guard let ingredientsObj = try? JSONDecoder().decode(DecodedIngredients.self, from: ingredientJSON) else {
+                    print("Could not decode ingredientJSON to DecodedIgredients.\n")
+                    DispatchQueue.main.async {
+                        self?.progressStage = IngredientRecognitionStage.formattingError.rawValue
+                    }
+                    return
+                }
+
+                self?.lastIngredientGroupFromChatGPT = ingredientsObj
+
                 DispatchQueue.main.async {
-                    self?.progressStage = IngredientRecognitionStage.formattingError.rawValue
-                }
-                return
-            }
+                    print("Setting progressMessage to done")
+                    print("Current Thread: \(Thread.current)")
+                    self?.progressStage = IngredientRecognitionStage.done.rawValue
+                    self?.recognitionInProgress = false
 
-            let ingredientJSONString = openAIResponse.choices[0].message.content
-
-            /// Try to convert the JSON string from ChatGPT into a JSON Data object.
-            guard let ingredientJSON = ingredientJSONString.data(using: .utf8) else {
-                DispatchQueue.main.async {
-                    self?.progressStage = IngredientRecognitionStage.formattingError.rawValue
-                }
-                return
-            }
-
-            /// Try to decode the JSON object into a DecodedIngredients object.
-            guard let ingredientsObj = try? JSONDecoder().decode(DecodedIngredients.self, from: ingredientJSON) else {
-                DispatchQueue.main.async {
-                    self?.progressStage = IngredientRecognitionStage.formattingError.rawValue
-                }
-                return
-            }
-
-            self?.lastIngredientGroupFromChatGPT = ingredientsObj
-
-            DispatchQueue.main.async {
-                print("Setting progressMessage to done")
-                print("Current Thread: \(Thread.current)")
-                self?.progressStage = IngredientRecognitionStage.done.rawValue
-                self?.recognitionInProgress = false
-
-                if self?.lastIngredientGroupFromChatGPT != nil {
-                    self?.presentNewIngredients = true
-                } else {
-    //                self?.progressMessage = RecognitionProgressMessages.error.rawValue
+                    if self?.lastIngredientGroupFromChatGPT != nil {
+                        self?.presentNewIngredients = true
+                        print("new ingredients available")
+                    } else {
+                        //                self?.progressMessage = RecognitionProgressMessages.error.rawValue
+                    }
                 }
             }
-        }
 
         print("Exiting processVisionText")
     }

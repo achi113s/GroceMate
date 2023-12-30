@@ -22,5 +22,5 @@ enum IngredientRecognitionError: Error {
 }
 
 enum ChatGPTCompletionsError: Error {
-    case unknownError, requestObjectEncodingError
+    case unknownError, requestObjectEncodingError, emptyDataError, non200CodeError
 }

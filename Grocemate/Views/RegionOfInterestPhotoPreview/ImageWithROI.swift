@@ -114,18 +114,18 @@ struct ImageWithROI: View {
     // MARK: - Subviews
     private var identifyButton: some View {
         Button {
-            print(
-                CGRect(
-                    origin: CGPoint(x: location.x, y: location.y),
-                    size: CGSize(width: boundingBoxWidth, height: boundingBoxHeight)
-                )
-            )
+//            print(
+//                CGRect(
+//                    origin: CGPoint(x: location.x, y: location.y),
+//                    size: CGSize(width: boundingBoxWidth, height: boundingBoxHeight)
+//                )
+//            )
 
             let roi = ingredientRecognitionHandler.convertBoundingBoxToNormalizedBoxForVisionROI(
                 boxLocation: location, boxSize: CGSize(width: boundingBoxWidth, height: boundingBoxHeight),
                 imageSize: imageSize)
 
-            print(roi)
+//            print(roi)
 
             ingredientRecognitionHandler.recognizeIngredientsInImage(image: image, region: roi)
 

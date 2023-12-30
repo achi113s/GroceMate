@@ -40,7 +40,7 @@ class OpenAIManager: NSObject, ObservableObject {
         request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.addValue("Bearer \(apiKey)", forHTTPHeaderField: "Authorization")
-
+        print("apiKey \(apiKey)")
         guard let requestData = try? JSONEncoder().encode(requestObject) else {
             completion(nil, ChatGPTCompletionsError.requestObjectEncodingError)
             return
@@ -52,11 +52,12 @@ class OpenAIManager: NSObject, ObservableObject {
             if let error = error {
                 print("There was an error: \(error.localizedDescription).")
                 completion(nil, error)
-            } else if (response as? HTTPURLResponse)?.statusCode != 200 {
-                completion(nil, ChatGPTCompletionsError.unknownError)
+//            } else if (response as? HTTPURLResponse)?.statusCode != 200 {
+//                print("HTTPURLResponse status code \((response as? HTTPURLResponse)?.statusCode)")
+//                completion(nil, ChatGPTCompletionsError.non200CodeError)
             } else {
                 guard let data = data else {
-                    completion(nil, ChatGPTCompletionsError.unknownError)
+                    completion(nil, ChatGPTCompletionsError.emptyDataError)
                     return
                 }
 
