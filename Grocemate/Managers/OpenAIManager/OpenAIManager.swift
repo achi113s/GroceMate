@@ -7,24 +7,16 @@
 
 import Foundation
 
-protocol OpenAIManageable {
-    var completionsEndpoint: String { get set }
-    var apiKey: String { get set }
-    var organization: String { get set }
-
-    func postMessageToCompletionsEndpoint(requestObject: CompletionRequest) -> OpenAIResponse
-}
-
 /// Manage the connection with the OpenAI API for Chat Completion.
 class OpenAIManager: NSObject, ObservableObject {
     private let completionsEndpoint = "https://api.openai.com/v1/chat/completions"
 
-    private var apiKey: String {
-        Bundle.main.infoDictionary?["OPENAI_API_KEY"] as? String ?? ""
+    private var apiKey: String? {
+        Bundle.main.infoDictionary?["OPENAI_API_KEY"] as? String
     }
 
-    private var organization: String {
-        Bundle.main.infoDictionary?["OPENAI_ORGANIZATION"] as? String ?? ""
+    private var organization: String? {
+        Bundle.main.infoDictionary?["OPENAI_ORGANIZATION"] as? String
     }
 
     public func postMessageToCompletionsEndpoint(
@@ -36,38 +28,42 @@ class OpenAIManager: NSObject, ObservableObject {
             return
         }
 
+        guard let apiKey = self.apiKey, !apiKey.isEmpty else {
+            completion(nil, OpenAIError.invalidAPIKey)
+            return
+        }
+
+        // Construct the request.
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.addValue("Bearer \(apiKey)", forHTTPHeaderField: "Authorization")
-        print("apiKey \(apiKey)")
+
         guard let requestData = try? JSONEncoder().encode(requestObject) else {
-            completion(nil, ChatGPTCompletionsError.requestObjectEncodingError)
+            completion(nil, OpenAIError.requestObjectEncodingError)
             return
         }
 
         request.httpBody = requestData
 
+        // Construct the URLSession task.
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             if let error = error {
-                print("There was an error: \(error.localizedDescription).")
                 completion(nil, error)
-//            } else if (response as? HTTPURLResponse)?.statusCode != 200 {
-//                print("HTTPURLResponse status code \((response as? HTTPURLResponse)?.statusCode)")
-//                completion(nil, ChatGPTCompletionsError.non200CodeError)
+            } else if (response as? HTTPURLResponse)?.statusCode != 200 {
+                let code = (response as? HTTPURLResponse)?.statusCode ?? 400
+                completion(nil, URLError(URLError.Code(rawValue: code)))
             } else {
                 guard let data = data else {
-                    completion(nil, ChatGPTCompletionsError.emptyDataError)
+                    completion(nil, OpenAIError.emptyDataError)
                     return
                 }
 
                 do {
                     let responseObject = try JSONDecoder().decode(OpenAIResponse.self, from: data)
-
                     completion(responseObject, nil)
                     return
                 } catch {
-                    print("There was an error decoding the JSON object: \(error.localizedDescription)")
                     completion(nil, error)
                 }
             }

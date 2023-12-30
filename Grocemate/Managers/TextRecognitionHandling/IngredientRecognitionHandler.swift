@@ -209,7 +209,7 @@ extension IngredientRecognitionHandler {
             requestObject: requestObject) { [weak self] openAIResponse, error in
 
                 guard error == nil else {
-                    print("An Error occurred: \(error!)")
+                    print("An Error occurred: \(error!.localizedDescription)")
                     return
                 }
 
