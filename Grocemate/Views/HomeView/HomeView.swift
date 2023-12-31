@@ -92,14 +92,12 @@ struct HomeView: View {
     // MARK: - Subviews
     private var mainView: some View {
         ScrollView(.vertical) {
-            VStack {
-                if ingredientCards.isEmpty {
-                    emptyIngredientCardsView
-                } else {
-                    ingredientCardsView
-                        .padding(.top, 30)
-                        .padding(.horizontal, 20)
-                }
+            if ingredientCards.isEmpty {
+                emptyIngredientCardsView
+            } else {
+                ingredientCardsView
+                    .padding(.top, 30)
+                    .padding(.horizontal, 20)
             }
         }
         .overlay {
@@ -114,12 +112,14 @@ struct HomeView: View {
     }
 
     private var emptyIngredientCardsView: some View {
-        Text("Tap the plus to get started! ☝️")
-            .font(.system(size: 30))
-            .fontWeight(.semibold)
-            .fontDesign(.rounded)
-            .frame(width: 300)
-            .frame(minHeight: 600)
+        VStack {
+            Text("Tap the plus to get started! ☝️")
+                .font(.system(size: 30))
+                .fontWeight(.semibold)
+                .fontDesign(.rounded)
+                .frame(width: 300)
+                .frame(minHeight: 600)
+        }
     }
 
     private var ingredientCardsView: some View {
