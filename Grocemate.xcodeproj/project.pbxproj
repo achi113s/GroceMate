@@ -53,6 +53,7 @@
 		44DDF30E2AF811D0005D35D8 /* GrocemateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DDF30D2AF811D0005D35D8 /* GrocemateTests.swift */; };
 		44DDF3182AF811D0005D35D8 /* GrocemateUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DDF3172AF811D0005D35D8 /* GrocemateUITests.swift */; };
 		44DDF31A2AF811D0005D35D8 /* GrocemateUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DDF3192AF811D0005D35D8 /* GrocemateUITestsLaunchTests.swift */; };
+		44EE333E2B411A6600DEE6F1 /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EE333D2B411A6600DEE6F1 /* CameraView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -126,6 +127,7 @@
 		44DDF3132AF811D0005D35D8 /* GrocemateUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GrocemateUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		44DDF3172AF811D0005D35D8 /* GrocemateUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrocemateUITests.swift; sourceTree = "<group>"; };
 		44DDF3192AF811D0005D35D8 /* GrocemateUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrocemateUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		44EE333D2B411A6600DEE6F1 /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -179,6 +181,7 @@
 				4489336A2B2FED7900121DCE /* RegionOfInterestPhotoPreview */,
 				44BF98112B0927D700E24047 /* CardDetailView */,
 				44C7F9AD2B07394300AFE8DD /* HomeView */,
+				44EE333D2B411A6600DEE6F1 /* CameraView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -536,6 +539,7 @@
 				445DCC452AFC579700CA97DE /* Ingredient+CoreDataProperties.swift in Sources */,
 				440ECB942AF8130400E6BD5C /* Ingredient+CoreDataClass.swift in Sources */,
 				44C2C0AA2B32AED3008B3F9A /* RecognitionProgressToast.swift in Sources */,
+				44EE333E2B411A6600DEE6F1 /* CameraView.swift in Sources */,
 				440ECB832AF812F800E6BD5C /* CreateCardViewModel.swift in Sources */,
 				44BF98102B088B5A00E24047 /* Image-Extensions.swift in Sources */,
 				4489337E2B31186F00121DCE /* IngredientRecognitionStage.swift in Sources */,
@@ -736,6 +740,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Grocemate/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Allow camera access to scan and process a picture of some ingredients.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -768,6 +773,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Grocemate/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Allow camera access to scan and process a picture of some ingredients.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

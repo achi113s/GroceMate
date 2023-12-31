@@ -49,12 +49,16 @@ class OpenAIManager: NSObject, ObservableObject {
         // Construct the URLSession task.
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             if let error = error {
+                print("An error occurred processing this URLSession task: \(error)")
                 completion(nil, error)
             } else if (response as? HTTPURLResponse)?.statusCode != 200 {
                 let code = (response as? HTTPURLResponse)?.statusCode ?? 400
-                completion(nil, URLError(URLError.Code(rawValue: code)))
+                let error = URLError(URLError.Code(rawValue: code))
+                print("The HTTP request returned a non-200 code: \(code), \(error)")
+                completion(nil, error)
             } else {
                 guard let data = data else {
+                    print("The HTTP request returned empty data.")
                     completion(nil, OpenAIError.emptyDataError)
                     return
                 }
@@ -64,6 +68,7 @@ class OpenAIManager: NSObject, ObservableObject {
                     completion(responseObject, nil)
                     return
                 } catch {
+                    print("An error occured decoding the HTTP response data to an OpenAIResponse. \(error)")
                     completion(nil, error)
                 }
             }

@@ -29,7 +29,3 @@ extension OpenAIError: CustomStringConvertible {
         }
     }
 }
-
-enum ChatGPTCompletionsError: Error {
-    case unknownError, requestObjectEncodingError, emptyDataError, non200CodeError
-}

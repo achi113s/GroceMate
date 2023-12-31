@@ -226,8 +226,11 @@ struct HomeView: View {
     @ViewBuilder private func makeSheet(_ sheet: Sheets) -> some View {
         switch sheet {
         case .cameraView:
-            EmptyView()
-            //            CameraView()
+            CameraView(sourceType: .camera) { uiImage in
+                homeViewModel.selectedImage = uiImage
+                homeViewModel.sheet = .imageROI
+                print("start imageroi?")
+            }
         case .imageROI:
             if let image = homeViewModel.selectedImage {
                 ImageWithROI(image: image)

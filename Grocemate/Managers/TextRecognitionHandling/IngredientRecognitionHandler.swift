@@ -19,7 +19,7 @@ class IngredientRecognitionHandler: ObservableObject {
     @Published var recognitionInProgress: Bool = false
     @Published var presentNewIngredients: Bool = false
 
-    private var lastResultsFromVision: [String]?
+    private var lastResultsFromVision: [String] = [String]()
     public var lastIngredientGroupFromChatGPT: DecodedIngredients?
 
     private let separateIngredientsCompletion = """
@@ -35,11 +35,11 @@ class IngredientRecognitionHandler: ObservableObject {
         self.openAIManager = openAIManager
     }
 
-    /// The public function for performing ingredients in an image.
+    /// The public function for recognizing ingredients in an image.
     public func recognizeIngredientsInImage(image: UIImage, region: CGRect) {
         /// First set these two progress variables on main thread.
         textRecognitionSessionQueue.async { [weak self] in
-            DispatchQueue.main.async { [weak self] in
+            DispatchQueue.main.async {
                 print("Setting recognitionInProgress to true and setting progressMessage")
                 print("Current Thread: \(Thread.current)\n")
                 withAnimation {
@@ -49,7 +49,7 @@ class IngredientRecognitionHandler: ObservableObject {
             }
         }
 
-        /// Move to the textRecognitionSessionQueue for the text recognition with Vision.
+        /// Move to the textRecognitionSessionQueue for text recognition with Vision.
         textRecognitionSessionQueue.async { [weak self] in
             do {
                 try self?.performImageToTextRecognition(on: image, in: region)
@@ -69,15 +69,29 @@ class IngredientRecognitionHandler: ObservableObject {
 
         /// A second async block for the ChatGPT API call.
         textRecognitionSessionQueue.async { [weak self] in
+            guard let self = self else { fatalError("Found nil when unwrapping self.") }
+
             DispatchQueue.main.async {
                 print("Setting progressMessage to parsing ingredients.")
                 print("Current Thread: \(Thread.current)\n")
                 withAnimation {
-                    self?.progressStage = IngredientRecognitionStage.formattingIngredients.rawValue
+                    self.progressStage = IngredientRecognitionStage.formattingIngredients.rawValue
                 }
             }
 
-            self?.processVisionText()
+            guard lastResultsFromVision.isNotEmpty else {
+                print("lastResultsFromVision was empty. Exiting processVisionText")
+
+                DispatchQueue.main.async {
+                    print("Current Thread: \(Thread.current)")
+                    withAnimation {
+                        self.progressStage = "lastResultsFromVision was empty."
+                    }
+                }
+                return
+            }
+
+            self.processVisionText(self.lastResultsFromVision)
         }
     }
 }
@@ -181,20 +195,10 @@ extension IngredientRecognitionHandler {
 // MARK: - ChatGPT Ingredient Parsing and Formatting
 extension IngredientRecognitionHandler {
     /// Processes text that was output from Vision.
-    public func processVisionText() {
+    public func processVisionText(_ visionResults: [String]) {
         print("Starting processVisionText\n")
 
-        guard let ingredients = lastResultsFromVision?.joined(separator: " ") else {
-            print("lastResultsFromVision was empty. Exiting processVisionText")
-
-            DispatchQueue.main.async { [weak self] in
-                print("Current Thread: \(Thread.current)")
-                withAnimation {
-                    self?.progressStage = "lastResultsFromVision was empty."
-                }
-            }
-            return
-        }
+        let ingredients = visionResults.joined(separator: " ")
 
         let content = separateIngredientsCompletion + "\"\(ingredients)\""
 
@@ -207,9 +211,11 @@ extension IngredientRecognitionHandler {
 
         openAIManager.postMessageToCompletionsEndpoint(
             requestObject: requestObject) { [weak self] openAIResponse, error in
-
                 guard error == nil else {
-                    print("An Error occurred: \(error!.localizedDescription)")
+                    print("An error occurred posting a message to ChatGPT Completions: \(error!.localizedDescription)")
+                    DispatchQueue.main.async {
+                        self?.progressStage = IngredientRecognitionStage.formattingError.rawValue
+                    }
                     return
                 }
 
@@ -233,7 +239,9 @@ extension IngredientRecognitionHandler {
                 }
 
                 /// Try to decode the JSON object into a DecodedIngredients object.
-                guard let ingredientsObj = try? JSONDecoder().decode(DecodedIngredients.self, from: ingredientJSON) else {
+                guard let ingredientsObj = try? JSONDecoder().decode(
+                    DecodedIngredients.self, from: ingredientJSON
+                ) else {
                     print("Could not decode ingredientJSON to DecodedIgredients.\n")
                     DispatchQueue.main.async {
                         self?.progressStage = IngredientRecognitionStage.formattingError.rawValue
@@ -247,13 +255,14 @@ extension IngredientRecognitionHandler {
                     print("Setting progressMessage to done")
                     print("Current Thread: \(Thread.current)")
                     self?.progressStage = IngredientRecognitionStage.done.rawValue
+                    // work on this
                     self?.recognitionInProgress = false
 
                     if self?.lastIngredientGroupFromChatGPT != nil {
                         self?.presentNewIngredients = true
                         print("new ingredients available")
                     } else {
-                        //                self?.progressMessage = RecognitionProgressMessages.error.rawValue
+                        self?.progressStage = IngredientRecognitionStage.formattingError.rawValue
                     }
                 }
             }
