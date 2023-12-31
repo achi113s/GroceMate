@@ -12,7 +12,7 @@ enum OpenAIError: Error {
      Throw when ChatGPT returns a bad JSON String
      and we can't convert it to a JSON data object.
      */
-    case badJSONString
+    case badJSONString, invalidAPIKey, requestObjectEncodingError, emptyDataError
 }
 
 extension OpenAIError: CustomStringConvertible {
@@ -20,18 +20,12 @@ extension OpenAIError: CustomStringConvertible {
         switch self {
         case .badJSONString:
             return "ChatGPT returned an inconvertible JSON string or none at all."
-        }
-    }
-}
-
-extension OpenAIError: LocalizedError {
-    public var errorDescription: String? {
-        switch self {
-        case .badJSONString:
-            return NSLocalizedString(
-                "The API returned an unexpected result.",
-                comment: "Received an unexpected result."
-            )
+        case .invalidAPIKey:
+            return "The provided API Key is blank or invalid."
+        case .requestObjectEncodingError:
+            return "The completions request object could not be encoded to JSON."
+        case .emptyDataError:
+            return "The completions request returned an empty data object."
         }
     }
 }

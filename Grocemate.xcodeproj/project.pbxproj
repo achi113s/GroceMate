@@ -26,6 +26,7 @@
 		445DCC452AFC579700CA97DE /* Ingredient+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445DCC442AFC579700CA97DE /* Ingredient+CoreDataProperties.swift */; };
 		4465BDAE2B23936800DB97B1 /* StringArray-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4465BDAD2B23936800DB97B1 /* StringArray-Extensions.swift */; };
 		4465BDB02B23CCC500DB97B1 /* CardDetailSaveError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4465BDAF2B23CCC500DB97B1 /* CardDetailSaveError.swift */; };
+		446EF8312B3FD03700271764 /* OpenAIManageable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446EF8302B3FD03700271764 /* OpenAIManageable.swift */; };
 		4480E1272B29454F0042DB44 /* UtilityFunctionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4480E1262B29454F0042DB44 /* UtilityFunctionTests.swift */; };
 		4489336C2B2FED9A00121DCE /* ImageSizePreferenceKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4489336B2B2FED9A00121DCE /* ImageSizePreferenceKey.swift */; };
 		4489336E2B2FF28F00121DCE /* ImageWithROI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4489336D2B2FF28F00121DCE /* ImageWithROI.swift */; };
@@ -52,6 +53,7 @@
 		44DDF30E2AF811D0005D35D8 /* GrocemateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DDF30D2AF811D0005D35D8 /* GrocemateTests.swift */; };
 		44DDF3182AF811D0005D35D8 /* GrocemateUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DDF3172AF811D0005D35D8 /* GrocemateUITests.swift */; };
 		44DDF31A2AF811D0005D35D8 /* GrocemateUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DDF3192AF811D0005D35D8 /* GrocemateUITestsLaunchTests.swift */; };
+		44EE333E2B411A6600DEE6F1 /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EE333D2B411A6600DEE6F1 /* CameraView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -94,6 +96,7 @@
 		4465BDAB2B2278DD00DB97B1 /* Grocemate.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = Grocemate.xctestplan; sourceTree = "<group>"; };
 		4465BDAD2B23936800DB97B1 /* StringArray-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StringArray-Extensions.swift"; sourceTree = "<group>"; };
 		4465BDAF2B23CCC500DB97B1 /* CardDetailSaveError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailSaveError.swift; sourceTree = "<group>"; };
+		446EF8302B3FD03700271764 /* OpenAIManageable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIManageable.swift; sourceTree = "<group>"; };
 		4480E1262B29454F0042DB44 /* UtilityFunctionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilityFunctionTests.swift; sourceTree = "<group>"; };
 		4489336B2B2FED9A00121DCE /* ImageSizePreferenceKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSizePreferenceKey.swift; sourceTree = "<group>"; };
 		4489336D2B2FF28F00121DCE /* ImageWithROI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageWithROI.swift; sourceTree = "<group>"; };
@@ -124,6 +127,7 @@
 		44DDF3132AF811D0005D35D8 /* GrocemateUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GrocemateUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		44DDF3172AF811D0005D35D8 /* GrocemateUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrocemateUITests.swift; sourceTree = "<group>"; };
 		44DDF3192AF811D0005D35D8 /* GrocemateUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrocemateUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		44EE333D2B411A6600DEE6F1 /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -177,6 +181,7 @@
 				4489336A2B2FED7900121DCE /* RegionOfInterestPhotoPreview */,
 				44BF98112B0927D700E24047 /* CardDetailView */,
 				44C7F9AD2B07394300AFE8DD /* HomeView */,
+				44EE333D2B411A6600DEE6F1 /* CameraView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -221,6 +226,15 @@
 			path = EditCardView;
 			sourceTree = "<group>";
 		};
+		446EF8322B3FD04000271764 /* OpenAIManager */ = {
+			isa = PBXGroup;
+			children = (
+				448933762B3112B300121DCE /* OpenAIManager.swift */,
+				446EF8302B3FD03700271764 /* OpenAIManageable.swift */,
+			);
+			path = OpenAIManager;
+			sourceTree = "<group>";
+		};
 		4489336A2B2FED7900121DCE /* RegionOfInterestPhotoPreview */ = {
 			isa = PBXGroup;
 			children = (
@@ -234,7 +248,7 @@
 			isa = PBXGroup;
 			children = (
 				4489337A2B3114B000121DCE /* TextRecognitionHandling */,
-				448933762B3112B300121DCE /* OpenAIManager.swift */,
+				446EF8322B3FD04000271764 /* OpenAIManager */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -521,9 +535,11 @@
 				44DDEAF72B0F2290002AB0CE /* HapticType.swift in Sources */,
 				448933722B310E5E00121DCE /* ChatGPT.swift in Sources */,
 				44DDF2FF2AF811CE005D35D8 /* HomeView.swift in Sources */,
+				446EF8312B3FD03700271764 /* OpenAIManageable.swift in Sources */,
 				445DCC452AFC579700CA97DE /* Ingredient+CoreDataProperties.swift in Sources */,
 				440ECB942AF8130400E6BD5C /* Ingredient+CoreDataClass.swift in Sources */,
 				44C2C0AA2B32AED3008B3F9A /* RecognitionProgressToast.swift in Sources */,
+				44EE333E2B411A6600DEE6F1 /* CameraView.swift in Sources */,
 				440ECB832AF812F800E6BD5C /* CreateCardViewModel.swift in Sources */,
 				44BF98102B088B5A00E24047 /* Image-Extensions.swift in Sources */,
 				4489337E2B31186F00121DCE /* IngredientRecognitionStage.swift in Sources */,
@@ -712,6 +728,7 @@
 		};
 		44DDF31E2AF811D0005D35D8 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 44C2C0A72B3283C9008B3F9A /* Config.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -723,6 +740,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Grocemate/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Allow camera access to scan and process a picture of some ingredients.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -755,6 +773,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Grocemate/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Allow camera access to scan and process a picture of some ingredients.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

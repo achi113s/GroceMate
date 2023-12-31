@@ -20,7 +20,3 @@ enum IngredientRecognitionStage: String {
 enum IngredientRecognitionError: Error {
     case undefinedImage, unknownError
 }
-
-enum ChatGPTCompletionsError: Error {
-    case unknownError, requestObjectEncodingError
-}

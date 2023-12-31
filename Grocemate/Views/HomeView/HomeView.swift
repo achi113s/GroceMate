@@ -92,14 +92,12 @@ struct HomeView: View {
     // MARK: - Subviews
     private var mainView: some View {
         ScrollView(.vertical) {
-            VStack {
-                if ingredientCards.isEmpty {
-                    emptyIngredientCardsView
-                } else {
-                    ingredientCardsView
-                        .padding(.top, 30)
-                        .padding(.horizontal, 20)
-                }
+            if ingredientCards.isEmpty {
+                emptyIngredientCardsView
+            } else {
+                ingredientCardsView
+                    .padding(.top, 30)
+                    .padding(.horizontal, 20)
             }
         }
         .overlay {
@@ -114,12 +112,14 @@ struct HomeView: View {
     }
 
     private var emptyIngredientCardsView: some View {
-        Text("Tap the plus to get started! ☝️")
-            .font(.system(size: 30))
-            .fontWeight(.semibold)
-            .fontDesign(.rounded)
-            .frame(width: 300)
-            .frame(minHeight: 600)
+        VStack {
+            Text("Tap the plus to get started! ☝️")
+                .font(.system(size: 30))
+                .fontWeight(.semibold)
+                .fontDesign(.rounded)
+                .frame(width: 300)
+                .frame(minHeight: 600)
+        }
     }
 
     private var ingredientCardsView: some View {
@@ -226,11 +226,16 @@ struct HomeView: View {
     @ViewBuilder private func makeSheet(_ sheet: Sheets) -> some View {
         switch sheet {
         case .cameraView:
-            EmptyView()
-            //            CameraView()
+            CameraView(sourceType: .camera) { uiImage in
+                homeViewModel.selectedImage = uiImage
+                homeViewModel.sheet = .imageROI
+                print("start imageroi?")
+            }
         case .imageROI:
             if let image = homeViewModel.selectedImage {
                 ImageWithROI(image: image)
+            } else {
+                EmptyView()
             }
         case .editCard:
             if let selectedCard = homeViewModel.selectedCard {

@@ -8,6 +8,11 @@
 import Foundation
 
 extension Collection where Iterator.Element == String {
+    /// A Boolean value indicating whether the collection is not empty.
+    public var isNotEmpty: Bool {
+        !self.isEmpty
+    }
+
     func areThereEmptyStrings() -> Bool {
         return self
             .contains {
