@@ -234,6 +234,8 @@ struct HomeView: View {
         case .imageROI:
             if let image = homeViewModel.selectedImage {
                 ImageWithROI(image: image)
+            } else {
+                EmptyView()
             }
         case .editCard:
             if let selectedCard = homeViewModel.selectedCard {

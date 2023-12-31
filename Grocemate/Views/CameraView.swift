@@ -20,11 +20,11 @@ struct CameraView: UIViewControllerRepresentable {
     }
 
     func makeUIViewController(context: Context) -> some UIImagePickerController {
-        let vc = UIImagePickerController()
-        vc.sourceType = self.sourceType
-        vc.delegate = context.coordinator
-        vc.allowsEditing = false
-        return vc
+        let pickerVC = UIImagePickerController()
+        pickerVC.sourceType = self.sourceType
+        pickerVC.delegate = context.coordinator
+        pickerVC.allowsEditing = false
+        return pickerVC
     }
 
     func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) { }
@@ -50,11 +50,11 @@ struct CameraView: UIViewControllerRepresentable {
             _ picker: UIImagePickerController,
             didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]
         ) {
+            self.onDismiss()
             if let image = info[.originalImage] as? UIImage {
                 print("image was picked")
                 self.onImagePicked(image)
             }
-            self.onDismiss()
         }
 
         public func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
