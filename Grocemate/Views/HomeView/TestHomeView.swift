@@ -34,8 +34,6 @@ struct TestHomeView: View {
                 emptyIngredientCardsView
             } else {
                 ingredientCardsView
-                    .padding(.top, 30)
-                    .padding(.horizontal, 20)
             }
         }
     }
@@ -96,16 +94,16 @@ struct TestHomeView: View {
     return viewToPreview
 }
 
-#Preview("Empty Main View") {
-    let preview = CoreDataController.shared
-
-    let viewToPreview = {
-        TestHomeView()
-            .environment(\.managedObjectContext, preview.viewContext)
-            .onAppear {
-                IngredientCard.makePreview(count: 0, in: preview.viewContext)
-            }
-    }()
-
-    return viewToPreview
-}
+//#Preview("Empty Main View") {
+//    let preview = CoreDataController.shared
+//
+//    let viewToPreview = {
+//        TestHomeView()
+//            .environment(\.managedObjectContext, preview.viewContext)
+//            .onAppear {
+//                IngredientCard.makePreview(count: 0, in: preview.viewContext)
+//            }
+//    }()
+//
+//    return viewToPreview
+//}

@@ -41,40 +41,40 @@ struct HomeView: View {
                 )
             )
         }
-        .confirmationDialog("Card Options", isPresented: $homeViewModel.presentConfirmationDialog) {
-            Button {
-                homeViewModel.sheet = .editCard
-            } label: {
-                Text("Edit Card")
-            }
-
-            Button(role: .destructive) {
-                homeViewModel.deleteAlert = true
-            } label: {
-                Text("Delete")
-            }
-        }
-        .alert("Delete Card", isPresented: $homeViewModel.deleteAlert) {
-            Button(role: .cancel) {
-
-            } label: {
-                Text("Cancel")
-            }
-
-            Button {
-                guard let selectedCard = homeViewModel.selectedCard else { return }
-
-                do {
-                    try coreDataController.delete(selectedCard, in: coreDataController.viewContext)
-                } catch {
-                    print("Error deleting card: \(error.localizedDescription)")
-                }
-            } label: {
-                Text("Delete")
-            }
-        } message: {
-            Text("Are you sure you want to delete this card?")
-        }
+//        .confirmationDialog("Card Options", isPresented: $homeViewModel.presentConfirmationDialog) {
+//            Button {
+//                homeViewModel.sheet = .editCard
+//            } label: {
+//                Text("Edit Card")
+//            }
+//
+//            Button(role: .destructive) {
+//                homeViewModel.deleteAlert = true
+//            } label: {
+//                Text("Delete")
+//            }
+//        }
+//        .alert("Delete Card", isPresented: $homeViewModel.deleteAlert) {
+//            Button(role: .cancel) {
+//
+//            } label: {
+//                Text("Cancel")
+//            }
+//
+//            Button {
+//                guard let selectedCard = homeViewModel.selectedCard else { return }
+//
+//                do {
+//                    try coreDataController.delete(selectedCard, in: coreDataController.viewContext)
+//                } catch {
+//                    print("Error deleting card: \(error.localizedDescription)")
+//                }
+//            } label: {
+//                Text("Delete")
+//            }
+//        } message: {
+//            Text("Are you sure you want to delete this card?")
+//        }
         .onChange(of: homeViewModel.selectedPhotosPickerItem) { newPhoto in
             Task {
                 if let data = try? await newPhoto?.loadTransferable(type: Data.self) {
@@ -91,24 +91,23 @@ struct HomeView: View {
 
     // MARK: - Subviews
     private var mainView: some View {
-        ScrollView(.vertical) {
-            if ingredientCards.isEmpty {
-                emptyIngredientCardsView
-            } else {
-                ingredientCardsView
-                    .padding(.top, 30)
-                    .padding(.horizontal, 20)
-            }
-        }
-        .overlay {
-            if ingredientRecognitionHandler.recognitionInProgress {
-                RecognitionInProgressToast()
-            }
-        }
+//        ScrollView(.vertical) {
+//            if ingredientCards.isEmpty {
+//                emptyIngredientCardsView
+//            } else {
+//                ingredientCardsView
+//            }
+//        }
+//        .overlay {
+//            if ingredientRecognitionHandler.recognitionInProgress {
+//                RecognitionInProgressToast()
+//            }
+//        }
         //        .searchable(text: $homeViewModel.query, placement: .toolbar)
         //        .onChange(of: homeViewModel.query) { _ in
         //            ingredientCards.nsPredicate = IngredientCard.filter(homeViewModel.query)
         //        }
+        ingredientCardsView
     }
 
     private var emptyIngredientCardsView: some View {
@@ -122,11 +121,53 @@ struct HomeView: View {
         }
     }
 
+//    private var ingredientCardsView: some View {
+//        LazyVStack(alignment: .center) {
+//            ForEach(ingredientCards) { ingredientCard in
+//                Card(ingredientCard: ingredientCard)
+//                    .padding(.bottom, 15)
+//            }
+//        }
+//        .padding(.top, 30)
+//        .padding(.horizontal, 20)
+//    }
+
     private var ingredientCardsView: some View {
-        LazyVStack(alignment: .center) {
+        List {
             ForEach(ingredientCards) { ingredientCard in
-                Card(ingredientCard: ingredientCard)
-                    .padding(.bottom, 15)
+                VStack(alignment: .leading, spacing: 10) {
+                    Text(ingredientCard.title)
+                        .font(.system(size: 24))
+                        .fontWeight(.semibold)
+                        .fontDesign(.rounded)
+
+                    ForEach(ingredientCard.ingredientsArr) { ingredient in
+                        HStack(alignment: .center) {
+                            SwipeableIngredient(ingredient: ingredient)
+                                .font(.system(size: 17, weight: .semibold, design: .rounded))
+                        }
+                    }
+                }
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .swipeActions {
+                    Button(role: .destructive) {
+                        do {
+                            try coreDataController.delete(ingredientCard, in: coreDataController.viewContext)
+                        } catch {
+                            print("Error deleting card: \(error.localizedDescription)")
+                        }
+                    } label: {
+                        Label("Delete", systemImage: "trash.fill")
+                    }
+
+                    Button {
+                        homeViewModel.selectedCard = ingredientCard
+                        homeViewModel.sheet = .editCard
+                    } label: {
+                        Label("Edit", systemImage: "pencil")
+                    }
+                    .tint(.orange)
+                }
             }
         }
     }
@@ -180,11 +221,41 @@ struct HomeView: View {
                     Section("Sort By") {
                         Button {
                             withAnimation {
+                                ingredientCards.nsSortDescriptors = IngredientCard.sortBy(.titleAsc)
+                            }
+                        } label: {
+                            HStack {
+                                Text("Title, Ascending")
+                                Image(systemName: "character.cursor.ibeam")
+                            }
+                        }
+                        Button {
+                            withAnimation {
+                                ingredientCards.nsSortDescriptors = IngredientCard.sortBy(.titleDesc)
+                            }
+                        } label: {
+                            HStack {
+                                Text("Title, Descending")
+                                Image(systemName: "character.cursor.ibeam")
+                            }
+                        }
+                        Button {
+                            withAnimation {
                                 ingredientCards.nsSortDescriptors = IngredientCard.sortBy(.timestampAsc)
                             }
                         } label: {
                             HStack {
                                 Text("Date, Ascending")
+                                Image(systemName: "character.cursor.ibeam")
+                            }
+                        }
+                        Button {
+                            withAnimation {
+                                ingredientCards.nsSortDescriptors = IngredientCard.sortBy(.timestampDesc)
+                            }
+                        } label: {
+                            HStack {
+                                Text("Date, Descending")
                                 Image(systemName: "character.cursor.ibeam")
                             }
                         }
