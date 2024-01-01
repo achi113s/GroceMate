@@ -121,17 +121,6 @@ struct HomeView: View {
         }
     }
 
-//    private var ingredientCardsView: some View {
-//        LazyVStack(alignment: .center) {
-//            ForEach(ingredientCards) { ingredientCard in
-//                Card(ingredientCard: ingredientCard)
-//                    .padding(.bottom, 15)
-//            }
-//        }
-//        .padding(.top, 30)
-//        .padding(.horizontal, 20)
-//    }
-
     private var ingredientCardsView: some View {
         List {
             ForEach(ingredientCards) { ingredientCard in
