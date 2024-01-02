@@ -147,9 +147,9 @@ struct ImageWithROI: View {
             }
         }
         .frame(width: 150, height: 50)
-        .background(Color.blue.opacity(0.8))
-        .clipShape(
-            RoundedRectangle(cornerRadius: 40)
+        .buttonStyle(.borderedProminent)
+        .buttonBorderShape(
+            .roundedRectangle(radius: 30)
         )
     }
 

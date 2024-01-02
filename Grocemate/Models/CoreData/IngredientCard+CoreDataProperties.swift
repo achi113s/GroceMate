@@ -19,7 +19,7 @@ extension IngredientCard {
     static func all() -> NSFetchRequest<IngredientCard> {
         let request: NSFetchRequest<IngredientCard> = ingredientCardsFetchRequest
         request.sortDescriptors = [
-            NSSortDescriptor(key: "title", ascending: false)
+            NSSortDescriptor(key: "title", ascending: true)
         ]
         return request
     }

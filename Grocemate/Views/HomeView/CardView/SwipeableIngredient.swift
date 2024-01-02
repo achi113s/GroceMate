@@ -44,6 +44,7 @@ struct SwipeableIngredient: View {
                     color: strikethroughColor
                 )
                 .offset(offset)
+                .onTapGesture { }
                 .gesture(
                     swipeToStrikethroughGesture
                 )
