@@ -41,40 +41,40 @@ struct HomeView: View {
                 )
             )
         }
-//        .confirmationDialog("Card Options", isPresented: $homeViewModel.presentConfirmationDialog) {
-//            Button {
-//                homeViewModel.sheet = .editCard
-//            } label: {
-//                Text("Edit Card")
-//            }
-//
-//            Button(role: .destructive) {
-//                homeViewModel.deleteAlert = true
-//            } label: {
-//                Text("Delete")
-//            }
-//        }
-//        .alert("Delete Card", isPresented: $homeViewModel.deleteAlert) {
-//            Button(role: .cancel) {
-//
-//            } label: {
-//                Text("Cancel")
-//            }
-//
-//            Button {
-//                guard let selectedCard = homeViewModel.selectedCard else { return }
-//
-//                do {
-//                    try coreDataController.delete(selectedCard, in: coreDataController.viewContext)
-//                } catch {
-//                    print("Error deleting card: \(error.localizedDescription)")
-//                }
-//            } label: {
-//                Text("Delete")
-//            }
-//        } message: {
-//            Text("Are you sure you want to delete this card?")
-//        }
+        //        .confirmationDialog("Card Options", isPresented: $homeViewModel.presentConfirmationDialog) {
+        //            Button {
+        //                homeViewModel.sheet = .editCard
+        //            } label: {
+        //                Text("Edit Card")
+        //            }
+        //
+        //            Button(role: .destructive) {
+        //                homeViewModel.deleteAlert = true
+        //            } label: {
+        //                Text("Delete")
+        //            }
+        //        }
+        //        .alert("Delete Card", isPresented: $homeViewModel.deleteAlert) {
+        //            Button(role: .cancel) {
+        //
+        //            } label: {
+        //                Text("Cancel")
+        //            }
+        //
+        //            Button {
+        //                guard let selectedCard = homeViewModel.selectedCard else { return }
+        //
+        //                do {
+        //                    try coreDataController.delete(selectedCard, in: coreDataController.viewContext)
+        //                } catch {
+        //                    print("Error deleting card: \(error.localizedDescription)")
+        //                }
+        //            } label: {
+        //                Text("Delete")
+        //            }
+        //        } message: {
+        //            Text("Are you sure you want to delete this card?")
+        //        }
         .onChange(of: homeViewModel.selectedPhotosPickerItem) { newPhoto in
             Task {
                 if let data = try? await newPhoto?.loadTransferable(type: Data.self) {
@@ -91,23 +91,22 @@ struct HomeView: View {
 
     // MARK: - Subviews
     private var mainView: some View {
-//        ScrollView(.vertical) {
-//            if ingredientCards.isEmpty {
-//                emptyIngredientCardsView
-//            } else {
-//                ingredientCardsView
-//            }
-//        }
-//        .overlay {
-//            if ingredientRecognitionHandler.recognitionInProgress {
-//                RecognitionInProgressToast()
-//            }
-//        }
+        Group {
+            if ingredientCards.isEmpty {
+                emptyIngredientCardsView
+            } else {
+                ingredientCardsView
+            }
+        }
+        .overlay {
+            if ingredientRecognitionHandler.recognitionInProgress {
+                RecognitionInProgressToast()
+            }
+        }
         //        .searchable(text: $homeViewModel.query, placement: .toolbar)
         //        .onChange(of: homeViewModel.query) { _ in
         //            ingredientCards.nsPredicate = IngredientCard.filter(homeViewModel.query)
         //        }
-        ingredientCardsView
     }
 
     private var emptyIngredientCardsView: some View {

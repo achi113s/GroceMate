@@ -98,6 +98,11 @@ class IngredientRecognitionHandler: ObservableObject {
 
 // MARK: - Vision Image-to-Text Recognition Handlers
 extension IngredientRecognitionHandler {
+    /*
+     For this example, allow 50 calls per month.
+     If user
+     */
+
     /// This will be performed on a background thread. For some reason the recognition
     /// is not marked as an async function so we don't use the async-await syntax here.
     private func performImageToTextRecognition(on image: UIImage,
