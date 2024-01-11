@@ -39,6 +39,8 @@
 		448933792B31146100121DCE /* OpenAIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448933782B31146100121DCE /* OpenAIError.swift */; };
 		4489337C2B31179700121DCE /* IngredientRecognitionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4489337B2B31179700121DCE /* IngredientRecognitionHandler.swift */; };
 		4489337E2B31186F00121DCE /* IngredientRecognitionStage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4489337D2B31186F00121DCE /* IngredientRecognitionStage.swift */; };
+		449106862B4FA8A600FB2019 /* SignInWithAppleUIKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449106852B4FA8A600FB2019 /* SignInWithAppleUIKit.swift */; };
+		449106882B4FA8EB00FB2019 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449106872B4FA8EB00FB2019 /* LoginView.swift */; };
 		44BF980C2B088AFA00E24047 /* Sheets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44BF980B2B088AFA00E24047 /* Sheets.swift */; };
 		44BF98102B088B5A00E24047 /* Image-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44BF980F2B088B5A00E24047 /* Image-Extensions.swift */; };
 		44BF98132B0927EF00E24047 /* CardDetailViewModellable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44BF98122B0927EF00E24047 /* CardDetailViewModellable.swift */; };
@@ -111,6 +113,8 @@
 		448933782B31146100121DCE /* OpenAIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIError.swift; sourceTree = "<group>"; };
 		4489337B2B31179700121DCE /* IngredientRecognitionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientRecognitionHandler.swift; sourceTree = "<group>"; };
 		4489337D2B31186F00121DCE /* IngredientRecognitionStage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientRecognitionStage.swift; sourceTree = "<group>"; };
+		449106852B4FA8A600FB2019 /* SignInWithAppleUIKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInWithAppleUIKit.swift; sourceTree = "<group>"; };
+		449106872B4FA8EB00FB2019 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		44BF980B2B088AFA00E24047 /* Sheets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sheets.swift; sourceTree = "<group>"; };
 		44BF980F2B088B5A00E24047 /* Image-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image-Extensions.swift"; sourceTree = "<group>"; };
 		44BF98122B0927EF00E24047 /* CardDetailViewModellable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailViewModellable.swift; sourceTree = "<group>"; };
@@ -182,6 +186,7 @@
 		440ECB7A2AF812F800E6BD5C /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				449106842B4FA89300FB2019 /* LoginView */,
 				4489336A2B2FED7900121DCE /* RegionOfInterestPhotoPreview */,
 				44BF98112B0927D700E24047 /* CardDetailView */,
 				44C7F9AD2B07394300AFE8DD /* HomeView */,
@@ -264,6 +269,15 @@
 				445D78D82B434FFA00DF7B68 /* IngredientRecognitionHandlerLimits.swift */,
 			);
 			path = TextRecognitionHandling;
+			sourceTree = "<group>";
+		};
+		449106842B4FA89300FB2019 /* LoginView */ = {
+			isa = PBXGroup;
+			children = (
+				449106852B4FA8A600FB2019 /* SignInWithAppleUIKit.swift */,
+				449106872B4FA8EB00FB2019 /* LoginView.swift */,
+			);
+			path = LoginView;
 			sourceTree = "<group>";
 		};
 		44BF98092B088ABD00E24047 /* CardView */ = {
@@ -544,6 +558,7 @@
 				44DDF2FF2AF811CE005D35D8 /* HomeView.swift in Sources */,
 				446EF8312B3FD03700271764 /* OpenAIManageable.swift in Sources */,
 				445DCC452AFC579700CA97DE /* Ingredient+CoreDataProperties.swift in Sources */,
+				449106862B4FA8A600FB2019 /* SignInWithAppleUIKit.swift in Sources */,
 				440ECB942AF8130400E6BD5C /* Ingredient+CoreDataClass.swift in Sources */,
 				445D78D92B434FFA00DF7B68 /* IngredientRecognitionHandlerLimits.swift in Sources */,
 				44C2C0AA2B32AED3008B3F9A /* RecognitionProgressToast.swift in Sources */,
@@ -573,6 +588,7 @@
 				440ECB852AF812F800E6BD5C /* Card.swift in Sources */,
 				44BF98132B0927EF00E24047 /* CardDetailViewModellable.swift in Sources */,
 				440ECB862AF812F800E6BD5C /* SwipeableIngredient.swift in Sources */,
+				449106882B4FA8EB00FB2019 /* LoginView.swift in Sources */,
 				4465BDAE2B23936800DB97B1 /* StringArray-Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
