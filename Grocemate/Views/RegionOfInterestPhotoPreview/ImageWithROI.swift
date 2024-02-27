@@ -62,6 +62,7 @@ struct ImageWithROI: View {
     private var dragGesture: some Gesture {
         DragGesture()
             .onChanged { dragValue in
+                print(location)
                 var newLocation = startLocation ?? location
                 /// Set a minimum and maximum constraint on the x and y location
                 /// such that the bounding box cannot be dragged outside of the image frame.

@@ -7,11 +7,14 @@
 
 import SwiftUI
 
-struct LoginView: View {
+struct SignInView: View {
+    @StateObject private var signInViewModel: SignInViewModel = SignInViewModel()
+    @Binding var showSignInView: Bool
+
     var body: some View {
         VStack {
             Spacer()
-            
+
             Text("Grocemate")
                 .font(.system(size: 42))
                 .fontWeight(.bold)
@@ -21,7 +24,14 @@ struct LoginView: View {
             Spacer()
 
             Button {
-                print("sign in with apple pressed")
+                Task {
+                    do {
+                        try await signInViewModel.signInWithApple()
+                        showSignInView = false
+                    } catch {
+                        print("error signing in with apple: \(error)")
+                    }
+                }
             } label: {
                 SignInWithAppleButtonViewRepresentable(type: .default, style: .black)
                     .allowsHitTesting(false)
@@ -33,5 +43,5 @@ struct LoginView: View {
 }
 
 #Preview {
-    LoginView()
+    SignInView(showSignInView: .constant(true))
 }

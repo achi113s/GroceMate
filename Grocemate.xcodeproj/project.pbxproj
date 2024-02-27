@@ -39,8 +39,8 @@
 		448933792B31146100121DCE /* OpenAIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448933782B31146100121DCE /* OpenAIError.swift */; };
 		4489337C2B31179700121DCE /* IngredientRecognitionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4489337B2B31179700121DCE /* IngredientRecognitionHandler.swift */; };
 		4489337E2B31186F00121DCE /* IngredientRecognitionStage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4489337D2B31186F00121DCE /* IngredientRecognitionStage.swift */; };
-		449106862B4FA8A600FB2019 /* SignInWithAppleUIKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449106852B4FA8A600FB2019 /* SignInWithAppleUIKit.swift */; };
-		449106882B4FA8EB00FB2019 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449106872B4FA8EB00FB2019 /* LoginView.swift */; };
+		449106862B4FA8A600FB2019 /* SignInWithAppleButtonViewRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449106852B4FA8A600FB2019 /* SignInWithAppleButtonViewRepresentable.swift */; };
+		449106882B4FA8EB00FB2019 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449106872B4FA8EB00FB2019 /* SignInView.swift */; };
 		44BF980C2B088AFA00E24047 /* Sheets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44BF980B2B088AFA00E24047 /* Sheets.swift */; };
 		44BF98102B088B5A00E24047 /* Image-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44BF980F2B088B5A00E24047 /* Image-Extensions.swift */; };
 		44BF98132B0927EF00E24047 /* CardDetailViewModellable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44BF98122B0927EF00E24047 /* CardDetailViewModellable.swift */; };
@@ -58,6 +58,17 @@
 		44DDF3182AF811D0005D35D8 /* GrocemateUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DDF3172AF811D0005D35D8 /* GrocemateUITests.swift */; };
 		44DDF31A2AF811D0005D35D8 /* GrocemateUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DDF3192AF811D0005D35D8 /* GrocemateUITestsLaunchTests.swift */; };
 		44EE333E2B411A6600DEE6F1 /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EE333D2B411A6600DEE6F1 /* CameraView.swift */; };
+		44F2888A2B8DC06100CEB808 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 44F288892B8DC06100CEB808 /* GoogleService-Info.plist */; };
+		44F2888B2B8DC06100CEB808 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 44F288892B8DC06100CEB808 /* GoogleService-Info.plist */; };
+		44F2888C2B8DC06100CEB808 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 44F288892B8DC06100CEB808 /* GoogleService-Info.plist */; };
+		44F2888F2B8DC0B300CEB808 /* FirebaseAppCheck in Frameworks */ = {isa = PBXBuildFile; productRef = 44F2888E2B8DC0B300CEB808 /* FirebaseAppCheck */; };
+		44F288912B8DC0B300CEB808 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 44F288902B8DC0B300CEB808 /* FirebaseAuth */; };
+		44F288932B8DC0B300CEB808 /* FirebaseFunctions in Frameworks */ = {isa = PBXBuildFile; productRef = 44F288922B8DC0B300CEB808 /* FirebaseFunctions */; };
+		44F288962B8E5DB300CEB808 /* SignInWithAppleHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F288952B8E5DB300CEB808 /* SignInWithAppleHelper.swift */; };
+		44F288992B8E5E1F00CEB808 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F288982B8E5E1F00CEB808 /* Utilities.swift */; };
+		44F2889C2B8E5EB900CEB808 /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F2889B2B8E5EB900CEB808 /* SignInViewModel.swift */; };
+		44F2889F2B8E5F1A00CEB808 /* AuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F2889E2B8E5F1A00CEB808 /* AuthenticationManager.swift */; };
+		44F288A12B8E5FFE00CEB808 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F288A02B8E5FFE00CEB808 /* RootView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -113,8 +124,8 @@
 		448933782B31146100121DCE /* OpenAIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIError.swift; sourceTree = "<group>"; };
 		4489337B2B31179700121DCE /* IngredientRecognitionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientRecognitionHandler.swift; sourceTree = "<group>"; };
 		4489337D2B31186F00121DCE /* IngredientRecognitionStage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientRecognitionStage.swift; sourceTree = "<group>"; };
-		449106852B4FA8A600FB2019 /* SignInWithAppleUIKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInWithAppleUIKit.swift; sourceTree = "<group>"; };
-		449106872B4FA8EB00FB2019 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		449106852B4FA8A600FB2019 /* SignInWithAppleButtonViewRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInWithAppleButtonViewRepresentable.swift; sourceTree = "<group>"; };
+		449106872B4FA8EB00FB2019 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		44BF980B2B088AFA00E24047 /* Sheets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sheets.swift; sourceTree = "<group>"; };
 		44BF980F2B088B5A00E24047 /* Image-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image-Extensions.swift"; sourceTree = "<group>"; };
 		44BF98122B0927EF00E24047 /* CardDetailViewModellable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailViewModellable.swift; sourceTree = "<group>"; };
@@ -136,6 +147,12 @@
 		44DDF3172AF811D0005D35D8 /* GrocemateUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrocemateUITests.swift; sourceTree = "<group>"; };
 		44DDF3192AF811D0005D35D8 /* GrocemateUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrocemateUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		44EE333D2B411A6600DEE6F1 /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
+		44F288892B8DC06100CEB808 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		44F288952B8E5DB300CEB808 /* SignInWithAppleHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInWithAppleHelper.swift; sourceTree = "<group>"; };
+		44F288982B8E5E1F00CEB808 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		44F2889B2B8E5EB900CEB808 /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
+		44F2889E2B8E5F1A00CEB808 /* AuthenticationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationManager.swift; sourceTree = "<group>"; };
+		44F288A02B8E5FFE00CEB808 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,6 +160,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				44F288932B8DC0B300CEB808 /* FirebaseFunctions in Frameworks */,
+				44F2888F2B8DC0B300CEB808 /* FirebaseAppCheck in Frameworks */,
+				44F288912B8DC0B300CEB808 /* FirebaseAuth in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -186,11 +206,12 @@
 		440ECB7A2AF812F800E6BD5C /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				449106842B4FA89300FB2019 /* LoginView */,
+				449106842B4FA89300FB2019 /* SignInView */,
 				4489336A2B2FED7900121DCE /* RegionOfInterestPhotoPreview */,
 				44BF98112B0927D700E24047 /* CardDetailView */,
 				44C7F9AD2B07394300AFE8DD /* HomeView */,
 				44EE333D2B411A6600DEE6F1 /* CameraView.swift */,
+				44F288A02B8E5FFE00CEB808 /* RootView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -271,13 +292,13 @@
 			path = TextRecognitionHandling;
 			sourceTree = "<group>";
 		};
-		449106842B4FA89300FB2019 /* LoginView */ = {
+		449106842B4FA89300FB2019 /* SignInView */ = {
 			isa = PBXGroup;
 			children = (
-				449106852B4FA8A600FB2019 /* SignInWithAppleUIKit.swift */,
-				449106872B4FA8EB00FB2019 /* LoginView.swift */,
+				449106852B4FA8A600FB2019 /* SignInWithAppleButtonViewRepresentable.swift */,
+				449106872B4FA8EB00FB2019 /* SignInView.swift */,
 			);
-			path = LoginView;
+			path = SignInView;
 			sourceTree = "<group>";
 		};
 		44BF98092B088ABD00E24047 /* CardView */ = {
@@ -350,15 +371,19 @@
 		44DDF2FB2AF811CE005D35D8 /* Grocemate */ = {
 			isa = PBXGroup;
 			children = (
+				44F288892B8DC06100CEB808 /* GoogleService-Info.plist */,
 				4420964D2AFDF4A100E586BB /* Info.plist */,
 				4420964C2AFDF2F700E586BB /* Grocemate.entitlements */,
 				44DDF2FC2AF811CE005D35D8 /* GrocemateApp.swift */,
+				440ECB872AF8130400E6BD5C /* Models */,
+				440ECB7A2AF812F800E6BD5C /* Views */,
+				44F2889A2B8E5EAC00CEB808 /* ViewModels */,
+				44F2889D2B8E5F0A00CEB808 /* Authentication */,
+				44F288972B8E5E1600CEB808 /* Utilities */,
 				440ECB752AF812F800E6BD5C /* Effects */,
 				44BF980A2B088AEA00E24047 /* Enums */,
 				440ECB782AF812F800E6BD5C /* Extensions */,
 				448933752B31128D00121DCE /* Managers */,
-				440ECB872AF8130400E6BD5C /* Models */,
-				440ECB7A2AF812F800E6BD5C /* Views */,
 				44DDF3002AF811D0005D35D8 /* Assets.xcassets */,
 				44DDF3022AF811D0005D35D8 /* Preview Content */,
 			);
@@ -395,6 +420,31 @@
 			path = GrocemateUITests;
 			sourceTree = "<group>";
 		};
+		44F288972B8E5E1600CEB808 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				44F288982B8E5E1F00CEB808 /* Utilities.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		44F2889A2B8E5EAC00CEB808 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				44F2889B2B8E5EB900CEB808 /* SignInViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		44F2889D2B8E5F0A00CEB808 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				44F288952B8E5DB300CEB808 /* SignInWithAppleHelper.swift */,
+				44F2889E2B8E5F1A00CEB808 /* AuthenticationManager.swift */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -412,6 +462,11 @@
 			dependencies = (
 			);
 			name = Grocemate;
+			packageProductDependencies = (
+				44F2888E2B8DC0B300CEB808 /* FirebaseAppCheck */,
+				44F288902B8DC0B300CEB808 /* FirebaseAuth */,
+				44F288922B8DC0B300CEB808 /* FirebaseFunctions */,
+			);
 			productName = Grocemate;
 			productReference = 44DDF2F92AF811CE005D35D8 /* Grocemate.app */;
 			productType = "com.apple.product-type.application";
@@ -484,6 +539,9 @@
 				Base,
 			);
 			mainGroup = 44DDF2F02AF811CE005D35D8;
+			packageReferences = (
+				44F2888D2B8DC0B300CEB808 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = 44DDF2FA2AF811CE005D35D8 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -502,6 +560,7 @@
 			files = (
 				44DDF3042AF811D0005D35D8 /* Preview Assets.xcassets in Resources */,
 				44DDF3012AF811D0005D35D8 /* Assets.xcassets in Resources */,
+				44F2888A2B8DC06100CEB808 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -509,6 +568,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				44F2888B2B8DC06100CEB808 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -516,6 +576,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				44F2888C2B8DC06100CEB808 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -552,13 +613,14 @@
 				445D78DB2B43627000DF7B68 /* RecognitionCallLimits.swift in Sources */,
 				44C7F9AF2B07395100AFE8DD /* HomeViewModel.swift in Sources */,
 				448933772B3112B300121DCE /* OpenAIManager.swift in Sources */,
+				44F2889F2B8E5F1A00CEB808 /* AuthenticationManager.swift in Sources */,
 				440ECB822AF812F800E6BD5C /* Text-Extensions.swift in Sources */,
 				44DDEAF72B0F2290002AB0CE /* HapticType.swift in Sources */,
 				448933722B310E5E00121DCE /* ChatGPT.swift in Sources */,
 				44DDF2FF2AF811CE005D35D8 /* HomeView.swift in Sources */,
 				446EF8312B3FD03700271764 /* OpenAIManageable.swift in Sources */,
 				445DCC452AFC579700CA97DE /* Ingredient+CoreDataProperties.swift in Sources */,
-				449106862B4FA8A600FB2019 /* SignInWithAppleUIKit.swift in Sources */,
+				449106862B4FA8A600FB2019 /* SignInWithAppleButtonViewRepresentable.swift in Sources */,
 				440ECB942AF8130400E6BD5C /* Ingredient+CoreDataClass.swift in Sources */,
 				445D78D92B434FFA00DF7B68 /* IngredientRecognitionHandlerLimits.swift in Sources */,
 				44C2C0AA2B32AED3008B3F9A /* RecognitionProgressToast.swift in Sources */,
@@ -572,9 +634,12 @@
 				440ECB922AF8130400E6BD5C /* IngredientCard+CoreDataProperties.swift in Sources */,
 				440ECB932AF8130400E6BD5C /* IngredientCard+CoreDataClass.swift in Sources */,
 				44DDF2FD2AF811CE005D35D8 /* GrocemateApp.swift in Sources */,
+				44F288A12B8E5FFE00CEB808 /* RootView.swift in Sources */,
 				440ECB9C2AF8134A00E6BD5C /* GrocemateDataModel.xcdatamodeld in Sources */,
+				44F2889C2B8E5EB900CEB808 /* SignInViewModel.swift in Sources */,
 				4489336E2B2FF28F00121DCE /* ImageWithROI.swift in Sources */,
 				448933792B31146100121DCE /* OpenAIError.swift in Sources */,
+				44F288962B8E5DB300CEB808 /* SignInWithAppleHelper.swift in Sources */,
 				448933702B2FF5C600121DCE /* OpenAIResponseModel.swift in Sources */,
 				442957122B258FC1000D74CA /* TempIngredientCard.swift in Sources */,
 				440ECB842AF812F800E6BD5C /* CardDetailView.swift in Sources */,
@@ -582,13 +647,14 @@
 				448933742B310E8400121DCE /* Konstants.swift in Sources */,
 				440ECB912AF8130400E6BD5C /* CoreDataController.swift in Sources */,
 				4489336C2B2FED9A00121DCE /* ImageSizePreferenceKey.swift in Sources */,
+				44F288992B8E5E1F00CEB808 /* Utilities.swift in Sources */,
 				4465BDB02B23CCC500DB97B1 /* CardDetailSaveError.swift in Sources */,
 				4489337C2B31179700121DCE /* IngredientRecognitionHandler.swift in Sources */,
 				440ECB812AF812F800E6BD5C /* RubberBanding.swift in Sources */,
 				440ECB852AF812F800E6BD5C /* Card.swift in Sources */,
 				44BF98132B0927EF00E24047 /* CardDetailViewModellable.swift in Sources */,
 				440ECB862AF812F800E6BD5C /* SwipeableIngredient.swift in Sources */,
-				449106882B4FA8EB00FB2019 /* LoginView.swift in Sources */,
+				449106882B4FA8EB00FB2019 /* SignInView.swift in Sources */,
 				4465BDAE2B23936800DB97B1 /* StringArray-Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -933,6 +999,35 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		44F2888D2B8DC0B300CEB808 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.21.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		44F2888E2B8DC0B300CEB808 /* FirebaseAppCheck */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 44F2888D2B8DC0B300CEB808 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAppCheck;
+		};
+		44F288902B8DC0B300CEB808 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 44F2888D2B8DC0B300CEB808 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		44F288922B8DC0B300CEB808 /* FirebaseFunctions */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 44F2888D2B8DC0B300CEB808 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFunctions;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		440ECB9A2AF8134A00E6BD5C /* GrocemateDataModel.xcdatamodeld */ = {
