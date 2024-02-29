@@ -10,16 +10,14 @@ import SwiftUI
 struct SignInView: View {
     @StateObject private var signInViewModel: SignInViewModel = SignInViewModel()
     @Binding var showSignInView: Bool
-
+    @State private var sliderVal: Double = 20.0
     var body: some View {
         VStack {
             Spacer()
 
-            Text("Grocemate")
-                .font(.system(size: 42))
-                .fontWeight(.bold)
-                .fontDesign(.rounded)
-            .foregroundStyle(.blue)
+            Image("grocemateLogo")
+                .imageScale(.large)
+                .shadow(radius: 2)
 
             Spacer()
 
@@ -33,10 +31,11 @@ struct SignInView: View {
                     }
                 }
             } label: {
-                SignInWithAppleButtonViewRepresentable(type: .default, style: .black)
+                SignInWithAppleButtonViewRepresentable(type: .continue, style: .whiteOutline)
                     .allowsHitTesting(false)
+                    .shadow(color: .black.opacity(0.3), radius: 10, x: 0, y: 0)
             }
-            .frame(height: 55)
+            .frame(height: 55, alignment: .bottom)
         }
         .padding()
     }

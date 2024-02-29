@@ -41,6 +41,7 @@
 		4489337E2B31186F00121DCE /* IngredientRecognitionStage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4489337D2B31186F00121DCE /* IngredientRecognitionStage.swift */; };
 		449106862B4FA8A600FB2019 /* SignInWithAppleButtonViewRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449106852B4FA8A600FB2019 /* SignInWithAppleButtonViewRepresentable.swift */; };
 		449106882B4FA8EB00FB2019 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449106872B4FA8EB00FB2019 /* SignInView.swift */; };
+		44B453BC2B8F2F4600B13732 /* PolishedButtonTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B453BB2B8F2F4600B13732 /* PolishedButtonTestView.swift */; };
 		44BF980C2B088AFA00E24047 /* Sheets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44BF980B2B088AFA00E24047 /* Sheets.swift */; };
 		44BF98102B088B5A00E24047 /* Image-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44BF980F2B088B5A00E24047 /* Image-Extensions.swift */; };
 		44BF98132B0927EF00E24047 /* CardDetailViewModellable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44BF98122B0927EF00E24047 /* CardDetailViewModellable.swift */; };
@@ -126,6 +127,7 @@
 		4489337D2B31186F00121DCE /* IngredientRecognitionStage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientRecognitionStage.swift; sourceTree = "<group>"; };
 		449106852B4FA8A600FB2019 /* SignInWithAppleButtonViewRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInWithAppleButtonViewRepresentable.swift; sourceTree = "<group>"; };
 		449106872B4FA8EB00FB2019 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
+		44B453BB2B8F2F4600B13732 /* PolishedButtonTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolishedButtonTestView.swift; sourceTree = "<group>"; };
 		44BF980B2B088AFA00E24047 /* Sheets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sheets.swift; sourceTree = "<group>"; };
 		44BF980F2B088B5A00E24047 /* Image-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image-Extensions.swift"; sourceTree = "<group>"; };
 		44BF98122B0927EF00E24047 /* CardDetailViewModellable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailViewModellable.swift; sourceTree = "<group>"; };
@@ -212,6 +214,7 @@
 				44C7F9AD2B07394300AFE8DD /* HomeView */,
 				44EE333D2B411A6600DEE6F1 /* CameraView.swift */,
 				44F288A02B8E5FFE00CEB808 /* RootView.swift */,
+				44B453BB2B8F2F4600B13732 /* PolishedButtonTestView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -637,6 +640,7 @@
 				44F288A12B8E5FFE00CEB808 /* RootView.swift in Sources */,
 				440ECB9C2AF8134A00E6BD5C /* GrocemateDataModel.xcdatamodeld in Sources */,
 				44F2889C2B8E5EB900CEB808 /* SignInViewModel.swift in Sources */,
+				44B453BC2B8F2F4600B13732 /* PolishedButtonTestView.swift in Sources */,
 				4489336E2B2FF28F00121DCE /* ImageWithROI.swift in Sources */,
 				448933792B31146100121DCE /* OpenAIError.swift in Sources */,
 				44F288962B8E5DB300CEB808 /* SignInWithAppleHelper.swift in Sources */,

@@ -6,6 +6,7 @@
 //
 
 import Firebase
+import FirebaseAppCheck
 import SwiftUI
 
 @main
@@ -33,10 +34,9 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 
         FirebaseApp.configure()
 
-        Auth.auth().useEmulator(withHost: "127.0.0.1", port: 9099)
+//        Auth.auth().useEmulator(withHost: "127.0.0.1", port: 9099)
 //        Functions.functions().useEmulator(withHost: "127.0.0.1", port: 5001)
 
         return true
     }
 }
-

@@ -14,8 +14,7 @@ final class CoreDataController {
     /// Create a singleton instance of this class.
     static let shared = CoreDataController()
 
-    //    private let persistentContainer: NSPersistentCloudKitContainer
-    private let persistentContainer: NSPersistentContainer
+    private let persistentContainer: NSPersistentCloudKitContainer
 
     /// The main view context.
     var viewContext: NSManagedObjectContext {
@@ -30,15 +29,12 @@ final class CoreDataController {
 
     private init() {
         /// Set up the model, context, and store all at once with an NSPersistentContainer.
-        persistentContainer = NSPersistentContainer(name: "GrocemateDataModel")
+        persistentContainer = NSPersistentCloudKitContainer(name: "GrocemateDataModel")
 
         /// Are we in an Xcode preview or XCTest? If yes, make the persistent container in memory.
         if EnvironmentValues.isPreview || Thread.current.isRunningXCTest {
             persistentContainer.persistentStoreDescriptions.first?.url = .init(fileURLWithPath: "/dev/null")
         }
-
-        /// Automatically merge any changes saved to the parent store. Useful since we will have multiple viewContexts.
-        persistentContainer.viewContext.automaticallyMergesChangesFromParent = true
 
         /// Load the persistent stores.
         persistentContainer.loadPersistentStores { _, error in
@@ -46,23 +42,26 @@ final class CoreDataController {
                 print("There was an error loading the persistent stores: \(error)")
                 return
             } else {
+                /// Automatically merge any changes saved to the parent store. Useful since we will have multiple viewContexts.
+                self.persistentContainer.viewContext.automaticallyMergesChangesFromParent = true
+                
                 self.persistentContainer.viewContext.mergePolicy = NSMergePolicy.mergeByPropertyObjectTrump
                 print("Successfully loaded CoreData.")
             }
         }
 
-        //        // Only initialize the schema when building the app with the
-        //        // Debug build configuration.
-        //        #if DEBUG
-        //        do {
-        //            // Use the container to initialize the development schema.
-        //            print("Initializing CloudKit schema.")
-        //            try persistentContainer.initializeCloudKitSchema(options: [])
-        //        } catch {
-        //            // Handle any errors.
-        //            print("An error occurred when initializing the CloudKit schema: \(error)")
-        //        }
-        //        #endif
+//        // Only initialize the schema when building the app with the
+//        // Debug build configuration.
+//#if DEBUG
+//        do {
+//            // Use the container to initialize the development schema.
+//            print("Initializing CloudKit schema.")
+//            try persistentContainer.initializeCloudKitSchema(options: [])
+//        } catch {
+//            // Handle any errors.
+//            print("An error occurred when initializing the CloudKit schema: \(error)")
+//        }
+//#endif
     }
 
     func exists(

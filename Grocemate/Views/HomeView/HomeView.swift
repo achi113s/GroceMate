@@ -136,7 +136,6 @@ struct HomeView: View {
                         }
                     }
                 }
-                .frame(maxWidth: .infinity, alignment: .leading)
                 .swipeActions {
                     Button(role: .destructive) {
                         do {
@@ -158,15 +157,20 @@ struct HomeView: View {
                 }
             }
         }
+        .listRowSpacing(10)
     }
 
     private var mainViewToolbar: some ToolbarContent {
         Group {
             ToolbarItem(placement: .navigationBarLeading) {
-                Text("Grocemate")
-                    .multilineTextAlignment(.center)
-                    .font(.system(size: 32, weight: .semibold, design: .rounded))
-                    .foregroundStyle(.blue)
+//                Text("grocemate")
+//                    .multilineTextAlignment(.center)
+//                    .font(.system(size: 32, weight: .semibold, design: .rounded))
+//                    .foregroundStyle(.blue)
+                Image("grocemateLogoSmall")
+                    .imageScale(.large)
+                    .shadow(radius: 2)
+                    .drawingGroup()
             }
 
             ToolbarItem(placement: .navigationBarTrailing) {
