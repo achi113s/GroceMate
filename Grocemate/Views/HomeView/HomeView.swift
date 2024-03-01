@@ -27,6 +27,13 @@ struct HomeView: View {
                 }
                 .photosPicker(isPresented: $homeViewModel.presentPhotosPicker,
                               selection: $homeViewModel.selectedPhotosPickerItem, photoLibrary: .shared())
+                .navigationDestination(for: String.self) { value in
+                    SettingsView(path: $homeViewModel.path)
+                }
+        }
+        .onAppear {
+            let authUser = try? AuthenticationManager.shared.getAuthenticatedUser()
+            homeViewModel.showSignInView = authUser == nil
         }
         .sheet(item: $homeViewModel.sheet, content: makeSheet)
         .sheet(isPresented: $ingredientRecognitionHandler.presentNewIngredients) {
@@ -41,40 +48,6 @@ struct HomeView: View {
                 )
             )
         }
-        //        .confirmationDialog("Card Options", isPresented: $homeViewModel.presentConfirmationDialog) {
-        //            Button {
-        //                homeViewModel.sheet = .editCard
-        //            } label: {
-        //                Text("Edit Card")
-        //            }
-        //
-        //            Button(role: .destructive) {
-        //                homeViewModel.deleteAlert = true
-        //            } label: {
-        //                Text("Delete")
-        //            }
-        //        }
-        //        .alert("Delete Card", isPresented: $homeViewModel.deleteAlert) {
-        //            Button(role: .cancel) {
-        //
-        //            } label: {
-        //                Text("Cancel")
-        //            }
-        //
-        //            Button {
-        //                guard let selectedCard = homeViewModel.selectedCard else { return }
-        //
-        //                do {
-        //                    try coreDataController.delete(selectedCard, in: coreDataController.viewContext)
-        //                } catch {
-        //                    print("Error deleting card: \(error.localizedDescription)")
-        //                }
-        //            } label: {
-        //                Text("Delete")
-        //            }
-        //        } message: {
-        //            Text("Are you sure you want to delete this card?")
-        //        }
         .onChange(of: homeViewModel.selectedPhotosPickerItem) { newPhoto in
             Task {
                 if let data = try? await newPhoto?.loadTransferable(type: Data.self) {
@@ -103,10 +76,6 @@ struct HomeView: View {
                 RecognitionInProgressToast()
             }
         }
-        //        .searchable(text: $homeViewModel.query, placement: .toolbar)
-        //        .onChange(of: homeViewModel.query) { _ in
-        //            ingredientCards.nsPredicate = IngredientCard.filter(homeViewModel.query)
-        //        }
     }
 
     private var emptyIngredientCardsView: some View {

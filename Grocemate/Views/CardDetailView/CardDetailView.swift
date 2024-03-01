@@ -14,21 +14,20 @@ struct CardDetailView<ViewModel: CardDetailViewModellable>: View {
     // MARK: - State
     @StateObject var viewModel: ViewModel
     @FocusState var titleFocused: Bool
+    @State var titleRowError: Bool = false
 
     var body: some View {
         NavigationStack {
-            VStack(spacing: 0) {
-                ingredientCardTitle
-                    .padding(20)
-                List {
-                    ingredientList
-                }
+            ingredientList
                 .toolbar {
                     toolbarView
                 }
+                .safeAreaInset(edge: .bottom) {
+                    addButton
+                        .padding(.bottom, 5)
+                }
                 .environment(\.editMode, $viewModel.editMode)
                 .scrollContentBackground(.hidden)
-            }
         }
     }
 
@@ -40,15 +39,12 @@ struct CardDetailView<ViewModel: CardDetailViewModellable>: View {
             }
         } label: {
             Text("Add Ingredient")
-                .fontWeight(.bold)
+                .font(.title3)
+                .fontWeight(.semibold)
                 .fontDesign(.rounded)
                 .padding()
-                .background {
-                    RoundedRectangle(cornerRadius: 15)
-                        .foregroundStyle(.blue)
-                }
         }
-        .tint(.white)
+        .buttonStyle(.polished)
     }
 
     private var ingredientCardTitle: some View {
@@ -64,13 +60,13 @@ struct CardDetailView<ViewModel: CardDetailViewModellable>: View {
                     .fontWeight(.semibold)
                     .padding()
                     .focused($titleFocused)
-                    /// .onAppear { UITextField.appearance().clearButtonMode = .whileEditing }
-                    /// Causes:
-                    /// "Error: this application, or a library it uses, has passed an invalid
-                    /// numeric value (NaN, or not-a-number) to CoreGraphics API and this
-                    /// value is being ignored. Please fix this problem."
-                    /// A clear text field button is not available without reaching into UITextField.
-                    /// Add a custom button.
+                /// .onAppear { UITextField.appearance().clearButtonMode = .whileEditing }
+                /// Causes:
+                /// "Error: this application, or a library it uses, has passed an invalid
+                /// numeric value (NaN, or not-a-number) to CoreGraphics API and this
+                /// value is being ignored. Please fix this problem."
+                /// A clear text field button is not available without reaching into UITextField.
+                /// Add a custom button.
                     .overlay {
                         if titleFocused {
                             HStack {
@@ -92,26 +88,28 @@ struct CardDetailView<ViewModel: CardDetailViewModellable>: View {
     }
 
     private var ingredientList: some View {
-        Group {
+        List {
+            Section("") {
+                TextField("Recipe Title", text: $viewModel.title)
+                    .disabled(viewModel.editMode == .inactive)
+                    .font(.system(.title3))
+                    .fontDesign(.rounded)
+                    .fontWeight(.semibold)
+                    .padding(.vertical, 10)
+                    .listRowBackground(Color(viewModel.titleError ? UIColor.systemRed.withAlphaComponent(0.2) : UIColor.systemBlue.withAlphaComponent(0.2)).animation(.easeInOut(duration: 0.5)))
+                    .onAppear { UITextField.appearance().clearButtonMode = .whileEditing }
+            }
+
             Section(header: Text("Ingredients")) {
                 ForEach($viewModel.ingredients) { $ingredient in
                     TextField("Ingredient", text: $ingredient.name, axis: .vertical)
                         .disabled(viewModel.editMode == .inactive)
                         .fontDesign(.rounded)
-                        .fontWeight(.semibold)
+                        .fontWeight(.medium)
                 }
                 .onDelete(perform: viewModel.deleteIngredient)
-                .listRowBackground(viewModel.ingredientsError ? Color.red.opacity(0.2) : .gray.opacity(0.1))
-            }
-
-            Section {
-                EmptyView()
-            } footer: {
-                HStack(alignment: .center) {
-                    Spacer()
-                    addButton
-                    Spacer()
-                }
+//                .listRowBackground(viewModel.ingredientsError ? Color.red.opacity(0.2) : .gray.opacity(0.1))
+                .listRowBackground(Color(viewModel.ingredientsError ? UIColor.systemRed.withAlphaComponent(0.2) : UIColor.systemGray.withAlphaComponent(0.1)).animation(.easeInOut(duration: 0.5)))
             }
         }
     }
@@ -146,27 +144,19 @@ struct CardDetailView<ViewModel: CardDetailViewModellable>: View {
     }
 
     private func titleErrorAnimation() {
-        withAnimation(.easeInOut(duration: 0.5)) {
-            viewModel.titleError = true
-        }
+        viewModel.titleError = true
 
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            withAnimation(.easeInOut(duration: 0.5)) {
-                viewModel.titleError = false
-            }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
+            viewModel.titleError = false
         }
     }
 
     private func ingredientsErrorAnimation() {
-        withAnimation(.easeInOut(duration: 0.5)) {
-            viewModel.ingredientsError = true
-            viewModel.addDummyIngredient()
-        }
+        viewModel.ingredientsError = true
+        viewModel.addDummyIngredient()
 
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            withAnimation(.easeInOut(duration: 0.5)) {
-                viewModel.ingredientsError = false
-            }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
+            viewModel.ingredientsError = false
         }
     }
 }

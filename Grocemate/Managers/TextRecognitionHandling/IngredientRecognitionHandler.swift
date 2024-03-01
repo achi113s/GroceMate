@@ -13,7 +13,7 @@ import Vision
 /// recognition and also sends the output to ChatGPT
 /// for analysis and formatting using OpenAIManager.
 class IngredientRecognitionHandler: ObservableObject {
-    let textRecognitionSessionQueue = DispatchQueue(label: Konstants.textRecognitionSessionQueueName, qos: .background)
+    let textRecognitionSessionQueue = DispatchQueue(label: Constants.textRecognitionSessionQueueName, qos: .background)
 
     @Published var progressStage: String = IngredientRecognitionStage.done.rawValue
     @Published var recognitionInProgress: Bool = false

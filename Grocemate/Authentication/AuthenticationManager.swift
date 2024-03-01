@@ -26,6 +26,8 @@ enum AuthProviderOption: String {
 @MainActor final class AuthenticationManager: ObservableObject {
     static let shared = AuthenticationManager()
 
+    @Published public var userIsAuthenticated: Bool = false
+
     private init() { }
 
     // Not checking the server for authentication. This is a synchronous method!

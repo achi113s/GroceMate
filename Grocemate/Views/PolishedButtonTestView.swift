@@ -36,7 +36,7 @@ struct PolishedButtonTestView: View {
         Button {
 
         } label: {
-            Text("Polished Disabled")
+            Text("Polished Red Disabled")
                 .font(.headline)
                 .fontWeight(.semibold)
                 .fontDesign(.rounded)
@@ -96,7 +96,7 @@ struct PolishedButtonStyle: ButtonStyle {
 
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
-            .foregroundStyle(isEnabled ? foregroundColor : Color(white: 0.75))
+            .foregroundStyle(isEnabled ? foregroundColor : Color(white: 0.6))
             .overlay {
                 configuration.label
                     .foregroundStyle(foregroundColor)
@@ -111,7 +111,6 @@ struct PolishedButtonStyle: ButtonStyle {
                         .fill(highlightGradient)
                         .padding(highlightWidth)
                     RoundedRectangle(cornerRadius: cornerRadius - (highlightWidth * 2.5))
-//                        .fill(isEnabled ? innerGradient : innerGradientDisabled)
                         .fill(isEnabled ? innerGradient : highlightGradient)
                         .padding(highlightWidth * 2.5)
                 }

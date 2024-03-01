@@ -2,32 +2,29 @@
 //  RootView.swift
 //  Grocemate
 //
-//  Created by Giorgio Latour on 2/27/24.
+//  Created by Giorgio Latour on 2/29/24.
 //
 
 import SwiftUI
 
 struct RootView: View {
-    @State private var showSignInView: Bool = false
+    @State private var userNotAuthenticated: Bool = true
 
     var body: some View {
-        ZStack {
-            if !showSignInView {
-                NavigationStack {
-                    HomeView()
-                }
+        Group {
+            if userNotAuthenticated {
+                SignInView(showSignInView: $userNotAuthenticated)
+            } else {
+                HomeView()
             }
         }
         .onAppear {
+//            try? AuthenticationManager.shared.signOut()
             let authUser = try? AuthenticationManager.shared.getAuthenticatedUser()
-            self.showSignInView = authUser == nil
-//            print(try? AuthenticationManager.shared.getProviders())
+            self.userNotAuthenticated = authUser == nil
         }
-        .fullScreenCover(isPresented: $showSignInView) {
-            NavigationStack {
-                SignInView(showSignInView: $showSignInView)
-            }
-        }
+        .animation(.easeInOut, value: self.userNotAuthenticated)
+        .transition(.push(from: .bottom))
     }
 }
 
