@@ -30,6 +30,7 @@
 		4465BDB02B23CCC500DB97B1 /* CardDetailSaveError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4465BDAF2B23CCC500DB97B1 /* CardDetailSaveError.swift */; };
 		446EF8312B3FD03700271764 /* OpenAIManageable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446EF8302B3FD03700271764 /* OpenAIManageable.swift */; };
 		4480E1272B29454F0042DB44 /* UtilityFunctionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4480E1262B29454F0042DB44 /* UtilityFunctionTests.swift */; };
+		4483DC0D2B92A0F500C6C609 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4483DC0C2B92A0F500C6C609 /* SettingsViewModel.swift */; };
 		4489336C2B2FED9A00121DCE /* ImageSizePreferenceKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4489336B2B2FED9A00121DCE /* ImageSizePreferenceKey.swift */; };
 		4489336E2B2FF28F00121DCE /* ImageWithROI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4489336D2B2FF28F00121DCE /* ImageWithROI.swift */; };
 		448933702B2FF5C600121DCE /* OpenAIResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4489336F2B2FF5C600121DCE /* OpenAIResponseModel.swift */; };
@@ -40,7 +41,7 @@
 		4489337C2B31179700121DCE /* IngredientRecognitionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4489337B2B31179700121DCE /* IngredientRecognitionHandler.swift */; };
 		4489337E2B31186F00121DCE /* IngredientRecognitionStage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4489337D2B31186F00121DCE /* IngredientRecognitionStage.swift */; };
 		449106862B4FA8A600FB2019 /* SignInWithAppleButtonViewRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449106852B4FA8A600FB2019 /* SignInWithAppleButtonViewRepresentable.swift */; };
-		449106882B4FA8EB00FB2019 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449106872B4FA8EB00FB2019 /* SignInView.swift */; };
+		449106882B4FA8EB00FB2019 /* AuthenticationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449106872B4FA8EB00FB2019 /* AuthenticationView.swift */; };
 		44B453BC2B8F2F4600B13732 /* PolishedButtonTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B453BB2B8F2F4600B13732 /* PolishedButtonTestView.swift */; };
 		44B4CCB12B91318E00C6B844 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B4CCB02B91318E00C6B844 /* SettingsView.swift */; };
 		44B4CCB32B91667600C6B844 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B4CCB22B91667600C6B844 /* RootView.swift */; };
@@ -69,7 +70,6 @@
 		44F288932B8DC0B300CEB808 /* FirebaseFunctions in Frameworks */ = {isa = PBXBuildFile; productRef = 44F288922B8DC0B300CEB808 /* FirebaseFunctions */; };
 		44F288962B8E5DB300CEB808 /* SignInWithAppleHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F288952B8E5DB300CEB808 /* SignInWithAppleHelper.swift */; };
 		44F288992B8E5E1F00CEB808 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F288982B8E5E1F00CEB808 /* Utilities.swift */; };
-		44F2889C2B8E5EB900CEB808 /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F2889B2B8E5EB900CEB808 /* SignInViewModel.swift */; };
 		44F2889F2B8E5F1A00CEB808 /* AuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F2889E2B8E5F1A00CEB808 /* AuthenticationManager.swift */; };
 /* End PBXBuildFile section */
 
@@ -117,6 +117,7 @@
 		4465BDAF2B23CCC500DB97B1 /* CardDetailSaveError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailSaveError.swift; sourceTree = "<group>"; };
 		446EF8302B3FD03700271764 /* OpenAIManageable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIManageable.swift; sourceTree = "<group>"; };
 		4480E1262B29454F0042DB44 /* UtilityFunctionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilityFunctionTests.swift; sourceTree = "<group>"; };
+		4483DC0C2B92A0F500C6C609 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		4489336B2B2FED9A00121DCE /* ImageSizePreferenceKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSizePreferenceKey.swift; sourceTree = "<group>"; };
 		4489336D2B2FF28F00121DCE /* ImageWithROI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageWithROI.swift; sourceTree = "<group>"; };
 		4489336F2B2FF5C600121DCE /* OpenAIResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIResponseModel.swift; sourceTree = "<group>"; };
@@ -127,7 +128,7 @@
 		4489337B2B31179700121DCE /* IngredientRecognitionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientRecognitionHandler.swift; sourceTree = "<group>"; };
 		4489337D2B31186F00121DCE /* IngredientRecognitionStage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientRecognitionStage.swift; sourceTree = "<group>"; };
 		449106852B4FA8A600FB2019 /* SignInWithAppleButtonViewRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInWithAppleButtonViewRepresentable.swift; sourceTree = "<group>"; };
-		449106872B4FA8EB00FB2019 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
+		449106872B4FA8EB00FB2019 /* AuthenticationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationView.swift; sourceTree = "<group>"; };
 		44B453BB2B8F2F4600B13732 /* PolishedButtonTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolishedButtonTestView.swift; sourceTree = "<group>"; };
 		44B4CCB02B91318E00C6B844 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		44B4CCB22B91667600C6B844 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
@@ -155,7 +156,6 @@
 		44F288892B8DC06100CEB808 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		44F288952B8E5DB300CEB808 /* SignInWithAppleHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInWithAppleHelper.swift; sourceTree = "<group>"; };
 		44F288982B8E5E1F00CEB808 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
-		44F2889B2B8E5EB900CEB808 /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
 		44F2889E2B8E5F1A00CEB808 /* AuthenticationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -210,6 +210,7 @@
 		440ECB7A2AF812F800E6BD5C /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				44B4CCB22B91667600C6B844 /* RootView.swift */,
 				44C7F9AD2B07394300AFE8DD /* HomeView */,
 				44BF98092B088ABD00E24047 /* CardView */,
 				44C2C0A92B32AED3008B3F9A /* RecognitionProgressToast.swift */,
@@ -221,7 +222,6 @@
 				44EE333D2B411A6600DEE6F1 /* CameraView.swift */,
 				44B453BB2B8F2F4600B13732 /* PolishedButtonTestView.swift */,
 				4483DC0B2B926E1D00C6C609 /* SettingsView */,
-				44B4CCB22B91667600C6B844 /* RootView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -279,6 +279,7 @@
 			isa = PBXGroup;
 			children = (
 				44B4CCB02B91318E00C6B844 /* SettingsView.swift */,
+				4483DC0C2B92A0F500C6C609 /* SettingsViewModel.swift */,
 			);
 			path = SettingsView;
 			sourceTree = "<group>";
@@ -314,7 +315,7 @@
 			isa = PBXGroup;
 			children = (
 				449106852B4FA8A600FB2019 /* SignInWithAppleButtonViewRepresentable.swift */,
-				449106872B4FA8EB00FB2019 /* SignInView.swift */,
+				449106872B4FA8EB00FB2019 /* AuthenticationView.swift */,
 			);
 			path = SignInView;
 			sourceTree = "<group>";
@@ -391,7 +392,6 @@
 				44DDF2FC2AF811CE005D35D8 /* GrocemateApp.swift */,
 				440ECB872AF8130400E6BD5C /* Models */,
 				440ECB7A2AF812F800E6BD5C /* Views */,
-				44F2889A2B8E5EAC00CEB808 /* ViewModels */,
 				44F2889D2B8E5F0A00CEB808 /* Authentication */,
 				44F288972B8E5E1600CEB808 /* Utilities */,
 				440ECB752AF812F800E6BD5C /* Effects */,
@@ -440,14 +440,6 @@
 				44F288982B8E5E1F00CEB808 /* Utilities.swift */,
 			);
 			path = Utilities;
-			sourceTree = "<group>";
-		};
-		44F2889A2B8E5EAC00CEB808 /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
-				44F2889B2B8E5EB900CEB808 /* SignInViewModel.swift */,
-			);
-			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		44F2889D2B8E5F0A00CEB808 /* Authentication */ = {
@@ -650,7 +642,7 @@
 				440ECB932AF8130400E6BD5C /* IngredientCard+CoreDataClass.swift in Sources */,
 				44DDF2FD2AF811CE005D35D8 /* GrocemateApp.swift in Sources */,
 				440ECB9C2AF8134A00E6BD5C /* GrocemateDataModel.xcdatamodeld in Sources */,
-				44F2889C2B8E5EB900CEB808 /* SignInViewModel.swift in Sources */,
+				4483DC0D2B92A0F500C6C609 /* SettingsViewModel.swift in Sources */,
 				44B453BC2B8F2F4600B13732 /* PolishedButtonTestView.swift in Sources */,
 				44B4CCB12B91318E00C6B844 /* SettingsView.swift in Sources */,
 				4489336E2B2FF28F00121DCE /* ImageWithROI.swift in Sources */,
@@ -670,7 +662,7 @@
 				440ECB852AF812F800E6BD5C /* Card.swift in Sources */,
 				44BF98132B0927EF00E24047 /* CardDetailViewModellable.swift in Sources */,
 				440ECB862AF812F800E6BD5C /* SwipeableIngredient.swift in Sources */,
-				449106882B4FA8EB00FB2019 /* SignInView.swift in Sources */,
+				449106882B4FA8EB00FB2019 /* AuthenticationView.swift in Sources */,
 				4465BDAE2B23936800DB97B1 /* StringArray-Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

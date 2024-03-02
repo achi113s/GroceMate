@@ -92,7 +92,8 @@ struct SignInWithAppleResult {
 }
 
 extension SignInWithAppleHelper: ASAuthorizationControllerDelegate {
-    func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
+    func authorizationController(controller: ASAuthorizationController,
+                                 didCompleteWithAuthorization authorization: ASAuthorization) {
         guard let appleIDCredential = authorization.credential as? ASAuthorizationAppleIDCredential,
               let nonce = currentNonce,
               let appleIDToken = appleIDCredential.identityToken,
@@ -102,7 +103,8 @@ extension SignInWithAppleHelper: ASAuthorizationControllerDelegate {
             return
         }
 
-        let tokens = SignInWithAppleResult(token: idTokenString, nonce: nonce, fullName: appleIDCredential.fullName, email: appleIDCredential.email)
+        let tokens = SignInWithAppleResult(token: idTokenString, nonce: nonce,
+                                           fullName: appleIDCredential.fullName, email: appleIDCredential.email)
         completionHandler?(.success(tokens))
     }
 
@@ -119,4 +121,3 @@ extension UIViewController: ASAuthorizationControllerPresentationContextProvidin
         return self.view.window!
     }
 }
-

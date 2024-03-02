@@ -8,26 +8,28 @@
 import SwiftUI
 
 struct RootView: View {
-    @State private var userNotAuthenticated: Bool = true
+    // MARK: - Environment
+    @EnvironmentObject var authManager: AuthenticationManager
+
+    // MARK: - State
 
     var body: some View {
         Group {
-            if userNotAuthenticated {
-                SignInView(showSignInView: $userNotAuthenticated)
+            if !authManager.userIsAuthenticated {
+                AuthenticationView<AuthenticationManager>()
             } else {
-                HomeView()
+                HomeView<AuthenticationManager>()
             }
         }
         .onAppear {
-//            try? AuthenticationManager.shared.signOut()
-            let authUser = try? AuthenticationManager.shared.getAuthenticatedUser()
-            self.userNotAuthenticated = authUser == nil
+//            try? authManager.signOut()
+            authManager.verifyAuthenticationStatus()
         }
-        .animation(.easeInOut, value: self.userNotAuthenticated)
+        .animation(.easeInOut, value: authManager.userIsAuthenticated)
         .transition(.push(from: .bottom))
     }
 }
 
-#Preview {
-    RootView()
-}
+//#Preview {
+//    RootView()
+//}

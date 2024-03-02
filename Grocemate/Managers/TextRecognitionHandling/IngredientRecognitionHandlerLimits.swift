@@ -13,7 +13,6 @@ extension IngredientRecognitionHandler {
         let currentNumberOfCalls = UserDefaults.standard.integer(
             forKey: RecognitionCallLimits.numberOfRecognitionCallsThisPeriod.userDefaultsKey)
 
-
         return currentNumberOfCalls < 50
     }
 
@@ -52,7 +51,7 @@ extension IngredientRecognitionHandler {
             print("lastResetDate set to: \(currentLastResetDate)")
         }
     }
- 
+
     private func resetDateOfFirstRecognitionCallIfNeeded() {
         let calendar = Calendar.current
 

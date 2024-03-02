@@ -44,7 +44,7 @@ final class CoreDataController {
             } else {
                 /// Automatically merge any changes saved to the parent store. Useful since we will have multiple viewContexts.
                 self.persistentContainer.viewContext.automaticallyMergesChangesFromParent = true
-                
+
                 self.persistentContainer.viewContext.mergePolicy = NSMergePolicy.mergeByPropertyObjectTrump
                 print("Successfully loaded CoreData.")
             }

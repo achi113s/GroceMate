@@ -23,12 +23,27 @@ enum AuthProviderOption: String {
     case apple = "apple.com"
 }
 
-@MainActor final class AuthenticationManager: ObservableObject {
-    static let shared = AuthenticationManager()
+protocol AuthenticationManaging: ObservableObject {
+    func signOut() async throws
+    func signInWithApple() async throws
+    func setAuthStatusFalse() async
+    func setAuthStatusTrue() async
 
+    var userIsAuthenticated: Bool { get async }
+}
+
+@MainActor final class AuthenticationManager: ObservableObject, AuthenticationManaging {
     @Published public var userIsAuthenticated: Bool = false
 
-    private init() { }
+    // Not checking the server for authentication. This is a synchronous method!
+    func verifyAuthenticationStatus() {
+        guard Auth.auth().currentUser != nil else {
+            userIsAuthenticated = false
+            return
+        }
+
+        userIsAuthenticated = true
+    }
 
     // Not checking the server for authentication. This is a synchronous method!
     func getAuthenticatedUser() throws -> AuthDataResultModel {
@@ -70,7 +85,38 @@ enum AuthProviderOption: String {
         try await user.delete()
     }
 
-    func reauthenticateAppleSignIn(tokens: SignInWithAppleResult) throws {
+    func setAuthStatusFalse() {
+        self.userIsAuthenticated = false
+    }
+
+    func setAuthStatusTrue() {
+        self.userIsAuthenticated = true
+    }
+}
+
+// MARK: - Sign In SSO
+extension AuthenticationManager {
+    func signInWithApple() async throws {
+        let helper = SignInWithAppleHelper()
+        let tokens = try await helper.startSignInWithAppleFlow()
+        try await self.signInWithApple(tokens: tokens)
+    }
+
+    @discardableResult
+    private func signInWithApple(tokens: SignInWithAppleResult) async throws -> AuthDataResultModel {
+        let credential = OAuthProvider.appleCredential(withIDToken: tokens.token,
+                                                       rawNonce: tokens.nonce,
+                                                       fullName: tokens.fullName)
+        return try await signIn(with: credential)
+    }
+
+    func reauthenticateAppleSignIn() async throws {
+        let helper = SignInWithAppleHelper()
+        let tokens = try await helper.startSignInWithAppleFlow()
+        try self.reauthenticateAppleSignIn(tokens: tokens)
+    }
+
+    private func reauthenticateAppleSignIn(tokens: SignInWithAppleResult) throws {
         guard let user = Auth.auth().currentUser else {
             throw URLError(.badURL)
         }
@@ -81,21 +127,9 @@ enum AuthProviderOption: String {
 
         user.reauthenticate(with: credential)
     }
-}
-
-// MARK: - Sign In SSO
-extension AuthenticationManager {
-    @discardableResult
-    func signInWithApple(tokens: SignInWithAppleResult) async throws -> AuthDataResultModel {
-        let credential = OAuthProvider.appleCredential(withIDToken: tokens.token,
-                                                       rawNonce: tokens.nonce,
-                                                       fullName: tokens.fullName)
-        return try await signIn(with: credential)
-    }
 
     func signIn(with credential: AuthCredential) async throws -> AuthDataResultModel {
         let authDataResult = try await Auth.auth().signIn(with: credential)
         return AuthDataResultModel(authDataResult.user)
     }
 }
-

@@ -7,10 +7,11 @@
 
 import SwiftUI
 
-struct SignInView: View {
-    @StateObject private var signInViewModel: SignInViewModel = SignInViewModel()
-    @Binding var showSignInView: Bool
-    @State private var sliderVal: Double = 20.0
+struct AuthenticationView<AuthManaging: AuthenticationManaging>: View {
+    @EnvironmentObject var authManager: AuthManaging
+
+    init() { }
+
     var body: some View {
         VStack {
             Spacer()
@@ -24,8 +25,8 @@ struct SignInView: View {
             Button {
                 Task {
                     do {
-                        try await signInViewModel.signInWithApple()
-                        showSignInView = false
+                        try await authManager.signInWithApple()
+                        await authManager.setAuthStatusTrue()
                     } catch {
                         print("error signing in with apple: \(error)")
                     }
@@ -42,5 +43,12 @@ struct SignInView: View {
 }
 
 #Preview {
-    SignInView(showSignInView: .constant(true))
+    @StateObject var authManager = AuthenticationManager()
+
+    let authView: some View = {
+        AuthenticationView<AuthenticationManager>()
+            .environmentObject(authManager)
+    }()
+
+    return authView
 }

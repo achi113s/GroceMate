@@ -7,27 +7,20 @@
 
 import SwiftUI
 
-@MainActor final class SettingsViewModel: ObservableObject {
-    func signOut() throws {
-        try AuthenticationManager.shared.signOut()
-    }
-
-    func deleteUser() async throws {
-        try await AuthenticationManager.shared.deleteUser()
-    }
-
-    func reauthenticateAppleSignIn() async throws {
-        let helper = SignInWithAppleHelper()
-        let tokens = try await helper.startSignInWithAppleFlow()
-        try AuthenticationManager.shared.reauthenticateAppleSignIn(tokens: tokens)
+extension SettingsView where S == SettingsViewModel {
+    init(path: Binding<NavigationPath>) {
+        self.init(viewModel: SettingsViewModel(), path: path)
     }
 }
 
-struct SettingsView: View {
-    @StateObject private var viewModel: SettingsViewModel = SettingsViewModel()
+struct SettingsView<S: SettingsViewModelling, AuthManaging: AuthenticationManaging>: View {
+    @EnvironmentObject var authManager: AuthManaging
+
+    @StateObject var viewModel: S
     @Binding var path: NavigationPath
 
-    init(path: Binding<NavigationPath>) {
+    init(viewModel: S, path: Binding<NavigationPath>) {
+        self._viewModel = StateObject(wrappedValue: viewModel)
         self._path = path
     }
 
@@ -38,7 +31,8 @@ struct SettingsView: View {
                     path.removeLast()
                     Task {
                         do {
-                            try viewModel.signOut()
+                            try await authManager.signOut()
+                            await authManager.setAuthStatusFalse()
                         } catch {
                             print("error signing out: \(error)")
                         }
@@ -57,6 +51,13 @@ struct SettingsView: View {
 }
 
 #Preview {
+    @StateObject var authManager = AuthenticationManager()
     @State var path: NavigationPath = NavigationPath()
-    return SettingsView(path: $path)
+
+    let authView: some View = {
+        SettingsView<SettingsViewModel, AuthenticationManager>(path: $path)
+            .environmentObject(authManager)
+    }()
+
+    return authView
 }

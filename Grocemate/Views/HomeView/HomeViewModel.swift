@@ -49,8 +49,6 @@ final class HomeViewModel: ObservableObject {
     @Published var query: String = ""
     @Published var sortBy: SortIngredientCards = .timestampAsc
 
-    @Published var showSignInView: Bool = true
-
     private let context: NSManagedObjectContext
 
     init(coreDataController: CoreDataController) {

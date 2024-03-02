@@ -8,7 +8,9 @@
 import PhotosUI
 import SwiftUI
 
-struct HomeView: View {
+struct HomeView<AuthManaging: AuthenticationManaging>: View {
+    @EnvironmentObject var authManager: AuthManaging
+
     // MARK: - State
     @StateObject var homeViewModel = HomeViewModel(coreDataController: CoreDataController.shared)
     @StateObject var ingredientRecognitionHandler: IngredientRecognitionHandler = IngredientRecognitionHandler(
@@ -27,13 +29,9 @@ struct HomeView: View {
                 }
                 .photosPicker(isPresented: $homeViewModel.presentPhotosPicker,
                               selection: $homeViewModel.selectedPhotosPickerItem, photoLibrary: .shared())
-                .navigationDestination(for: String.self) { value in
-                    SettingsView(path: $homeViewModel.path)
+                .navigationDestination(for: String.self) { _ in
+                    SettingsView<SettingsViewModel, AuthenticationManager>(path: $homeViewModel.path)
                 }
-        }
-        .onAppear {
-            let authUser = try? AuthenticationManager.shared.getAuthenticatedUser()
-            homeViewModel.showSignInView = authUser == nil
         }
         .sheet(item: $homeViewModel.sheet, content: makeSheet)
         .sheet(isPresented: $ingredientRecognitionHandler.presentNewIngredients) {
@@ -290,7 +288,8 @@ struct HomeView: View {
     let preview = CoreDataController.shared
 
     let viewToPreview = {
-        HomeView()
+        HomeView<AuthenticationManager>()
+            .environmentObject(AuthenticationManager())
             .environment(\.managedObjectContext, preview.viewContext)
             .onAppear {
                 IngredientCard.makePreview(count: 2, in: preview.viewContext)
@@ -304,7 +303,8 @@ struct HomeView: View {
     let preview = CoreDataController.shared
 
     let viewToPreview = {
-        HomeView()
+        HomeView<AuthenticationManager>()
+            .environmentObject(AuthenticationManager())
             .environment(\.managedObjectContext, preview.viewContext)
             .onAppear {
                 IngredientCard.makePreview(count: 0, in: preview.viewContext)
