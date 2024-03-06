@@ -15,17 +15,17 @@ struct RootView: View {
 
     var body: some View {
         Group {
-            if !authManager.userIsAuthenticated {
+            if !authManager.isUserAuthenticated {
                 AuthenticationView<AuthenticationManager>()
             } else {
                 HomeView<AuthenticationManager>()
             }
         }
-        .onAppear {
+//        .onAppear {
 //            try? authManager.signOut()
-            authManager.verifyAuthenticationStatus()
-        }
-        .animation(.easeInOut, value: authManager.userIsAuthenticated)
+//            authManager.verifyAuthenticationStatus()
+//        }
+        .animation(.easeInOut, value: authManager.isUserAuthenticated)
         .transition(.push(from: .bottom))
     }
 }

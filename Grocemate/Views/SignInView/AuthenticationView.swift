@@ -7,10 +7,8 @@
 
 import SwiftUI
 
-struct AuthenticationView<AuthManaging: AuthenticationManaging>: View {
-    @EnvironmentObject var authManager: AuthManaging
-
-    init() { }
+struct AuthenticationView<A: AuthenticationManaging>: View {
+    @EnvironmentObject var authManager: A
 
     var body: some View {
         VStack {
@@ -26,7 +24,6 @@ struct AuthenticationView<AuthManaging: AuthenticationManaging>: View {
                 Task {
                     do {
                         try await authManager.signInWithApple()
-                        await authManager.setAuthStatusTrue()
                     } catch {
                         print("error signing in with apple: \(error)")
                     }

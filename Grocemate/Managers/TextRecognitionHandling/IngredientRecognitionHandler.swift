@@ -12,7 +12,7 @@ import Vision
 /// This class manages calls to Vision for image-to-text
 /// recognition and also sends the output to ChatGPT
 /// for analysis and formatting using OpenAIManager.
-class IngredientRecognitionHandler: ObservableObject {
+final class IngredientRecognitionHandler: ObservableObject {
     let textRecognitionSessionQueue = DispatchQueue(label: Constants.textRecognitionSessionQueueName, qos: .background)
 
     @Published var progressStage: String = IngredientRecognitionStage.done.rawValue
@@ -98,11 +98,6 @@ class IngredientRecognitionHandler: ObservableObject {
 
 // MARK: - Vision Image-to-Text Recognition Handlers
 extension IngredientRecognitionHandler {
-    /*
-     For this example, allow 50 calls per month.
-     If user
-     */
-
     /// This will be performed on a background thread. For some reason the recognition
     /// is not marked as an async function so we don't use the async-await syntax here.
     private func performImageToTextRecognition(on image: UIImage,

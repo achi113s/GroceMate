@@ -5,44 +5,43 @@
 //  Created by Giorgio Latour on 2/27/24.
 //
 
+import Combine
 import Firebase
 import FirebaseAuth
 import SwiftUI
-
-struct AuthDataResultModel {
-    let uid: String
-    let email: String?
-
-    init(_ user: User) {
-        self.uid = user.uid
-        self.email = user.email
-    }
-}
 
 enum AuthProviderOption: String {
     case apple = "apple.com"
 }
 
 protocol AuthenticationManaging: ObservableObject {
-    func signOut() async throws
-    func signInWithApple() async throws
-    func setAuthStatusFalse() async
-    func setAuthStatusTrue() async
+    var authenticatedUser: CustomUserInfo? { get async }
+    var isUserAuthenticated: Bool { get async }
 
-    var userIsAuthenticated: Bool { get async }
+    func getAuthenticatedUser() async throws -> AuthDataResultModel
+    func getProviders() async throws -> [AuthProviderOption]
+
+    func signIn(with credential: AuthCredential) async throws -> AuthDataResultModel
+    func signInWithApple() async throws
+    func signOut() async throws
+
+    func reauthenticateAppleSignIn() async throws
+
+    func deleteUser() async throws
 }
 
 @MainActor final class AuthenticationManager: ObservableObject, AuthenticationManaging {
-    @Published public var userIsAuthenticated: Bool = false
+    @Published public var authenticatedUser: CustomUserInfo?
 
-    // Not checking the server for authentication. This is a synchronous method!
-    func verifyAuthenticationStatus() {
-        guard Auth.auth().currentUser != nil else {
-            userIsAuthenticated = false
-            return
+    var isUserAuthenticated: Bool {
+        self.authenticatedUser != nil
+    }
+
+    init() {
+        // Set up a listener for authentication state changes
+        Auth.auth().addStateDidChangeListener { _, user in
+            self.authenticatedUser = user
         }
-
-        userIsAuthenticated = true
     }
 
     // Not checking the server for authentication. This is a synchronous method!
@@ -73,6 +72,11 @@ protocol AuthenticationManaging: ObservableObject {
         return providers
     }
 
+    func signIn(with credential: AuthCredential) async throws -> AuthDataResultModel {
+        let authDataResult = try await Auth.auth().signIn(with: credential)
+        return AuthDataResultModel(authDataResult.user)
+    }
+
     func signOut() throws {
         try Auth.auth().signOut()
     }
@@ -83,14 +87,6 @@ protocol AuthenticationManaging: ObservableObject {
         }
 
         try await user.delete()
-    }
-
-    func setAuthStatusFalse() {
-        self.userIsAuthenticated = false
-    }
-
-    func setAuthStatusTrue() {
-        self.userIsAuthenticated = true
     }
 }
 
@@ -126,10 +122,5 @@ extension AuthenticationManager {
                                                        fullName: tokens.fullName)
 
         user.reauthenticate(with: credential)
-    }
-
-    func signIn(with credential: AuthCredential) async throws -> AuthDataResultModel {
-        let authDataResult = try await Auth.auth().signIn(with: credential)
-        return AuthDataResultModel(authDataResult.user)
     }
 }

@@ -30,7 +30,7 @@ struct HomeView<AuthManaging: AuthenticationManaging>: View {
                 .photosPicker(isPresented: $homeViewModel.presentPhotosPicker,
                               selection: $homeViewModel.selectedPhotosPickerItem, photoLibrary: .shared())
                 .navigationDestination(for: String.self) { _ in
-                    SettingsView<SettingsViewModel, AuthenticationManager>(path: $homeViewModel.path)
+                    SettingsView<SettingsViewModel, AuthManaging>(path: $homeViewModel.path)
                 }
         }
         .sheet(item: $homeViewModel.sheet, content: makeSheet)
@@ -168,6 +168,15 @@ struct HomeView<AuthManaging: AuthenticationManaging>: View {
                             Image(systemName: "character.cursor.ibeam")
                         }
                     }
+
+                    Button {
+                        homeViewModel.sheet = .documentScanner
+                    } label: {
+                        HStack {
+                            Text("Document Scanner")
+                            Image(systemName: "doc.viewfinder")
+                        }
+                    }
                 } label: {
                     Image(systemName: "plus")
                         .font(.system(size: 16, weight: .semibold))
@@ -237,22 +246,6 @@ struct HomeView<AuthManaging: AuthenticationManaging>: View {
         }
     }
 
-    //    private var showCreateCardViewButton: some View {
-    //        Button {
-    //            showCreateCardView = true
-    //        } label: {
-    //            ZStack {
-    //                RoundedRectangle(cornerRadius: 15)
-    //                    .foregroundStyle(.blue)
-    //                    .frame(width: 120, height: 50)
-    //                Text("Grocemate")
-    //                    .fontWeight(.bold)
-    //                    .fontDesign(.rounded)
-    //            }
-    //        }
-    //        .tint(.white)
-    //    }
-
     @ViewBuilder private func makeSheet(_ sheet: Sheets) -> some View {
         switch sheet {
         case .cameraView:
@@ -280,6 +273,11 @@ struct HomeView<AuthManaging: AuthenticationManaging>: View {
             CardDetailView<CreateCardViewModel>(
                 viewModel: CreateCardViewModel(coreDataController: .shared, context: coreDataController.newContext)
             )
+        case .documentScanner:
+            DocumentScanner { _ in
+                print("scanned")
+            }
+            .ignoresSafeArea()
         }
     }
 }
