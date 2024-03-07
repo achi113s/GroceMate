@@ -37,7 +37,7 @@ struct SignInWithAppleResult {
 
     /// Adapted from https://firebase.google.com/docs/auth/ios/apple?hl=en&authuser=0
     func startSignInWithAppleFlow(completion: @escaping (Result<SignInWithAppleResult, Error>) -> Void) {
-        guard let topVC = Utilities.shared.topViewController() else {
+        guard let topVC = Utilities.topViewController() else {
             completion(.failure(URLError(.badURL)))
             return
         }

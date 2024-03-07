@@ -10,7 +10,7 @@ import UIKit
 
 final class Utilities {
     @MainActor
-    func topViewController(controller: UIViewController? = nil) -> UIViewController? {
+    static func topViewController(controller: UIViewController? = nil) -> UIViewController? {
         let controller = controller ?? UIApplication.shared.keyWindow?.rootViewController
 
         if let navigationController = controller as? UINavigationController {

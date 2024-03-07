@@ -9,6 +9,7 @@ import PhotosUI
 import SwiftUI
 
 struct HomeView<AuthManaging: AuthenticationManaging>: View {
+    // MARK: - Environment
     @EnvironmentObject var authManager: AuthManaging
 
     // MARK: - State
@@ -130,10 +131,6 @@ struct HomeView<AuthManaging: AuthenticationManaging>: View {
     private var mainViewToolbar: some ToolbarContent {
         Group {
             ToolbarItem(placement: .navigationBarLeading) {
-//                Text("grocemate")
-//                    .multilineTextAlignment(.center)
-//                    .font(.system(size: 32, weight: .semibold, design: .rounded))
-//                    .foregroundStyle(.blue)
                 Image("grocemateLogoSmall")
                     .imageScale(.large)
                     .shadow(radius: 2)
@@ -143,11 +140,11 @@ struct HomeView<AuthManaging: AuthenticationManaging>: View {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Menu {
                     Button {
-                        homeViewModel.sheet = .cameraView
+                        homeViewModel.sheet = .documentScanner
                     } label: {
                         HStack {
-                            Text("Take a Picture")
-                            Image(systemName: "camera")
+                            Text("Scan a Recipe")
+                            Image(systemName: "doc.viewfinder")
                         }
                     }
 
@@ -164,17 +161,8 @@ struct HomeView<AuthManaging: AuthenticationManaging>: View {
                         homeViewModel.sheet = .manuallyCreateCard
                     } label: {
                         HStack {
-                            Text("Manually Add Card")
+                            Text("Manually Add Recipe")
                             Image(systemName: "character.cursor.ibeam")
-                        }
-                    }
-
-                    Button {
-                        homeViewModel.sheet = .documentScanner
-                    } label: {
-                        HStack {
-                            Text("Document Scanner")
-                            Image(systemName: "doc.viewfinder")
                         }
                     }
                 } label: {
@@ -248,12 +236,6 @@ struct HomeView<AuthManaging: AuthenticationManaging>: View {
 
     @ViewBuilder private func makeSheet(_ sheet: Sheets) -> some View {
         switch sheet {
-        case .cameraView:
-            CameraView(sourceType: .camera) { uiImage in
-                homeViewModel.selectedImage = uiImage
-                homeViewModel.sheet = .imageROI
-                print("start imageroi?")
-            }
         case .imageROI:
             if let image = homeViewModel.selectedImage {
                 ImageWithROI(image: image)
@@ -274,8 +256,20 @@ struct HomeView<AuthManaging: AuthenticationManaging>: View {
                 viewModel: CreateCardViewModel(coreDataController: .shared, context: coreDataController.newContext)
             )
         case .documentScanner:
-            DocumentScanner { _ in
-                print("scanned")
+            DocumentScanner { images in
+                Task {
+                    var recognizedText: [String] = [String]()
+                    for image in images {
+                        let imageToTextHandler = ImageToTextHandler()
+                        do {
+                            let imageText = try await imageToTextHandler.getTextFromImage(image)
+                            recognizedText.append(contentsOf: imageText)
+                        } catch {
+                            print("error occurred on imageToTextHandler call")
+                        }
+                    }
+                    print(recognizedText)
+                }
             }
             .ignoresSafeArea()
         }

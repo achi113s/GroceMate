@@ -85,8 +85,7 @@ struct ImageToTextHandler {
                  text as a String type. The resulting type of results is then [String].
                  */
                 let results = observations.compactMap { observation in
-                    let n = 1
-                    return observation.topCandidates(n)[0].string
+                    return observation.topCandidates(1)[0].string
                 }
 
                 continuation.resume(returning: results)
