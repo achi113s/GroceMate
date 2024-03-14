@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ImageWithROI: View {
     @EnvironmentObject var homeViewModel: HomeViewModel
-    @EnvironmentObject var ingredientRecognitionHandler: IngredientRecognitionHandler
+    @EnvironmentObject var recipeRecognitionHandler: RecipeRecognitionHandler<ImageToTextHandler, ChatGPTCloudFunctionsHandler>
 
     @Environment(\.dismiss) var dismiss
 
@@ -115,15 +115,17 @@ struct ImageWithROI: View {
     // MARK: - Subviews
     private var identifyButton: some View {
         Button {
-            let roi = ingredientRecognitionHandler.convertBoundingBoxToNormalizedBoxForVisionROI(
-                boxLocation: location, boxSize: CGSize(width: boundingBoxWidth, height: boundingBoxHeight),
-                imageSize: imageSize)
-
-            ingredientRecognitionHandler.recognizeIngredientsInImage(image: image, region: roi)
-
-            homeViewModel.sheet = nil
-            homeViewModel.selectedImage = nil
-            homeViewModel.selectedPhotosPickerItem = nil
+//            let roi = ingredientRecognitionHandler.convertBoundingBoxToNormalizedBoxForVisionROI(
+//                boxLocation: location, boxSize: CGSize(width: boundingBoxWidth, height: boundingBoxHeight),
+//                imageSize: imageSize)
+//
+//            ingredientRecognitionHandler.recognizeIngredientsInImage(image: image, region: roi)
+//
+//            homeViewModel.sheet = nil
+//            homeViewModel.selectedImage = nil
+//            homeViewModel.selectedPhotosPickerItem = nil
+            
+            recipeRecognitionHandler.recognizeRecipeIn(image: image, with: .right, in: CGRect(x: 0, y: 0, width: 1, height: 1))
 
             dismiss()
         } label: {

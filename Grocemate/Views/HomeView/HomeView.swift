@@ -14,9 +14,7 @@ struct HomeView<AuthManaging: AuthenticationManaging>: View {
 
     // MARK: - State
     @StateObject var homeViewModel = HomeViewModel(coreDataController: CoreDataController.shared)
-    @StateObject var ingredientRecognitionHandler: IngredientRecognitionHandler = IngredientRecognitionHandler(
-        openAIManager: OpenAIManager()
-    )
+    @StateObject var recipeRecognitionHandler: RecipeRecognitionHandler = RecipeRecognitionHandler()
 
     // MARK: - Properties
     @FetchRequest(fetchRequest: IngredientCard.all()) private var ingredientCards
@@ -35,18 +33,18 @@ struct HomeView<AuthManaging: AuthenticationManaging>: View {
                 }
         }
         .sheet(item: $homeViewModel.sheet, content: makeSheet)
-        .sheet(isPresented: $ingredientRecognitionHandler.presentNewIngredients) {
-            CardDetailView<CreateCardViewModel>(
-                viewModel: CreateCardViewModel(
-                    coreDataController: .shared,
-                    tempCard: TempIngredientCard(
-                        title: "New Card",
-                        ingredients: ingredientRecognitionHandler.lastIngredientGroupFromChatGPT!.ingredients
-                    ),
-                    context: coreDataController.newContext
-                )
-            )
-        }
+//        .sheet(isPresented: $ingredientRecognitionHandler.presentNewIngredients) {
+//            CardDetailView<CreateCardViewModel>(
+//                viewModel: CreateCardViewModel(
+//                    coreDataController: .shared,
+//                    tempCard: TempIngredientCard(
+//                        title: "New Card",
+//                        ingredients: ingredientRecognitionHandler.lastIngredientGroupFromChatGPT!.ingredients
+//                    ),
+//                    context: coreDataController.newContext
+//                )
+//            )
+//        }
         .onChange(of: homeViewModel.selectedPhotosPickerItem) { newPhoto in
             Task {
                 if let data = try? await newPhoto?.loadTransferable(type: Data.self) {
@@ -58,7 +56,7 @@ struct HomeView<AuthManaging: AuthenticationManaging>: View {
             }
         }
         .environmentObject(homeViewModel)
-        .environmentObject(ingredientRecognitionHandler)
+        .environmentObject(recipeRecognitionHandler)
     }
 
     // MARK: - Subviews
@@ -71,8 +69,14 @@ struct HomeView<AuthManaging: AuthenticationManaging>: View {
             }
         }
         .overlay {
-            if ingredientRecognitionHandler.recognitionInProgress {
-                RecognitionInProgressToast()
+            if recipeRecognitionHandler.recognitionInProgress {
+                ProgressView()
+                    .tint(.white)
+                    .background {
+                        RoundedRectangle(cornerRadius: 15)
+                            .frame(width: 60, height: 60)
+                            .opacity(0.6)
+                    }
             }
         }
     }
@@ -257,19 +261,19 @@ struct HomeView<AuthManaging: AuthenticationManaging>: View {
             )
         case .documentScanner:
             DocumentScanner { images in
-                Task {
-                    var recognizedText: [String] = [String]()
-                    for image in images {
-                        let imageToTextHandler = ImageToTextHandler()
-                        do {
-                            let imageText = try await imageToTextHandler.getTextFromImage(image)
-                            recognizedText.append(contentsOf: imageText)
-                        } catch {
-                            print("error occurred on imageToTextHandler call")
-                        }
-                    }
-                    print(recognizedText)
-                }
+//                Task {
+//                    var recognizedText: [String] = [String]()
+//                    for image in images {
+//                        let imageToTextHandler = ImageToTextHandler()
+//                        do {
+//                            let imageText = try await imageToTextHandler.getTextFromImage(image)
+//                            recognizedText.append(contentsOf: imageText)
+//                        } catch {
+//                            print("error occurred on imageToTextHandler call")
+//                        }
+//                    }
+//                    print(recognizedText)
+//                }
             }
             .ignoresSafeArea()
         }

@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol OpenAIManageable {
+protocol OpenAIManaging {
     var completionsEndpoint: String { get set }
     var apiKey: String { get set }
     var organization: String { get set }

@@ -12,7 +12,7 @@ enum ImageRecognitionError: Error {
     case badImage, textRecognitionError, resultsTypeCastError
 }
 
-struct ImageToTextHandler {
+struct ImageToTextHandlerAsyncAwait {
     public var recognitionLevel: VNRequestTextRecognitionLevel
     public var revision: Int
     public var imageOrientation: CGImagePropertyOrientation

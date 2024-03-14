@@ -57,6 +57,13 @@ struct CompletionRequest: Codable {
         case temperature = "temperature"
         case stream = "stream"
     }
+
+    var asArray: [String:String] {
+        return [
+            "model": model,
+            "maxTokens": String(maxTokens)
+        ]
+    }
 }
 
 struct DecodedIngredients: Codable {
