@@ -7,6 +7,6 @@
 
 import Foundation
 
-enum r: Error {
+enum ImageRecognitionError: Error {
     case badImage, textRecognitionError, resultsTypeCastError
 }
