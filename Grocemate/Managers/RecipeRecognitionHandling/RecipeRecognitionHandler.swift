@@ -99,7 +99,7 @@ final class RecipeRecognitionHandler<I: ImageToTextHandling, O: OpenAIManaging2>
                 messages: [message], temperature: 0.7, stream: false
             )
 
-            chatGPTHandler.postPromptToCompletionsEndpoint(requestObject: requestObject) { openAIResponse, error in
+            chatGPTHandler.postRequestToCompletionsEndpoint(requestObject: requestObject) { openAIResponse, error in
                 guard error == nil else {
                     print("An error occurred posting a message to ChatGPT Completions: \(error!.localizedDescription)")
                     return

@@ -9,14 +9,14 @@ import FirebaseFunctions
 import SwiftUI
 
 protocol OpenAIManaging2: ObservableObject {
-    func postPromptToCompletionsEndpoint(requestObject: CompletionRequest,
+    func postRequestToCompletionsEndpoint(requestObject: CompletionRequest,
                                          completion: @escaping (OpenAIResponse?, Error?) -> Void)
 }
 
 final class ChatGPTCloudFunctionsHandler: OpenAIManaging2 {
     let functions = Functions.functions(region: "us-central1")
 
-    func postPromptToCompletionsEndpoint(requestObject: CompletionRequest,
+    func postRequestToCompletionsEndpoint(requestObject: CompletionRequest,
                                          completion: @escaping (OpenAIResponse?, Error?) -> Void) {
         functions.httpsCallable("makeOpenAIAPICompletionsRequest",
                                 requestAs: CompletionRequest.self,
