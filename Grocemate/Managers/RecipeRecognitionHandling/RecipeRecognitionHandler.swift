@@ -12,15 +12,6 @@ struct Recipe {
     var title: String
 }
 
-protocol RecipeRecognitionHandling: ObservableObject {
-    associatedtype I: ImageToTextHandling
-    associatedtype O: OpenAIManaging2
-
-    var imageToTextHandler: I { get }
-    var chatGPTHandler: O { get }
-
-    func recognizeRecipeIn(image: UIImage, with orientation: CGImagePropertyOrientation, in region: CGRect)
-}
 
 final class RecipeRecognitionHandler<I: ImageToTextHandling, O: OpenAIManaging2>: RecipeRecognitionHandling {
     // MARK: - DispatchQueue
@@ -44,8 +35,7 @@ final class RecipeRecognitionHandler<I: ImageToTextHandling, O: OpenAIManaging2>
         self.chatGPTHandler = chatGPTHandler
     }
 
-    func recognizeRecipeIn(image: UIImage,
-                           with orientation: CGImagePropertyOrientation,
+    func recognizeRecipeIn(image: UIImage, with orientation: CGImagePropertyOrientation,
                            in region: CGRect) {
         DispatchQueue.main.async {
             print("Setting recognitionInProgress to true.")
@@ -53,6 +43,13 @@ final class RecipeRecognitionHandler<I: ImageToTextHandling, O: OpenAIManaging2>
             self.recognitionInProgress = true
         }
 
+        performImageRecognition(image: image, with: orientation, in: region)
+
+        performChatGPTParsing()
+    }
+
+    private func performImageRecognition(image: UIImage, with orientation: CGImagePropertyOrientation,
+                                         in region: CGRect) {
         queue.async { [weak self] in
             guard let self = self else {
                 fatalError("Unexpectedly encountered nil when unwrapping self in async block.")
@@ -62,12 +59,10 @@ final class RecipeRecognitionHandler<I: ImageToTextHandling, O: OpenAIManaging2>
                                                                   with: orientation, in: region) { request, error in
                 guard error == nil else {
                     fatalError(error!.localizedDescription)
-//                    return
                 }
 
                 guard let observations = request.results as? [VNRecognizedTextObservation] else {
                     fatalError("Unable to cast request results.")
-//                    return
                 }
 
                 /*
@@ -83,7 +78,9 @@ final class RecipeRecognitionHandler<I: ImageToTextHandling, O: OpenAIManaging2>
                 self.visionResults = results
             }
         }
+    }
 
+    private func performChatGPTParsing() {
         queue.async { [weak self] in
             guard let self = self else {
                 fatalError("Unexpectedly encountered nil when unwrapping self in async block.")

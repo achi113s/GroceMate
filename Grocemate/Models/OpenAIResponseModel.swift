@@ -62,7 +62,3 @@ struct CompletionRequest: Codable {
         case stream = "stream"
     }
 }
-
-struct DecodedIngredients: Codable {
-    let ingredients: [String]
-}
