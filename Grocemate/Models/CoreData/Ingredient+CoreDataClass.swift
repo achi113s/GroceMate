@@ -1,8 +1,8 @@
 //
 //  Ingredient+CoreDataClass.swift
-//  GroceMate
+//  Grocemate
 //
-//  Created by Giorgio Latour on 11/5/23.
+//  Created by Giorgio Latour on 3/19/24.
 //
 //
 
@@ -18,6 +18,7 @@ public class Ingredient: NSManagedObject, Identifiable {
     @NSManaged public var id: UUID?
     @NSManaged public var name: String
     @NSManaged public var ingredientCard: IngredientCard?
+    @NSManaged public var recipe: Recipe?
 
     public override func awakeFromInsert() {
         super.awakeFromInsert()

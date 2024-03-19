@@ -8,11 +8,6 @@
 import SwiftUI
 import Vision
 
-struct Recipe {
-    var title: String
-}
-
-
 final class RecipeRecognitionHandler<I: ImageToTextHandling, O: OpenAIManaging2>: RecipeRecognitionHandling {
     // MARK: - DispatchQueue
     // Serial Dispatch Queue we will do all of our work on to ensure correct order.

@@ -1,8 +1,8 @@
 //
 //  IngredientCard+CoreDataProperties.swift
-//  GroceMate
+//  Grocemate
 //
-//  Created by Giorgio Latour on 11/5/23.
+//  Created by Giorgio Latour on 3/19/24.
 //
 //
 
@@ -31,23 +31,6 @@ extension IngredientCard {
     static func sortBy(_ key: SortIngredientCards) -> [NSSortDescriptor] {
         [NSSortDescriptor(key: key.rawValue, ascending: key.ascending)]
     }
-}
-
-// MARK: Generated accessors for ingredients
-extension IngredientCard {
-
-    @objc(addIngredientsObject:)
-    @NSManaged public func addToIngredients(_ value: Ingredient)
-
-    @objc(removeIngredientsObject:)
-    @NSManaged public func removeFromIngredients(_ value: Ingredient)
-
-    @objc(addIngredients:)
-    @NSManaged public func addToIngredients(_ values: NSSet)
-
-    @objc(removeIngredients:)
-    @NSManaged public func removeFromIngredients(_ values: NSSet)
-
 }
 
 // MARK: - Previews
@@ -103,4 +86,21 @@ extension IngredientCard {
     ) -> IngredientCard {
         return IngredientCard(context: context)
     }
+}
+
+// MARK: Generated accessors for ingredients
+extension IngredientCard {
+
+    @objc(addIngredientsObject:)
+    @NSManaged public func addToIngredients(_ value: Ingredient)
+
+    @objc(removeIngredientsObject:)
+    @NSManaged public func removeFromIngredients(_ value: Ingredient)
+
+    @objc(addIngredients:)
+    @NSManaged public func addToIngredients(_ values: NSSet)
+
+    @objc(removeIngredients:)
+    @NSManaged public func removeFromIngredients(_ values: NSSet)
+
 }

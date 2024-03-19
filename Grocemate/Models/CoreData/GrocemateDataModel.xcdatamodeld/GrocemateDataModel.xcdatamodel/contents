@@ -1,15 +1,29 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22225" systemVersion="23B92" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="YES" usedWithSwiftData="YES" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22757" systemVersion="23C71" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="YES" usedWithSwiftData="YES" userDefinedModelVersionIdentifier="">
     <entity name="Ingredient" representedClassName=".Ingredient" syncable="YES">
         <attribute name="complete" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="name" attributeType="String" defaultValueString="No Name"/>
         <relationship name="ingredientCard" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="IngredientCard" inverseName="ingredients" inverseEntity="IngredientCard"/>
+        <relationship name="recipe" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Recipe" inverseName="ingredients" inverseEntity="Recipe"/>
     </entity>
     <entity name="IngredientCard" representedClassName=".IngredientCard" syncable="YES">
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="timestamp" attributeType="Date" defaultDateTimeInterval="721200180" usesScalarValueType="NO"/>
         <attribute name="title" attributeType="String" defaultValueString="No Title"/>
         <relationship name="ingredients" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Ingredient" inverseName="ingredientCard" inverseEntity="Ingredient"/>
+        <relationship name="recipe" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Recipe" inverseName="ingredientCard" inverseEntity="Recipe"/>
+    </entity>
+    <entity name="Recipe" representedClassName=".Recipe" syncable="YES">
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="timestamp" attributeType="Date" defaultDateTimeInterval="730071720" usesScalarValueType="NO"/>
+        <attribute name="title" attributeType="String" defaultValueString="No Title"/>
+        <relationship name="ingredientCard" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="IngredientCard" inverseName="recipe" inverseEntity="IngredientCard"/>
+        <relationship name="ingredients" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Ingredient" inverseName="recipe" inverseEntity="Ingredient"/>
+        <relationship name="recipeStep" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="RecipeStep" inverseName="recipe" inverseEntity="RecipeStep"/>
+    </entity>
+    <entity name="RecipeStep" representedClassName=".RecipeStep" syncable="YES">
+        <attribute name="step" attributeType="String" defaultValueString=""/>
+        <relationship name="recipe" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Recipe" inverseName="recipeStep" inverseEntity="Recipe"/>
     </entity>
 </model>

@@ -2,11 +2,12 @@
 //  Ingredient+CoreDataProperties.swift
 //  Grocemate
 //
-//  Created by Giorgio Latour on 11/8/23.
+//  Created by Giorgio Latour on 3/19/24.
+//
 //
 
-import CoreData
 import Foundation
+import CoreData
 
 // MARK: - Fetch Requests
 extension Ingredient {

@@ -1,8 +1,8 @@
 //
 //  IngredientCard+CoreDataClass.swift
-//  GroceMate
+//  Grocemate
 //
-//  Created by Giorgio Latour on 11/5/23.
+//  Created by Giorgio Latour on 3/19/24.
 //
 //
 
@@ -18,6 +18,7 @@ public class IngredientCard: NSManagedObject, Identifiable {
     @NSManaged public var timestamp: Date
     @NSManaged public var title: String
     @NSManaged public var ingredients: Set<Ingredient>
+    @NSManaged public var recipe: Recipe?
 
     public var ingredientsArr: [Ingredient] {
         let arr = Array(ingredients)
@@ -32,9 +33,5 @@ public class IngredientCard: NSManagedObject, Identifiable {
         setPrimitiveValue(UUID(), forKey: "id")
         setPrimitiveValue(Date.now, forKey: "timestamp")
         setPrimitiveValue("Card Title", forKey: "title")
-    }
-
-    public func fetchFromCloudKit() async {
-
     }
 }
