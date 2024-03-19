@@ -28,9 +28,9 @@ final class IngredientRecognitionHandler: ObservableObject {
          Here are the ingredients:
         """
 
-    private var openAIManager: OpenAIManager
+    private var openAIManager: OpenAIManagerOLD
 
-    init(openAIManager: OpenAIManager) {
+    init(openAIManager: OpenAIManagerOLD) {
         self.openAIManager = openAIManager
     }
 

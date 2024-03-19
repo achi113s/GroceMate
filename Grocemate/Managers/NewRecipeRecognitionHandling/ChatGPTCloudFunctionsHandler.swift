@@ -9,7 +9,8 @@ import FirebaseFunctions
 import SwiftUI
 
 protocol OpenAIManaging2: ObservableObject {
-    func postPromptToCompletionsEndpoint(requestObject: CompletionRequest) -> OpenAIResponse
+    func postPromptToCompletionsEndpoint(requestObject: CompletionRequest,
+                                         completion: @escaping (OpenAIResponse?, Error?) -> Void)
     func fakePostPrompt()
 }
 
@@ -25,22 +26,58 @@ struct TestPayload: Codable {
 final class ChatGPTCloudFunctionsHandler: OpenAIManaging2 {
     let functions = Functions.functions(region: "us-central1")
 
-    let testPayload = TestPayload(name: "Giorgio", ingredient: "lettuce")
+    func postPromptToCompletionsEndpoint(requestObject: CompletionRequest,
+                                         completion: @escaping (OpenAIResponse?, Error?) -> Void) {
+        guard let requestData = try? JSONEncoder().encode(requestObject) else {
+            return
+        }
 
-    func postPromptToCompletionsEndpoint(requestObject: CompletionRequest) -> OpenAIResponse {
-        OpenAIResponse(id: "asdf", object: "asdf", created: 1, model: "asdf", 
-                       usage: Usage(promptTokens: 3, completionTokens: 2, totalTokens: 2),
-                       choices: [Choice(message: Message(role: "32", content: "23rwe"), finishReason: "asdf")])
+        if let json = String(data: requestData, encoding: .utf8) {
+              print("json as a string", json)
+        }
+
+        print("Below is the response:")
+
+        functions.httpsCallable("makeOpenAIAPICompletionsRequest", 
+                                requestAs: CompletionRequest.self,
+                                responseAs: OpenAIResponse.self).call(requestObject) { result in
+            // result has type Result<OpenAIResponse, any Error>
+            switch result {
+            case .success(let openAIResponseObject):
+                completion(openAIResponseObject, nil)
+            case .failure(let error):
+                completion(nil, error)
+            }
+        }
+
+//        functions.httpsCallable("makeOpenAIAPICompletionsRequest").call(requestObject.toFirebaseFunctionArray) { result, error in
+//            if let error = error {
+//                print("there was an error: \(error)")
+//                return
+//            }
+//
+//            if let data = result?.data as? [String: Any] {
+//                if let jsonData = try? JSONSerialization.data(withJSONObject: data, options: []) {
+//                    if let responseObject = try? JSONDecoder().decode(OpenAIResponse.self, from: jsonData) {
+//                        
+//                    }
+//                }
+//            } else {
+//                print("no data")
+//            }
+//        }
     }
 
     func fakePostPrompt() {
+        let testPayload = TestPayload(name: "Giorgio", ingredient: "lettuce")
+
         functions.httpsCallable("myTestFunctionAppCheck").call(testPayload.asArray) { result, error in
             if let error = error {
                 print("there was an error: \(error)")
                 return
             }
 
-            if let data = result?.data as? [String: Any] {
+            if let data = result?.data as? [String: String] {
                 print(data)
             } else {
                 print("no data")

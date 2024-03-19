@@ -115,17 +115,16 @@ struct ImageWithROI: View {
     // MARK: - Subviews
     private var identifyButton: some View {
         Button {
-//            let roi = ingredientRecognitionHandler.convertBoundingBoxToNormalizedBoxForVisionROI(
-//                boxLocation: location, boxSize: CGSize(width: boundingBoxWidth, height: boundingBoxHeight),
-//                imageSize: imageSize)
-//
-//            ingredientRecognitionHandler.recognizeIngredientsInImage(image: image, region: roi)
-//
-//            homeViewModel.sheet = nil
-//            homeViewModel.selectedImage = nil
-//            homeViewModel.selectedPhotosPickerItem = nil
-            
-            recipeRecognitionHandler.recognizeRecipeIn(image: image, with: .right, in: CGRect(x: 0, y: 0, width: 1, height: 1))
+            let region = Utilities.convertBoundingBoxToNormalizedBox(boxLocation: location,
+                                                                     boxSize: CGSize(width: boundingBoxWidth,
+                                                                                     height: boundingBoxHeight),
+                                                                     imageSize: imageSize)
+
+            homeViewModel.sheet = nil
+            homeViewModel.selectedImage = nil
+            homeViewModel.selectedPhotosPickerItem = nil
+
+            recipeRecognitionHandler.recognizeRecipeIn(image: image, with: .right, in: region)
 
             dismiss()
         } label: {

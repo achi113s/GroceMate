@@ -65,4 +65,3 @@ final class ImageToTextHandler: ImageToTextHandling {
             }
         }
 }
-

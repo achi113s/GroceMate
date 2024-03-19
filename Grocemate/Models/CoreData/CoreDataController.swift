@@ -42,7 +42,8 @@ final class CoreDataController {
                 print("There was an error loading the persistent stores: \(error)")
                 return
             } else {
-                /// Automatically merge any changes saved to the parent store. Useful since we will have multiple viewContexts.
+                /// Automatically merge any changes saved to the parent store. 
+                /// Useful since we will have multiple viewContexts.
                 self.persistentContainer.viewContext.automaticallyMergesChangesFromParent = true
 
                 self.persistentContainer.viewContext.mergePolicy = NSMergePolicy.mergeByPropertyObjectTrump

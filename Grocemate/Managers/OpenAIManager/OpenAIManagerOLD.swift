@@ -8,7 +8,7 @@
 import Foundation
 
 /// Manage the connection with the OpenAI API for Chat Completion.
-class OpenAIManager: NSObject, ObservableObject {
+class OpenAIManagerOLD: NSObject, ObservableObject {
     private let completionsEndpoint = "https://api.openai.com/v1/chat/completions"
 
     private var apiKey: String? {
