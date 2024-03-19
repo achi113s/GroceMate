@@ -1,0 +1,16 @@
+//
+//  DecodedRecipe.swift
+//  Grocemate
+//
+//  Created by Giorgio Latour on 3/19/24.
+//
+
+import Foundation
+
+struct DecodedIngredients: Codable {
+    let ingredients: [String]
+}
+
+struct DecodedRecipe: Codable {
+    
+}

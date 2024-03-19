@@ -41,11 +41,15 @@ struct Choice: Codable {
 struct Message: Codable {
     let role: String
     let content: String
+
+    var toString: String {
+        return "\(role), \(content)"
+    }
 }
 
 struct CompletionRequest: Codable {
     let model: String
-    let maxTokens: Int
+    let maxTokens: Int32
     let messages: [Message]
     let temperature: Double
     let stream: Bool
@@ -57,8 +61,4 @@ struct CompletionRequest: Codable {
         case temperature = "temperature"
         case stream = "stream"
     }
-}
-
-struct DecodedIngredients: Codable {
-    let ingredients: [String]
 }

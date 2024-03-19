@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ImageWithROI: View {
     @EnvironmentObject var homeViewModel: HomeViewModel
-    @EnvironmentObject var ingredientRecognitionHandler: IngredientRecognitionHandler
+    @EnvironmentObject var recipeRecognitionHandler: RecipeRecognitionHandler<ImageToTextHandler, ChatGPTCloudFunctionsHandler>
 
     @Environment(\.dismiss) var dismiss
 
@@ -115,24 +115,16 @@ struct ImageWithROI: View {
     // MARK: - Subviews
     private var identifyButton: some View {
         Button {
-//            print(
-//                CGRect(
-//                    origin: CGPoint(x: location.x, y: location.y),
-//                    size: CGSize(width: boundingBoxWidth, height: boundingBoxHeight)
-//                )
-//            )
-
-            let roi = ingredientRecognitionHandler.convertBoundingBoxToNormalizedBoxForVisionROI(
-                boxLocation: location, boxSize: CGSize(width: boundingBoxWidth, height: boundingBoxHeight),
-                imageSize: imageSize)
-
-//            print(roi)
-
-            ingredientRecognitionHandler.recognizeIngredientsInImage(image: image, region: roi)
+            let region = Utilities.convertBoundingBoxToNormalizedBox(boxLocation: location,
+                                                                     boxSize: CGSize(width: boundingBoxWidth,
+                                                                                     height: boundingBoxHeight),
+                                                                     imageSize: imageSize)
 
             homeViewModel.sheet = nil
             homeViewModel.selectedImage = nil
             homeViewModel.selectedPhotosPickerItem = nil
+
+            recipeRecognitionHandler.recognizeRecipeIn(image: image, with: .right, in: region)
 
             dismiss()
         } label: {
@@ -146,12 +138,9 @@ struct ImageWithROI: View {
                         .tint(.white)
                 }
             }
+            .padding()
         }
-        .frame(width: 150, height: 50)
-        .buttonStyle(.borderedProminent)
-        .buttonBorderShape(
-            .roundedRectangle(radius: 30)
-        )
+        .buttonStyle(.polished)
     }
 
     private var roiView: some View {

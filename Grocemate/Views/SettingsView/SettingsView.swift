@@ -15,15 +15,15 @@ extension SettingsView where S == SettingsViewModel {
 
 struct SettingsView<S: SettingsViewModelling, A: AuthenticationManaging>: View {
     @EnvironmentObject var authManager: A
-    
+
     @StateObject var viewModel: S
     @Binding var path: NavigationPath
-    
+
     init(viewModel: S, path: Binding<NavigationPath>) {
         self._viewModel = StateObject(wrappedValue: viewModel)
         self._path = path
     }
-    
+
     var body: some View {
         List {
             Section("Account") {
@@ -47,11 +47,11 @@ struct SettingsView<S: SettingsViewModelling, A: AuthenticationManaging>: View {
 #Preview {
     @StateObject var authManager = AuthenticationManager()
     @State var path: NavigationPath = NavigationPath()
-    
+
     let authView: some View = {
         SettingsView<SettingsViewModel, AuthenticationManager>(path: $path)
             .environmentObject(authManager)
     }()
-    
+
     return authView
 }

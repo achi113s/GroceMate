@@ -22,8 +22,8 @@ struct DocumentScanner: UIViewControllerRepresentable {
     func makeCoordinator() -> DocumentScannerCoordinator {
         return DocumentScannerCoordinator {
             self.presentationMode.wrappedValue.dismiss()
-        } onDocumentsScanned: { _ in
-            print("hello")
+        } onDocumentsScanned: { images in
+            self.onDocumentsScanned(images)
         }
     }
 

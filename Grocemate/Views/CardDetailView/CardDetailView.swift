@@ -96,7 +96,10 @@ struct CardDetailView<ViewModel: CardDetailViewModellable>: View {
                     .fontDesign(.rounded)
                     .fontWeight(.semibold)
                     .padding(.vertical, 10)
-                    .listRowBackground(Color(viewModel.titleError ? UIColor.systemRed.withAlphaComponent(0.2) : UIColor.systemBlue.withAlphaComponent(0.2)).animation(.easeInOut(duration: 0.5)))
+                    .listRowBackground(Color(
+                        viewModel.titleError ? UIColor.systemRed.withAlphaComponent(0.2) :
+                            UIColor.systemBlue.withAlphaComponent(0.2)).animation(.easeInOut(duration: 0.5))
+                    )
                     .onAppear { UITextField.appearance().clearButtonMode = .whileEditing }
             }
 
@@ -108,8 +111,10 @@ struct CardDetailView<ViewModel: CardDetailViewModellable>: View {
                         .fontWeight(.medium)
                 }
                 .onDelete(perform: viewModel.deleteIngredient)
-//                .listRowBackground(viewModel.ingredientsError ? Color.red.opacity(0.2) : .gray.opacity(0.1))
-                .listRowBackground(Color(viewModel.ingredientsError ? UIColor.systemRed.withAlphaComponent(0.2) : UIColor.systemGray.withAlphaComponent(0.1)).animation(.easeInOut(duration: 0.5)))
+                .listRowBackground(Color(
+                    viewModel.ingredientsError ? UIColor.systemRed.withAlphaComponent(0.2) :
+                        UIColor.systemGray.withAlphaComponent(0.1)).animation(.easeInOut(duration: 0.5))
+                )
             }
         }
     }

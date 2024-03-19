@@ -21,15 +21,12 @@ struct RootView: View {
                 HomeView<AuthenticationManager>()
             }
         }
-//        .onAppear {
-//            try? authManager.signOut()
-//            authManager.verifyAuthenticationStatus()
-//        }
         .animation(.easeInOut, value: authManager.isUserAuthenticated)
         .transition(.push(from: .bottom))
     }
 }
 
-//#Preview {
-//    RootView()
-//}
+#Preview {
+    RootView()
+        .environmentObject(AuthenticationManager())
+}

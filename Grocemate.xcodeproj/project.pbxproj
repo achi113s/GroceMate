@@ -23,6 +23,9 @@
 		442957122B258FC1000D74CA /* TempIngredientCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442957112B258FC1000D74CA /* TempIngredientCard.swift */; };
 		4441677A2B20364C005AF6BC /* EditCardViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444167792B20364C005AF6BC /* EditCardViewModelTests.swift */; };
 		4453D8A82B0931AB001B1C36 /* EditCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4453D8A72B0931AB001B1C36 /* EditCardViewModel.swift */; };
+		445A652C2BA2368E003629CE /* RecipeRecognitionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445A652B2BA2368E003629CE /* RecipeRecognitionHandler.swift */; };
+		445A652F2BA2802D003629CE /* ImageToTextHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445A652E2BA2802D003629CE /* ImageToTextHandler.swift */; };
+		445A65312BA28069003629CE /* ChatGPTCloudFunctionsHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445A65302BA28069003629CE /* ChatGPTCloudFunctionsHandler.swift */; };
 		445D78DB2B43627000DF7B68 /* RecognitionCallLimits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445D78DA2B43627000DF7B68 /* RecognitionCallLimits.swift */; };
 		445DCC452AFC579700CA97DE /* Ingredient+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445DCC442AFC579700CA97DE /* Ingredient+CoreDataProperties.swift */; };
 		4465BDAE2B23936800DB97B1 /* StringArray-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4465BDAD2B23936800DB97B1 /* StringArray-Extensions.swift */; };
@@ -31,28 +34,27 @@
 		44693FBF2B97A63C003BCCB8 /* CustomUserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44693FBE2B97A63C003BCCB8 /* CustomUserInfo.swift */; };
 		44693FC12B97AAC8003BCCB8 /* DocumentScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44693FC02B97AAC8003BCCB8 /* DocumentScanner.swift */; };
 		44693FC32B97AE2E003BCCB8 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44693FC22B97AE2E003BCCB8 /* SettingsViewModel.swift */; };
-		446EF8312B3FD03700271764 /* OpenAIManageable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446EF8302B3FD03700271764 /* OpenAIManageable.swift */; };
 		4480E1272B29454F0042DB44 /* UtilityFunctionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4480E1262B29454F0042DB44 /* UtilityFunctionTests.swift */; };
+		4488A6CE2BAA085A00414AAD /* Codable-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4488A6CD2BAA085A00414AAD /* Codable-Extensions.swift */; };
+		4488A6D02BAA0A3400414AAD /* ImageRecognition-Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4488A6CF2BAA0A3400414AAD /* ImageRecognition-Error.swift */; };
+		4488A6D22BAA0C0500414AAD /* RecipeRecognitionHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4488A6D12BAA0C0500414AAD /* RecipeRecognitionHandling.swift */; };
+		4488A6D42BAA0C7A00414AAD /* DecodedRecipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4488A6D32BAA0C7A00414AAD /* DecodedRecipe.swift */; };
+		4488A6D62BAA0CD000414AAD /* ImageToTextHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4488A6D52BAA0CD000414AAD /* ImageToTextHandling.swift */; };
 		4489336C2B2FED9A00121DCE /* ImageSizePreferenceKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4489336B2B2FED9A00121DCE /* ImageSizePreferenceKey.swift */; };
 		4489336E2B2FF28F00121DCE /* ImageWithROI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4489336D2B2FF28F00121DCE /* ImageWithROI.swift */; };
 		448933702B2FF5C600121DCE /* OpenAIResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4489336F2B2FF5C600121DCE /* OpenAIResponseModel.swift */; };
 		448933722B310E5E00121DCE /* ChatGPT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448933712B310E5E00121DCE /* ChatGPT.swift */; };
 		448933742B310E8400121DCE /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448933732B310E8400121DCE /* Constants.swift */; };
-		448933772B3112B300121DCE /* OpenAIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448933762B3112B300121DCE /* OpenAIManager.swift */; };
 		448933792B31146100121DCE /* OpenAIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448933782B31146100121DCE /* OpenAIError.swift */; };
-		4489337C2B31179700121DCE /* IngredientRecognitionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4489337B2B31179700121DCE /* IngredientRecognitionHandler.swift */; };
 		4489337E2B31186F00121DCE /* IngredientRecognitionStage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4489337D2B31186F00121DCE /* IngredientRecognitionStage.swift */; };
 		449106862B4FA8A600FB2019 /* SignInWithAppleButtonViewRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449106852B4FA8A600FB2019 /* SignInWithAppleButtonViewRepresentable.swift */; };
 		449106882B4FA8EB00FB2019 /* AuthenticationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449106872B4FA8EB00FB2019 /* AuthenticationView.swift */; };
-		44A3DB2D2B99216600CACD33 /* ImageToTextManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A3DB2C2B99216600CACD33 /* ImageToTextManager.swift */; };
-		44A3DB2F2B99221000CACD33 /* ImageToTextHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A3DB2E2B99221000CACD33 /* ImageToTextHandler.swift */; };
 		44B453BC2B8F2F4600B13732 /* PolishedButtonTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B453BB2B8F2F4600B13732 /* PolishedButtonTestView.swift */; };
 		44B4CCB12B91318E00C6B844 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B4CCB02B91318E00C6B844 /* SettingsView.swift */; };
 		44B4CCB32B91667600C6B844 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B4CCB22B91667600C6B844 /* RootView.swift */; };
 		44BF980C2B088AFA00E24047 /* Sheets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44BF980B2B088AFA00E24047 /* Sheets.swift */; };
 		44BF98102B088B5A00E24047 /* Image-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44BF980F2B088B5A00E24047 /* Image-Extensions.swift */; };
 		44BF98132B0927EF00E24047 /* CardDetailViewModellable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44BF98122B0927EF00E24047 /* CardDetailViewModellable.swift */; };
-		44C2C0AA2B32AED3008B3F9A /* RecognitionProgressToast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C2C0A92B32AED3008B3F9A /* RecognitionProgressToast.swift */; };
 		44C7F9AF2B07395100AFE8DD /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C7F9AE2B07395100AFE8DD /* HomeViewModel.swift */; };
 		44CE197E2B27C463002D6E33 /* CreateCardViewModelInitializerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44CE197D2B27C463002D6E33 /* CreateCardViewModelInitializerTests.swift */; };
 		44CE19802B27CB66002D6E33 /* HomeViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44CE197F2B27CB66002D6E33 /* HomeViewModelTests.swift */; };
@@ -113,6 +115,9 @@
 		442957112B258FC1000D74CA /* TempIngredientCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempIngredientCard.swift; sourceTree = "<group>"; };
 		444167792B20364C005AF6BC /* EditCardViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCardViewModelTests.swift; sourceTree = "<group>"; };
 		4453D8A72B0931AB001B1C36 /* EditCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCardViewModel.swift; sourceTree = "<group>"; };
+		445A652B2BA2368E003629CE /* RecipeRecognitionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeRecognitionHandler.swift; sourceTree = "<group>"; };
+		445A652E2BA2802D003629CE /* ImageToTextHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageToTextHandler.swift; sourceTree = "<group>"; };
+		445A65302BA28069003629CE /* ChatGPTCloudFunctionsHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatGPTCloudFunctionsHandler.swift; sourceTree = "<group>"; };
 		445D78DA2B43627000DF7B68 /* RecognitionCallLimits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecognitionCallLimits.swift; sourceTree = "<group>"; };
 		445DCC442AFC579700CA97DE /* Ingredient+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ingredient+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		4465BDAB2B2278DD00DB97B1 /* Grocemate.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = Grocemate.xctestplan; sourceTree = "<group>"; };
@@ -122,21 +127,21 @@
 		44693FBE2B97A63C003BCCB8 /* CustomUserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUserInfo.swift; sourceTree = "<group>"; };
 		44693FC02B97AAC8003BCCB8 /* DocumentScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentScanner.swift; sourceTree = "<group>"; };
 		44693FC22B97AE2E003BCCB8 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
-		446EF8302B3FD03700271764 /* OpenAIManageable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIManageable.swift; sourceTree = "<group>"; };
 		4480E1262B29454F0042DB44 /* UtilityFunctionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilityFunctionTests.swift; sourceTree = "<group>"; };
+		4488A6CD2BAA085A00414AAD /* Codable-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Codable-Extensions.swift"; sourceTree = "<group>"; };
+		4488A6CF2BAA0A3400414AAD /* ImageRecognition-Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ImageRecognition-Error.swift"; sourceTree = "<group>"; };
+		4488A6D12BAA0C0500414AAD /* RecipeRecognitionHandling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeRecognitionHandling.swift; sourceTree = "<group>"; };
+		4488A6D32BAA0C7A00414AAD /* DecodedRecipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecodedRecipe.swift; sourceTree = "<group>"; };
+		4488A6D52BAA0CD000414AAD /* ImageToTextHandling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageToTextHandling.swift; sourceTree = "<group>"; };
 		4489336B2B2FED9A00121DCE /* ImageSizePreferenceKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSizePreferenceKey.swift; sourceTree = "<group>"; };
 		4489336D2B2FF28F00121DCE /* ImageWithROI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageWithROI.swift; sourceTree = "<group>"; };
 		4489336F2B2FF5C600121DCE /* OpenAIResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIResponseModel.swift; sourceTree = "<group>"; };
 		448933712B310E5E00121DCE /* ChatGPT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatGPT.swift; sourceTree = "<group>"; };
 		448933732B310E8400121DCE /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		448933762B3112B300121DCE /* OpenAIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIManager.swift; sourceTree = "<group>"; };
 		448933782B31146100121DCE /* OpenAIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIError.swift; sourceTree = "<group>"; };
-		4489337B2B31179700121DCE /* IngredientRecognitionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientRecognitionHandler.swift; sourceTree = "<group>"; };
 		4489337D2B31186F00121DCE /* IngredientRecognitionStage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientRecognitionStage.swift; sourceTree = "<group>"; };
 		449106852B4FA8A600FB2019 /* SignInWithAppleButtonViewRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInWithAppleButtonViewRepresentable.swift; sourceTree = "<group>"; };
 		449106872B4FA8EB00FB2019 /* AuthenticationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationView.swift; sourceTree = "<group>"; };
-		44A3DB2C2B99216600CACD33 /* ImageToTextManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageToTextManager.swift; sourceTree = "<group>"; };
-		44A3DB2E2B99221000CACD33 /* ImageToTextHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageToTextHandler.swift; sourceTree = "<group>"; };
 		44B453BB2B8F2F4600B13732 /* PolishedButtonTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolishedButtonTestView.swift; sourceTree = "<group>"; };
 		44B4CCB02B91318E00C6B844 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		44B4CCB22B91667600C6B844 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
@@ -144,7 +149,6 @@
 		44BF980F2B088B5A00E24047 /* Image-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image-Extensions.swift"; sourceTree = "<group>"; };
 		44BF98122B0927EF00E24047 /* CardDetailViewModellable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailViewModellable.swift; sourceTree = "<group>"; };
 		44C2C0A72B3283C9008B3F9A /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
-		44C2C0A92B32AED3008B3F9A /* RecognitionProgressToast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecognitionProgressToast.swift; sourceTree = "<group>"; };
 		44C7F9AE2B07395100AFE8DD /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		44CE197D2B27C463002D6E33 /* CreateCardViewModelInitializerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCardViewModelInitializerTests.swift; sourceTree = "<group>"; };
 		44CE197F2B27CB66002D6E33 /* HomeViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModelTests.swift; sourceTree = "<group>"; };
@@ -211,6 +215,7 @@
 				440ECB792AF812F800E6BD5C /* Text-Extensions.swift */,
 				44BF980F2B088B5A00E24047 /* Image-Extensions.swift */,
 				4465BDAD2B23936800DB97B1 /* StringArray-Extensions.swift */,
+				4488A6CD2BAA085A00414AAD /* Codable-Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -221,7 +226,6 @@
 				44B4CCB22B91667600C6B844 /* RootView.swift */,
 				44C7F9AD2B07394300AFE8DD /* HomeView */,
 				44BF98092B088ABD00E24047 /* CardView */,
-				44C2C0A92B32AED3008B3F9A /* RecognitionProgressToast.swift */,
 				4453D8A62B09319E001B1C36 /* EditCardView */,
 				440ECB7B2AF812F800E6BD5C /* CreateCardView */,
 				44BF98112B0927D700E24047 /* CardDetailView */,
@@ -251,6 +255,7 @@
 				442957112B258FC1000D74CA /* TempIngredientCard.swift */,
 				4489336F2B2FF5C600121DCE /* OpenAIResponseModel.swift */,
 				448933732B310E8400121DCE /* Constants.swift */,
+				4488A6D32BAA0C7A00414AAD /* DecodedRecipe.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -276,13 +281,17 @@
 			path = EditCardView;
 			sourceTree = "<group>";
 		};
-		446EF8322B3FD04000271764 /* OpenAIManager */ = {
+		445A652D2BA23BAC003629CE /* RecipeRecognitionHandling */ = {
 			isa = PBXGroup;
 			children = (
-				448933762B3112B300121DCE /* OpenAIManager.swift */,
-				446EF8302B3FD03700271764 /* OpenAIManageable.swift */,
+				445A652B2BA2368E003629CE /* RecipeRecognitionHandler.swift */,
+				445A652E2BA2802D003629CE /* ImageToTextHandler.swift */,
+				445A65302BA28069003629CE /* ChatGPTCloudFunctionsHandler.swift */,
+				4488A6CF2BAA0A3400414AAD /* ImageRecognition-Error.swift */,
+				4488A6D12BAA0C0500414AAD /* RecipeRecognitionHandling.swift */,
+				4488A6D52BAA0CD000414AAD /* ImageToTextHandling.swift */,
 			);
-			path = OpenAIManager;
+			path = RecipeRecognitionHandling;
 			sourceTree = "<group>";
 		};
 		4483DC0B2B926E1D00C6C609 /* SettingsView */ = {
@@ -306,20 +315,9 @@
 		448933752B31128D00121DCE /* Managers */ = {
 			isa = PBXGroup;
 			children = (
-				4489337A2B3114B000121DCE /* TextRecognitionHandling */,
-				446EF8322B3FD04000271764 /* OpenAIManager */,
+				445A652D2BA23BAC003629CE /* RecipeRecognitionHandling */,
 			);
 			path = Managers;
-			sourceTree = "<group>";
-		};
-		4489337A2B3114B000121DCE /* TextRecognitionHandling */ = {
-			isa = PBXGroup;
-			children = (
-				4489337B2B31179700121DCE /* IngredientRecognitionHandler.swift */,
-				44A3DB2C2B99216600CACD33 /* ImageToTextManager.swift */,
-				44A3DB2E2B99221000CACD33 /* ImageToTextHandler.swift */,
-			);
-			path = TextRecognitionHandling;
 			sourceTree = "<group>";
 		};
 		449106842B4FA89300FB2019 /* SignInView */ = {
@@ -630,8 +628,6 @@
 			files = (
 				445D78DB2B43627000DF7B68 /* RecognitionCallLimits.swift in Sources */,
 				44C7F9AF2B07395100AFE8DD /* HomeViewModel.swift in Sources */,
-				448933772B3112B300121DCE /* OpenAIManager.swift in Sources */,
-				44A3DB2F2B99221000CACD33 /* ImageToTextHandler.swift in Sources */,
 				44F2889F2B8E5F1A00CEB808 /* AuthenticationManager.swift in Sources */,
 				440ECB822AF812F800E6BD5C /* Text-Extensions.swift in Sources */,
 				44DDEAF72B0F2290002AB0CE /* HapticType.swift in Sources */,
@@ -641,14 +637,13 @@
 				44DDF2FF2AF811CE005D35D8 /* HomeView.swift in Sources */,
 				44B4CCB32B91667600C6B844 /* RootView.swift in Sources */,
 				44693FBF2B97A63C003BCCB8 /* CustomUserInfo.swift in Sources */,
-				446EF8312B3FD03700271764 /* OpenAIManageable.swift in Sources */,
 				445DCC452AFC579700CA97DE /* Ingredient+CoreDataProperties.swift in Sources */,
 				449106862B4FA8A600FB2019 /* SignInWithAppleButtonViewRepresentable.swift in Sources */,
 				440ECB942AF8130400E6BD5C /* Ingredient+CoreDataClass.swift in Sources */,
-				44C2C0AA2B32AED3008B3F9A /* RecognitionProgressToast.swift in Sources */,
 				44EE333E2B411A6600DEE6F1 /* CameraView.swift in Sources */,
-				44A3DB2D2B99216600CACD33 /* ImageToTextManager.swift in Sources */,
+				445A652F2BA2802D003629CE /* ImageToTextHandler.swift in Sources */,
 				440ECB832AF812F800E6BD5C /* CreateCardViewModel.swift in Sources */,
+				4488A6D42BAA0C7A00414AAD /* DecodedRecipe.swift in Sources */,
 				44BF98102B088B5A00E24047 /* Image-Extensions.swift in Sources */,
 				4489337E2B31186F00121DCE /* IngredientRecognitionStage.swift in Sources */,
 				440ECB802AF812F800E6BD5C /* HapticEngine.swift in Sources */,
@@ -659,20 +654,25 @@
 				44DDF2FD2AF811CE005D35D8 /* GrocemateApp.swift in Sources */,
 				440ECB9C2AF8134A00E6BD5C /* GrocemateDataModel.xcdatamodeld in Sources */,
 				44B453BC2B8F2F4600B13732 /* PolishedButtonTestView.swift in Sources */,
+				4488A6CE2BAA085A00414AAD /* Codable-Extensions.swift in Sources */,
 				44B4CCB12B91318E00C6B844 /* SettingsView.swift in Sources */,
+				445A65312BA28069003629CE /* ChatGPTCloudFunctionsHandler.swift in Sources */,
 				4489336E2B2FF28F00121DCE /* ImageWithROI.swift in Sources */,
 				448933792B31146100121DCE /* OpenAIError.swift in Sources */,
+				4488A6D22BAA0C0500414AAD /* RecipeRecognitionHandling.swift in Sources */,
 				44F288962B8E5DB300CEB808 /* SignInWithAppleHelper.swift in Sources */,
 				448933702B2FF5C600121DCE /* OpenAIResponseModel.swift in Sources */,
 				442957122B258FC1000D74CA /* TempIngredientCard.swift in Sources */,
 				440ECB842AF812F800E6BD5C /* CardDetailView.swift in Sources */,
 				4453D8A82B0931AB001B1C36 /* EditCardViewModel.swift in Sources */,
 				448933742B310E8400121DCE /* Constants.swift in Sources */,
+				4488A6D02BAA0A3400414AAD /* ImageRecognition-Error.swift in Sources */,
 				440ECB912AF8130400E6BD5C /* CoreDataController.swift in Sources */,
+				4488A6D62BAA0CD000414AAD /* ImageToTextHandling.swift in Sources */,
+				445A652C2BA2368E003629CE /* RecipeRecognitionHandler.swift in Sources */,
 				4489336C2B2FED9A00121DCE /* ImageSizePreferenceKey.swift in Sources */,
 				44F288992B8E5E1F00CEB808 /* Utilities.swift in Sources */,
 				4465BDB02B23CCC500DB97B1 /* CardDetailSaveError.swift in Sources */,
-				4489337C2B31179700121DCE /* IngredientRecognitionHandler.swift in Sources */,
 				440ECB812AF812F800E6BD5C /* RubberBanding.swift in Sources */,
 				440ECB852AF812F800E6BD5C /* Card.swift in Sources */,
 				44693FC12B97AAC8003BCCB8 /* DocumentScanner.swift in Sources */,
