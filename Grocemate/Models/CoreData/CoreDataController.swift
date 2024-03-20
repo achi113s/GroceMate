@@ -75,7 +75,7 @@ final class CoreDataController {
     func delete(_ card: IngredientCard,
                 in context: NSManagedObjectContext) throws {
         if let existingCard = exists(card, in: context) {
-            /// Bug: Does not delete with an animation.
+            /// Bug: Does not delete with an animation?
             context.delete(existingCard)
 
             /// Task to delete from context on background thread.

@@ -12,18 +12,19 @@
         <attribute name="timestamp" attributeType="Date" defaultDateTimeInterval="721200180" usesScalarValueType="NO"/>
         <attribute name="title" attributeType="String" defaultValueString="No Title"/>
         <relationship name="ingredients" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Ingredient" inverseName="ingredientCard" inverseEntity="Ingredient"/>
-        <relationship name="recipe" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Recipe" inverseName="ingredientCard" inverseEntity="Recipe"/>
+        <relationship name="recipe" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Recipe" inverseName="ingredientCards" inverseEntity="Recipe"/>
     </entity>
     <entity name="Recipe" representedClassName=".Recipe" syncable="YES">
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="timestamp" attributeType="Date" defaultDateTimeInterval="730071720" usesScalarValueType="NO"/>
         <attribute name="title" attributeType="String" defaultValueString="No Title"/>
-        <relationship name="ingredientCard" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="IngredientCard" inverseName="recipe" inverseEntity="IngredientCard"/>
-        <relationship name="ingredients" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Ingredient" inverseName="recipe" inverseEntity="Ingredient"/>
-        <relationship name="recipeStep" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="RecipeStep" inverseName="recipe" inverseEntity="RecipeStep"/>
+        <relationship name="ingredientCards" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="IngredientCard" inverseName="recipe" inverseEntity="IngredientCard"/>
+        <relationship name="ingredients" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Ingredient" inverseName="recipe" inverseEntity="Ingredient"/>
+        <relationship name="recipeSteps" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="RecipeStep" inverseName="recipe" inverseEntity="RecipeStep"/>
     </entity>
     <entity name="RecipeStep" representedClassName=".RecipeStep" syncable="YES">
-        <attribute name="step" attributeType="String" defaultValueString=""/>
-        <relationship name="recipe" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Recipe" inverseName="recipeStep" inverseEntity="Recipe"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="stepText" attributeType="String" defaultValueString=""/>
+        <relationship name="recipe" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Recipe" inverseName="recipeSteps" inverseEntity="Recipe"/>
     </entity>
 </model>

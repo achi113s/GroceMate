@@ -11,6 +11,4 @@ struct DecodedIngredients: Codable {
     let ingredients: [String]
 }
 
-struct DecodedRecipe: Codable {
-    
-}
+struct DecodedRecipe: Codable { }

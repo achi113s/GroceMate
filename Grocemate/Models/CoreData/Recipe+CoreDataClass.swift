@@ -15,9 +15,24 @@ public class Recipe: NSManagedObject {
     }
 
     @NSManaged public var id: UUID?
-    @NSManaged public var timestamp: Date?
-    @NSManaged public var title: String?
-    @NSManaged public var ingredientCard: NSSet?
-    @NSManaged public var ingredients: NSSet?
-    @NSManaged public var recipeStep: NSSet?
+    @NSManaged public var timestamp: Date
+    @NSManaged public var title: String
+    @NSManaged public var ingredientCards: Set<IngredientCard>
+    @NSManaged public var ingredients: Set<Ingredient>
+    @NSManaged public var recipeSteps: Set<RecipeStep>
+
+    public var ingredientsArr: [Ingredient] {
+        let arr = Array(ingredients)
+        return arr.sorted { lhs, rhs in
+            lhs.name < rhs.name
+        }
+    }
+
+    public override func awakeFromInsert() {
+        super.awakeFromInsert()
+
+        setPrimitiveValue(UUID(), forKey: "id")
+        setPrimitiveValue(Date.now, forKey: "timestamp")
+        setPrimitiveValue("Recipe Title", forKey: "title")
+    }
 }

@@ -10,14 +10,14 @@ import SwiftUI
 
 protocol OpenAIManaging2: ObservableObject {
     func postRequestToCompletionsEndpoint(requestObject: CompletionRequest,
-                                         completion: @escaping (OpenAIResponse?, Error?) -> Void)
+                                          completion: @escaping (OpenAIResponse?, Error?) -> Void)
 }
 
 final class ChatGPTCloudFunctionsHandler: OpenAIManaging2 {
     let functions = Functions.functions(region: "us-central1")
 
     func postRequestToCompletionsEndpoint(requestObject: CompletionRequest,
-                                         completion: @escaping (OpenAIResponse?, Error?) -> Void) {
+                                          completion: @escaping (OpenAIResponse?, Error?) -> Void) {
         functions.httpsCallable("makeOpenAIAPICompletionsRequest",
                                 requestAs: CompletionRequest.self,
                                 responseAs: OpenAIResponse.self).call(requestObject) { result in

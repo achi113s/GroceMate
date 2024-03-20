@@ -9,12 +9,19 @@
 import Foundation
 import CoreData
 
-public class RecipeStep: NSManagedObject {
+public class RecipeStep: NSManagedObject, Identifiable {
     @nonobjc public class func fetchRequest() -> NSFetchRequest<RecipeStep> {
         return NSFetchRequest<RecipeStep>(entityName: "RecipeStep")
     }
 
-    @NSManaged public var step: String?
+    @NSManaged public var stepText: String
+    @NSManaged public var id: UUID?
     @NSManaged public var recipe: Recipe?
-}
 
+    public override func awakeFromInsert() {
+        super.awakeFromInsert()
+
+        setPrimitiveValue(UUID(), forKey: "id")
+        setPrimitiveValue("Ingredient Name", forKey: "name")
+    }
+}

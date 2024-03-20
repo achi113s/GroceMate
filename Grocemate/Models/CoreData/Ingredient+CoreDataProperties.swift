@@ -24,6 +24,16 @@ extension Ingredient {
 
         return request
     }
+
+    static func ingredientsForRecipe(_ selectedRecipe: Recipe) -> NSFetchRequest<Ingredient> {
+        let request: NSFetchRequest<Ingredient> = ingredientsFetchRequest
+        request.sortDescriptors = [
+            NSSortDescriptor(key: "name", ascending: false)
+        ]
+        request.predicate = NSPredicate(format: "recipe == %@", selectedRecipe)
+
+        return request
+    }
 }
 
 // MARK: - Previews
