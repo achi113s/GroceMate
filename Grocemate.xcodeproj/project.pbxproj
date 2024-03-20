@@ -17,7 +17,7 @@
 		440ECB912AF8130400E6BD5C /* CoreDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440ECB8A2AF8130400E6BD5C /* CoreDataController.swift */; };
 		440ECB9C2AF8134A00E6BD5C /* GrocemateDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 440ECB9A2AF8134A00E6BD5C /* GrocemateDataModel.xcdatamodeld */; };
 		442957102B257416000D74CA /* CreateCardViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4429570F2B257416000D74CA /* CreateCardViewModelTests.swift */; };
-		442957122B258FC1000D74CA /* TempIngredientCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442957112B258FC1000D74CA /* TempIngredientCard.swift */; };
+		442957122B258FC1000D74CA /* IntermediateCoreDataModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442957112B258FC1000D74CA /* IntermediateCoreDataModels.swift */; };
 		4441677A2B20364C005AF6BC /* EditCardViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444167792B20364C005AF6BC /* EditCardViewModelTests.swift */; };
 		4453D8A82B0931AB001B1C36 /* EditCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4453D8A72B0931AB001B1C36 /* EditCardViewModel.swift */; };
 		445A652C2BA2368E003629CE /* RecipeRecognitionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445A652B2BA2368E003629CE /* RecipeRecognitionHandler.swift */; };
@@ -113,7 +113,7 @@
 		4420964C2AFDF2F700E586BB /* Grocemate.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Grocemate.entitlements; sourceTree = "<group>"; };
 		4420964D2AFDF4A100E586BB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		4429570F2B257416000D74CA /* CreateCardViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCardViewModelTests.swift; sourceTree = "<group>"; };
-		442957112B258FC1000D74CA /* TempIngredientCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempIngredientCard.swift; sourceTree = "<group>"; };
+		442957112B258FC1000D74CA /* IntermediateCoreDataModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntermediateCoreDataModels.swift; sourceTree = "<group>"; };
 		444167792B20364C005AF6BC /* EditCardViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCardViewModelTests.swift; sourceTree = "<group>"; };
 		4453D8A72B0931AB001B1C36 /* EditCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCardViewModel.swift; sourceTree = "<group>"; };
 		445A652B2BA2368E003629CE /* RecipeRecognitionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeRecognitionHandler.swift; sourceTree = "<group>"; };
@@ -260,7 +260,7 @@
 			isa = PBXGroup;
 			children = (
 				440ECB892AF8130400E6BD5C /* CoreData */,
-				442957112B258FC1000D74CA /* TempIngredientCard.swift */,
+				442957112B258FC1000D74CA /* IntermediateCoreDataModels.swift */,
 				4489336F2B2FF5C600121DCE /* OpenAIResponseModel.swift */,
 				448933732B310E8400121DCE /* Constants.swift */,
 				4488A6D32BAA0C7A00414AAD /* DecodedRecipe.swift */,
@@ -670,7 +670,7 @@
 				4488A6D22BAA0C0500414AAD /* RecipeRecognitionHandling.swift in Sources */,
 				44F288962B8E5DB300CEB808 /* SignInWithAppleHelper.swift in Sources */,
 				448933702B2FF5C600121DCE /* OpenAIResponseModel.swift in Sources */,
-				442957122B258FC1000D74CA /* TempIngredientCard.swift in Sources */,
+				442957122B258FC1000D74CA /* IntermediateCoreDataModels.swift in Sources */,
 				440ECB842AF812F800E6BD5C /* CardDetailView.swift in Sources */,
 				4453D8A82B0931AB001B1C36 /* EditCardViewModel.swift in Sources */,
 				448933742B310E8400121DCE /* Constants.swift in Sources */,

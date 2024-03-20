@@ -11,3 +11,9 @@ struct TempIngredientCard {
     var title: String
     var ingredients: [String]
 }
+
+struct TempRecipe {
+    var title: String
+    var ingredients: [String]
+    var recipeSteps: [String]
+}
