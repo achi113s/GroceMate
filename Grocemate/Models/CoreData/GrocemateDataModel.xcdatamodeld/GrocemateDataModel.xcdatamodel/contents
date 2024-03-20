@@ -18,6 +18,7 @@
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="timestamp" attributeType="Date" defaultDateTimeInterval="730071720" usesScalarValueType="NO"/>
         <attribute name="title" attributeType="String" defaultValueString="No Title"/>
+        <attribute name="yield" attributeType="String" defaultValueString=""/>
         <relationship name="ingredientCards" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="IngredientCard" inverseName="recipe" inverseEntity="IngredientCard"/>
         <relationship name="ingredients" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Ingredient" inverseName="recipe" inverseEntity="Ingredient"/>
         <relationship name="recipeSteps" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="RecipeStep" inverseName="recipe" inverseEntity="RecipeStep"/>

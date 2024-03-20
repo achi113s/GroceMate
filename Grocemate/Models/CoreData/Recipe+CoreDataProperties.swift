@@ -14,6 +14,23 @@ extension Recipe {
     private static var recipesFetchRequest: NSFetchRequest<Recipe> {
         NSFetchRequest(entityName: "Recipe")
     }
+
+    /// Fetch all recipes in descending order by creation date.
+    static func all() -> NSFetchRequest<Recipe> {
+        let request: NSFetchRequest<Recipe> = recipesFetchRequest
+        request.sortDescriptors = [
+            NSSortDescriptor(key: "timestamp", ascending: false)
+        ]
+        return request
+    }
+
+    static func filter(_ query: String) -> NSPredicate {
+        query.isEmpty ? NSPredicate(value: true) : NSPredicate(format: "title CONTAINS[cd] %@", query)
+    }
+
+    static func sortBy(_ key: SortRecipes) -> [NSSortDescriptor] {
+        [NSSortDescriptor(key: key.rawValue, ascending: key.ascending)]
+    }
 }
 
 // MARK: - Previews
@@ -25,6 +42,7 @@ extension Recipe {
         for _ in 0..<count {
             let recipe = Recipe(context: context)
             recipe.title = "Green Tea Ice Cream"
+            recipe.yield = "1 quart (1l)"
 
             let ingredientCard = IngredientCard(context: context)
             ingredientCard.title = recipe.title
@@ -54,13 +72,20 @@ extension Recipe {
             ingredient6.ingredientCard = ingredientCard
             ingredient6.name = "6 large egg yolks"
 
+            // Add the ingredients to the recipe.
+            recipe.ingredients = Set(
+                [ingredient1, ingredient2, ingredient3, ingredient4, ingredient5, ingredient6]
+            )
+
             // Add the ingredients to the ingredient card.
             ingredientCard.ingredients = Set(
                 [ingredient1, ingredient2, ingredient3, ingredient4, ingredient5, ingredient6]
             )
 
             // Add the ingredient card to the recipe.
-            recipe.addToIngredientCards(ingredientCard)
+            recipe.ingredientCards = Set(
+                [ingredientCard]
+            )
 
             // Recipe Steps
             let recipeStep1 = RecipeStep(context: context)
@@ -100,16 +125,6 @@ extension Recipe {
             // Add the recipe steps to the recipe.
             recipe.recipeSteps = Set(
                 [recipeStep1, recipeStep2, recipeStep3, recipeStep4]
-            )
-
-            // Add the ingredients to the recipe.
-            recipe.ingredients = Set(
-                [ingredient1, ingredient2, ingredient3, ingredient4, ingredient5, ingredient6]
-            )
-
-            // Add the ingredient card to the recipe.
-            recipe.ingredientCards = Set(
-                [ingredientCard]
             )
 
             recipes.append(recipe)

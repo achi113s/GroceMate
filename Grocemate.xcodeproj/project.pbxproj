@@ -44,6 +44,9 @@
 		4488A6F72BAA32EF00414AAD /* Ingredient+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4488A6F32BAA32EF00414AAD /* Ingredient+CoreDataProperties.swift */; };
 		4488A6F82BAA32EF00414AAD /* IngredientCard+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4488A6F42BAA32EF00414AAD /* IngredientCard+CoreDataClass.swift */; };
 		4488A6F92BAA32EF00414AAD /* IngredientCard+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4488A6F52BAA32EF00414AAD /* IngredientCard+CoreDataProperties.swift */; };
+		4488A6FB2BAB654000414AAD /* NewHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4488A6FA2BAB654000414AAD /* NewHomeView.swift */; };
+		4488A6FD2BAB659A00414AAD /* NewHomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4488A6FC2BAB659A00414AAD /* NewHomeViewModel.swift */; };
+		4488A7002BAB756300414AAD /* GrocemateTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4488A6FF2BAB756300414AAD /* GrocemateTabView.swift */; };
 		4489336C2B2FED9A00121DCE /* ImageSizePreferenceKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4489336B2B2FED9A00121DCE /* ImageSizePreferenceKey.swift */; };
 		4489336E2B2FF28F00121DCE /* ImageWithROI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4489336D2B2FF28F00121DCE /* ImageWithROI.swift */; };
 		448933702B2FF5C600121DCE /* OpenAIResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4489336F2B2FF5C600121DCE /* OpenAIResponseModel.swift */; };
@@ -141,6 +144,9 @@
 		4488A6F32BAA32EF00414AAD /* Ingredient+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ingredient+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		4488A6F42BAA32EF00414AAD /* IngredientCard+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "IngredientCard+CoreDataClass.swift"; sourceTree = "<group>"; };
 		4488A6F52BAA32EF00414AAD /* IngredientCard+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "IngredientCard+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		4488A6FA2BAB654000414AAD /* NewHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewHomeView.swift; sourceTree = "<group>"; };
+		4488A6FC2BAB659A00414AAD /* NewHomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewHomeViewModel.swift; sourceTree = "<group>"; };
+		4488A6FF2BAB756300414AAD /* GrocemateTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrocemateTabView.swift; sourceTree = "<group>"; };
 		4489336B2B2FED9A00121DCE /* ImageSizePreferenceKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSizePreferenceKey.swift; sourceTree = "<group>"; };
 		4489336D2B2FF28F00121DCE /* ImageWithROI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageWithROI.swift; sourceTree = "<group>"; };
 		4489336F2B2FF5C600121DCE /* OpenAIResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIResponseModel.swift; sourceTree = "<group>"; };
@@ -232,6 +238,8 @@
 			isa = PBXGroup;
 			children = (
 				44B4CCB22B91667600C6B844 /* RootView.swift */,
+				4488A6FF2BAB756300414AAD /* GrocemateTabView.swift */,
+				4488A6FE2BAB668400414AAD /* RecipesTab */,
 				44C7F9AD2B07394300AFE8DD /* HomeView */,
 				44BF98092B088ABD00E24047 /* CardView */,
 				4453D8A62B09319E001B1C36 /* EditCardView */,
@@ -313,6 +321,15 @@
 				44693FC22B97AE2E003BCCB8 /* SettingsViewModel.swift */,
 			);
 			path = SettingsView;
+			sourceTree = "<group>";
+		};
+		4488A6FE2BAB668400414AAD /* RecipesTab */ = {
+			isa = PBXGroup;
+			children = (
+				4488A6FA2BAB654000414AAD /* NewHomeView.swift */,
+				4488A6FC2BAB659A00414AAD /* NewHomeViewModel.swift */,
+			);
+			path = RecipesTab;
 			sourceTree = "<group>";
 		};
 		4489336A2B2FED7900121DCE /* RegionOfInterestPhotoPreview */ = {
@@ -650,6 +667,7 @@
 				44B4CCB32B91667600C6B844 /* RootView.swift in Sources */,
 				44693FBF2B97A63C003BCCB8 /* CustomUserInfo.swift in Sources */,
 				449106862B4FA8A600FB2019 /* SignInWithAppleButtonViewRepresentable.swift in Sources */,
+				4488A6FD2BAB659A00414AAD /* NewHomeViewModel.swift in Sources */,
 				44EE333E2B411A6600DEE6F1 /* CameraView.swift in Sources */,
 				445A652F2BA2802D003629CE /* ImageToTextHandler.swift in Sources */,
 				440ECB832AF812F800E6BD5C /* CreateCardViewModel.swift in Sources */,
@@ -660,9 +678,11 @@
 				44BF980C2B088AFA00E24047 /* Sheets.swift in Sources */,
 				44DDEAF92B0F22D9002AB0CE /* HapticDefinitions.swift in Sources */,
 				44DDF2FD2AF811CE005D35D8 /* GrocemateApp.swift in Sources */,
+				4488A6FB2BAB654000414AAD /* NewHomeView.swift in Sources */,
 				440ECB9C2AF8134A00E6BD5C /* GrocemateDataModel.xcdatamodeld in Sources */,
 				44B453BC2B8F2F4600B13732 /* PolishedButtonTestView.swift in Sources */,
 				4488A6CE2BAA085A00414AAD /* Codable-Extensions.swift in Sources */,
+				4488A7002BAB756300414AAD /* GrocemateTabView.swift in Sources */,
 				44B4CCB12B91318E00C6B844 /* SettingsView.swift in Sources */,
 				445A65312BA28069003629CE /* ChatGPTCloudFunctionsHandler.swift in Sources */,
 				4489336E2B2FF28F00121DCE /* ImageWithROI.swift in Sources */,

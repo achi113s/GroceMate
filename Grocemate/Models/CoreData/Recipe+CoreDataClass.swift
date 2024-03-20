@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 
-public class Recipe: NSManagedObject {
+public class Recipe: NSManagedObject, Identifiable {
     @nonobjc public class func fetchRequest() -> NSFetchRequest<Recipe> {
         return NSFetchRequest<Recipe>(entityName: "Recipe")
     }
@@ -17,6 +17,7 @@ public class Recipe: NSManagedObject {
     @NSManaged public var id: UUID?
     @NSManaged public var timestamp: Date
     @NSManaged public var title: String
+    @NSManaged public var yield: String
     @NSManaged public var ingredientCards: Set<IngredientCard>
     @NSManaged public var ingredients: Set<Ingredient>
     @NSManaged public var recipeSteps: Set<RecipeStep>
@@ -34,5 +35,6 @@ public class Recipe: NSManagedObject {
         setPrimitiveValue(UUID(), forKey: "id")
         setPrimitiveValue(Date.now, forKey: "timestamp")
         setPrimitiveValue("Recipe Title", forKey: "title")
+        setPrimitiveValue("", forKey: "yield")
     }
 }

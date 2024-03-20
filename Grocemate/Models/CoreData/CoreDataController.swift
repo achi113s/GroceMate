@@ -42,7 +42,7 @@ final class CoreDataController {
                 print("There was an error loading the persistent stores: \(error)")
                 return
             } else {
-                /// Automatically merge any changes saved to the parent store. 
+                /// Automatically merge any changes saved to the parent store.
                 /// Useful since we will have multiple viewContexts.
                 self.persistentContainer.viewContext.automaticallyMergesChangesFromParent = true
 
@@ -51,32 +51,30 @@ final class CoreDataController {
             }
         }
 
-//        // Only initialize the schema when building the app with the
-//        // Debug build configuration.
-//#if DEBUG
-//        do {
-//            // Use the container to initialize the development schema.
-//            print("Initializing CloudKit schema.")
-//            try persistentContainer.initializeCloudKitSchema(options: [])
-//        } catch {
-//            // Handle any errors.
-//            print("An error occurred when initializing the CloudKit schema: \(error)")
-//        }
-//#endif
+        //        // Only initialize the schema when building the app with the
+        //        // Debug build configuration.
+        //#if DEBUG
+        //        do {
+        //            // Use the container to initialize the development schema.
+        //            print("Initializing CloudKit schema.")
+        //            try persistentContainer.initializeCloudKitSchema(options: [])
+        //        } catch {
+        //            // Handle any errors.
+        //            print("An error occurred when initializing the CloudKit schema: \(error)")
+        //        }
+        //#endif
     }
 
-    func exists(
-        _ card: IngredientCard,
-        in context: NSManagedObjectContext
-    ) -> IngredientCard? {
-        try? context.existingObject(with: card.objectID) as? IngredientCard
+    func exists<T: NSManagedObject>(_ object: T,
+                                    in context: NSManagedObjectContext) -> T? {
+        try? context.existingObject(with: object.objectID) as? T
     }
 
-    func delete(_ card: IngredientCard,
-                in context: NSManagedObjectContext) throws {
-        if let existingCard = exists(card, in: context) {
+    func delete<T: NSManagedObject>(_ object: T,
+                                    in context: NSManagedObjectContext) throws {
+        if let existingObject = exists(object, in: context) {
             /// Bug: Does not delete with an animation?
-            context.delete(existingCard)
+            context.delete(existingObject)
 
             /// Task to delete from context on background thread.
             Task(priority: .background) {
