@@ -124,7 +124,7 @@ struct ImageWithROI: View {
             homeViewModel.selectedImage = nil
             homeViewModel.selectedPhotosPickerItem = nil
 
-            recipeRecognitionHandler.recognizeRecipeIn(image: image, with: .right, in: region)
+            recipeRecognitionHandler.recognizeRecipeIn(images: [image], with: .right, in: region)
 
             dismiss()
         } label: {

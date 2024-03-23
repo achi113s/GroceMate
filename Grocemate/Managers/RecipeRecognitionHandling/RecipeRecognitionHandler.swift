@@ -30,47 +30,49 @@ final class RecipeRecognitionHandler<I: ImageToTextHandling, O: OpenAIManaging2>
         self.chatGPTHandler = chatGPTHandler
     }
 
-    func recognizeRecipeIn(image: UIImage, with orientation: CGImagePropertyOrientation,
-                           in region: CGRect) {
+    func recognizeRecipeIn(images: [UIImage], with orientation: CGImagePropertyOrientation = .right,
+                           in region: CGRect = CGRect(x: 0, y: 0, width: 1, height: 1)) {
         DispatchQueue.main.async {
             print("Setting recognitionInProgress to true.")
             print("Current Thread: \(Thread.current)\n")
             self.recognitionInProgress = true
         }
 
-        performImageRecognition(image: image, with: orientation, in: region)
+        performImageRecognition(images: images, with: orientation, in: region)
 
         performChatGPTParsing()
     }
 
-    private func performImageRecognition(image: UIImage, with orientation: CGImagePropertyOrientation,
+    private func performImageRecognition(images: [UIImage], with orientation: CGImagePropertyOrientation,
                                          in region: CGRect) {
-        queue.async { [weak self] in
-            guard let self = self else {
-                fatalError("Unexpectedly encountered nil when unwrapping self in async block.")
-            }
-
-            self.imageToTextHandler.performImageToTextRecognition(on: image,
-                                                                  with: orientation, in: region) { request, error in
-                guard error == nil else {
-                    fatalError(error!.localizedDescription)
+        for image in images {
+            queue.async { [weak self] in
+                guard let self = self else {
+                    fatalError("Unexpectedly encountered nil when unwrapping self in async block.")
                 }
 
-                guard let observations = request.results as? [VNRecognizedTextObservation] else {
-                    fatalError("Unable to cast request results.")
-                }
+                self.imageToTextHandler.performImageToTextRecognition(on: image,
+                                                                      with: orientation, in: region) { request, error in
+                    guard error == nil else {
+                        fatalError(error!.localizedDescription)
+                    }
 
-                /*
-                 topCandidates(_:) returns an array of the top n candidates as
-                 VNRecognizedText objects. Then we use [0] to get that top candidate.
-                 Then we access the string parameter, which is the recognized
-                 text as a String type. The resulting type of results is then [String].
-                 */
-                let results = observations.compactMap { observation in
-                    return observation.topCandidates(1)[0].string
-                }
+                    guard let observations = request.results as? [VNRecognizedTextObservation] else {
+                        fatalError("Unable to cast request results.")
+                    }
 
-                self.visionResults = results
+                    /*
+                     topCandidates(_:) returns an array of the top n candidates as
+                     VNRecognizedText objects. Then we use [0] to get that top candidate.
+                     Then we access the string parameter, which is the recognized
+                     text as a String type. The resulting type of results is then [String].
+                     */
+                    let results = observations.compactMap { observation in
+                        return observation.topCandidates(1)[0].string
+                    }
+
+                    self.visionResults = results
+                }
             }
         }
     }
@@ -85,10 +87,10 @@ final class RecipeRecognitionHandler<I: ImageToTextHandling, O: OpenAIManaging2>
                 fatalError("Unexpectedly encountered nil when unwrapping visionResults.")
             }
 
-            let content = Constants.separateIngredientsPrompt + "\"\(ingredients)\""
+//            let content = Constants.separateIngredientsPrompt + "\"\(ingredients)\""
 
             /// Construct the input and make the call to ChatGPT.
-            let message = Message(role: "system", content: content)
+            let message = Message(role: "system", content: "\"\(ingredients)\"")
             let requestObject = CompletionRequest(
                 model: Chat.chatgpt.rawValue, maxTokens: 1000,
                 messages: [message], temperature: 0.7, stream: false

@@ -261,19 +261,7 @@ struct HomeView<AuthManaging: AuthenticationManaging>: View {
             )
         case .documentScanner:
             DocumentScanner { images in
-//                Task {
-//                    var recognizedText: [String] = [String]()
-//                    for image in images {
-//                        let imageToTextHandler = ImageToTextHandler()
-//                        do {
-//                            let imageText = try await imageToTextHandler.getTextFromImage(image)
-//                            recognizedText.append(contentsOf: imageText)
-//                        } catch {
-//                            print("error occurred on imageToTextHandler call")
-//                        }
-//                    }
-//                    print(recognizedText)
-//                }
+                recipeRecognitionHandler.recognizeRecipeIn(images: images)
             }
             .ignoresSafeArea()
         }

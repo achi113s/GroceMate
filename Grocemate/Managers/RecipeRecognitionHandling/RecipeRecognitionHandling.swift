@@ -15,5 +15,5 @@ protocol RecipeRecognitionHandling: ObservableObject {
     var chatGPTHandler: O { get }
     var recognitionInProgress: Bool { get }
 
-    func recognizeRecipeIn(image: UIImage, with orientation: CGImagePropertyOrientation, in region: CGRect)
+    func recognizeRecipeIn(images: [UIImage], with orientation: CGImagePropertyOrientation, in region: CGRect)
 }
