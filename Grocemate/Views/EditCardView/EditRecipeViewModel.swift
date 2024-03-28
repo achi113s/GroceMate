@@ -9,33 +9,40 @@ import CoreData
 import Foundation
 import SwiftUI
 
-final class EditCardViewModel: ObservableObject, CardDetailViewModellable {
+final class EditRecipeViewModel: ObservableObject, RecipeDetailViewModelling {
     // MARK: - Properties
     @Published var editMode: EditMode = .active
     @Published var titleError: Bool = false
     @Published var ingredientsError: Bool = false
 
-    /// Use the ingredient card in our view.
+    /// Use the recipe in our view.
     /// Also use a Published reference of the ingredients associated
-    /// with the card. This allows us to use and modify these rather than
-    /// mess with the NSManagedObject. On save, we replace the ingredients
-    /// Set and title with what we have in the Published properties.
-    var card: IngredientCard
+    /// with the recipe. This allows us to use and modify these rather than
+    /// mess with the NSManagedObject. On save, we fill in the
+    /// properties of the Recipe object.
+    var recipe: Recipe
     @Published var title: String
+    @Published var yield: String
     @Published var ingredients: [Ingredient]
+    @Published var steps: [RecipeStep]
+    @Published var notes: String
 
     private let context: NSManagedObjectContext
 
     init(coreDataController: CoreDataController,
-         ingredientCard: IngredientCard
+         recipe: Recipe
     ) {
-        /// When editing an ingredient card, that card will exist in the main view content,
+        /// When editing a recipe, that card will exist in the main view content,
         /// not the newContext we defined in CoreDataController. Hence, we have to use
         /// viewContext.
         self.context = coreDataController.viewContext
-        self.card = ingredientCard
-        self.title = ingredientCard.title
-        self.ingredients = ingredientCard.ingredientsArr
+        self.recipe = recipe
+        self.title = recipe.title
+        self.yield = recipe.yield
+        self.ingredients = recipe.ingredientsArr
+        self.steps = recipe.recipeStepsArr
+        self.notes = recipe.notes
+
         print("init editcardviewmodel")
     }
 
@@ -46,12 +53,24 @@ final class EditCardViewModel: ObservableObject, CardDetailViewModellable {
     /// Using a separate array of Ingredients allows us to circumvent problems with NSSet
     /// in the CoreDataClass for Ingredient. This method replaces the NSManagedObject's
     /// ingredients Set with what we have in this view model.
-    public func setIngredientsToCard() {
-        self.card.ingredients = Set(self.ingredients)
+    public func setIngredientsToRecipe() {
+        self.recipe.ingredients = Set(self.ingredients)
     }
 
-    public func setCardTitle() {
-        self.card.title = self.title
+    public func setRecipeTitle() {
+        self.recipe.title = self.title
+    }
+
+    public func setStepsToRecipe() {
+        self.recipe.recipeSteps = Set(self.steps)
+    }
+
+    public func setRecipeNotes() {
+        self.recipe.notes = self.notes
+    }
+
+    public func setRecipeYield() {
+        self.recipe.yield = self.yield
     }
 
     public func clearTitle() {
@@ -73,8 +92,11 @@ final class EditCardViewModel: ObservableObject, CardDetailViewModellable {
             throw CardDetailSaveError.ingredientsError
         }
 
-        setCardTitle()
-        setIngredientsToCard()
+        setRecipeTitle()
+        setRecipeYield()
+        setIngredientsToRecipe()
+        setStepsToRecipe()
+        setRecipeNotes()
 
         do {
             try CoreDataController.shared.persist(in: context)

@@ -8,12 +8,14 @@
 import Foundation
 
 struct TempIngredientCard {
-    var title: String
-    var ingredients: [String]
+    let title: String
+    let ingredients: [String]
 }
 
 struct TempRecipe {
-    var title: String
-    var ingredients: [String]
-    var recipeSteps: [String]
+    let ingredients: [String]
+    let title: String
+    let yield: String
+    let steps: [String]
+    let notes: String
 }

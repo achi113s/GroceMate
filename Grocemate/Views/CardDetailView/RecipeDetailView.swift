@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CardDetailView<ViewModel: CardDetailViewModellable>: View {
+struct RecipeDetailView<ViewModel: RecipeDetailViewModelling>: View {
     // MARK: - Environment
     @Environment(\.dismiss) var dismiss
 
@@ -21,10 +21,6 @@ struct CardDetailView<ViewModel: CardDetailViewModellable>: View {
             ingredientList
                 .toolbar {
                     toolbarView
-                }
-                .safeAreaInset(edge: .bottom) {
-                    addButton
-                        .padding(.bottom, 5)
                 }
                 .environment(\.editMode, $viewModel.editMode)
                 .scrollContentBackground(.hidden)
@@ -95,10 +91,21 @@ struct CardDetailView<ViewModel: CardDetailViewModellable>: View {
                     .font(.system(.title3))
                     .fontDesign(.rounded)
                     .fontWeight(.semibold)
-                    .padding(.vertical, 10)
+                    .padding(.vertical, 5)
                     .listRowBackground(Color(
                         viewModel.titleError ? UIColor.systemRed.withAlphaComponent(0.2) :
-                            UIColor.systemBlue.withAlphaComponent(0.2)).animation(.easeInOut(duration: 0.5))
+                            UIColor.systemBlue.withAlphaComponent(0.13)).animation(.easeInOut(duration: 0.5))
+                    )
+                    .onAppear { UITextField.appearance().clearButtonMode = .whileEditing }
+
+                TextField("Yield", text: $viewModel.yield)
+                    .disabled(viewModel.editMode == .inactive)
+                    .fontDesign(.rounded)
+                    .fontWeight(.medium)
+                    .padding(.vertical, 5)
+                    .listRowBackground(Color(
+                        viewModel.titleError ? UIColor.systemRed.withAlphaComponent(0.2) :
+                            UIColor.systemBlue.withAlphaComponent(0.13)).animation(.easeInOut(duration: 0.5))
                     )
                     .onAppear { UITextField.appearance().clearButtonMode = .whileEditing }
             }
@@ -115,6 +122,43 @@ struct CardDetailView<ViewModel: CardDetailViewModellable>: View {
                     viewModel.ingredientsError ? UIColor.systemRed.withAlphaComponent(0.2) :
                         UIColor.systemGray.withAlphaComponent(0.1)).animation(.easeInOut(duration: 0.5))
                 )
+
+                AddListElementButton {
+                    withAnimation {
+                        viewModel.addDummyIngredient()
+                    }
+                }
+            }
+
+            Section(header: Text("Steps")) {
+                ForEach($viewModel.steps) { $step in
+                    TextField("Ingredient", text: $step.stepText, axis: .vertical)
+                        .disabled(viewModel.editMode == .inactive)
+                        .fontDesign(.rounded)
+                        .fontWeight(.medium)
+                }
+                .onDelete(perform: viewModel.deleteIngredient)
+                .onMove(perform: { indices, newOffset in
+                    // set the indices correctly
+                })
+                .listRowBackground(Color(
+                    viewModel.ingredientsError ? UIColor.systemRed.withAlphaComponent(0.2) :
+                        UIColor.systemGray.withAlphaComponent(0.1)).animation(.easeInOut(duration: 0.5))
+                )
+
+                AddListElementButton {
+                    withAnimation {
+                        viewModel.addDummyIngredient()
+                    }
+                }
+            }
+
+            Section(header: Text("Notes")) {
+                TextField("Recipe Notes", text: $viewModel.notes)
+                    .fontDesign(.rounded)
+                    .fontWeight(.medium)
+                    .listRowBackground(Color(
+                        UIColor.systemGray.withAlphaComponent(0.1)).animation(.easeInOut(duration: 0.5)))
             }
         }
     }
@@ -164,14 +208,38 @@ struct CardDetailView<ViewModel: CardDetailViewModellable>: View {
             viewModel.ingredientsError = false
         }
     }
+
+    private struct AddListElementButton: View {
+        let action: () -> Void
+
+        var body: some View {
+            Button(action: {}) {
+                Button {
+                    action()
+                } label: {
+                    Text("Add New")
+                        .font(.body)
+                        .fontWeight(.semibold)
+                        .fontDesign(.rounded)
+                        .frame(maxWidth: .infinity, minHeight: 30)
+                }
+                .buttonStyle(.bordered)
+                .buttonBorderShape(.roundedRectangle(radius: 0))
+            }
+            .buttonStyle(.plain)
+            .listRowBackground(EmptyView())
+            .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
+            .tint(.blue)
+        }
+    }
 }
 
 #Preview("CardDetailView_ManualAdd") {
     let preview = CoreDataController.shared
 
     let viewToPreview = {
-        CardDetailView<CreateCardViewModel>(
-            viewModel: CreateCardViewModel(
+        RecipeDetailView<CreateRecipeViewModel>(
+            viewModel: CreateRecipeViewModel(
                 coreDataController: preview,
                 context: preview.newContext
             )

@@ -7,11 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		440650692BB4D8DD00214135 /* Presenting in Frameworks */ = {isa = PBXBuildFile; productRef = 440650682BB4D8DD00214135 /* Presenting */; };
+		4406506B2BB4E25B00214135 /* NewHomeView-Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4406506A2BB4E25B00214135 /* NewHomeView-Presenter.swift */; };
 		440ECB802AF812F800E6BD5C /* HapticEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440ECB762AF812F800E6BD5C /* HapticEngine.swift */; };
 		440ECB812AF812F800E6BD5C /* RubberBanding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440ECB772AF812F800E6BD5C /* RubberBanding.swift */; };
 		440ECB822AF812F800E6BD5C /* Text-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440ECB792AF812F800E6BD5C /* Text-Extensions.swift */; };
-		440ECB832AF812F800E6BD5C /* CreateCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440ECB7C2AF812F800E6BD5C /* CreateCardViewModel.swift */; };
-		440ECB842AF812F800E6BD5C /* CardDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440ECB7D2AF812F800E6BD5C /* CardDetailView.swift */; };
+		440ECB832AF812F800E6BD5C /* CreateRecipeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440ECB7C2AF812F800E6BD5C /* CreateRecipeViewModel.swift */; };
+		440ECB842AF812F800E6BD5C /* RecipeDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440ECB7D2AF812F800E6BD5C /* RecipeDetailView.swift */; };
 		440ECB852AF812F800E6BD5C /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440ECB7E2AF812F800E6BD5C /* Card.swift */; };
 		440ECB862AF812F800E6BD5C /* SwipeableIngredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440ECB7F2AF812F800E6BD5C /* SwipeableIngredient.swift */; };
 		440ECB912AF8130400E6BD5C /* CoreDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440ECB8A2AF8130400E6BD5C /* CoreDataController.swift */; };
@@ -19,7 +21,7 @@
 		442957102B257416000D74CA /* CreateCardViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4429570F2B257416000D74CA /* CreateCardViewModelTests.swift */; };
 		442957122B258FC1000D74CA /* IntermediateCoreDataModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442957112B258FC1000D74CA /* IntermediateCoreDataModels.swift */; };
 		4441677A2B20364C005AF6BC /* EditCardViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444167792B20364C005AF6BC /* EditCardViewModelTests.swift */; };
-		4453D8A82B0931AB001B1C36 /* EditCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4453D8A72B0931AB001B1C36 /* EditCardViewModel.swift */; };
+		4453D8A82B0931AB001B1C36 /* EditRecipeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4453D8A72B0931AB001B1C36 /* EditRecipeViewModel.swift */; };
 		445A652C2BA2368E003629CE /* RecipeRecognitionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445A652B2BA2368E003629CE /* RecipeRecognitionHandler.swift */; };
 		445A652F2BA2802D003629CE /* ImageToTextHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445A652E2BA2802D003629CE /* ImageToTextHandler.swift */; };
 		445A65312BA28069003629CE /* ChatGPTCloudFunctionsHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445A65302BA28069003629CE /* ChatGPTCloudFunctionsHandler.swift */; };
@@ -46,7 +48,7 @@
 		4488A6F92BAA32EF00414AAD /* IngredientCard+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4488A6F52BAA32EF00414AAD /* IngredientCard+CoreDataProperties.swift */; };
 		4488A6FB2BAB654000414AAD /* NewHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4488A6FA2BAB654000414AAD /* NewHomeView.swift */; };
 		4488A6FD2BAB659A00414AAD /* NewHomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4488A6FC2BAB659A00414AAD /* NewHomeViewModel.swift */; };
-		4488A7002BAB756300414AAD /* GrocemateTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4488A6FF2BAB756300414AAD /* GrocemateTabView.swift */; };
+		4488A7002BAB756300414AAD /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4488A6FF2BAB756300414AAD /* MainTabView.swift */; };
 		4489336C2B2FED9A00121DCE /* ImageSizePreferenceKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4489336B2B2FED9A00121DCE /* ImageSizePreferenceKey.swift */; };
 		4489336E2B2FF28F00121DCE /* ImageWithROI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4489336D2B2FF28F00121DCE /* ImageWithROI.swift */; };
 		448933702B2FF5C600121DCE /* OpenAIResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4489336F2B2FF5C600121DCE /* OpenAIResponseModel.swift */; };
@@ -61,7 +63,7 @@
 		44B4CCB32B91667600C6B844 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B4CCB22B91667600C6B844 /* RootView.swift */; };
 		44BF980C2B088AFA00E24047 /* Sheets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44BF980B2B088AFA00E24047 /* Sheets.swift */; };
 		44BF98102B088B5A00E24047 /* Image-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44BF980F2B088B5A00E24047 /* Image-Extensions.swift */; };
-		44BF98132B0927EF00E24047 /* CardDetailViewModellable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44BF98122B0927EF00E24047 /* CardDetailViewModellable.swift */; };
+		44BF98132B0927EF00E24047 /* RecipeDetailViewModelling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44BF98122B0927EF00E24047 /* RecipeDetailViewModelling.swift */; };
 		44C7F9AF2B07395100AFE8DD /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C7F9AE2B07395100AFE8DD /* HomeViewModel.swift */; };
 		44CE197E2B27C463002D6E33 /* CreateCardViewModelInitializerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44CE197D2B27C463002D6E33 /* CreateCardViewModelInitializerTests.swift */; };
 		44CE19802B27CB66002D6E33 /* HomeViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44CE197F2B27CB66002D6E33 /* HomeViewModelTests.swift */; };
@@ -104,11 +106,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4406506A2BB4E25B00214135 /* NewHomeView-Presenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NewHomeView-Presenter.swift"; sourceTree = "<group>"; };
 		440ECB762AF812F800E6BD5C /* HapticEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HapticEngine.swift; sourceTree = "<group>"; };
 		440ECB772AF812F800E6BD5C /* RubberBanding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RubberBanding.swift; sourceTree = "<group>"; };
 		440ECB792AF812F800E6BD5C /* Text-Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Text-Extensions.swift"; sourceTree = "<group>"; };
-		440ECB7C2AF812F800E6BD5C /* CreateCardViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateCardViewModel.swift; sourceTree = "<group>"; };
-		440ECB7D2AF812F800E6BD5C /* CardDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardDetailView.swift; sourceTree = "<group>"; };
+		440ECB7C2AF812F800E6BD5C /* CreateRecipeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateRecipeViewModel.swift; sourceTree = "<group>"; };
+		440ECB7D2AF812F800E6BD5C /* RecipeDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeDetailView.swift; sourceTree = "<group>"; };
 		440ECB7E2AF812F800E6BD5C /* Card.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		440ECB7F2AF812F800E6BD5C /* SwipeableIngredient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeableIngredient.swift; sourceTree = "<group>"; };
 		440ECB8A2AF8130400E6BD5C /* CoreDataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataController.swift; sourceTree = "<group>"; };
@@ -118,7 +121,7 @@
 		4429570F2B257416000D74CA /* CreateCardViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCardViewModelTests.swift; sourceTree = "<group>"; };
 		442957112B258FC1000D74CA /* IntermediateCoreDataModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntermediateCoreDataModels.swift; sourceTree = "<group>"; };
 		444167792B20364C005AF6BC /* EditCardViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCardViewModelTests.swift; sourceTree = "<group>"; };
-		4453D8A72B0931AB001B1C36 /* EditCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCardViewModel.swift; sourceTree = "<group>"; };
+		4453D8A72B0931AB001B1C36 /* EditRecipeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditRecipeViewModel.swift; sourceTree = "<group>"; };
 		445A652B2BA2368E003629CE /* RecipeRecognitionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeRecognitionHandler.swift; sourceTree = "<group>"; };
 		445A652E2BA2802D003629CE /* ImageToTextHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageToTextHandler.swift; sourceTree = "<group>"; };
 		445A65302BA28069003629CE /* ChatGPTCloudFunctionsHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatGPTCloudFunctionsHandler.swift; sourceTree = "<group>"; };
@@ -146,7 +149,7 @@
 		4488A6F52BAA32EF00414AAD /* IngredientCard+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "IngredientCard+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		4488A6FA2BAB654000414AAD /* NewHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewHomeView.swift; sourceTree = "<group>"; };
 		4488A6FC2BAB659A00414AAD /* NewHomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewHomeViewModel.swift; sourceTree = "<group>"; };
-		4488A6FF2BAB756300414AAD /* GrocemateTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrocemateTabView.swift; sourceTree = "<group>"; };
+		4488A6FF2BAB756300414AAD /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		4489336B2B2FED9A00121DCE /* ImageSizePreferenceKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSizePreferenceKey.swift; sourceTree = "<group>"; };
 		4489336D2B2FF28F00121DCE /* ImageWithROI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageWithROI.swift; sourceTree = "<group>"; };
 		4489336F2B2FF5C600121DCE /* OpenAIResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIResponseModel.swift; sourceTree = "<group>"; };
@@ -161,7 +164,7 @@
 		44B4CCB22B91667600C6B844 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		44BF980B2B088AFA00E24047 /* Sheets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sheets.swift; sourceTree = "<group>"; };
 		44BF980F2B088B5A00E24047 /* Image-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image-Extensions.swift"; sourceTree = "<group>"; };
-		44BF98122B0927EF00E24047 /* CardDetailViewModellable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailViewModellable.swift; sourceTree = "<group>"; };
+		44BF98122B0927EF00E24047 /* RecipeDetailViewModelling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailViewModelling.swift; sourceTree = "<group>"; };
 		44C2C0A72B3283C9008B3F9A /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		44C7F9AE2B07395100AFE8DD /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		44CE197D2B27C463002D6E33 /* CreateCardViewModelInitializerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCardViewModelInitializerTests.swift; sourceTree = "<group>"; };
@@ -191,6 +194,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				44F288932B8DC0B300CEB808 /* FirebaseFunctions in Frameworks */,
+				440650692BB4D8DD00214135 /* Presenting in Frameworks */,
 				44F2888F2B8DC0B300CEB808 /* FirebaseAppCheck in Frameworks */,
 				44F288912B8DC0B300CEB808 /* FirebaseAuth in Frameworks */,
 			);
@@ -238,7 +242,7 @@
 			isa = PBXGroup;
 			children = (
 				44B4CCB22B91667600C6B844 /* RootView.swift */,
-				4488A6FF2BAB756300414AAD /* GrocemateTabView.swift */,
+				4488A6FF2BAB756300414AAD /* MainTabView.swift */,
 				4488A6FE2BAB668400414AAD /* RecipesTab */,
 				44C7F9AD2B07394300AFE8DD /* HomeView */,
 				44BF98092B088ABD00E24047 /* CardView */,
@@ -259,7 +263,7 @@
 		440ECB7B2AF812F800E6BD5C /* CreateCardView */ = {
 			isa = PBXGroup;
 			children = (
-				440ECB7C2AF812F800E6BD5C /* CreateCardViewModel.swift */,
+				440ECB7C2AF812F800E6BD5C /* CreateRecipeViewModel.swift */,
 			);
 			path = CreateCardView;
 			sourceTree = "<group>";
@@ -296,7 +300,7 @@
 		4453D8A62B09319E001B1C36 /* EditCardView */ = {
 			isa = PBXGroup;
 			children = (
-				4453D8A72B0931AB001B1C36 /* EditCardViewModel.swift */,
+				4453D8A72B0931AB001B1C36 /* EditRecipeViewModel.swift */,
 			);
 			path = EditCardView;
 			sourceTree = "<group>";
@@ -328,6 +332,7 @@
 			children = (
 				4488A6FA2BAB654000414AAD /* NewHomeView.swift */,
 				4488A6FC2BAB659A00414AAD /* NewHomeViewModel.swift */,
+				4406506A2BB4E25B00214135 /* NewHomeView-Presenter.swift */,
 			);
 			path = RecipesTab;
 			sourceTree = "<group>";
@@ -384,8 +389,8 @@
 		44BF98112B0927D700E24047 /* CardDetailView */ = {
 			isa = PBXGroup;
 			children = (
-				44BF98122B0927EF00E24047 /* CardDetailViewModellable.swift */,
-				440ECB7D2AF812F800E6BD5C /* CardDetailView.swift */,
+				44BF98122B0927EF00E24047 /* RecipeDetailViewModelling.swift */,
+				440ECB7D2AF812F800E6BD5C /* RecipeDetailView.swift */,
 			);
 			path = CardDetailView;
 			sourceTree = "<group>";
@@ -511,6 +516,7 @@
 				44F2888E2B8DC0B300CEB808 /* FirebaseAppCheck */,
 				44F288902B8DC0B300CEB808 /* FirebaseAuth */,
 				44F288922B8DC0B300CEB808 /* FirebaseFunctions */,
+				440650682BB4D8DD00214135 /* Presenting */,
 			);
 			productName = Grocemate;
 			productReference = 44DDF2F92AF811CE005D35D8 /* Grocemate.app */;
@@ -586,6 +592,7 @@
 			mainGroup = 44DDF2F02AF811CE005D35D8;
 			packageReferences = (
 				44F2888D2B8DC0B300CEB808 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				440650672BB4D8DD00214135 /* XCRemoteSwiftPackageReference "Presenting" */,
 			);
 			productRefGroup = 44DDF2FA2AF811CE005D35D8 /* Products */;
 			projectDirPath = "";
@@ -670,7 +677,7 @@
 				4488A6FD2BAB659A00414AAD /* NewHomeViewModel.swift in Sources */,
 				44EE333E2B411A6600DEE6F1 /* CameraView.swift in Sources */,
 				445A652F2BA2802D003629CE /* ImageToTextHandler.swift in Sources */,
-				440ECB832AF812F800E6BD5C /* CreateCardViewModel.swift in Sources */,
+				440ECB832AF812F800E6BD5C /* CreateRecipeViewModel.swift in Sources */,
 				4488A6D42BAA0C7A00414AAD /* DecodedRecipe.swift in Sources */,
 				44BF98102B088B5A00E24047 /* Image-Extensions.swift in Sources */,
 				4489337E2B31186F00121DCE /* IngredientRecognitionStage.swift in Sources */,
@@ -679,10 +686,11 @@
 				44DDEAF92B0F22D9002AB0CE /* HapticDefinitions.swift in Sources */,
 				44DDF2FD2AF811CE005D35D8 /* GrocemateApp.swift in Sources */,
 				4488A6FB2BAB654000414AAD /* NewHomeView.swift in Sources */,
+				4406506B2BB4E25B00214135 /* NewHomeView-Presenter.swift in Sources */,
 				440ECB9C2AF8134A00E6BD5C /* GrocemateDataModel.xcdatamodeld in Sources */,
 				44B453BC2B8F2F4600B13732 /* PolishedButtonTestView.swift in Sources */,
 				4488A6CE2BAA085A00414AAD /* Codable-Extensions.swift in Sources */,
-				4488A7002BAB756300414AAD /* GrocemateTabView.swift in Sources */,
+				4488A7002BAB756300414AAD /* MainTabView.swift in Sources */,
 				44B4CCB12B91318E00C6B844 /* SettingsView.swift in Sources */,
 				445A65312BA28069003629CE /* ChatGPTCloudFunctionsHandler.swift in Sources */,
 				4489336E2B2FF28F00121DCE /* ImageWithROI.swift in Sources */,
@@ -691,8 +699,8 @@
 				44F288962B8E5DB300CEB808 /* SignInWithAppleHelper.swift in Sources */,
 				448933702B2FF5C600121DCE /* OpenAIResponseModel.swift in Sources */,
 				442957122B258FC1000D74CA /* IntermediateCoreDataModels.swift in Sources */,
-				440ECB842AF812F800E6BD5C /* CardDetailView.swift in Sources */,
-				4453D8A82B0931AB001B1C36 /* EditCardViewModel.swift in Sources */,
+				440ECB842AF812F800E6BD5C /* RecipeDetailView.swift in Sources */,
+				4453D8A82B0931AB001B1C36 /* EditRecipeViewModel.swift in Sources */,
 				448933742B310E8400121DCE /* Constants.swift in Sources */,
 				4488A6D02BAA0A3400414AAD /* ImageRecognition-Error.swift in Sources */,
 				440ECB912AF8130400E6BD5C /* CoreDataController.swift in Sources */,
@@ -708,7 +716,7 @@
 				4488A6F72BAA32EF00414AAD /* Ingredient+CoreDataProperties.swift in Sources */,
 				4488A6F82BAA32EF00414AAD /* IngredientCard+CoreDataClass.swift in Sources */,
 				4488A6F92BAA32EF00414AAD /* IngredientCard+CoreDataProperties.swift in Sources */,
-				44BF98132B0927EF00E24047 /* CardDetailViewModellable.swift in Sources */,
+				44BF98132B0927EF00E24047 /* RecipeDetailViewModelling.swift in Sources */,
 				440ECB862AF812F800E6BD5C /* SwipeableIngredient.swift in Sources */,
 				449106882B4FA8EB00FB2019 /* AuthenticationView.swift in Sources */,
 				4488A6EE2BAA323B00414AAD /* RecipeStep+CoreDataClass.swift in Sources */,
@@ -1061,6 +1069,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		440650672BB4D8DD00214135 /* XCRemoteSwiftPackageReference "Presenting" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/JamesSedlacek/Presenting.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 		44F2888D2B8DC0B300CEB808 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -1072,6 +1088,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		440650682BB4D8DD00214135 /* Presenting */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 440650672BB4D8DD00214135 /* XCRemoteSwiftPackageReference "Presenting" */;
+			productName = Presenting;
+		};
 		44F2888E2B8DC0B300CEB808 /* FirebaseAppCheck */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 44F2888D2B8DC0B300CEB808 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;

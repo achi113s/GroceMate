@@ -18,7 +18,7 @@ struct RootView: View {
             if !authManager.isUserAuthenticated {
                 AuthenticationView<AuthenticationManager>()
             } else {
-                HomeView<AuthenticationManager>()
+                MainTabView<AuthenticationManager>()
             }
         }
         .animation(.easeInOut, value: authManager.isUserAuthenticated)

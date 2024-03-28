@@ -16,6 +16,7 @@
     </entity>
     <entity name="Recipe" representedClassName=".Recipe" syncable="YES">
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="notes" attributeType="String" defaultValueString=""/>
         <attribute name="timestamp" attributeType="Date" defaultDateTimeInterval="730071720" usesScalarValueType="NO"/>
         <attribute name="title" attributeType="String" defaultValueString="No Title"/>
         <attribute name="yield" attributeType="String" defaultValueString=""/>
@@ -25,6 +26,7 @@
     </entity>
     <entity name="RecipeStep" representedClassName=".RecipeStep" syncable="YES">
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="stepNumber" attributeType="Integer 16" minValueString="1" defaultValueString="1" usesScalarValueType="YES"/>
         <attribute name="stepText" attributeType="String" defaultValueString=""/>
         <relationship name="recipe" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Recipe" inverseName="recipeSteps" inverseEntity="Recipe"/>
     </entity>

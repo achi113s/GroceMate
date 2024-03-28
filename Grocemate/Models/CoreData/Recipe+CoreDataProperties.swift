@@ -90,6 +90,7 @@ extension Recipe {
             // Recipe Steps
             let recipeStep1 = RecipeStep(context: context)
             recipeStep1.recipe = recipe
+            recipeStep1.stepNumber = 1
             recipeStep1.stepText = """
             Warm the milk, sugar, and salt in a medium saucepan. \
             Pour the cream into the large bowl and vigorously whisk \
@@ -97,6 +98,7 @@ extension Recipe {
             """
 
             let recipeStep2 = RecipeStep(context: context)
+            recipeStep2.stepNumber = 2
             recipeStep2.recipe = recipe
             recipeStep2.stepText = """
             In a separate medium bowl, whisk together the egg yolks. \
@@ -108,6 +110,7 @@ extension Recipe {
             """
 
             let recipeStep3 = RecipeStep(context: context)
+            recipeStep3.stepNumber = 3
             recipeStep3.recipe = recipe
             recipeStep3.stepText = """
             Pour the custard through the strainer and stir it into the \
@@ -116,6 +119,7 @@ extension Recipe {
             """
 
             let recipeStep4 = RecipeStep(context: context)
+            recipeStep4.stepNumber = 4
             recipeStep4.recipe = recipe
             recipeStep4.stepText = """
             Chill the mixture thoroughly in the refrigerator, then freeze it \

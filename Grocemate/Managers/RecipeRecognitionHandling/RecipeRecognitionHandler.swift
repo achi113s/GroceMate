@@ -72,6 +72,7 @@ final class RecipeRecognitionHandler<I: ImageToTextHandling, O: OpenAIManaging2>
                     }
 
                     self.visionResults = results
+                    print(results)
                 }
             }
         }
@@ -107,24 +108,34 @@ final class RecipeRecognitionHandler<I: ImageToTextHandling, O: OpenAIManaging2>
                     return
                 }
 
-                let ingredientJSONString = openAIResponse.choices[0].message.content
+                let recipeJSONString = openAIResponse.choices[0].message.content
 
                 /// Try to convert the JSON string from ChatGPT into a JSON Data object.
-                guard let ingredientJSON = ingredientJSONString.data(using: .utf8) else {
+                guard let recipeJSON = recipeJSONString.data(using: .utf8) else {
                     print("Could not cast ingredientJSONString as JSON Object.\n")
                     return
                 }
 
                 /// Try to decode the JSON object into a DecodedIngredients object.
-                guard let ingredientsObj = try? JSONDecoder().decode(
-                    DecodedIngredients.self, from: ingredientJSON
+//                guard let ingredientsObj = try? JSONDecoder().decode(
+//                    DecodedIngredients.self, from: recipeJSON
+//                ) else {
+//                    print("Could not decode ingredientJSON to DecodedIgredients.\n")
+//                    return
+//                }
+//
+//                print("Here are the ingredients:")
+//                print(ingredientsObj)
+
+                guard let recipeObj = try? JSONDecoder().decode(
+                    DecodedRecipe.self, from: recipeJSON
                 ) else {
-                    print("Could not decode ingredientJSON to DecodedIgredients.\n")
+                    print("Could not decode recipeJSON to DecodedRecipe.\n")
                     return
                 }
 
-                print("Here are the ingredients:")
-                print(ingredientsObj)
+                print("Here is the recipe:")
+                print(recipeObj)
 
                 DispatchQueue.main.async {
                     print("Setting recognitionInProgress to false.")

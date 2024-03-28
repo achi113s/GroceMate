@@ -1,4 +1,5 @@
 {
+  "originHash" : "18805ca0628619e8138266c1dc515f0e04517452a5f540afc8189a7230d4779e",
   "pins" : [
     {
       "identity" : "abseil-cpp-binary",
@@ -100,6 +101,15 @@
       }
     },
     {
+      "identity" : "presenting",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/JamesSedlacek/Presenting.git",
+      "state" : {
+        "branch" : "main",
+        "revision" : "ea22f4a7d6e19665c9ed17eb95e6c11e8ccc775f"
+      }
+    },
+    {
       "identity" : "promises",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/google/promises.git",
@@ -118,5 +128,5 @@
       }
     }
   ],
-  "version" : 2
+  "version" : 3
 }

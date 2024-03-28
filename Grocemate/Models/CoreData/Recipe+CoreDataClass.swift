@@ -21,11 +21,19 @@ public class Recipe: NSManagedObject, Identifiable {
     @NSManaged public var ingredientCards: Set<IngredientCard>
     @NSManaged public var ingredients: Set<Ingredient>
     @NSManaged public var recipeSteps: Set<RecipeStep>
+    @NSManaged public var notes: String
 
     public var ingredientsArr: [Ingredient] {
         let arr = Array(ingredients)
         return arr.sorted { lhs, rhs in
             lhs.name < rhs.name
+        }
+    }
+
+    public var recipeStepsArr: [RecipeStep] {
+        let arr = Array(recipeSteps)
+        return arr.sorted { lhs, rhs in
+            lhs.stepNumber < rhs.stepNumber
         }
     }
 
@@ -36,5 +44,6 @@ public class Recipe: NSManagedObject, Identifiable {
         setPrimitiveValue(Date.now, forKey: "timestamp")
         setPrimitiveValue("Recipe Title", forKey: "title")
         setPrimitiveValue("", forKey: "yield")
+        setPrimitiveValue("", forKey: "notes")
     }
 }

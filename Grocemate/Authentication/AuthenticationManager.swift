@@ -33,14 +33,13 @@ protocol AuthenticationManaging: ObservableObject {
 @MainActor final class AuthenticationManager: ObservableObject, AuthenticationManaging {
     @Published public var authenticatedUser: CustomUserInfo?
 
-    var isUserAuthenticated: Bool {
-        self.authenticatedUser != nil
-    }
+    @Published public var isUserAuthenticated: Bool = false
 
     init() {
         // Set up a listener for authentication state changes
         Auth.auth().addStateDidChangeListener { _, user in
             self.authenticatedUser = user
+            self.isUserAuthenticated = user != nil
         }
     }
 

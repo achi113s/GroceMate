@@ -34,7 +34,8 @@ extension RecipeStep {
 
         for _ in 0..<count {
             let step = RecipeStep(context: context)
-            step.stepText = "1. Preheat the oven to 400˚F (200˚C)."
+            step.stepText = "Preheat the oven to 400˚F (200˚C)."
+            step.stepNumber = 1
 
             recipeSteps.append(step)
         }

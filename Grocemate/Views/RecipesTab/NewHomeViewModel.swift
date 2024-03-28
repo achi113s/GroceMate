@@ -31,7 +31,7 @@ enum SortRecipes {
     }
 }
 
-final class NewHomeViewModel: ObservableObject {
+@MainActor final class NewHomeViewModel: ObservableObject {
     @Published var path = NavigationPath()
 
     @Published var sheet: Sheets?
@@ -42,7 +42,7 @@ final class NewHomeViewModel: ObservableObject {
 
     @Published var deleteAlert = false
 
-    @Published var selectedCard: IngredientCard?
+    @Published var selectedRecipe: Recipe?
     @Published var selectedPhotosPickerItem: PhotosPickerItem?
     @Published var selectedImage: UIImage?
 
@@ -55,4 +55,3 @@ final class NewHomeViewModel: ObservableObject {
         self.context = coreDataController.viewContext
     }
 }
-
