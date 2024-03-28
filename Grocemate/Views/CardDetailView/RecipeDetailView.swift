@@ -88,13 +88,13 @@ struct RecipeDetailView<ViewModel: RecipeDetailViewModelling>: View {
             Section("") {
                 TextField("Recipe Title", text: $viewModel.title)
                     .disabled(viewModel.editMode == .inactive)
-                    .font(.system(.title3))
+                    .font(.system(.title2))
                     .fontDesign(.rounded)
                     .fontWeight(.semibold)
                     .padding(.vertical, 5)
                     .listRowBackground(Color(
                         viewModel.titleError ? UIColor.systemRed.withAlphaComponent(0.2) :
-                            UIColor.systemBlue.withAlphaComponent(0.13)).animation(.easeInOut(duration: 0.5))
+                            UIColor.systemGray.withAlphaComponent(0.1)).animation(.easeInOut(duration: 0.5))
                     )
                     .onAppear { UITextField.appearance().clearButtonMode = .whileEditing }
 
@@ -103,16 +103,13 @@ struct RecipeDetailView<ViewModel: RecipeDetailViewModelling>: View {
                     .fontDesign(.rounded)
                     .fontWeight(.medium)
                     .padding(.vertical, 5)
-                    .listRowBackground(Color(
-                        viewModel.titleError ? UIColor.systemRed.withAlphaComponent(0.2) :
-                            UIColor.systemBlue.withAlphaComponent(0.13)).animation(.easeInOut(duration: 0.5))
-                    )
+                    .listRowBackground(Color(UIColor.systemGray.withAlphaComponent(0.1)))
                     .onAppear { UITextField.appearance().clearButtonMode = .whileEditing }
             }
 
             Section(header: Text("Ingredients")) {
                 ForEach($viewModel.ingredients) { $ingredient in
-                    TextField("Ingredient", text: $ingredient.name, axis: .vertical)
+                    TextField("e.g. 1 tsp vanilla", text: $ingredient.name, axis: .vertical)
                         .disabled(viewModel.editMode == .inactive)
                         .fontDesign(.rounded)
                         .fontWeight(.medium)
@@ -132,15 +129,15 @@ struct RecipeDetailView<ViewModel: RecipeDetailViewModelling>: View {
 
             Section(header: Text("Steps")) {
                 ForEach($viewModel.steps) { $step in
-                    TextField("Ingredient", text: $step.stepText, axis: .vertical)
+                    TextField("e.g. Preheat the oven to 400˚F.", text: $step.stepText, axis: .vertical)
                         .disabled(viewModel.editMode == .inactive)
                         .fontDesign(.rounded)
                         .fontWeight(.medium)
                 }
-                .onDelete(perform: viewModel.deleteIngredient)
-                .onMove(perform: { indices, newOffset in
-                    // set the indices correctly
-                })
+                .onDelete(perform: viewModel.deleteRecipeStep)
+                .onMove { indices, newOffset in
+                    viewModel.moveRecipeStep(from: indices, to: newOffset)
+                }
                 .listRowBackground(Color(
                     viewModel.ingredientsError ? UIColor.systemRed.withAlphaComponent(0.2) :
                         UIColor.systemGray.withAlphaComponent(0.1)).animation(.easeInOut(duration: 0.5))
@@ -148,7 +145,7 @@ struct RecipeDetailView<ViewModel: RecipeDetailViewModelling>: View {
 
                 AddListElementButton {
                     withAnimation {
-                        viewModel.addDummyIngredient()
+                        viewModel.addDummyStep()
                     }
                 }
             }
@@ -234,7 +231,7 @@ struct RecipeDetailView<ViewModel: RecipeDetailViewModelling>: View {
     }
 }
 
-#Preview("CardDetailView_ManualAdd") {
+#Preview("RecipeDetailView_ManualAdd") {
     let preview = CoreDataController.shared
 
     let viewToPreview = {
@@ -243,6 +240,19 @@ struct RecipeDetailView<ViewModel: RecipeDetailViewModelling>: View {
                 coreDataController: preview,
                 context: preview.newContext
             )
+        )
+        .environment(\.managedObjectContext, preview.viewContext)
+    }()
+
+    return viewToPreview
+}
+
+#Preview("RecipeDetailView_EditRecipe") {
+    let preview = CoreDataController.shared
+
+    let viewToPreview = {
+        RecipeDetailView<EditRecipeViewModel>(
+            viewModel: EditRecipeViewModel(coreDataController: preview, recipe: Recipe.preview())
         )
         .environment(\.managedObjectContext, preview.viewContext)
     }()

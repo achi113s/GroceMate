@@ -6,7 +6,6 @@
 //
 
 import PhotosUI
-import Presenting
 import SwiftUI
 
 struct NewHomeView<RecipeRecognizer: RecipeRecognitionHandling>: View {
@@ -14,7 +13,6 @@ struct NewHomeView<RecipeRecognizer: RecipeRecognitionHandling>: View {
     @EnvironmentObject var recipeRecognitionHandler: RecipeRecognizer
 
     // MARK: - State
-    @StateObject private var presenter: BasicPresenter = BasicPresenter()
     @StateObject var homeViewModel = NewHomeViewModel(coreDataController: CoreDataController.shared)
     @Binding var isAuthenticated: Bool
 
@@ -48,17 +46,23 @@ struct NewHomeView<RecipeRecognizer: RecipeRecognitionHandling>: View {
         }
         .environmentObject(homeViewModel)
         .environmentObject(recipeRecognitionHandler)
-        .presenting(using: presenter)
     }
 
     // MARK: - Subviews
     private var mainView: some View {
         Group {
             if recipes.isEmpty {
-                if #available(iOS 17.0, *) {
-                    emptyRecipesViewiOS17
-                } else {
-                    emptyRecipesView
+                GeometryReader { geo in
+                    ScrollView {
+                        if #available(iOS 17.0, *) {
+                            emptyRecipesViewiOS17
+                                .frame(width: geo.size.width, height: geo.size.height)
+
+                        } else {
+                            emptyRecipesView
+                                .frame(width: geo.size.width, height: geo.size.height)
+                        }
+                    }
                 }
             } else {
                 recipesView
@@ -86,15 +90,16 @@ struct NewHomeView<RecipeRecognizer: RecipeRecognitionHandling>: View {
     }
 
     private var emptyRecipesView: some View {
-        VStack(spacing: 10) {
+        VStack(spacing: 16) {
             Image(systemName: "newspaper")
                 .font(.system(size: 45))
                 .foregroundStyle(.secondary)
-            VStack {
+            VStack(spacing: 8) {
                 Text("No Recipes")
                     .font(.title2)
-                    .fontWeight(.semibold)
+                    .fontWeight(.bold)
                 Text("Tap the plus in the top toolbar to get started!")
+                    .font(.subheadline)
                     .foregroundStyle(.secondary)
             }
             .fontDesign(.rounded)
@@ -140,8 +145,8 @@ struct NewHomeView<RecipeRecognizer: RecipeRecognitionHandling>: View {
                     }
 
                     Button {
-//                        homeViewModel.selectedCard = ingredientCard
-//                        homeViewModel.sheet = .editCard
+                        homeViewModel.selectedRecipe = recipe
+                        homeViewModel.sheet = .editCard
                     } label: {
                         Label("Edit", systemImage: "pencil")
                     }
@@ -174,9 +179,6 @@ struct NewHomeView<RecipeRecognizer: RecipeRecognitionHandling>: View {
                     Button {
                         if isAuthenticated {
                             homeViewModel.sheet = .documentScanner
-                        } else {
-                            presenter.presentToast(on: .bottom,
-                                .error(message: "You must be logged in to perform that action."))
                         }
                     } label: {
                         HStack {
@@ -271,16 +273,14 @@ struct NewHomeView<RecipeRecognizer: RecipeRecognitionHandling>: View {
                 ImageWithROI(image: image)
             }
         case .editCard:
-            EmptyView()
-//            if let selectedCard = homeViewModel.selectedRecipe {
-//                CardDetailView(viewModel: EditCardViewModel(coreDataController: .shared, ingredientCard: selectedRecipe)
-//                )
-//            }
+            if let selectedRecipe = homeViewModel.selectedRecipe {
+                RecipeDetailView(viewModel: EditRecipeViewModel(coreDataController: .shared, recipe: selectedRecipe)
+                )
+            }
         case .manuallyCreateCard:
-            EmptyView()
-//            CardDetailView<CreateCardViewModel>(
-//                viewModel: CreateCardViewModel(coreDataController: .shared, context: coreDataController.newContext)
-//            )
+            RecipeDetailView(
+                viewModel: CreateRecipeViewModel(coreDataController: .shared, context: coreDataController.newContext)
+            )
         case .documentScanner:
             DocumentScanner { images in
                 recipeRecognitionHandler.recognizeRecipeIn(images: images, 

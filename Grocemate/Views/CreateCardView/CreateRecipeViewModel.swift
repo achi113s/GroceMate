@@ -36,12 +36,8 @@ final class CreateRecipeViewModel: ObservableObject, RecipeDetailViewModelling {
         self.recipe = Recipe(context: context)
         self.title = "New Recipe"
         self.yield = ""
-        self.ingredients = [
-            Ingredient(context: context)
-        ]
-        self.steps = [
-            RecipeStep(context: context)
-        ]
+        self.ingredients = Array<Ingredient>()
+        self.steps = Array<RecipeStep>()
         self.notes = ""
     }
 
@@ -72,6 +68,12 @@ final class CreateRecipeViewModel: ObservableObject, RecipeDetailViewModelling {
         self.ingredients.append(Ingredient(context: self.context))
     }
 
+    public func addDummyStep() {
+        var newStep = RecipeStep(context: self.context)
+        newStep.stepNumber = Int16(self.steps.count)
+        self.steps.append(newStep)
+    }
+
     /// Using a separate array of Ingredients allows us to circumvent problems with NSSet
     /// in the CoreDataClass for Ingredient. This method replaces the NSManagedObject's
     /// ingredients Set with what we have in this view model.
@@ -100,7 +102,18 @@ final class CreateRecipeViewModel: ObservableObject, RecipeDetailViewModelling {
     }
 
     public func deleteIngredient(_ indexSet: IndexSet) {
-        ingredients.remove(atOffsets: indexSet)
+        self.ingredients.remove(atOffsets: indexSet)
+    }
+
+    public func deleteRecipeStep(_ indexSet: IndexSet) {
+        self.steps.remove(atOffsets: indexSet)
+    }
+
+    public func moveRecipeStep(from indices: IndexSet, to newOffset: Int) {
+        self.steps.move(fromOffsets: indices, toOffset: newOffset)
+        for (index, step) in self.steps.enumerated() {
+            step.stepNumber = Int16(index + 1)
+        }
     }
 
     public func save() throws {

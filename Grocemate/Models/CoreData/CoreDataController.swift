@@ -51,18 +51,18 @@ final class CoreDataController {
             }
         }
 
-        //        // Only initialize the schema when building the app with the
-        //        // Debug build configuration.
-        //#if DEBUG
-        //        do {
-        //            // Use the container to initialize the development schema.
-        //            print("Initializing CloudKit schema.")
-        //            try persistentContainer.initializeCloudKitSchema(options: [])
-        //        } catch {
-        //            // Handle any errors.
-        //            print("An error occurred when initializing the CloudKit schema: \(error)")
-        //        }
-        //#endif
+//        // Only initialize the schema when building the app with the
+//        // Debug build configuration.
+//#if DEBUG
+//        do {
+//            // Use the container to initialize the development schema.
+//            print("Initializing CloudKit schema.")
+//            try persistentContainer.initializeCloudKitSchema(options: [])
+//        } catch {
+//            // Handle any errors.
+//            print("An error occurred when initializing the CloudKit schema: \(error)")
+//        }
+//#endif
     }
 
     func exists<T: NSManagedObject>(_ object: T,

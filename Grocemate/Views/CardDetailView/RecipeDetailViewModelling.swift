@@ -21,7 +21,8 @@ protocol RecipeDetailViewModelling: ObservableObject {
 
     func clearTitle()
     func addDummyIngredient()
-    
+    func addDummyStep()
+
     func setRecipeTitle()
     func setIngredientsToRecipe()
     func setStepsToRecipe()
@@ -29,5 +30,7 @@ protocol RecipeDetailViewModelling: ObservableObject {
     func setRecipeYield()
 
     func deleteIngredient(_ indexSet: IndexSet)
+    func deleteRecipeStep(_ indexSet: IndexSet)
+    func moveRecipeStep(from indices: IndexSet, to newOffset: Int)
     func save() throws
 }

@@ -23,7 +23,7 @@ public class RecipeStep: NSManagedObject, Identifiable {
         super.awakeFromInsert()
 
         setPrimitiveValue(UUID(), forKey: "id")
-        setPrimitiveValue("Preheat the oven.", forKey: "stepText")
+        setPrimitiveValue("", forKey: "stepText")
         setPrimitiveValue(1, forKey: "stepNumber")
     }
 }

@@ -114,7 +114,7 @@ struct Card: View {
                 /// keep track of the selected ingredient card? This method
                 /// introduces a bit of coupling between Card and HomeView.
                 homeViewModel.presentConfirmationDialog = true
-                homeViewModel.selectedCard = ingredientCard
+//                homeViewModel.selectedCard = ingredientCard
             }
     }
 }

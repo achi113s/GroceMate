@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		440650692BB4D8DD00214135 /* Presenting in Frameworks */ = {isa = PBXBuildFile; productRef = 440650682BB4D8DD00214135 /* Presenting */; };
 		4406506B2BB4E25B00214135 /* NewHomeView-Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4406506A2BB4E25B00214135 /* NewHomeView-Presenter.swift */; };
 		440ECB802AF812F800E6BD5C /* HapticEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440ECB762AF812F800E6BD5C /* HapticEngine.swift */; };
 		440ECB812AF812F800E6BD5C /* RubberBanding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440ECB772AF812F800E6BD5C /* RubberBanding.swift */; };
@@ -194,7 +193,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				44F288932B8DC0B300CEB808 /* FirebaseFunctions in Frameworks */,
-				440650692BB4D8DD00214135 /* Presenting in Frameworks */,
 				44F2888F2B8DC0B300CEB808 /* FirebaseAppCheck in Frameworks */,
 				44F288912B8DC0B300CEB808 /* FirebaseAuth in Frameworks */,
 			);
@@ -516,7 +514,6 @@
 				44F2888E2B8DC0B300CEB808 /* FirebaseAppCheck */,
 				44F288902B8DC0B300CEB808 /* FirebaseAuth */,
 				44F288922B8DC0B300CEB808 /* FirebaseFunctions */,
-				440650682BB4D8DD00214135 /* Presenting */,
 			);
 			productName = Grocemate;
 			productReference = 44DDF2F92AF811CE005D35D8 /* Grocemate.app */;
@@ -1088,11 +1085,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		440650682BB4D8DD00214135 /* Presenting */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 440650672BB4D8DD00214135 /* XCRemoteSwiftPackageReference "Presenting" */;
-			productName = Presenting;
-		};
 		44F2888E2B8DC0B300CEB808 /* FirebaseAppCheck */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 44F2888D2B8DC0B300CEB808 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;

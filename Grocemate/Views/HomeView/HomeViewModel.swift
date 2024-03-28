@@ -42,7 +42,7 @@ final class HomeViewModel: ObservableObject {
 
     @Published var deleteAlert = false
 
-    @Published var selectedCard: IngredientCard?
+    @Published var selectedRecipe: Recipe?
     @Published var selectedPhotosPickerItem: PhotosPickerItem?
     @Published var selectedImage: UIImage?
 
