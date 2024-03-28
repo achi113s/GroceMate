@@ -8,10 +8,9 @@
 import SwiftUI
 
 struct RootView: View {
-    // MARK: - Environment
-    @EnvironmentObject var authManager: AuthenticationManager
-
     // MARK: - State
+    @StateObject private var hapticEngine: HapticEngine = HapticEngine()
+    @StateObject private var authManager: AuthenticationManager = AuthenticationManager()
 
     var body: some View {
         Group {
@@ -23,6 +22,8 @@ struct RootView: View {
         }
         .animation(.easeInOut, value: authManager.isUserAuthenticated)
         .transition(.push(from: .bottom))
+        .environmentObject(authManager)
+        .environmentObject(hapticEngine)
     }
 }
 

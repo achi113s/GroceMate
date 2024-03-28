@@ -8,20 +8,18 @@
 import PhotosUI
 import SwiftUI
 
-struct NewHomeView<RecipeRecognizer: RecipeRecognitionHandling>: View {
-    // MARK: - Environment
-    @EnvironmentObject var recipeRecognitionHandler: RecipeRecognizer
-
+struct NewHomeView: View {
     // MARK: - State
     @StateObject var homeViewModel = NewHomeViewModel(coreDataController: CoreDataController.shared)
-    @Binding var isAuthenticated: Bool
+    @StateObject var recipeRecognitionHandler: RecipeRecognitionHandler = RecipeRecognitionHandler()
+    var isAuthenticated: Bool
 
     // MARK: - Properties
     @FetchRequest(fetchRequest: Recipe.all()) private var recipes
     var coreDataController = CoreDataController.shared
 
-    init(isAuthenticated: Binding<Bool>) {
-        self._isAuthenticated = isAuthenticated
+    init(isAuthenticated: Bool) {
+        self.isAuthenticated = isAuthenticated
     }
 
     var body: some View {
@@ -296,10 +294,7 @@ struct NewHomeView<RecipeRecognizer: RecipeRecognitionHandling>: View {
     let preview = CoreDataController.shared
 
     let viewToPreview = {
-        NewHomeView<RecipeRecognitionHandler<ImageToTextHandler,
-                                                ChatGPTCloudFunctionsHandler>>(isAuthenticated: .constant(true))
-            .environmentObject(AuthenticationManager())
-            .environmentObject(RecipeRecognitionHandler())
+        NewHomeView(isAuthenticated: true)
             .environment(\.managedObjectContext, preview.viewContext)
             .onAppear {
                 Recipe.makePreview(count: 2, in: preview.viewContext)
@@ -313,10 +308,7 @@ struct NewHomeView<RecipeRecognizer: RecipeRecognitionHandling>: View {
     let preview = CoreDataController.shared
 
     let viewToPreview = {
-        NewHomeView<RecipeRecognitionHandler<ImageToTextHandler,
-                                                ChatGPTCloudFunctionsHandler>>(isAuthenticated: .constant(false))
-            .environmentObject(AuthenticationManager())
-            .environmentObject(RecipeRecognitionHandler())
+        NewHomeView(isAuthenticated: false)
             .environment(\.managedObjectContext, preview.viewContext)
             .onAppear {
                 Recipe.makePreview(count: 0, in: preview.viewContext)

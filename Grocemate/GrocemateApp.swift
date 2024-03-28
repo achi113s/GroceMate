@@ -14,14 +14,9 @@ import SwiftUI
 struct GrocemateApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
 
-    @StateObject private var hapticEngine: HapticEngine = HapticEngine()
-    @StateObject private var authManager: AuthenticationManager = AuthenticationManager()
-
     var body: some Scene {
         WindowGroup {
             RootView()
-                .environmentObject(hapticEngine)
-                .environmentObject(authManager)
                 .environment(\.managedObjectContext, CoreDataController.shared.viewContext)
                 .preferredColorScheme(.light)
         }

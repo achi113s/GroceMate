@@ -13,7 +13,10 @@ struct MainTabView<AuthManaging: AuthenticationManaging>: View {
 
     var body: some View {
         TabView {
-            
+            NewHomeView(isAuthenticated: authManager.isUserAuthenticated)
+                .tabItem {
+                    Label("Recipes", systemImage: "newspaper")
+                }
         }
     }
 }
