@@ -29,7 +29,7 @@ final class CreateRecipeViewModel: ObservableObject, RecipeDetailViewModelling {
     private let context: NSManagedObjectContext
 
     /// Initialize from "Manually Add Card"
-    init(coreDataController: CoreDataController, context: NSManagedObjectContext) {
+    init(context: NSManagedObjectContext) {
         /// We will use a new context as a temporary editing board outside
         /// the main view context.
         self.context = context
@@ -42,26 +42,25 @@ final class CreateRecipeViewModel: ObservableObject, RecipeDetailViewModelling {
     }
 
     /// Initialize from Vision/ChatGPT parse.
-    init(coreDataController: CoreDataController,
-         tempRecipe: TempRecipe,
+    init(decodedRecipe: DecodedRecipe,
          context: NSManagedObjectContext
     ) {
         self.context = context
         self.recipe = Recipe(context: context)
-        self.title = tempRecipe.title
-        self.ingredients = tempRecipe.ingredients.map({ ingredientName in
+        self.title = decodedRecipe.title
+        self.ingredients = decodedRecipe.ingredients.map({ ingredientName in
             let newIngredient = Ingredient(context: context)
             newIngredient.name = ingredientName
             return newIngredient
         })
-        self.yield = tempRecipe.yield
-        self.steps = tempRecipe.steps.enumerated().map { (index, step) in
+        self.yield = decodedRecipe.yield
+        self.steps = decodedRecipe.steps.enumerated().map { (index, step) in
             let recipeStep = RecipeStep(context: context)
             recipeStep.stepText = step
             recipeStep.stepNumber = Int16(index + 1)
             return recipeStep
         }
-        self.notes = tempRecipe.notes
+        self.notes = decodedRecipe.notes
     }
 
     public func addDummyIngredient() {

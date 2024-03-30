@@ -14,7 +14,7 @@ enum AuthProviderOption: String {
     case apple = "apple.com"
 }
 
-protocol AuthenticationManaging: ObservableObject {
+@MainActor protocol AuthenticationManaging: ObservableObject {
     var authenticatedUser: CustomUserInfo? { get }
     var isUserAuthenticated: Bool { get }
 
@@ -30,9 +30,9 @@ protocol AuthenticationManaging: ObservableObject {
     func deleteUser() async throws
 }
 
+@MainActor
 final class AuthenticationManager: ObservableObject, AuthenticationManaging {
     @Published public var authenticatedUser: CustomUserInfo?
-
     @Published public var isUserAuthenticated: Bool = false
 
     init() {

@@ -17,6 +17,11 @@ struct MainTabView<AuthManaging: AuthenticationManaging>: View {
                 .tabItem {
                     Label("Recipes", systemImage: "newspaper")
                 }
+
+            SettingsView<SettingsViewModel, AuthManaging>()
+                .tabItem {
+                    Label("Settings", systemImage: "gear")
+                }
         }
     }
 }

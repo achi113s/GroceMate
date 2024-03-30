@@ -237,7 +237,6 @@ struct RecipeDetailView<ViewModel: RecipeDetailViewModelling>: View {
     let viewToPreview = {
         RecipeDetailView<CreateRecipeViewModel>(
             viewModel: CreateRecipeViewModel(
-                coreDataController: preview,
                 context: preview.newContext
             )
         )

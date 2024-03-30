@@ -11,8 +11,9 @@ struct DecodedIngredients: Codable {
     let ingredients: [String]
 }
 
-struct DecodedRecipe: Codable {
+struct DecodedRecipe: Codable, Equatable {
     let ingredients: [String]
+    let yield: String
     let title: String
     let steps: [String]
     let notes: String

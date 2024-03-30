@@ -8,10 +8,11 @@
 import PhotosUI
 import SwiftUI
 
-struct NewHomeView: View {
+@MainActor struct NewHomeView: View {
     // MARK: - State
     @StateObject var homeViewModel = NewHomeViewModel(coreDataController: CoreDataController.shared)
     @StateObject var recipeRecognitionHandler: RecipeRecognitionHandler = RecipeRecognitionHandler()
+    
     var isAuthenticated: Bool
 
     // MARK: - Properties
@@ -40,6 +41,11 @@ struct NewHomeView: View {
                         homeViewModel.sheet = .imageROI
                     }
                 }
+            }
+        }
+        .onChange(of: recipeRecognitionHandler.recognizedRecipe) { newRecipe in
+            if let newRecipe = newRecipe {
+                homeViewModel.sheet = .createCardFromRecognizedText
             }
         }
         .environmentObject(homeViewModel)
@@ -272,12 +278,18 @@ struct NewHomeView: View {
             }
         case .editCard:
             if let selectedRecipe = homeViewModel.selectedRecipe {
-                RecipeDetailView(viewModel: EditRecipeViewModel(coreDataController: .shared, recipe: selectedRecipe)
+                RecipeDetailView(viewModel: EditRecipeViewModel(coreDataController: .shared, 
+                                                                recipe: selectedRecipe)
                 )
             }
         case .manuallyCreateCard:
             RecipeDetailView(
-                viewModel: CreateRecipeViewModel(coreDataController: .shared, context: coreDataController.newContext)
+                viewModel: CreateRecipeViewModel(context: coreDataController.newContext)
+            )
+        case .createCardFromRecognizedText:
+            RecipeDetailView(
+                viewModel: CreateRecipeViewModel(decodedRecipe: recipeRecognitionHandler.recognizedRecipe!,
+                                                 context: coreDataController.newContext)
             )
         case .documentScanner:
             DocumentScanner { images in

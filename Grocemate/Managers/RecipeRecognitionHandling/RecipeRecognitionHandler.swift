@@ -19,7 +19,7 @@ final class RecipeRecognitionHandler<I: ImageToTextHandling, O: OpenAIManaging2>
 
     // MARK: - State
     @Published var recognitionInProgress: Bool = false
-    @Published var formattedRecipe: Recipe?
+    @Published var recognizedRecipe: DecodedRecipe?
     @Published var recipeString: String?
 
     var visionResults: [String]?
@@ -88,8 +88,6 @@ final class RecipeRecognitionHandler<I: ImageToTextHandling, O: OpenAIManaging2>
                 fatalError("Unexpectedly encountered nil when unwrapping visionResults.")
             }
 
-//            let content = Constants.separateIngredientsPrompt + "\"\(ingredients)\""
-
             /// Construct the input and make the call to ChatGPT.
             let message = Message(role: "system", content: "\"\(ingredients)\"")
             let requestObject = CompletionRequest(
@@ -116,17 +114,7 @@ final class RecipeRecognitionHandler<I: ImageToTextHandling, O: OpenAIManaging2>
                     return
                 }
 
-                /// Try to decode the JSON object into a DecodedIngredients object.
-//                guard let ingredientsObj = try? JSONDecoder().decode(
-//                    DecodedIngredients.self, from: recipeJSON
-//                ) else {
-//                    print("Could not decode ingredientJSON to DecodedIgredients.\n")
-//                    return
-//                }
-//
-//                print("Here are the ingredients:")
-//                print(ingredientsObj)
-
+                /// Try to decode the JSON object into a DecodedRecipe object.
                 guard let recipeObj = try? JSONDecoder().decode(
                     DecodedRecipe.self, from: recipeJSON
                 ) else {
@@ -134,8 +122,7 @@ final class RecipeRecognitionHandler<I: ImageToTextHandling, O: OpenAIManaging2>
                     return
                 }
 
-                print("Here is the recipe:")
-                print(recipeObj)
+                self.recognizedRecipe = recipeObj
 
                 DispatchQueue.main.async {
                     print("Setting recognitionInProgress to false.")

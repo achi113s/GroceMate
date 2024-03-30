@@ -5,6 +5,7 @@
 //  Created by Giorgio Latour on 3/5/24.
 //
 
+import Firebase
 import FirebaseAuth
 import Foundation
 

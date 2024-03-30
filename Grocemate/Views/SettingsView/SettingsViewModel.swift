@@ -7,10 +7,10 @@
 
 import SwiftUI
 
-protocol SettingsViewModelling: ObservableObject {
-
+@MainActor protocol SettingsViewModelling: ObservableObject {
+    var settingsPath: NavigationPath { get set }
 }
 
 @MainActor final class SettingsViewModel: SettingsViewModelling {
-
+    @Published var settingsPath: NavigationPath = NavigationPath()
 }
