@@ -12,7 +12,7 @@ import SwiftUI
     // MARK: - State
     @StateObject var homeViewModel = NewHomeViewModel(coreDataController: CoreDataController.shared)
     @StateObject var recipeRecognitionHandler: RecipeRecognitionHandler = RecipeRecognitionHandler()
-    
+
     var isAuthenticated: Bool
 
     // MARK: - Properties
@@ -44,9 +44,8 @@ import SwiftUI
             }
         }
         .onChange(of: recipeRecognitionHandler.recognizedRecipe) { newRecipe in
-            if let newRecipe = newRecipe {
-                homeViewModel.sheet = .createCardFromRecognizedText
-            }
+            guard newRecipe != nil else { return }
+            homeViewModel.sheet = .createCardFromRecognizedText
         }
         .environmentObject(homeViewModel)
         .environmentObject(recipeRecognitionHandler)
@@ -82,31 +81,6 @@ import SwiftUI
                             .opacity(0.6)
                     }
             }
-        }
-    }
-
-    @available(iOS 17.0, *)
-    private var emptyRecipesViewiOS17: some View {
-        ContentUnavailableView("No Recipes",
-                               systemImage: "newspaper",
-                               description: Text("Tap the plus in the top toolbar to get started!"))
-        .fontDesign(.rounded)
-    }
-
-    private var emptyRecipesView: some View {
-        VStack(spacing: 16) {
-            Image(systemName: "newspaper")
-                .font(.system(size: 45))
-                .foregroundStyle(.secondary)
-            VStack(spacing: 8) {
-                Text("No Recipes")
-                    .font(.title2)
-                    .fontWeight(.bold)
-                Text("Tap the plus in the top toolbar to get started!")
-                    .font(.subheadline)
-                    .foregroundStyle(.secondary)
-            }
-            .fontDesign(.rounded)
         }
     }
 
@@ -298,6 +272,33 @@ import SwiftUI
                                                            in: CGRect(x: 0, y: 0, width: 1, height: 1))
             }
             .ignoresSafeArea()
+        }
+    }
+}
+
+extension NewHomeView {
+    @available(iOS 17.0, *)
+    private var emptyRecipesViewiOS17: some View {
+        ContentUnavailableView("No Recipes",
+                               systemImage: "newspaper",
+                               description: Text("Tap the plus in the top toolbar to get started!"))
+        .fontDesign(.rounded)
+    }
+
+    private var emptyRecipesView: some View {
+        VStack(spacing: 16) {
+            Image(systemName: "newspaper")
+                .font(.system(size: 45))
+                .foregroundStyle(.secondary)
+            VStack(spacing: 8) {
+                Text("No Recipes")
+                    .font(.title2)
+                    .fontWeight(.bold)
+                Text("Tap the plus in the top toolbar to get started!")
+                    .font(.subheadline)
+                    .foregroundStyle(.secondary)
+            }
+            .fontDesign(.rounded)
         }
     }
 }

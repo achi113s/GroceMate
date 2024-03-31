@@ -9,7 +9,7 @@ import CoreData
 import Foundation
 import SwiftUI
 
-final class EditRecipeViewModel: ObservableObject, RecipeDetailViewModelling {
+@MainActor final class EditRecipeViewModel: ObservableObject, RecipeDetailViewModelling {
     // MARK: - Properties
     @Published var editMode: EditMode = .active
     @Published var titleError: Bool = false
@@ -51,7 +51,7 @@ final class EditRecipeViewModel: ObservableObject, RecipeDetailViewModelling {
     }
 
     public func addDummyStep() {
-        var newStep = RecipeStep(context: self.context)
+        let newStep = RecipeStep(context: self.context)
         newStep.stepNumber = Int16(self.steps.count)
         self.steps.append(newStep)
     }

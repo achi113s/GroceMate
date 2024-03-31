@@ -9,7 +9,7 @@ import CoreData
 import Foundation
 import SwiftUI
 
-final class CreateRecipeViewModel: ObservableObject, RecipeDetailViewModelling {
+@MainActor final class CreateRecipeViewModel: ObservableObject, RecipeDetailViewModelling {
     // MARK: - Properties
     @Published var editMode: EditMode = .active
     @Published var titleError: Bool = false
@@ -36,8 +36,8 @@ final class CreateRecipeViewModel: ObservableObject, RecipeDetailViewModelling {
         self.recipe = Recipe(context: context)
         self.title = "New Recipe"
         self.yield = ""
-        self.ingredients = Array<Ingredient>()
-        self.steps = Array<RecipeStep>()
+        self.ingredients = [Ingredient]()
+        self.steps = [RecipeStep]()
         self.notes = ""
     }
 
@@ -68,7 +68,7 @@ final class CreateRecipeViewModel: ObservableObject, RecipeDetailViewModelling {
     }
 
     public func addDummyStep() {
-        var newStep = RecipeStep(context: self.context)
+        let newStep = RecipeStep(context: self.context)
         newStep.stepNumber = Int16(self.steps.count)
         self.steps.append(newStep)
     }

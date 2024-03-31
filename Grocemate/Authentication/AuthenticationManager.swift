@@ -30,8 +30,7 @@ enum AuthProviderOption: String {
     func deleteUser() async throws
 }
 
-@MainActor
-final class AuthenticationManager: ObservableObject, AuthenticationManaging {
+@MainActor final class AuthenticationManager: ObservableObject, AuthenticationManaging {
     @Published public var authenticatedUser: CustomUserInfo?
     @Published public var isUserAuthenticated: Bool = false
 
@@ -92,7 +91,7 @@ final class AuthenticationManager: ObservableObject, AuthenticationManaging {
 // MARK: - Sign In SSO
 extension AuthenticationManager {
     func signInWithApple() async throws {
-        let helper = await SignInWithAppleHelper()
+        let helper = SignInWithAppleHelper()
         let tokens = try await helper.startSignInWithAppleFlow()
         try await self.signInWithApple(tokens: tokens)
     }
@@ -106,7 +105,7 @@ extension AuthenticationManager {
     }
 
     func reauthenticateAppleSignIn() async throws {
-        let helper = await SignInWithAppleHelper()
+        let helper = SignInWithAppleHelper()
         let tokens = try await helper.startSignInWithAppleFlow()
         try self.reauthenticateAppleSignIn(tokens: tokens)
     }

@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-protocol RecipeDetailViewModelling: ObservableObject {
+@MainActor protocol RecipeDetailViewModelling: ObservableObject {
     var editMode: EditMode { get set }
     var titleError: Bool { get set }
     var ingredientsError: Bool { get set }

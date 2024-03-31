@@ -9,7 +9,8 @@ import SwiftUI
 
 struct ImageWithROI: View {
     @EnvironmentObject var homeViewModel: NewHomeViewModel
-    @EnvironmentObject var recipeRecognitionHandler: RecipeRecognitionHandler<ImageToTextHandler, ChatGPTCloudFunctionsHandler>
+    @EnvironmentObject var recipeRecognitionHandler: RecipeRecognitionHandler<ImageToTextHandler, 
+                                                                                ChatGPTCloudFunctionsHandler>
 
     @Environment(\.dismiss) var dismiss
 

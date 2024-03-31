@@ -8,11 +8,11 @@
 import SwiftUI
 
 protocol RecipeRecognitionHandling: ObservableObject {
-    associatedtype I: ImageToTextHandling
-    associatedtype O: OpenAIManaging2
+    associatedtype ItoT: ImageToTextHandling
+    associatedtype OAM: OpenAIManaging2
 
-    var imageToTextHandler: I { get }
-    var chatGPTHandler: O { get }
+    var imageToTextHandler: ItoT { get }
+    var chatGPTHandler: OAM { get }
     var recognitionInProgress: Bool { get }
     var recognizedRecipe: DecodedRecipe? { get }
 

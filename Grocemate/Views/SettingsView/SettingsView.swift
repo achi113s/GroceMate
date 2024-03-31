@@ -17,7 +17,6 @@ struct SettingsView<S: SettingsViewModelling, A: AuthenticationManaging>: View {
     @EnvironmentObject var authManager: A
 
     @StateObject var viewModel: S
-//    @Binding var path: NavigationPath
 
     init(viewModel: S) {
         self._viewModel = StateObject(wrappedValue: viewModel)
@@ -37,16 +36,15 @@ struct SettingsView<S: SettingsViewModelling, A: AuthenticationManaging>: View {
                         }
                     }
                 }
-                .navigationTitle("Settings")
-                .navigationBarTitleDisplayMode(.inline)
             }
+            .navigationTitle("Settings")
+            .navigationBarTitleDisplayMode(.inline)
         }
     }
 }
 
 #Preview {
     @StateObject var authManager = AuthenticationManager()
-//    @State var path: NavigationPath = NavigationPath()
 
     let authView: some View = {
         SettingsView<SettingsViewModel, AuthenticationManager>()

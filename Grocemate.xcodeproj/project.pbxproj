@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4406506B2BB4E25B00214135 /* NewHomeView-Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4406506A2BB4E25B00214135 /* NewHomeView-Presenter.swift */; };
 		440ECB802AF812F800E6BD5C /* HapticEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440ECB762AF812F800E6BD5C /* HapticEngine.swift */; };
 		440ECB812AF812F800E6BD5C /* RubberBanding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440ECB772AF812F800E6BD5C /* RubberBanding.swift */; };
 		440ECB822AF812F800E6BD5C /* Text-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440ECB792AF812F800E6BD5C /* Text-Extensions.swift */; };
@@ -105,7 +104,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		4406506A2BB4E25B00214135 /* NewHomeView-Presenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NewHomeView-Presenter.swift"; sourceTree = "<group>"; };
 		440ECB762AF812F800E6BD5C /* HapticEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HapticEngine.swift; sourceTree = "<group>"; };
 		440ECB772AF812F800E6BD5C /* RubberBanding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RubberBanding.swift; sourceTree = "<group>"; };
 		440ECB792AF812F800E6BD5C /* Text-Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Text-Extensions.swift"; sourceTree = "<group>"; };
@@ -330,7 +328,6 @@
 			children = (
 				4488A6FA2BAB654000414AAD /* NewHomeView.swift */,
 				4488A6FC2BAB659A00414AAD /* NewHomeViewModel.swift */,
-				4406506A2BB4E25B00214135 /* NewHomeView-Presenter.swift */,
 			);
 			path = RecipesTab;
 			sourceTree = "<group>";
@@ -683,7 +680,6 @@
 				44DDEAF92B0F22D9002AB0CE /* HapticDefinitions.swift in Sources */,
 				44DDF2FD2AF811CE005D35D8 /* GrocemateApp.swift in Sources */,
 				4488A6FB2BAB654000414AAD /* NewHomeView.swift in Sources */,
-				4406506B2BB4E25B00214135 /* NewHomeView-Presenter.swift in Sources */,
 				440ECB9C2AF8134A00E6BD5C /* GrocemateDataModel.xcdatamodeld in Sources */,
 				44B453BC2B8F2F4600B13732 /* PolishedButtonTestView.swift in Sources */,
 				4488A6CE2BAA085A00414AAD /* Codable-Extensions.swift in Sources */,
