@@ -16,6 +16,7 @@
 		440ECB862AF812F800E6BD5C /* SwipeableIngredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440ECB7F2AF812F800E6BD5C /* SwipeableIngredient.swift */; };
 		440ECB912AF8130400E6BD5C /* CoreDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440ECB8A2AF8130400E6BD5C /* CoreDataController.swift */; };
 		440ECB9C2AF8134A00E6BD5C /* GrocemateDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 440ECB9A2AF8134A00E6BD5C /* GrocemateDataModel.xcdatamodeld */; };
+		441BE3262BBC75D4006BC019 /* PolishedButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441BE3252BBC75D4006BC019 /* PolishedButtonStyle.swift */; };
 		442957102B257416000D74CA /* CreateCardViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4429570F2B257416000D74CA /* CreateCardViewModelTests.swift */; };
 		442957122B258FC1000D74CA /* IntermediateCoreDataModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442957112B258FC1000D74CA /* IntermediateCoreDataModels.swift */; };
 		4441677A2B20364C005AF6BC /* EditCardViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444167792B20364C005AF6BC /* EditCardViewModelTests.swift */; };
@@ -111,6 +112,7 @@
 		440ECB7F2AF812F800E6BD5C /* SwipeableIngredient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeableIngredient.swift; sourceTree = "<group>"; };
 		440ECB8A2AF8130400E6BD5C /* CoreDataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataController.swift; sourceTree = "<group>"; };
 		440ECB9B2AF8134A00E6BD5C /* GrocemateDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GrocemateDataModel.xcdatamodel; sourceTree = "<group>"; };
+		441BE3252BBC75D4006BC019 /* PolishedButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolishedButtonStyle.swift; sourceTree = "<group>"; };
 		4420964C2AFDF2F700E586BB /* Grocemate.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Grocemate.entitlements; sourceTree = "<group>"; };
 		4420964D2AFDF4A100E586BB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		4429570F2B257416000D74CA /* CreateCardViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCardViewModelTests.swift; sourceTree = "<group>"; };
@@ -230,34 +232,27 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		440ECB7A2AF812F800E6BD5C /* Views */ = {
+		440ECB7A2AF812F800E6BD5C /* Subviews */ = {
 			isa = PBXGroup;
 			children = (
-				44B4CCB22B91667600C6B844 /* RootView.swift */,
-				4488A6FF2BAB756300414AAD /* TabsControllerView.swift */,
-				4488A6FE2BAB668400414AAD /* RecipesTab */,
-				44C7F9AD2B07394300AFE8DD /* HomeView */,
 				44BF98092B088ABD00E24047 /* CardView */,
-				4453D8A62B09319E001B1C36 /* EditCardView */,
-				440ECB7B2AF812F800E6BD5C /* CreateCardView */,
-				44BF98112B0927D700E24047 /* CardDetailView */,
-				449106842B4FA89300FB2019 /* SignInView */,
+				44BF98112B0927D700E24047 /* RecipeDetailView */,
+				449106842B4FA89300FB2019 /* AuthenticationView */,
 				4489336A2B2FED7900121DCE /* RegionOfInterestPhotoPreview */,
 				44EE333D2B411A6600DEE6F1 /* CameraView.swift */,
-				44B453BB2B8F2F4600B13732 /* PolishedButtonTestView.swift */,
-				4483DC0B2B926E1D00C6C609 /* SettingsView */,
+				441BE3242BBC75C6006BC019 /* PolishedButton */,
 				44693FBA2B979FD9003BCCB8 /* ListViewLinkButton.swift */,
 				44693FC02B97AAC8003BCCB8 /* DocumentScanner.swift */,
 			);
-			path = Views;
+			path = Subviews;
 			sourceTree = "<group>";
 		};
-		440ECB7B2AF812F800E6BD5C /* CreateCardView */ = {
+		440ECB7B2AF812F800E6BD5C /* CreateRecipeDetailView */ = {
 			isa = PBXGroup;
 			children = (
 				440ECB7C2AF812F800E6BD5C /* CreateRecipeViewModel.swift */,
 			);
-			path = CreateCardView;
+			path = CreateRecipeDetailView;
 			sourceTree = "<group>";
 		};
 		440ECB872AF8130400E6BD5C /* Models */ = {
@@ -289,12 +284,40 @@
 			path = CoreData;
 			sourceTree = "<group>";
 		};
-		4453D8A62B09319E001B1C36 /* EditCardView */ = {
+		441BE3222BBC74B3006BC019 /* GroceryListCardsTab */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = GroceryListCardsTab;
+			sourceTree = "<group>";
+		};
+		441BE3232BBC74D3006BC019 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				4483DC0B2B926E1D00C6C609 /* SettingsTab */,
+				44B4CCB22B91667600C6B844 /* RootView.swift */,
+				4488A6FF2BAB756300414AAD /* TabsControllerView.swift */,
+				4488A6FE2BAB668400414AAD /* RecipesTab */,
+				441BE3222BBC74B3006BC019 /* GroceryListCardsTab */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		441BE3242BBC75C6006BC019 /* PolishedButton */ = {
+			isa = PBXGroup;
+			children = (
+				44B453BB2B8F2F4600B13732 /* PolishedButtonTestView.swift */,
+				441BE3252BBC75D4006BC019 /* PolishedButtonStyle.swift */,
+			);
+			path = PolishedButton;
+			sourceTree = "<group>";
+		};
+		4453D8A62B09319E001B1C36 /* EditRecipeDetailView */ = {
 			isa = PBXGroup;
 			children = (
 				4453D8A72B0931AB001B1C36 /* EditRecipeViewModel.swift */,
 			);
-			path = EditCardView;
+			path = EditRecipeDetailView;
 			sourceTree = "<group>";
 		};
 		445A652D2BA23BAC003629CE /* RecipeRecognitionHandling */ = {
@@ -310,13 +333,13 @@
 			path = RecipeRecognitionHandling;
 			sourceTree = "<group>";
 		};
-		4483DC0B2B926E1D00C6C609 /* SettingsView */ = {
+		4483DC0B2B926E1D00C6C609 /* SettingsTab */ = {
 			isa = PBXGroup;
 			children = (
 				44B4CCB02B91318E00C6B844 /* SettingsView.swift */,
 				44693FC22B97AE2E003BCCB8 /* SettingsViewModel.swift */,
 			);
-			path = SettingsView;
+			path = SettingsTab;
 			sourceTree = "<group>";
 		};
 		4488A6FE2BAB668400414AAD /* RecipesTab */ = {
@@ -345,13 +368,13 @@
 			path = Managers;
 			sourceTree = "<group>";
 		};
-		449106842B4FA89300FB2019 /* SignInView */ = {
+		449106842B4FA89300FB2019 /* AuthenticationView */ = {
 			isa = PBXGroup;
 			children = (
 				449106852B4FA8A600FB2019 /* SignInWithAppleButtonViewRepresentable.swift */,
 				449106872B4FA8EB00FB2019 /* AuthenticationView.swift */,
 			);
-			path = SignInView;
+			path = AuthenticationView;
 			sourceTree = "<group>";
 		};
 		44BF98092B088ABD00E24047 /* CardView */ = {
@@ -377,20 +400,15 @@
 			path = Enums;
 			sourceTree = "<group>";
 		};
-		44BF98112B0927D700E24047 /* CardDetailView */ = {
+		44BF98112B0927D700E24047 /* RecipeDetailView */ = {
 			isa = PBXGroup;
 			children = (
+				4453D8A62B09319E001B1C36 /* EditRecipeDetailView */,
+				440ECB7B2AF812F800E6BD5C /* CreateRecipeDetailView */,
 				44BF98122B0927EF00E24047 /* RecipeDetailViewModelling.swift */,
 				440ECB7D2AF812F800E6BD5C /* RecipeDetailView.swift */,
 			);
-			path = CardDetailView;
-			sourceTree = "<group>";
-		};
-		44C7F9AD2B07394300AFE8DD /* HomeView */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = HomeView;
+			path = RecipeDetailView;
 			sourceTree = "<group>";
 		};
 		44DDF2F02AF811CE005D35D8 = {
@@ -423,13 +441,14 @@
 				4420964C2AFDF2F700E586BB /* Grocemate.entitlements */,
 				44DDF2FC2AF811CE005D35D8 /* GrocemateApp.swift */,
 				440ECB872AF8130400E6BD5C /* Models */,
-				440ECB7A2AF812F800E6BD5C /* Views */,
+				441BE3232BBC74D3006BC019 /* Core */,
+				440ECB7A2AF812F800E6BD5C /* Subviews */,
+				448933752B31128D00121DCE /* Managers */,
 				44F2889D2B8E5F0A00CEB808 /* Authentication */,
 				44F288972B8E5E1600CEB808 /* Utilities */,
 				440ECB752AF812F800E6BD5C /* Effects */,
 				44BF980A2B088AEA00E24047 /* Enums */,
 				440ECB782AF812F800E6BD5C /* Extensions */,
-				448933752B31128D00121DCE /* Managers */,
 				44DDF3002AF811D0005D35D8 /* Assets.xcassets */,
 				44DDF3022AF811D0005D35D8 /* Preview Content */,
 			);
@@ -663,6 +682,7 @@
 				4488A6FD2BAB659A00414AAD /* RecipesViewModel.swift in Sources */,
 				44EE333E2B411A6600DEE6F1 /* CameraView.swift in Sources */,
 				445A652F2BA2802D003629CE /* ImageToTextHandler.swift in Sources */,
+				441BE3262BBC75D4006BC019 /* PolishedButtonStyle.swift in Sources */,
 				440ECB832AF812F800E6BD5C /* CreateRecipeViewModel.swift in Sources */,
 				4488A6D42BAA0C7A00414AAD /* DecodedRecipe.swift in Sources */,
 				44BF98102B088B5A00E24047 /* Image-Extensions.swift in Sources */,
