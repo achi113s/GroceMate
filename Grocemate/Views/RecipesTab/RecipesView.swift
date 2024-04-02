@@ -8,9 +8,9 @@
 import PhotosUI
 import SwiftUI
 
-@MainActor struct NewHomeView: View {
+@MainActor struct RecipesView: View {
     // MARK: - State
-    @StateObject var homeViewModel = NewHomeViewModel(coreDataController: CoreDataController.shared)
+    @StateObject var homeViewModel = RecipesViewModel(coreDataController: CoreDataController.shared)
     @StateObject var recipeRecognitionHandler: RecipeRecognitionHandler = RecipeRecognitionHandler()
 
     var isAuthenticated: Bool
@@ -276,7 +276,7 @@ import SwiftUI
     }
 }
 
-extension NewHomeView {
+extension RecipesView {
     @available(iOS 17.0, *)
     private var emptyRecipesViewiOS17: some View {
         ContentUnavailableView("No Recipes",
@@ -307,7 +307,7 @@ extension NewHomeView {
     let preview = CoreDataController.shared
 
     let viewToPreview = {
-        NewHomeView(isAuthenticated: true)
+        RecipesView(isAuthenticated: true)
             .environment(\.managedObjectContext, preview.viewContext)
             .onAppear {
                 Recipe.makePreview(count: 2, in: preview.viewContext)
@@ -321,7 +321,7 @@ extension NewHomeView {
     let preview = CoreDataController.shared
 
     let viewToPreview = {
-        NewHomeView(isAuthenticated: false)
+        RecipesView(isAuthenticated: false)
             .environment(\.managedObjectContext, preview.viewContext)
             .onAppear {
                 Recipe.makePreview(count: 0, in: preview.viewContext)

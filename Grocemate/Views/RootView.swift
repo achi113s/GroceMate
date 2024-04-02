@@ -9,7 +9,7 @@ import SwiftUI
 
 struct RootView: View {
     // MARK: - State
-    @StateObject private var hapticEngine: HapticEngine = HapticEngine()
+//    @StateObject private var hapticEngine: HapticEngine = HapticEngine()
     @StateObject private var authManager: AuthenticationManager = AuthenticationManager()
 
     var body: some View {
@@ -17,13 +17,13 @@ struct RootView: View {
             if !authManager.isUserAuthenticated {
                 AuthenticationView<AuthenticationManager>()
             } else {
-                MainTabView<AuthenticationManager>()
+                TabsControllerView<AuthenticationManager>()
             }
         }
         .animation(.easeInOut, value: authManager.isUserAuthenticated)
         .transition(.push(from: .bottom))
         .environmentObject(authManager)
-        .environmentObject(hapticEngine)
+//        .environmentObject(hapticEngine)
     }
 }
 

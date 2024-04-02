@@ -1,15 +1,15 @@
 //
-//  HomeViewModel.swift
+//  NewHomeViewModel.swift
 //  Grocemate
 //
-//  Created by Giorgio Latour on 11/17/23.
+//  Created by Giorgio Latour on 3/20/24.
 //
 
 import CoreData
 import PhotosUI
 import SwiftUI
 
-enum SortIngredientCards {
+enum SortRecipes {
     case timestampAsc, timestampDesc, titleAsc, titleDesc
 
     var rawValue: String {
@@ -31,7 +31,7 @@ enum SortIngredientCards {
     }
 }
 
-final class HomeViewModel: ObservableObject {
+@MainActor final class RecipesViewModel: ObservableObject {
     @Published var path = NavigationPath()
 
     @Published var sheet: Sheets?
@@ -47,7 +47,7 @@ final class HomeViewModel: ObservableObject {
     @Published var selectedImage: UIImage?
 
     @Published var query: String = ""
-    @Published var sortBy: SortIngredientCards = .timestampAsc
+    @Published var sortBy: SortRecipes = .timestampAsc
 
     private let context: NSManagedObjectContext
 
