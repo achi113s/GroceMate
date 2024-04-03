@@ -39,9 +39,9 @@ extension Recipe {
     static func makePreview(count: Int, in context: NSManagedObjectContext) -> [Recipe] {
         var recipes = [Recipe]()
 
-        for _ in 0..<count {
+        for index in 0..<count {
             let recipe = Recipe(context: context)
-            recipe.title = "Green Tea Ice Cream"
+            recipe.title = "Green Tea Ice Cream \(index)"
             recipe.yield = "1 quart (1l)"
 
             let ingredientCard = IngredientCard(context: context)

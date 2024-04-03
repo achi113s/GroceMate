@@ -9,6 +9,28 @@ import CoreData
 import PhotosUI
 import SwiftUI
 
+enum SortIngredientCards {
+    case timestampAsc, timestampDesc, titleAsc, titleDesc
+
+    var rawValue: String {
+        switch self {
+        case .timestampAsc, .timestampDesc:
+            return "timestamp"
+        case .titleAsc, .titleDesc:
+            return "title"
+        }
+    }
+
+    var ascending: Bool {
+        switch self {
+        case .timestampAsc, .titleAsc:
+            return true
+        case .timestampDesc, .titleDesc:
+            return false
+        }
+    }
+}
+
 enum SortRecipes {
     case timestampAsc, timestampDesc, titleAsc, titleDesc
 

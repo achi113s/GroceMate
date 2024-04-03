@@ -14,11 +14,12 @@ struct RootView: View {
 
     var body: some View {
         Group {
-            if !authManager.isUserAuthenticated {
-                AuthenticationView<AuthenticationManager>()
-            } else {
-                TabsControllerView<AuthenticationManager>()
-            }
+//            if !authManager.isUserAuthenticated {
+//                AuthenticationView<AuthenticationManager>()
+//            } else {
+//                TabsControllerView<AuthenticationManager>()
+//            }
+            AuthenticationView<AuthenticationManager>()
         }
         .animation(.easeInOut, value: authManager.isUserAuthenticated)
         .transition(.push(from: .bottom))

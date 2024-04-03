@@ -17,6 +17,8 @@
 		440ECB912AF8130400E6BD5C /* CoreDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440ECB8A2AF8130400E6BD5C /* CoreDataController.swift */; };
 		440ECB9C2AF8134A00E6BD5C /* GrocemateDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 440ECB9A2AF8134A00E6BD5C /* GrocemateDataModel.xcdatamodeld */; };
 		441BE3262BBC75D4006BC019 /* PolishedButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441BE3252BBC75D4006BC019 /* PolishedButtonStyle.swift */; };
+		441BE3282BBC7D73006BC019 /* RecipesUnavailableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441BE3272BBC7D73006BC019 /* RecipesUnavailableView.swift */; };
+		44269F252BBE122F00D3A22B /* FoodSim.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44269F242BBE122F00D3A22B /* FoodSim.swift */; };
 		442957102B257416000D74CA /* CreateCardViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4429570F2B257416000D74CA /* CreateCardViewModelTests.swift */; };
 		442957122B258FC1000D74CA /* IntermediateCoreDataModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442957112B258FC1000D74CA /* IntermediateCoreDataModels.swift */; };
 		4441677A2B20364C005AF6BC /* EditCardViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444167792B20364C005AF6BC /* EditCardViewModelTests.swift */; };
@@ -113,8 +115,10 @@
 		440ECB8A2AF8130400E6BD5C /* CoreDataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataController.swift; sourceTree = "<group>"; };
 		440ECB9B2AF8134A00E6BD5C /* GrocemateDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GrocemateDataModel.xcdatamodel; sourceTree = "<group>"; };
 		441BE3252BBC75D4006BC019 /* PolishedButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolishedButtonStyle.swift; sourceTree = "<group>"; };
+		441BE3272BBC7D73006BC019 /* RecipesUnavailableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesUnavailableView.swift; sourceTree = "<group>"; };
 		4420964C2AFDF2F700E586BB /* Grocemate.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Grocemate.entitlements; sourceTree = "<group>"; };
 		4420964D2AFDF4A100E586BB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		44269F242BBE122F00D3A22B /* FoodSim.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodSim.swift; sourceTree = "<group>"; };
 		4429570F2B257416000D74CA /* CreateCardViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCardViewModelTests.swift; sourceTree = "<group>"; };
 		442957112B258FC1000D74CA /* IntermediateCoreDataModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntermediateCoreDataModels.swift; sourceTree = "<group>"; };
 		444167792B20364C005AF6BC /* EditCardViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCardViewModelTests.swift; sourceTree = "<group>"; };
@@ -237,12 +241,12 @@
 			children = (
 				44BF98092B088ABD00E24047 /* CardView */,
 				44BF98112B0927D700E24047 /* RecipeDetailView */,
-				449106842B4FA89300FB2019 /* AuthenticationView */,
 				4489336A2B2FED7900121DCE /* RegionOfInterestPhotoPreview */,
 				44EE333D2B411A6600DEE6F1 /* CameraView.swift */,
 				441BE3242BBC75C6006BC019 /* PolishedButton */,
 				44693FBA2B979FD9003BCCB8 /* ListViewLinkButton.swift */,
 				44693FC02B97AAC8003BCCB8 /* DocumentScanner.swift */,
+				44269F242BBE122F00D3A22B /* FoodSim.swift */,
 			);
 			path = Subviews;
 			sourceTree = "<group>";
@@ -294,11 +298,12 @@
 		441BE3232BBC74D3006BC019 /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				4483DC0B2B926E1D00C6C609 /* SettingsTab */,
 				44B4CCB22B91667600C6B844 /* RootView.swift */,
 				4488A6FF2BAB756300414AAD /* TabsControllerView.swift */,
+				449106842B4FA89300FB2019 /* AuthenticationView */,
 				4488A6FE2BAB668400414AAD /* RecipesTab */,
 				441BE3222BBC74B3006BC019 /* GroceryListCardsTab */,
+				4483DC0B2B926E1D00C6C609 /* SettingsTab */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -347,6 +352,7 @@
 			children = (
 				4488A6FA2BAB654000414AAD /* RecipesView.swift */,
 				4488A6FC2BAB659A00414AAD /* RecipesViewModel.swift */,
+				441BE3272BBC7D73006BC019 /* RecipesUnavailableView.swift */,
 			);
 			path = RecipesTab;
 			sourceTree = "<group>";
@@ -703,8 +709,10 @@
 				4488A6D22BAA0C0500414AAD /* RecipeRecognitionHandling.swift in Sources */,
 				44F288962B8E5DB300CEB808 /* SignInWithAppleHelper.swift in Sources */,
 				448933702B2FF5C600121DCE /* OpenAIResponseModel.swift in Sources */,
+				441BE3282BBC7D73006BC019 /* RecipesUnavailableView.swift in Sources */,
 				442957122B258FC1000D74CA /* IntermediateCoreDataModels.swift in Sources */,
 				440ECB842AF812F800E6BD5C /* RecipeDetailView.swift in Sources */,
+				44269F252BBE122F00D3A22B /* FoodSim.swift in Sources */,
 				4453D8A82B0931AB001B1C36 /* EditRecipeViewModel.swift in Sources */,
 				448933742B310E8400121DCE /* Constants.swift in Sources */,
 				4488A6D02BAA0A3400414AAD /* ImageRecognition-Error.swift in Sources */,
@@ -907,8 +915,8 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -940,8 +948,8 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

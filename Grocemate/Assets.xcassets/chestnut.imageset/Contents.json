@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "choonsik.png",
+      "filename" : "chestnut.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "choonsik@2x.png",
+      "filename" : "chestnut@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "choonsik@3x.png",
+      "filename" : "chestnut@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

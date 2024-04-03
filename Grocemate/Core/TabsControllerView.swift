@@ -10,10 +10,11 @@ import SwiftUI
 struct TabsControllerView<AuthManaging: AuthenticationManaging>: View {
     // MARK: - Environment
     @EnvironmentObject var authManager: AuthManaging
+    var isPremium: Bool = true
 
     var body: some View {
         TabView {
-            RecipesView(isAuthenticated: authManager.isUserAuthenticated)
+            RecipesView(isEntitled: authManager.isUserAuthenticated && isPremium)
                 .tabItem {
                     Label("Recipes", systemImage: "newspaper")
                 }

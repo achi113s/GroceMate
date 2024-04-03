@@ -12,7 +12,6 @@ struct Card: View {
     // MARK: - Environment
     @EnvironmentObject var hapticEngine: HapticEngine
     @Environment(\.managedObjectContext) private var moc
-    @EnvironmentObject var homeViewModel: HomeViewModel
 
     // MARK: - State
     @ObservedObject var ingredientCard: IngredientCard
@@ -113,7 +112,7 @@ struct Card: View {
                 /// Maybe there is a better way to show a confirmation dialog and
                 /// keep track of the selected ingredient card? This method
                 /// introduces a bit of coupling between Card and HomeView.
-                homeViewModel.presentConfirmationDialog = true
+//                homeViewModel.presentConfirmationDialog = true
 //                homeViewModel.selectedCard = ingredientCard
             }
     }

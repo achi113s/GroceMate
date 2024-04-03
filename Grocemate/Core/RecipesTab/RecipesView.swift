@@ -13,14 +13,14 @@ import SwiftUI
     @StateObject var homeViewModel = RecipesViewModel(coreDataController: CoreDataController.shared)
     @StateObject var recipeRecognitionHandler: RecipeRecognitionHandler = RecipeRecognitionHandler()
 
-    var isAuthenticated: Bool
+    var isEntitled: Bool
 
     // MARK: - Properties
     @FetchRequest(fetchRequest: Recipe.all()) private var recipes
     var coreDataController = CoreDataController.shared
 
-    init(isAuthenticated: Bool) {
-        self.isAuthenticated = isAuthenticated
+    init(isEntitled: Bool) {
+        self.isEntitled = isEntitled
     }
 
     var body: some View {
@@ -111,7 +111,7 @@ import SwiftUI
                         }
                     }
                 }
-                .swipeActions {
+                .swipeActions(allowsFullSwipe: false) {
                     Button(role: .destructive) {
                         do {
                             try coreDataController.delete(recipe, in: coreDataController.viewContext)
@@ -131,8 +131,7 @@ import SwiftUI
                     .tint(.orange)
 
                     Button {
-//                        homeViewModel.selectedCard = ingredientCard
-//                        homeViewModel.sheet = .editCard
+                        // initiate creation of grocery list and switch tabs
                     } label: {
                         Label("Shop", systemImage: "basket")
                     }
@@ -141,6 +140,7 @@ import SwiftUI
             }
         }
         .listRowSpacing(10)
+        .animation(.default)
     }
 
     private var mainViewToolbar: some ToolbarContent {
@@ -155,33 +155,35 @@ import SwiftUI
             ToolbarItem(placement: .navigationBarTrailing) {
                 Menu {
                     Button {
-                        if isAuthenticated {
-                            homeViewModel.sheet = .documentScanner
-                        }
-                    } label: {
-                        HStack {
-                            Text("Scan a Recipe")
-                            Image(systemName: "doc.viewfinder")
-                        }
-                    }
-
-                    Button {
-                        if isAuthenticated {
-                            homeViewModel.presentPhotosPicker = true
-                        }
-                    } label: {
-                        HStack {
-                            Text("Select from Photos")
-                            Image(systemName: "photo.stack")
-                        }
-                    }
-
-                    Button {
                         homeViewModel.sheet = .manuallyCreateCard
                     } label: {
                         HStack {
                             Text("Manually Add Recipe")
                             Image(systemName: "character.cursor.ibeam")
+                        }
+                    }
+
+                    Section("Smart Add") {
+                        Button {
+                            if isEntitled {
+                                homeViewModel.sheet = .documentScanner
+                            }
+                        } label: {
+                            HStack {
+                                Text("Scan a Recipe")
+                                Image(systemName: "doc.viewfinder")
+                            }
+                        }
+
+                        Button {
+                            if isEntitled {
+                                homeViewModel.presentPhotosPicker = true
+                            }
+                        } label: {
+                            HStack {
+                                Text("Scan a Photo")
+                                Image(systemName: "photo.stack")
+                            }
                         }
                     }
                 } label: {
@@ -195,9 +197,7 @@ import SwiftUI
                 Menu {
                     Section("Sort By") {
                         Button {
-                            withAnimation {
-//                                ingredientCards.nsSortDescriptors = IngredientCard.sortBy(.titleAsc)
-                            }
+                            recipes.nsSortDescriptors = Recipe.sortBy(.titleAsc)
                         } label: {
                             HStack {
                                 Text("Title, Ascending")
@@ -205,9 +205,7 @@ import SwiftUI
                             }
                         }
                         Button {
-                            withAnimation {
-//                                ingredientCards.nsSortDescriptors = IngredientCard.sortBy(.titleDesc)
-                            }
+                            recipes.nsSortDescriptors = Recipe.sortBy(.titleDesc)
                         } label: {
                             HStack {
                                 Text("Title, Descending")
@@ -215,9 +213,7 @@ import SwiftUI
                             }
                         }
                         Button {
-                            withAnimation {
-//                                ingredientCards.nsSortDescriptors = IngredientCard.sortBy(.timestampAsc)
-                            }
+                            recipes.nsSortDescriptors = Recipe.sortBy(.timestampAsc)
                         } label: {
                             HStack {
                                 Text("Date, Ascending")
@@ -225,9 +221,7 @@ import SwiftUI
                             }
                         }
                         Button {
-                            withAnimation {
-//                                ingredientCards.nsSortDescriptors = IngredientCard.sortBy(.timestampDesc)
-                            }
+                            recipes.nsSortDescriptors = Recipe.sortBy(.timestampDesc)
                         } label: {
                             HStack {
                                 Text("Date, Descending")
@@ -252,7 +246,7 @@ import SwiftUI
             }
         case .editCard:
             if let selectedRecipe = homeViewModel.selectedRecipe {
-                RecipeDetailView(viewModel: EditRecipeViewModel(coreDataController: .shared, 
+                RecipeDetailView(viewModel: EditRecipeViewModel(coreDataController: .shared,
                                                                 recipe: selectedRecipe)
                 )
             }
@@ -267,7 +261,7 @@ import SwiftUI
             )
         case .documentScanner:
             DocumentScanner { images in
-                recipeRecognitionHandler.recognizeRecipeIn(images: images, 
+                recipeRecognitionHandler.recognizeRecipeIn(images: images,
                                                            with: .right,
                                                            in: CGRect(x: 0, y: 0, width: 1, height: 1))
             }
@@ -276,41 +270,14 @@ import SwiftUI
     }
 }
 
-extension RecipesView {
-    @available(iOS 17.0, *)
-    private var emptyRecipesViewiOS17: some View {
-        ContentUnavailableView("No Recipes",
-                               systemImage: "newspaper",
-                               description: Text("Tap the plus in the top toolbar to get started!"))
-        .fontDesign(.rounded)
-    }
-
-    private var emptyRecipesView: some View {
-        VStack(spacing: 16) {
-            Image(systemName: "newspaper")
-                .font(.system(size: 45))
-                .foregroundStyle(.secondary)
-            VStack(spacing: 8) {
-                Text("No Recipes")
-                    .font(.title2)
-                    .fontWeight(.bold)
-                Text("Tap the plus in the top toolbar to get started!")
-                    .font(.subheadline)
-                    .foregroundStyle(.secondary)
-            }
-            .fontDesign(.rounded)
-        }
-    }
-}
-
 #Preview("Recipes Tab with Data") {
     let preview = CoreDataController.shared
 
     let viewToPreview = {
-        RecipesView(isAuthenticated: true)
+        RecipesView(isEntitled: true)
             .environment(\.managedObjectContext, preview.viewContext)
             .onAppear {
-                Recipe.makePreview(count: 2, in: preview.viewContext)
+                Recipe.makePreview(count: 3, in: preview.viewContext)
             }
     }()
 
@@ -321,7 +288,7 @@ extension RecipesView {
     let preview = CoreDataController.shared
 
     let viewToPreview = {
-        RecipesView(isAuthenticated: false)
+        RecipesView(isEntitled: false)
             .environment(\.managedObjectContext, preview.viewContext)
             .onAppear {
                 Recipe.makePreview(count: 0, in: preview.viewContext)
