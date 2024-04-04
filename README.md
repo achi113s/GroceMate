@@ -29,3 +29,5 @@ Authentication is done through Google Firebase and Sign in with Apple. It's a Sw
 ## Edit and Create Recipe Screen
 This screen is generic. You can pass in any view model that conforms to RecipeDetailViewModelling.
 
+![Edit Create Recipe Screen](https://github.com/achi113s/Grocemate/blob/main/ReadmeResources/edit_create_screen_demo.gif)
+
