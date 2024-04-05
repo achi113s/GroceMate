@@ -19,6 +19,7 @@ The idea for Grocemate was born when I wanted to take a picture of a recipe and 
 ## Demo of Recipe Scanning Feature
 This is the most complicated feature so far. It requires users to be authenticated and to be using the app to call a Google Cloud Function. First, the user can scan in a single or multi-page recipe. I then use the Vision framework to text-recognition and generate a string of all the text in the image(s). That text is then sent to the Google Cloud Function which calls the Completions API provided by OpenAI. Finally, a JSON formatted recipe object is sent back to the app and the recipe is displayed for the user to verify.
 
+Youtube Link
 [![Recipe Scanning Demo](https://img.youtube.com/vi/3dojy7zi-zk/0.jpg)](https://www.youtube.com/watch?v=3dojy7zi-zk "Recipe Scanning Demo")
 
 ## Fun Login Screen
