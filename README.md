@@ -25,7 +25,7 @@ Youtube Link
 ## Fun Login Screen
 Authentication is done through Google Firebase and Sign in with Apple. It's a SwiftUI screen with a SpriteKit scene with physics behind it. The gravity in the physics world is adjusted according to the tilt of your phone, as specified by the accelerometer.
 
-[![Login Screen Demo](https://img.youtube.com/vi/dNG2K2ZUkMg/0.jpg)](https://www.youtube.com/watch?v=dNG2K2ZUkMg "Login Screen Demo")
+[![Login Screen Demo](https://github.com/achi113s/Grocemate/blob/main/ReadmeResources/login_screen_demo.gif)
 
 ## Edit and Create Recipe Screen
 This screen is generic. You can pass in any view model that conforms to RecipeDetailViewModelling.
