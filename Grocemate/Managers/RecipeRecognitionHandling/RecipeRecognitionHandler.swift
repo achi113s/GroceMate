@@ -108,7 +108,7 @@ final class RecipeRecognitionHandler<I: ImageToTextHandling, O: OpenAIManaging2>
 
                 let recipeJSONString = openAIResponse.choices[0].message.content
 
-                /// Try to convert the JSON string from ChatGPT into a JSON Data object.
+                /// Try to convert the JSON string from ChatGPT into a Data object.
                 guard let recipeJSON = recipeJSONString.data(using: .utf8) else {
                     print("Could not cast ingredientJSONString as JSON Object.\n")
                     return
